@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "record_type": "public_projection_of_frozen_scientific_identity",
+  "method_name": "VCSF",
+  "decision": "KEEP_F_WITH_NARROWED_CLAIMS",
+  "configuration_frozen": true,
+  "candidate": {
+    "common_group_id": 26,
+    "common_variant": "B:momentum_085",
+    "final_group_id": 1,
+    "final_variant": "A01",
+    "parameters_sha256": "158acaf594c74b4f6a9c20fe28d6c2e38ef6ab9230b85f6d0b0b8b7e93dd7e9e",
+    "parameters_json_pointer": "/inputs/catalogue/groups/0/parameters"
+  },
+  "parameters": {
+    "eps": 0.01568627450980392,
+    "iterations": 20,
+    "step_size": 0.00392156862745098,
+    "feature_levels": [
+      0,
+      1,
+      2
+    ],
+    "feature_eps": 1e-06,
+    "scale_min": 0.6666666666666666,
+    "scale_max": 1.3333333333333333,
+    "momentum": 0.85,
+    "initialization": "detector",
+    "surface": "cross_stage",
+    "levels_per_stage": 2,
+    "correspondence": "shared",
+    "spatial_weight": "energy",
+    "aggregation": "log_mean_exp",
+    "gradient_centering": true,
+    "support": "valid",
+    "image_interpolation": "bilinear",
+    "placement": "random",
+    "image_padding": "zero"
+  },
+  "hash_encoding": "SHA256 of UTF-8 json.dumps(sort_keys=True,separators=(',',':'),allow_nan=False)",
+  "historical_implementation": {
+    "inventory_file": "historical-implementation-inventory.json",
+    "inventory_sha256": "0541e0c6236dab892d5321531061049e04810077d0bac62635eff6916346237a",
+    "inventory_files": 326,
+    "critical_files": {
+      "src/lgp/attacks/vcsf_final_candidate.py": "99423c6892db7afc172dff0eb375970a603b44ed9885b0c04f71faa845da2c4a",
+      "src/lgp/attacks/vcsf_research_isolated.py": "b78fbbddc1638f4f74ddb44771c131a6f5301272bc5d75110c700828f40099b0",
+      "src/lgp/runners/vcsf_efficacy_runner.py": "67ea9ce3962423bbf81392984c36a82cf8160ee68a46b49de259686d5f5c9d0d"
+    },
+    "meaning": "Original producer inventory; not a hash of the current public package"
+  },
+  "source_binding": {
+    "original_freeze_sha256": "a697b1331cf54808633bcfc57d6f07adb630ef41beb7fea709402b749e1418d0",
+    "original_input_report_sha256": "968f7227282a16b25f9947e2af7f1d95ac28fcdf18ebf0d0f4d54e1f41373f84",
+    "parameters_pointer": "/inputs/catalogue/groups/0/parameters",
+    "inventory_pointer": "/inputs/execution_plan/runtime_sha256",
+    "projection_is_original_receipt": false,
+    "original_private_operational_records_included": false
+  },
+  "withdrawn_claims": [
+    "independent_positive_centering_efficacy",
+    "monotone_depth_benefit",
+    "pure_correspondence_causality",
+    "universal_stage_or_layer_optimality",
+    "optimal_momentum",
+    "independent_confirmation",
+    "statistical_significance",
+    "exact_physical_compute_equality",
+    "final_momentum_operator_interactions_from_earlier_background"
+  ],
+  "limitations": [
+    "A01 was observed in the exploratory sweep before final control registration",
+    "Single source and reused full validation split do not establish independent confirmation",
+    "Target and secondary metric disagreements are retained, including Swin",
+    "DINO was not used as a whitebox source but its target metrics were inspected",
+    "Observed timing is not isolated physical calibration; unknown physical costs remain unknown"
+  ],
+  "scope": {
+    "scientific_metadata_only": true,
+    "contains_result_metrics": false,
+    "confers_execution_admission": false,
+    "establishes_current_package_equivalence": false,
+    "establishes_license_clearance": false,
+    "establishes_whole_project_device_acceptance": false
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "publication_scope": "project_showcase_and_scientific_metadata",
+  "software_release": false,
+  "project_license_granted": false,
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "ef70ddc9cdb48c2e2288f9542440286e0aa9c0fb20895b644e80d5954ada1725",
+      "bytes": 3635
+    },
+    {
+      "path": "README.zh-CN.md",
+      "sha256": "f895feea0262e487cc50868a7056f765f0791352ac59724ec72c77b055ce2df8",
+      "bytes": 2985
+    },
+    {
+      "path": "vcsf-scientific-identity.json",
+      "sha256": "d4009991c41888fe6e4ce7317e48a4ff2db1488af433446c41c62911c3991c3e",
+      "bytes": 3532
+    },
+    {
+      "path": "historical-implementation-inventory.json",
+      "sha256": "df4ea2ff43f62d126edaca04ba53168dd7ab4f8fe0e1c6ecabf297d46ffd7c3e",
+      "bytes": 36244
+    },
+    {
+      "path": "docs/en/vcsf-method.md",
+      "sha256": "9c53c48af9f901817a9cd9a0efdae86eedff7c3bd6e76575d80181716f19bc43",
+      "bytes": 3176
+    },
+    {
+      "path": "docs/zh_CN/vcsf-method.md",
+      "sha256": "3e031bcde4afb344e2a660312371ff240b90a1e7825ba739cf901d30ca3fe66e",
+      "bytes": 2674
+    }
+  ],
+  "manifest_self_hash_excluded": true
+}
