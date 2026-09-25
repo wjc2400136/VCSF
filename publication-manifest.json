@@ -6,13 +6,18 @@
   "files": [
     {
       "path": "README.md",
-      "sha256": "ef70ddc9cdb48c2e2288f9542440286e0aa9c0fb20895b644e80d5954ada1725",
-      "bytes": 3635
+      "sha256": "b5efbaccb32157cb16d73495049e99f3da1bd12965346e52993b69422c47e424",
+      "bytes": 3928
     },
     {
       "path": "README.zh-CN.md",
-      "sha256": "f895feea0262e487cc50868a7056f765f0791352ac59724ec72c77b055ce2df8",
-      "bytes": 2985
+      "sha256": "4a70e87c08c82d5d33cd89249fd7f431fe7de7c1296cb18b4b2d65c359f6dcf4",
+      "bytes": 3314
+    },
+    {
+      "path": "vcsf-selection-status.json",
+      "sha256": "aa6569c1ec69d5673822a50203256ed60971ffeb8f5b2ef69316836651e3fd0a",
+      "bytes": 2181
     },
     {
       "path": "vcsf-scientific-identity.json",
@@ -26,13 +31,13 @@
     },
     {
       "path": "docs/en/vcsf-method.md",
-      "sha256": "9c53c48af9f901817a9cd9a0efdae86eedff7c3bd6e76575d80181716f19bc43",
-      "bytes": 3176
+      "sha256": "081578c81c700c1402c982228b7b7f13df793b55796850b7ccf1a7012e16a6f7",
+      "bytes": 3427
     },
     {
       "path": "docs/zh_CN/vcsf-method.md",
-      "sha256": "3e031bcde4afb344e2a660312371ff240b90a1e7825ba739cf901d30ca3fe66e",
-      "bytes": 2674
+      "sha256": "df945c450ebe326135b50f2472ab64aaab7810eec7eef6bbc89ac1fa4a1e4a27",
+      "bytes": 2900
     }
   ],
   "manifest_self_hash_excluded": true

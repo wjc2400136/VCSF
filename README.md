@@ -5,9 +5,9 @@
 [English](README.md) | [简体中文](README.zh-CN.md)
 
 VCSF studies how perturbations generated on one object detector transfer to
-other detector architectures. This project brings together a frozen method
-configuration, controlled comparisons and reproducibility resources for
-object-detection transfer attacks.
+other detector architectures. This publication contains historical A01 method
+metadata and the current A23 configuration selection. A23 is not yet an
+accepted implementation or result identity.
 
 ## Project Overview
 
@@ -18,7 +18,7 @@ object-detection transfer attacks.
 | Target panel | Sixteen detectors across two-stage, YOLO, dense/point-based and query/set-based families |
 | Main datasets | COCO val2017 and Pascal VOC2007 test |
 | Main perturbation bound | L-infinity, 4/255 |
-| Method identity | One frozen VCSF configuration; no per-target configuration selection |
+| Method identity | One VCSF method name; A23 selected pending implementation promotion, with no per-target configuration selection |
 
 The research includes main transfer comparisons, controlled ablations, seed
 stability, preprocessing, victim training-state and perturbation-budget studies.
@@ -28,10 +28,11 @@ executable release is already available here.
 ## Method At A Glance
 
 VCSF combines detector-based initialization with feature updates across backbone
-and neck stages. The frozen configuration uses shared clean/adversarial geometry,
-energy weighting, log-mean-exp aggregation, gradient centering and momentum.
+and neck stages. The selected A23 configuration uses shared clean/adversarial
+geometry, energy weighting, log-mean-exp aggregation and momentum, without
+gradient centering in either initialization or feature updates.
 
-| Component | Frozen setting |
+| Component | Selected A23 setting, pending promotion |
 | --- | --- |
 | Schedule | Detector initialization followed by 19 feature updates |
 | Feature selection | Two selected layers per stage, four backbone/neck terms in total |
@@ -40,24 +41,26 @@ energy weighting, log-mean-exp aggregation, gradient centering and momentum.
 | Momentum | 0.85 |
 
 Read the [method and interpretation guide](docs/en/vcsf-method.md) for the
-complete identity and scientific limitations. This configuration is not claimed
-to be universally optimal or superior to every ablation control and target.
+selection boundary and scientific limitations. The selected parameters are not
+an accepted executing-code identity or a final result.
 
 ## Available Materials
 
-- [Scientific identity and complete resolved parameters](vcsf-scientific-identity.json)
+- [Current A23 selection status and complete parameters](vcsf-selection-status.json)
+- [Historical A01 scientific identity](vcsf-scientific-identity.json)
 - [Historical implementation file hashes](historical-implementation-inventory.json)
 - [English method guide](docs/en/vcsf-method.md)
 - [中文方法说明](docs/zh_CN/vcsf-method.md)
 
-The parameter SHA-256 is:
+The selected A23 parameter SHA-256 is:
 
 ```text
-158acaf594c74b4f6a9c20fe28d6c2e38ef6ab9230b85f6d0b0b8b7e93dd7e9e
+5079f4495309ec03b4650a4f5a19f291115c84b7155e7f50d15b2086b3de9afd
 ```
 
-The historical implementation inventory identifies the original producer. It is
-not a checksum or validation certificate for a future public code package.
+The historical A01 identity and implementation inventory remain unchanged.
+They identify the original producer, not A23, and are not a validation
+certificate for a future public code package.
 
 ## Reproduction Status
 
@@ -65,18 +68,20 @@ not a checksum or validation certificate for a future public code package.
 metadata, not the complete executable reproduction package.**
 
 Implementation files, beginner-oriented setup instructions and verified result
-artifacts will be added after their source, licensing and portability checks.
+artifacts remain pending source, licensing, portability and scientific checks.
 No dataset, model checkpoint, private execution log or unaccepted result is
-included in this publication. Updates will preserve the frozen method identity
-and distinguish diagnostic checks from formal experimental acceptance.
+included in this publication. A23 selection alone does not admit a formal run
+or transfer any A01 result to A23.
 
 ## Scientific Scope
 
-The selected configuration was observed during exploration before final
-attribution controls were registered. Reusing a validation split and reporting
-multiple seeds do not establish independent confirmation. Target-specific
-disagreements and negative results must be retained. No claim of statistical
-significance or exactly equal physical compute is made by these materials.
+A23 was selected from a retrospective 23-configuration, single-source panel on
+reused COCO val2017. This is not independent confirmation. A10 had the panel's
+lower primary attacked BB AP with more feature terms; secondary outcomes were
+mixed. Target-specific disagreements and negative results must be retained.
+These materials establish no A23 six-source or VOC result, measured speedup,
+statistical equivalence, cross-source optimality or exactly equal physical
+compute.
 
 ## License
 
