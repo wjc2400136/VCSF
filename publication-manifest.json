@@ -1,23 +1,29 @@
 {
-  "schema_version": 1,
-  "publication_scope": "project_showcase_and_scientific_metadata",
+  "schema_version": 2,
+  "publication_scope": "project_documentation_and_current_A10_scientific_identity_metadata",
   "software_release": false,
   "project_license_granted": false,
+  "previous_public_commit": "94ea994f847ef56f4ec2b2319c5e72f9065f3333",
+  "preserved_historical_files": [
+    "vcsf-scientific-identity.json",
+    "historical-implementation-inventory.json",
+    "docs/history/previous-a23-selection-status.json"
+  ],
   "files": [
     {
       "path": "README.md",
-      "sha256": "b5efbaccb32157cb16d73495049e99f3da1bd12965346e52993b69422c47e424",
-      "bytes": 3928
+      "sha256": "03b08c9c7e53c65aea3d73e745b2e15becd1d426149ba340ddfd3ca7adb3fd41",
+      "bytes": 4831
     },
     {
       "path": "README.zh-CN.md",
-      "sha256": "4a70e87c08c82d5d33cd89249fd7f431fe7de7c1296cb18b4b2d65c359f6dcf4",
-      "bytes": 3314
+      "sha256": "635c1fb5c2e85771387ac0dc3cffb3006ee9d4724302b2fad9e0dd9bd8ebc6a0",
+      "bytes": 3957
     },
     {
       "path": "vcsf-selection-status.json",
-      "sha256": "aa6569c1ec69d5673822a50203256ed60971ffeb8f5b2ef69316836651e3fd0a",
-      "bytes": 2181
+      "sha256": "5e7f29526b4f827f0db035245f8173bc87ce9a21ecf715fe1b8688785ead1a25",
+      "bytes": 4615
     },
     {
       "path": "vcsf-scientific-identity.json",
@@ -31,13 +37,23 @@
     },
     {
       "path": "docs/en/vcsf-method.md",
-      "sha256": "081578c81c700c1402c982228b7b7f13df793b55796850b7ccf1a7012e16a6f7",
-      "bytes": 3427
+      "sha256": "f47be8e362eef79f5358cec1e537085dc560c540552cdd4755f76741ef2fca4b",
+      "bytes": 4432
     },
     {
       "path": "docs/zh_CN/vcsf-method.md",
-      "sha256": "df945c450ebe326135b50f2472ab64aaab7810eec7eef6bbc89ac1fa4a1e4a27",
-      "bytes": 2900
+      "sha256": "d3202eb6ddec522476d892457162c0860e75ae44976c1b2779e8f906b70a8e3f",
+      "bytes": 3713
+    },
+    {
+      "path": "vcsf-current-scientific-identity.json",
+      "sha256": "2e8f7dff200104e4195ca1c7a6157af5724461ce475949b52fb6c221281649c1",
+      "bytes": 2449
+    },
+    {
+      "path": "docs/history/previous-a23-selection-status.json",
+      "sha256": "aa6569c1ec69d5673822a50203256ed60971ffeb8f5b2ef69316836651e3fd0a",
+      "bytes": 2181
     }
   ],
   "manifest_self_hash_excluded": true

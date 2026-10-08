@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "record_type": "public_projection_of_current_A10_numerical_identity",
+  "method_name": "VCSF",
+  "internal_configuration": "A10",
+  "parameters_sha256": "2551944131096c1d74011f2eb8d789b858e6dce79748f5b5aada54ea18254328",
+  "numeric_source_map_sha256": "5f7174ae7ac4f0f49c385955d3cfa64bc8c1d1893f1a43d8e08d9895c3792acd",
+  "numeric_source_sha256": {
+    "src/lgp/adapters/openmmlab.py": "553ab418de02fa4c9e2c5920e066b4be248225af4b68b660e17e2866998c4348",
+    "src/lgp/attacks/base.py": "9288b61e8168b1738d84d3e4c6860c713a340b5cfaf45b0a984694dc4fd3259e",
+    "src/lgp/attacks/common.py": "850fbdfcb8908064c0380e5a30f66cec1c62814a287c26f7f388a980811709d3",
+    "src/lgp/attacks/vcsf_common_anchor_execution_isolation.py": "44b8ea7f9cc3df7fce511f79bc9dae671fb6ea0dd709178a095b5717c7464b63",
+    "src/lgp/attacks/vcsf_common_anchor_isolated.py": "b55c7ebe5a307249a8776c0370a8e149044ef2fbc923954e9f1dddccaa1843da",
+    "src/lgp/attacks/vcsf_final_candidate.py": "99423c6892db7afc172dff0eb375970a603b44ed9885b0c04f71faa845da2c4a",
+    "src/lgp/attacks/vcsf_research_isolated.py": "b78fbbddc1638f4f74ddb44771c131a6f5301272bc5d75110c700828f40099b0",
+    "src/lgp/attacks/vcsf_scale_isolated.py": "65827ce3ed4eb1d16700a828648ed9d6595f5ff6d92103408343ab56df5047ef",
+    "src/lgp/modeling.py": "db4301db6f420a490d3ad09340fa6610924268320abebf3576401cb1191fd6c5"
+  },
+  "hash_encoding": "SHA256 of UTF-8 json.dumps(sort_keys=True,separators=(',',':'),allow_nan=False)",
+  "scientific_selection_closed": true,
+  "source_configuration_freeze_sha256": "835ecf45606670c9f92e34caf7a8c42e1e5b89119c0adc273ec1afff445fbb2f",
+  "qualified_public_source_candidate_manifest_sha256": "6cab0ea18b778f19cf38d0353c78d9bf71f41c66e8b8e062f5198399a0cc0774",
+  "current_source_candidate_acceptance_sha256": "ae8fb8b94fbfb0f6ab0449a4538a6c955f05f0db7d8cdcecc4bb27edadf1d193",
+  "scope": {
+    "scientific_and_source_identity_metadata_only": true,
+    "contains_executable_source": false,
+    "contains_raw_results_or_full_acceptance_receipts": false,
+    "software_release": false,
+    "project_license_granted": false,
+    "confers_execution_admission": false,
+    "establishes_third_party_rights_clearance": false
+  },
+  "provenance_boundary": "Numerical source hashes and parameters identify the current A10 candidate. Full inputs, runtime, checkpoints and scoped result acceptances are bound by their original records, not by this projection alone."
+}
