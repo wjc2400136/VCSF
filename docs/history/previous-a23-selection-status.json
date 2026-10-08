@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "record_type": "public_projection_of_current_configuration_selection",
+  "method_name": "VCSF",
+  "selection_label": "A23",
+  "author_clarification_date": "2026-09-25",
+  "status": "selected_pending_implementation_promotion",
+  "parameters_sha256": "5079f4495309ec03b4650a4f5a19f291115c84b7155e7f50d15b2086b3de9afd",
+  "parameters": {
+    "aggregation": "log_mean_exp",
+    "correspondence": "shared",
+    "eps": 0.01568627450980392,
+    "feature_eps": 1e-06,
+    "feature_levels": [0, 1, 2],
+    "gradient_centering": false,
+    "image_interpolation": "bilinear",
+    "image_padding": "zero",
+    "initialization": "detector",
+    "iterations": 20,
+    "levels_per_stage": 2,
+    "momentum": 0.85,
+    "placement": "random",
+    "scale_max": 1.3333333333333333,
+    "scale_min": 0.6666666666666666,
+    "spatial_weight": "energy",
+    "step_size": 0.00392156862745098,
+    "support": "valid",
+    "surface": "cross_stage"
+  },
+  "hash_encoding": "SHA256 of UTF-8 json.dumps(sort_keys=True,separators=(',',':'),allow_nan=False)",
+  "selection_basis": "Retrospective single-source 23-configuration panel on reused COCO val2017; not independent confirmation",
+  "historical_reference": {
+    "label": "A01",
+    "parameters_sha256": "158acaf594c74b4f6a9c20fe28d6c2e38ef6ab9230b85f6d0b0b8b7e93dd7e9e",
+    "record": "vcsf-scientific-identity.json",
+    "record_sha256": "d4009991c41888fe6e4ce7317e48a4ff2db1488af433446c41c62911c3991c3e"
+  },
+  "limitations": [
+    "The original selection-panel input provenance remains pending independent admission",
+    "A10 had the observed primary-metric advantage in that panel, with additional feature terms and mixed secondary outcomes",
+    "No six-source, VOC, robustness, cost or final-paper result is accepted for A23",
+    "No measured speedup, statistical equivalence or cross-source optimality is established"
+  ],
+  "scope": {
+    "scientific_selection_metadata_only": true,
+    "implementation_promoted": false,
+    "formal_result_eligible": false,
+    "scientific_acceptance": false,
+    "software_release": false,
+    "confers_execution_admission": false,
+    "establishes_license_clearance": false
+  }
+}
