@@ -80,6 +80,13 @@ No dataset, model checkpoint, private execution log or unaccepted result is
 included in this publication. Configuration selection does not itself admit a
 formal run or transfer any A01 or A23 result to A10.
 
+The corrected-LGP five-radius numerical inputs and their manuscript comparison
+are complete, with 32/255 kept as a separate stress setting. One/two-device
+dispatch validation covers all 37 declared maintained paths at their recorded
+roles; it does not mean every default study or CLI option ran on native GPUs.
+See the [current evidence and delivery status](current-evidence-status.json).
+These updates do not publish the private executable package.
+
 ## Scientific Scope
 
 A10 was selected from the original retrospective 23-configuration Faster R-CNN
