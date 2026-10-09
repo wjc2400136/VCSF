@@ -1,65 +1,65 @@
 {
-  "schema_version": 3,
-  "publication_scope": "accepted_documentation_and_current_identity_evidence_status_metadata_only",
-  "software_release": false,
-  "project_license_granted": false,
-  "previous_public_commit": "8678b40cc779577c26f2e428d3d627f234da0799",
+  "files": [
+    {
+      "bytes": 5939,
+      "path": "README.md",
+      "sha256": "1765a9fa89161073616485df61de7d95f5eab1a1b5aef3065df2f1bdb35236e2"
+    },
+    {
+      "bytes": 4841,
+      "path": "README.zh-CN.md",
+      "sha256": "b2f7c5febb01ccd82bd0990d32f7931e2a558b1034a362d6785b6773c7dde541"
+    },
+    {
+      "bytes": 5596,
+      "path": "current-evidence-status.json",
+      "sha256": "8ff26b8819a0e41b594dbcbd5d5e484bb9de43713cc5e4c24612c2de9555fb22"
+    },
+    {
+      "bytes": 4432,
+      "path": "docs/en/vcsf-method.md",
+      "sha256": "f47be8e362eef79f5358cec1e537085dc560c540552cdd4755f76741ef2fca4b"
+    },
+    {
+      "bytes": 2181,
+      "path": "docs/history/previous-a23-selection-status.json",
+      "sha256": "aa6569c1ec69d5673822a50203256ed60971ffeb8f5b2ef69316836651e3fd0a"
+    },
+    {
+      "bytes": 3713,
+      "path": "docs/zh_CN/vcsf-method.md",
+      "sha256": "d3202eb6ddec522476d892457162c0860e75ae44976c1b2779e8f906b70a8e3f"
+    },
+    {
+      "bytes": 36244,
+      "path": "historical-implementation-inventory.json",
+      "sha256": "df4ea2ff43f62d126edaca04ba53168dd7ab4f8fe0e1c6ecabf297d46ffd7c3e"
+    },
+    {
+      "bytes": 3024,
+      "path": "vcsf-current-scientific-identity.json",
+      "sha256": "41e52bc3b4cf40f6f9e7309901da73cb245cfbaef0f637c2d962420737778191"
+    },
+    {
+      "bytes": 3532,
+      "path": "vcsf-scientific-identity.json",
+      "sha256": "d4009991c41888fe6e4ce7317e48a4ff2db1488af433446c41c62911c3991c3e"
+    },
+    {
+      "bytes": 4615,
+      "path": "vcsf-selection-status.json",
+      "sha256": "5e7f29526b4f827f0db035245f8173bc87ce9a21ecf715fe1b8688785ead1a25"
+    }
+  ],
+  "manifest_self_hash_excluded": true,
   "preserved_historical_files": [
     "vcsf-scientific-identity.json",
     "historical-implementation-inventory.json",
     "docs/history/previous-a23-selection-status.json"
   ],
-  "files": [
-    {
-      "path": "README.md",
-      "sha256": "c9be89fbdb328fa4b8961c5a2d7292a4fcbe0f3ea6972850142886b43dd3a0e8",
-      "bytes": 5282
-    },
-    {
-      "path": "README.zh-CN.md",
-      "sha256": "af37a40f6644cc6ac97ee33823571892ae4c455e1047647b9e57bc63ad388bb9",
-      "bytes": 4327
-    },
-    {
-      "path": "current-evidence-status.json",
-      "sha256": "25976e6ea336796c9d2d5d2fdc132b8ffe094dca71c661f2f7d43cae332cdd02",
-      "bytes": 3728
-    },
-    {
-      "path": "docs/en/vcsf-method.md",
-      "sha256": "f47be8e362eef79f5358cec1e537085dc560c540552cdd4755f76741ef2fca4b",
-      "bytes": 4432
-    },
-    {
-      "path": "docs/history/previous-a23-selection-status.json",
-      "sha256": "aa6569c1ec69d5673822a50203256ed60971ffeb8f5b2ef69316836651e3fd0a",
-      "bytes": 2181
-    },
-    {
-      "path": "docs/zh_CN/vcsf-method.md",
-      "sha256": "d3202eb6ddec522476d892457162c0860e75ae44976c1b2779e8f906b70a8e3f",
-      "bytes": 3713
-    },
-    {
-      "path": "historical-implementation-inventory.json",
-      "sha256": "df4ea2ff43f62d126edaca04ba53168dd7ab4f8fe0e1c6ecabf297d46ffd7c3e",
-      "bytes": 36244
-    },
-    {
-      "path": "vcsf-current-scientific-identity.json",
-      "sha256": "41e52bc3b4cf40f6f9e7309901da73cb245cfbaef0f637c2d962420737778191",
-      "bytes": 3024
-    },
-    {
-      "path": "vcsf-scientific-identity.json",
-      "sha256": "d4009991c41888fe6e4ce7317e48a4ff2db1488af433446c41c62911c3991c3e",
-      "bytes": 3532
-    },
-    {
-      "path": "vcsf-selection-status.json",
-      "sha256": "5e7f29526b4f827f0db035245f8173bc87ce9a21ecf715fe1b8688785ead1a25",
-      "bytes": 4615
-    }
-  ],
-  "manifest_self_hash_excluded": true
+  "previous_public_commit": "71adae3b4a27d0744a1ba4c20730306096c94722",
+  "project_license_granted": false,
+  "publication_scope": "accepted_documentation_current_identity_and_revision11_delivery_status_metadata_only",
+  "schema_version": 4,
+  "software_release": false
 }
