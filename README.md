@@ -85,6 +85,11 @@ are complete, with 32/255 kept as a separate stress setting. One/two-device
 dispatch validation covers all 37 declared maintained paths at their recorded
 roles; it does not mean every default study or CLI option ran on native GPUs.
 See the [current evidence and delivery status](current-evidence-status.json).
+The current working manuscript also restores identity-matched cost records for
+ten methods on two common sources and two conditional design comparisons.
+Its accepted nine-file source archive is synchronized to the author's private
+cloud manuscript project. These are artifact and interpretation updates,
+not new model experiments or a controlled baseline speed ranking.
 These updates do not publish the private executable package.
 
 ## Scientific Scope
@@ -104,5 +109,9 @@ exactly equal physical compute. BDD100K is outside the current maintained scope.
 
 ## License
 
-A project-wide software license has not yet been granted. Source provenance
-and applicable third-party notices are being reviewed before code publication.
+A project-wide software license has not yet been selected. Third-party
+license texts and scoped modification notices have been prepared in a
+separate source copy, without changing scientific behavior. The author has
+authorized continuing publication preparation; the specific project license
+and remaining distribution conditions are distinct from that authorization.
+The complete executable package is not published by this metadata update.

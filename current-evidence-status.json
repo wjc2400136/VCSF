@@ -1,21 +1,7 @@
 {
-  "schema_version": 1,
-  "record_type": "accepted_evidence_and_delivery_status_metadata_only",
-  "method_name": "VCSF",
-  "current_configuration": "A10",
-  "datasets": [
-    "COCO",
-    "Pascal VOC"
-  ],
   "corrected_LGP_radius": {
-    "protocol": "lgp_corrected_coco_multi_budget_linf",
+    "comparison_scope": "Two separate single-source attacks; means exclude the source-matched target before equal-source aggregation. Not six-source radius generalization or strict physical-compute matching.",
     "dataset_split": "COCO val2017",
-    "images_per_source_radius": 5000,
-    "sources": [
-      "faster_rcnn_r50",
-      "mask_rcnn_swin_t"
-    ],
-    "targets_per_source_radius": 16,
     "epsilon_order": [
       "2/255",
       "4/255",
@@ -23,70 +9,117 @@
       "16/255",
       "32/255"
     ],
-    "logical_result_cells": 160,
-    "nonreference_logical_cells": 128,
     "exact_reused_reference_cells": 32,
-    "standard_metrics_per_cell": 12,
     "full_numeric_input_accepted": true,
-    "manuscript_comparison_and_affected_claims_accepted": true,
     "historical_LGP_relabelled": false,
-    "stress_radius": "32/255",
-    "records_sha256": "63af9085f125008be20bdc09d293b9495f77a883846c76216d59b0d73eee818a",
+    "images_per_source_radius": 5000,
+    "logical_result_cells": 160,
+    "manuscript_comparison_and_affected_claims_accepted": true,
+    "nonreference_logical_cells": 128,
     "numeric_summary_sha256": "64ba97f47234cb56a293bd034b2eea9600a876743cb648ebbfed9ea4fad683a7",
-    "comparison_scope": "Two separate single-source attacks; means exclude the source-matched target before equal-source aggregation. Not six-source radius generalization or strict physical-compute matching."
+    "protocol": "lgp_corrected_coco_multi_budget_linf",
+    "records_sha256": "63af9085f125008be20bdc09d293b9495f77a883846c76216d59b0d73eee818a",
+    "sources": [
+      "faster_rcnn_r50",
+      "mask_rcnn_swin_t"
+    ],
+    "standard_metrics_per_cell": 12,
+    "stress_radius": "32/255",
+    "targets_per_source_radius": 16
   },
+  "current_configuration": "A10",
+  "datasets": [
+    "COCO",
+    "Pascal VOC"
+  ],
   "declared_device_dispatch": {
-    "accepted_at_declared_roles": true,
-    "declared_paths": 37,
-    "independent_GPU_paths": 10,
-    "shared_scheduler_thin_wrappers": 16,
     "CPU_only_paths": 6,
-    "support_paths": 5,
-    "minimum_actual_path_gaps": [],
     "acceptance_sha256": "5e9fdc57ba7662e4f2f0ed241e68855b609c1e7e2de2a1c6f607dab571cabb94",
+    "accepted_at_declared_roles": true,
     "all_default_native_studies_or_CLI_options_qualified": false,
     "bounded_VOC_diagnostic": {
-      "single_and_dual_modes_accepted": true,
-      "models": 2,
-      "training_image_IDs": 2,
-      "jobs": 4,
-      "registered_epochs_per_job": 12,
-      "optimizer_steps_total": 72,
+      "acceptance_sha256": "058f24ce00e3c1f6b67c36fae402d5cf236203d41949cb7d132742298f777eb9",
       "formal_validation_attached": false,
       "full_training_and_sixteen_checkpoint_panel_qualified_by_this_diagnostic": false,
-      "acceptance_sha256": "058f24ce00e3c1f6b67c36fae402d5cf236203d41949cb7d132742298f777eb9"
-    }
-  },
-  "working_manuscript": {
-    "revision": "corrected-radius-integrated-working-manuscript",
-    "pages_including_references": 30,
-    "references": 44,
-    "previously_verified_Pattern_Recognition_references": 5,
-    "all_pages_rendered": true,
-    "actual_source_archive_rebuilt": true,
-    "retained_claim_scope_review_accepted": true,
-    "ready_for_author_final_confirmation": true,
-    "final_submission_or_whole_goal_accepted": false,
-    "manuscript_source_sha256": "0248ef30235746e0b9bd032a34ecf5f1c4fb005cba2f4634c9f63cdba574a86a",
-    "acceptance_sha256": "e0902f942c3d97fac8a1a2be1824d0bd595b7d3806949bacafcf6e80a8c3e25c",
-    "public_manuscript_or_figure_copy_included": false
-  },
-  "documentation": {
-    "bilingual_guide_status_corrections": 16,
-    "other_source_members_unchanged": 333,
-    "commands_configuration_results_and_method_unchanged": true,
-    "acceptance_sha256": "4d2ebd77cea4536e35643e1c228387ab177f481600a7fab48168edd418fab3fd"
+      "jobs": 4,
+      "models": 2,
+      "optimizer_steps_total": 72,
+      "registered_epochs_per_job": 12,
+      "single_and_dual_modes_accepted": true,
+      "training_image_IDs": 2
+    },
+    "declared_paths": 37,
+    "independent_GPU_paths": 10,
+    "minimum_actual_path_gaps": [],
+    "shared_scheduler_thin_wrappers": 16,
+    "support_paths": 5
   },
   "distribution_boundary": {
-    "documentation_and_metadata_only": true,
+    "author_publication_continuation_authorized": true,
+    "complete_executable_source_publication_performed": false,
+    "complete_software_release": false,
+    "confers_new_execution_admission": false,
     "contains_executable_source": false,
     "contains_raw_results_or_private_receipts": false,
-    "complete_software_release": false,
+    "documentation_and_metadata_only": true,
+    "notice_preparation": {
+      "accepted_source_only_preparation": true,
+      "additional_notices_and_license_files": 6,
+      "comment_only_modified_python_files": 11,
+      "creates_new_result_or_execution_acceptance": false,
+      "independent_or_unconditional_legal_clearance_established": false,
+      "numeric_core_configuration_and_provenance_unchanged": true,
+      "preparation_acceptance_sha256": "9316fd5817adfae39329570bdc30505eed97e15ffd1374f3ceadf7f07b79bd49",
+      "unchanged_original_source_files": 338
+    },
+    "previous_docs_only_author_boundary_sha256": "f5e25d3da582d42ed807289202e254fa79c2b1b10811e873324237c5b33993af",
+    "previous_docs_only_deferral_superseded": true,
     "project_source_license_granted": false,
-    "third_party_redistribution_cleared": false,
-    "confers_new_execution_admission": false,
-    "author_boundary_sha256": "f5e25d3da582d42ed807289202e254fa79c2b1b10811e873324237c5b33993af"
+    "specific_project_license_choice_pending": true,
+    "third_party_redistribution_cleared": false
   },
+  "documentation": {
+    "acceptance_sha256": "4d2ebd77cea4536e35643e1c228387ab177f481600a7fab48168edd418fab3fd",
+    "bilingual_guide_status_corrections": 16,
+    "commands_configuration_results_and_method_unchanged": true,
+    "other_source_members_unchanged": 333
+  },
+  "hashes_are_references_not_standalone_acceptance_certificates": true,
+  "method_name": "VCSF",
   "original_evidence_and_failed_roots_preserved": true,
-  "hashes_are_references_not_standalone_acceptance_certificates": true
+  "record_type": "accepted_evidence_and_delivery_status_metadata_only",
+  "schema_version": 1,
+  "working_manuscript": {
+    "acceptance_sha256": "3f085d1aa96eaa00241f9a04778e29be0b16bcfad104bd0fde521da0f59050db",
+    "actual_source_archive_rebuilt": true,
+    "all_pages_rendered": true,
+    "blanket_author_final_confirmation_required_to_continue": false,
+    "completed_human_review_attested": false,
+    "corrected_LGP_and_final_VCSF_cost_identities_accepted": true,
+    "cost_table_numeric_cells": 40,
+    "factual_AI_assistance_disclosure_included": true,
+    "final_submission_or_whole_goal_accepted": false,
+    "historical_cost_scope": "Ten methods, two common full-5000 sources; seconds/image and whole-run allocated MiB. Historical non-isolated observations, not paired baseline speed ranking or strict physical-compute equality.",
+    "manuscript_source_sha256": "2110e772fc48860b12e5817f4766ac0975b589f3356dd664317352ea88524628",
+    "pages_including_references": 30,
+    "previously_verified_Pattern_Recognition_references": 5,
+    "private_cloud_sync": {
+      "BibTeX_missing_pages_warnings": 4,
+      "actual_cloud_PDF_pages": 30,
+      "all_source_member_hashes_equal_to_accepted_archive": true,
+      "compile_errors": 0,
+      "content_and_layout_accepted": true,
+      "source_member_count": 9,
+      "sync_acceptance_sha256": "572bdaedac45d65ca5dade20b6682e32b1712e17b4ffc98cd832f5288d3d97de"
+    },
+    "public_manuscript_or_figure_copy_included": false,
+    "references": 44,
+    "restored_conditional_contrasts": [
+      "stage-by-depth representation reversal",
+      "centering-by-momentum interaction"
+    ],
+    "retained_claim_scope_review_accepted": true,
+    "revision": "current-cost-two-conditional-contrasts-and-AI-disclosure-working-manuscript",
+    "source_archive_sha256": "aa3faa8f4febc204c106f23ad57fec1785847fd35d745c08829a428cbeaf863e"
+  }
 }
