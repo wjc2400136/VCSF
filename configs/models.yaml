@@ -1,0 +1,307 @@
+schema_version: 1
+framework_versions:
+  mmdet: 3.0.0
+  mmyolo: 0.6.0
+training_protocol:
+  seed: 42
+  deterministic: false
+  amp: false
+  lr_scaling: linear
+  selection_policy: fixed_final_epoch
+  validation_policy: post_training_only
+  checkpoint_interval_epochs: 1
+  max_keep_checkpoints: 1
+  verify_train_images: 2
+training_safety:
+  invalid_loss_check_interval: 1
+  require_finite_checkpoint: true
+paper_order:
+  - faster_rcnn_r50
+  - cascade_rcnn_r50
+  - mask_rcnn_swin_t
+  - yolov3_d53
+  - yolov5_s
+  - yolox_s
+  - yolov8_s
+  - retinanet_free_anchor_r50
+  - reppoints_r50
+  - vfnet_r50
+  - tood_r50
+  - rtmdet_s
+  - sparse_rcnn_r50
+  - detr_r50
+  - deformable_detr_r50
+  - dino_r50
+paper_groups:
+  - id: two_stage
+    display_name: Two-stage
+    models: [faster_rcnn_r50, cascade_rcnn_r50, mask_rcnn_swin_t]
+  - id: yolo_family
+    display_name: YOLO family
+    models: [yolov3_d53, yolov5_s, yolox_s, yolov8_s]
+  - id: dense_point
+    display_name: Dense/point-based
+    models: [retinanet_free_anchor_r50, reppoints_r50, vfnet_r50, tood_r50, rtmdet_s]
+  - id: query_set
+    display_name: Query/set-based
+    models: [sparse_rcnn_r50, detr_r50, deformable_detr_r50, dino_r50]
+models:
+  faster_rcnn_r50:
+    display_name: Faster R-CNN
+    table_code: FR
+    framework: mmdet
+    family: two_stage
+    backbone: R-50
+    source: true
+    held_out: false
+    config: configs/faster_rcnn/faster-rcnn_r50_fpn_1x_coco.py
+    checkpoint: https://download.openmmlab.com/mmdetection/v2.0/faster_rcnn/faster_rcnn_r50_fpn_1x_coco/faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth
+    coco_box_ap: 37.4
+    finetune_epochs: {voc: 12, bdd100k: 12}
+    train_batch_size: 2
+    train_base_batch_size: 16
+  cascade_rcnn_r50:
+    display_name: Cascade R-CNN
+    table_code: CR
+    framework: mmdet
+    family: cascade
+    backbone: R-50
+    source: false
+    held_out: false
+    config: configs/cascade_rcnn/cascade-rcnn_r50_fpn_1x_coco.py
+    checkpoint: https://download.openmmlab.com/mmdetection/v2.0/cascade_rcnn/cascade_rcnn_r50_fpn_1x_coco/cascade_rcnn_r50_fpn_1x_coco_20200316-3dc56deb.pth
+    coco_box_ap: 40.3
+    finetune_epochs: {voc: 12, bdd100k: 12}
+    train_batch_size: 1
+    train_base_batch_size: 16
+  mask_rcnn_swin_t:
+    display_name: Mask R-CNN Swin-T
+    table_code: MRS
+    framework: mmdet
+    family: two_stage_transformer_backbone
+    backbone: Swin-T
+    source: true
+    held_out: false
+    bbox_only: true
+    config: configs/swin/mask-rcnn_swin-t-p4-w7_fpn_1x_coco.py
+    checkpoint: https://download.openmmlab.com/mmdetection/v2.0/swin/mask_rcnn_swin-t-p4-w7_fpn_1x_coco/mask_rcnn_swin-t-p4-w7_fpn_1x_coco_20210902_120937-9d6b7cfa.pth
+    coco_box_ap: 42.7
+    finetune_epochs: {voc: 12, bdd100k: 12}
+    train_batch_size: 1
+    train_base_batch_size: 16
+  sparse_rcnn_r50:
+    display_name: Sparse R-CNN
+    table_code: SR
+    framework: mmdet
+    family: sparse_query
+    backbone: R-50
+    source: true
+    held_out: false
+    config: configs/sparse_rcnn/sparse-rcnn_r50_fpn_1x_coco.py
+    checkpoint: https://download.openmmlab.com/mmdetection/v2.0/sparse_rcnn/sparse_rcnn_r50_fpn_1x_coco/sparse_rcnn_r50_fpn_1x_coco_20201222_214453-dc79b137.pth
+    coco_box_ap: 37.9
+    finetune_epochs: {voc: 12, bdd100k: 12}
+    train_batch_size: 1
+    train_base_batch_size: 16
+  retinanet_free_anchor_r50:
+    display_name: FreeAnchor RetinaNet
+    table_code: FA
+    framework: mmdet
+    family: dense_anchor
+    backbone: R-50
+    source: false
+    held_out: false
+    config: configs/free_anchor/freeanchor_r50_fpn_1x_coco.py
+    checkpoint: https://download.openmmlab.com/mmdetection/v2.0/free_anchor/retinanet_free_anchor_r50_fpn_1x_coco/retinanet_free_anchor_r50_fpn_1x_coco_20200130-0f67375f.pth
+    coco_box_ap: 38.7
+    finetune_epochs: {voc: 12, bdd100k: 12}
+    train_batch_size: 2
+    train_base_batch_size: 16
+  yolov3_d53:
+    display_name: YOLOv3
+    table_code: YOLOv3
+    framework: mmdet
+    family: yolo_dense
+    backbone: D-53
+    source: true
+    held_out: false
+    config: configs/yolo/yolov3_d53_8xb8-ms-608-273e_coco.py
+    checkpoint: https://download.openmmlab.com/mmdetection/v2.0/yolo/yolov3_d53_mstrain-608_273e_coco/yolov3_d53_mstrain-608_273e_coco_20210518_115020-a2c3acb8.pth
+    coco_box_ap: 33.7
+    finetune_epochs: {voc: 50, bdd100k: 50}
+    train_batch_size: 4
+    train_base_batch_size: 64
+  yolov5_s:
+    display_name: YOLOv5-S
+    table_code: YOLOv5
+    framework: mmyolo
+    family: yolo_dense
+    backbone: CSPD
+    source: false
+    held_out: false
+    config: configs/yolov5/yolov5_s-v61_syncbn_fast_8xb16-300e_coco.py
+    checkpoint: https://download.openmmlab.com/mmyolo/v0/yolov5/yolov5_s-v61_syncbn_fast_8xb16-300e_coco/yolov5_s-v61_syncbn_fast_8xb16-300e_coco_20220918_084700-86e02187.pth
+    coco_box_ap: 37.7
+    finetune_epochs: {voc: 50, bdd100k: 50}
+    train_batch_size: 8
+    train_base_batch_size: 128
+  reppoints_r50:
+    display_name: RepPoints
+    table_code: RP
+    framework: mmdet
+    family: point_based
+    backbone: R-50
+    source: false
+    held_out: false
+    config: configs/reppoints/reppoints-moment_r50_fpn_1x_coco.py
+    checkpoint: https://download.openmmlab.com/mmdetection/v2.0/reppoints/reppoints_moment_r50_fpn_1x_coco/reppoints_moment_r50_fpn_1x_coco_20200330-b73db8d1.pth
+    coco_box_ap: 37.0
+    finetune_epochs: {voc: 12, bdd100k: 12}
+    train_batch_size: 2
+    train_base_batch_size: 16
+    train_grad_clip:
+      max_norm: 35.0
+      norm_type: 2
+      basis: original_authors_released_recipe
+      source_commit: 73ee77ddc0c006abcdf569bad4057e101ac597bc
+      source_url: https://github.com/microsoft/RepPoints/blob/73ee77ddc0c006abcdf569bad4057e101ac597bc/configs/reppoints_moment_r50_fpn_1x.py
+    finetune_head_init:
+      voc:
+        policy: semantic_class_copy
+        source_dataset: coco
+        parameter_stem: bbox_head.reppoints_cls_out
+        basis: canonical_semantic_class_overlap
+        rationale: Preserve the audited COCO classifier rows for all semantically overlapping VOC classes instead of replacing the entire RepPoints classifier with an unverified random initialization.
+        target_to_source:
+          aeroplane: airplane
+          bicycle: bicycle
+          bird: bird
+          boat: boat
+          bottle: bottle
+          bus: bus
+          car: car
+          cat: cat
+          chair: chair
+          cow: cow
+          diningtable: dining table
+          dog: dog
+          horse: horse
+          motorbike: motorcycle
+          person: person
+          pottedplant: potted plant
+          sheep: sheep
+          sofa: couch
+          train: train
+          tvmonitor: tv
+  vfnet_r50:
+    display_name: VFNet
+    table_code: VFNet
+    framework: mmdet
+    family: dense_anchor_free
+    backbone: R-50
+    source: true
+    held_out: false
+    config: configs/vfnet/vfnet_r50_fpn_1x_coco.py
+    checkpoint: https://download.openmmlab.com/mmdetection/v2.0/vfnet/vfnet_r50_fpn_1x_coco/vfnet_r50_fpn_1x_coco_20201027-38db6f58.pth
+    coco_box_ap: 41.6
+    finetune_epochs: {voc: 12, bdd100k: 12}
+    train_batch_size: 2
+    train_base_batch_size: 16
+  tood_r50:
+    display_name: TOOD
+    table_code: TOOD
+    framework: mmdet
+    family: dense_task_aligned
+    backbone: R-50
+    source: false
+    held_out: false
+    config: configs/tood/tood_r50_fpn_1x_coco.py
+    checkpoint: https://download.openmmlab.com/mmdetection/v2.0/tood/tood_r50_fpn_1x_coco/tood_r50_fpn_1x_coco_20211210_103425-20e20746.pth
+    coco_box_ap: 42.4
+    finetune_epochs: {voc: 12, bdd100k: 12}
+    train_batch_size: 2
+    train_base_batch_size: 16
+  yolox_s:
+    display_name: YOLOX-S
+    table_code: YOLOX
+    framework: mmyolo
+    family: yolo_dense
+    backbone: CSPD
+    source: false
+    held_out: false
+    config: configs/yolox/yolox_s_fast_8xb8-300e_coco.py
+    checkpoint: https://download.openmmlab.com/mmyolo/v0/yolox/yolox_s_fast_8xb8-300e_coco/yolox_s_fast_8xb8-300e_coco_20230213_142600-2b224d8b.pth
+    coco_box_ap: 40.7
+    finetune_epochs: {voc: 50, bdd100k: 50}
+    train_batch_size: 8
+    train_base_batch_size: 64
+  rtmdet_s:
+    display_name: RTMDet-S
+    table_code: RTMDet
+    framework: mmyolo
+    family: real_time_dense
+    backbone: CSPNeXt
+    source: false
+    held_out: false
+    config: configs/rtmdet/rtmdet_s_syncbn_fast_8xb32-300e_coco.py
+    checkpoint: https://download.openmmlab.com/mmyolo/v0/rtmdet/rtmdet_s_syncbn_fast_8xb32-300e_coco/rtmdet_s_syncbn_fast_8xb32-300e_coco_20221230_182329-0a8c901a.pth
+    coco_box_ap: 44.6
+    finetune_epochs: {voc: 50, bdd100k: 50}
+    train_batch_size: 8
+    train_base_batch_size: 256
+  yolov8_s:
+    display_name: YOLOv8-S
+    table_code: YOLOv8
+    framework: mmyolo
+    family: yolo_dense
+    backbone: CSPD
+    source: false
+    held_out: false
+    config: configs/yolov8/yolov8_s_syncbn_fast_8xb16-500e_coco.py
+    checkpoint: https://download.openmmlab.com/mmyolo/v0/yolov8/yolov8_s_syncbn_fast_8xb16-500e_coco/yolov8_s_syncbn_fast_8xb16-500e_coco_20230117_180101-5aa5f0f1.pth
+    coco_box_ap: 44.2
+    finetune_epochs: {voc: 50, bdd100k: 50}
+    train_batch_size: 8
+    train_base_batch_size: 128
+  detr_r50:
+    display_name: DETR
+    table_code: DETR
+    framework: mmdet
+    family: transformer
+    backbone: R-50
+    source: false
+    held_out: false
+    config: configs/detr/detr_r50_8xb2-150e_coco.py
+    checkpoint: https://download.openmmlab.com/mmdetection/v3.0/detr/detr_r50_8xb2-150e_coco/detr_r50_8xb2-150e_coco_20221023_153551-436d03e8.pth
+    coco_box_ap: 39.9
+    finetune_epochs: {voc: 24, bdd100k: 24}
+    train_batch_size: 1
+    train_base_batch_size: 16
+  deformable_detr_r50:
+    display_name: Deformable DETR
+    table_code: D.DETR
+    framework: mmdet
+    family: deformable_transformer
+    backbone: R-50
+    source: true
+    held_out: false
+    config: configs/deformable_detr/deformable-detr-refine-twostage_r50_16xb2-50e_coco.py
+    checkpoint: https://download.openmmlab.com/mmdetection/v3.0/deformable_detr/deformable-detr-refine-twostage_r50_16xb2-50e_coco/deformable-detr-refine-twostage_r50_16xb2-50e_coco_20221021_184714-acc8a5ff.pth
+    coco_box_ap: 47.0
+    finetune_epochs: {voc: 24, bdd100k: 24}
+    train_batch_size: 1
+    train_base_batch_size: 32
+  dino_r50:
+    display_name: DINO
+    table_code: DINO
+    framework: mmdet
+    family: denoising_transformer
+    backbone: R-50
+    source: false
+    held_out: true
+    config: configs/dino/dino-4scale_r50_8xb2-12e_coco.py
+    checkpoint: https://download.openmmlab.com/mmdetection/v3.0/dino/dino-4scale_r50_8xb2-12e_coco/dino-4scale_r50_8xb2-12e_coco_20221202_182705-55b2bba2.pth
+    coco_box_ap: 49.0
+    finetune_epochs: {voc: 24, bdd100k: 24}
+    train_batch_size: 1
+    train_base_batch_size: 16

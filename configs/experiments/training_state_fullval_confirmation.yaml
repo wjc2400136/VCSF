@@ -1,0 +1,88 @@
+schema_version: 1
+benchmark: coco_fullval2017_victim_training_state_zero_query_transfer_confirmation
+dataset: coco
+evaluation_split: val
+seed: 42
+formal_images: 5000
+image_order: numeric_coco_image_id
+budget_profile: compute_matched
+source_protocol: coco_all_methods
+source_acceptance: outputs/reports/coco/formal_all_methods_acceptance.json
+paired_retained500_protocol: coco_retained500_victim_training_state_transfer
+paired_retained500_discovery: outputs/experiments/coco_training_state_transfer/*/formal_training_state_transfer_acceptance.json
+source: mask_rcnn_swin_t
+source_rationale: >-
+  Mask R-CNN Swin-T is native for every maintained method and differs from
+  the Faster R-CNN victim architecture. This preserves an all-eleven-method,
+  zero-query, cross-architecture transfer denominator.
+victim_model: faster_rcnn_r50
+victim_states:
+  - standard_control
+  - adversarial_training
+methods: [sfim_b, naa, numbod, hifa, mlfadv, tog, augtrans, lgp, afog, osfd, svfta]
+metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+threat_model: zero_query_oblivious_cross_model_transfer
+pair_registry: configs/experiments/training_state_transfer.yaml
+source_generation:
+  mode: regenerate_full_val_from_frozen_registry
+  seed_schedule: full_val_numeric_image_position
+  parameter_source: registered_compute_matched_profile
+  target_queries: 0
+  target_gradients: 0
+  target_checkpoint_access: false
+  required_payload_groups: 11
+  required_images_per_payload: 5000
+  payload_format: lossless_png
+  payload_retention: keep_all
+  overlap_reference_images: 500
+  overlap_reference_algorithm: canonical_equal_bins_center_v1
+  exact_overlap_payload_sha256_required: true
+  source_checkpoint_sha256_match_required: true
+  parameters_sha256_match_required: true
+  budget_profile_match_required: true
+  gradient_accounting_match_required: true
+qualified_payload_source_reuse:
+  role: formal_failure_recovery_without_resume
+  source_status_required: failed
+  source_protocol_required: coco_fullval2017_victim_training_state_zero_query_transfer_confirmation
+  source_formal_plan_required: true
+  all_generation_receipts_required: true
+  required_payload_groups: 11
+  required_images_per_payload: 5000
+  clean_git_provenance_required: true
+  control_hash_match_required: true
+  full_payload_rehash_required: true
+  retained_overlap_recheck_required: true
+  records_reused: false
+  evaluations_reused: false
+  destination: fresh_timestamped_run
+  source_mutation_forbidden: true
+storage_preflight:
+  estimate_from: accepted_mask_source_retained500_payload_bytes
+  full_to_retained_multiplier: 10
+  additional_free_margin_gib: 16
+  fail_before_payload_generation: true
+confirmation_reference:
+  require_accepted_retained500_run: true
+  require_same_pair_checkpoint_sha256: true
+  require_same_source_evidence_sha256: true
+  require_24_complete_records: true
+  result_agreement_is_acceptance_gate: false
+  note: >-
+    Scope deltas, rank correlations and AT-minus-standard sign agreement are
+    descriptive outcomes. Formal eligibility depends only on frozen protocol
+    and evidence integrity, never on whether full-val results agree with the
+    retained-500 result.
+formal_counts:
+  clean_evaluations: 2
+  attack_evaluations: 22
+  records: 24
+  attack_groups: 11
+  payload_images: 55000
+  retained_overlap_hashes: 5500
+formal_full_coco_val_confirmation: true
+full_coco_val_claim: true
+full_coco_val_claim_scope: one_mask_rcnn_swin_t_source_one_faster_rcnn_victim_pair
+certified_robustness_claim: false
+controlled_training_state_claim_requires_strict_pair: true
+future_extension_payload_eligible: true

@@ -1,0 +1,206 @@
+schema_version: 1
+status_policy:
+  native: Directly executable without changing the published method objective.
+  derived: Computed from native run records or saved adversarial images.
+  diagnostic: Locally executable sensitivity study whose exact grid or layer hook is absent from the supplied paper.
+  artifact_required: Requires a model, target construction, training recipe, physical capture, or internal visualization not present in the fixed benchmark.
+papers:
+  tog:
+    method: tog
+    title: Targeted Adversarial Objectness Gradient Attacks / Understanding Object Detection Through an Adversarial Lens
+    files:
+      - Adversarial Objectness Gradient Attacks in Real-time Object Detection Systems.pdf
+      - Understanding Object Detection Through an Adversarial Lens.pdf
+    experiments:
+      - {id: transfer, label: Main transfer and white-box strength, status: native, protocols: [main_transfer, whitebox]}
+      - {id: vanishing_untargeted, label: Vanishing and untargeted objectives, status: native, studies: [tog_objective]}
+      - {id: budget, label: Iteration and convergence budget, status: native, studies: [tog_budget]}
+      - {id: cost_quality, label: Time and distortion metrics, status: derived, outputs: [runtime_efficiency.tex, perceptual_quality.tex]}
+      - id: fabrication_mislabeling
+        label: Fabrication and mislabeling specificity
+        status: artifact_required
+        reason: The papers define detector-specific positive targets; no uniform target-construction rule exists for the six-source panel.
+      - id: universal_video_patch_physical
+        label: Universal, video, patch and physical attacks
+        status: artifact_required
+        reason: These are distinct optimization/capture protocols and cannot be inferred from the per-image TOG executor.
+  lgp:
+    method: lgp
+    title: Towards Generic and Controllable Attacks Against Object Detection
+    files: [Towards Generic and Controllable Attacks Against Object Detection.pdf]
+    experiments:
+      - {id: transfer, label: Main transfer and white-box strength, status: native, protocols: [main_transfer, whitebox]}
+      - {id: loss_build_up, label: Table VI loss and perceptibility build-up, status: native, studies: [lgp_loss_build_up]}
+      - {id: original_targets, label: HQ versus pre-NMS versus post-NMS targets, status: native, studies: [lgp_original_targets]}
+      - {id: foreground_scale, label: Foreground-scale controllability, status: native, studies: [lgp_foreground_scale]}
+      - {id: candidate_count, label: High-quality candidate count, status: native, studies: [lgp_candidate_count, lgp_candidate_selection]}
+      - {id: components_budget, label: Components and iteration budget, status: native, studies: [lgp_components, lgp_budget]}
+      - {id: cost_quality, label: Time and perceptual metrics, status: derived, outputs: [runtime_efficiency.tex, perceptual_quality.tex]}
+      - id: heterogeneous_ensemble
+        label: Heterogeneous-backbone perturbation ensemble
+        status: artifact_required
+        reason: The fixed panel has no registered R101/X101 source checkpoints or paper-defined perturbation-combination runner.
+      - id: gradient_tsne
+        label: Heterogeneous-loss gradient t-SNE
+        status: artifact_required
+        reason: Requires retaining per-loss high-dimensional gradients; aggregate run diagnostics are insufficient.
+  osfd:
+    method: osfd
+    title: Transferable Adversarial Attacks Using Object-Aware Significant Feature Distortion
+    files: [Transferable Adversarial Attacks for Object Detection Using Object-Aware Significant Feature Distortion.pdf]
+    experiments:
+      - {id: transfer, label: Main transfer and white-box strength, status: native, protocols: [main_transfer, whitebox]}
+      - {id: rrb, label: "Rotation, resize and Gaussian-operation RRB ablation", status: native, studies: [osfd_rrb]}
+      - {id: amplification, label: Feature amplification sensitivity, status: native, studies: [osfd_amplification]}
+      - {id: budget, label: Two-view compute and convergence, status: native, studies: [osfd_budget]}
+      - {id: cost_quality, label: Time and perceptual metrics, status: derived, outputs: [runtime_efficiency.tex, perceptual_quality.tex]}
+  afog:
+    method: afog
+    title: Adversarial Attention Perturbations for Large Object Detection Transformers
+    files: [Adversarial Attention Perturbations for Large Object Detection Transformers.pdf]
+    experiments:
+      - {id: transfer, label: Main transfer and white-box strength, status: native, protocols: [main_transfer, whitebox]}
+      - {id: attention, label: Learnable attention versus frozen attention, status: native, studies: [afog_attention]}
+      - {id: modes, label: Baseline and vanishing objectives, status: native, studies: [afog_modes]}
+      - {id: budget, label: Iteration and convergence budget, status: native, studies: [afog_budget]}
+      - {id: cost_quality, label: Timing and imperceptibility, status: derived, outputs: [runtime_efficiency.tex, perceptual_quality.tex]}
+      - id: fabrication
+        label: AFOG-F fabrication
+        status: artifact_required
+        reason: The required all-unthresholded-prediction confidence-one target is not exposed consistently by every source detector.
+      - id: attention_maps_worst_case
+        label: Victim self-attention maps and worst-case visual analysis
+        status: artifact_required
+        reason: Requires architecture-specific transformer attention hooks and curated failure examples.
+  corrupting_attention:
+    method: corrupting_attention
+    title: Corrupting Attention - Evasion-Based Adversarial Attacks on Encoder Attention in Detection Transformers
+    files: [Corrupting Attention：Evasion-Based Adversarial Attacks on Encoder Attention in Detection Transformers.pdf]
+    experiments:
+      - {id: transfer, label: Deformable-encoder source transfer to the sixteen-target panel, status: native, protocols: [coco_method_fidelity_refresh]}
+      - id: dense_detr_reproduction
+        label: Exact DETR-R50 global-attention numerical reproduction
+        status: artifact_required
+        reason: DETR-R50 is a registered target but is not one of the six frozen source checkpoints.
+      - id: eight_transformer_panel
+        label: Original eight-transformer architecture panel
+        status: artifact_required
+        reason: The fixed benchmark does not contain the paper's ConvNeXt, Swin-L, InternImage, FocalNet or EVA DINO checkpoints.
+      - id: four_corruptions
+        label: Dispersion, re-ranking, permutation and peak-suppression ablation
+        status: diagnostic
+        studies: [corrupting_attention_corruptions]
+        reason: All operators are executable, but the development refresh freezes dispersion before any comparison result is inspected.
+  numbod:
+    method: numbod
+    title: NumbOD - A Spatial-Frequency Fusion Attack Against Object Detectors
+    files: [NumbOD：A Spatial-Frequency Fusion Attack Against Object Detectors.pdf]
+    experiments:
+      - {id: transfer, label: Main transfer and white-box strength, status: native, protocols: [main_transfer, whitebox]}
+      - {id: modules, label: Spatial/frequency modules A-B-C-D, status: native, studies: [numbod_components]}
+      - {id: budget, label: Iteration and convergence budget, status: native, studies: [numbod_budget]}
+      - {id: cost_quality, label: Runtime and saved-image quality, status: derived, outputs: [runtime_efficiency.tex, perceptual_quality.tex]}
+      - id: backbones
+        label: Faster R-CNN R50/R101/X101 backbone study
+        status: artifact_required
+        reason: R101 and X101 sources are not part of the fixed six-source registry.
+      - id: corruption_defense
+        label: Brightness and spatter corruption defense
+        status: artifact_required
+        reason: Exact corruption implementation and severity mapping are not supplied by the paper or repository.
+      - id: trained_defenses
+        label: Pruning, fine-tuning and adversarial-training defenses
+        status: artifact_required
+        reason: >-
+          The paper/repository does not supply the exact paired checkpoints,
+          commands and logs needed for source-paper reproduction. The separate
+          coco_retained500_victim_training_state_transfer protocol trains a
+          project-defined controlled pair and must not be relabeled as the
+          missing NumbOD defense reproduction.
+  sfim:
+    method: sfim_b
+    title: A Transferable Adversarial Attack Framework via Spatial-Frequency Information Masking
+    files: [A Transferable Adversarial Attack Framework for Object Detection via Spatial-Frequency Information Masking.pdf]
+    experiments:
+      - {id: transfer, label: SFIM-B transfer, status: native, protocols: [extended_transfer]}
+      - {id: masks_controls, label: SIM/FIM plus PSIM/PFIM controls, status: native, studies: [sfim_components, sfim_mask_ranges]}
+      - {id: epsilon, label: Table IV epsilon 4/255 through 20/255, status: native, studies: [sfim_epsilon]}
+      - {id: budget, label: Two-view compute and convergence, status: native, studies: [sfim_budget]}
+      - id: sfim_r
+        label: RPN-only SFIM-R branch
+        status: artifact_required
+        reason: The local unique implementation is SFIM-B; SFIM-R is a different RPN-specific algorithm and has no supplied source code.
+  augtrans:
+    method: augtrans
+    title: AugTrans - Dynamic Object-Aware Augmentation Pipeline
+    files: [AugTrans：Boosting Adversarial Transferability in Object Detection with a Dynamic, Object-Aware Augmentation Pipeline.pdf]
+    experiments:
+      - {id: transfer, label: Two-stage-source transfer, status: native, protocols: [extended_transfer]}
+      - {id: augmentation, label: Cumulative and individual augmentation contributions, status: native, studies: [augtrans_augmentations]}
+      - {id: losses, label: Four detection loss components, status: native, studies: [augtrans_losses]}
+      - {id: convergence_compute, label: "Convergence, time and compute", status: derived, studies: [augtrans_budget], outputs: [runtime_efficiency.tex, figures/convergence.pdf]}
+      - {id: hyperparameters, label: "EOT, K_obj and nonlinear gradient exponent", status: diagnostic, studies: [augtrans_eot_samples, augtrans_dominant_objects, augtrans_gradient_exponent]}
+      - {id: box_source, label: Ground-truth versus predicted boxes, status: native, studies: [augtrans_box_source]}
+      - {id: category_size, label: Per-category and object-size analysis, status: derived, outputs: [per_category_ap.tex, figures/object_size.pdf]}
+      - id: exact_supplement_grid
+        label: Exact rotation/noise/EOT supplemental sensitivity grid
+        status: artifact_required
+        reason: The supplied PDF refers to Supplement S3 but does not contain its exact grid.
+      - id: defenses
+        label: JPEG, bit depth, Gaussian, median and random-resize defenses
+        status: artifact_required
+        reason: Exact defense parameters/results are relegated to unavailable Supplement S5.
+      - id: feature_visualization
+        label: Feature-space visualization
+        status: artifact_required
+        reason: Requires layer-specific feature capture and a frozen visualization protocol not supplied in the main paper.
+  hifa:
+    method: hifa
+    title: Improving Transferability via High-Level Interpretable Features
+    files: [Improving the transferability of adversarial examples via the high-level interpretable features for object detection.pdf]
+    experiments:
+      - {id: transfer, label: Transfer and white-box strength, status: native, protocols: [extended_transfer]}
+      - {id: components, label: IG/DEIG and signed feature components, status: native, studies: [hifa_components]}
+      - {id: target_layer, label: Target feature depth, status: diagnostic, studies: [hifa_target_layer]}
+      - {id: balance, label: Positive-negative balance factor, status: native, studies: [hifa_balance_factor]}
+      - {id: integration, label: DEIG integration steps, status: native, studies: [hifa_integration_steps]}
+      - {id: copies, label: copies_num performance/runtime, status: native, studies: [hifa_copies]}
+      - {id: quality_runtime, label: Image quality and runtime, status: derived, outputs: [runtime_efficiency.tex, perceptual_quality.tex]}
+  mlfadv:
+    method: mlfadv
+    title: Feature Weight Masked Low-Frequency Object Detection Attack
+    files: [Feature Weight Masked Low-Frequency Object Detection Attack Method.pdf]
+    experiments:
+      - {id: transfer, label: Two-stage-source transfer, status: native, protocols: [extended_transfer]}
+      - {id: modules, label: Baseline plus low frequency plus Grad-CAM mask, status: native, studies: [mlfadv_components]}
+      - {id: radius, label: Exact radius 50 through 500, status: native, studies: [mlfadv_frequency]}
+      - {id: budget, label: Full/low-frequency compute budget, status: native, studies: [mlfadv_budget]}
+      - {id: asr_tr, label: Attack success rate and transfer rate, status: derived, outputs: [attack_success_transfer_rate.tex]}
+      - id: vgg16_numerical_reproduction
+        label: Original Faster R-CNN VGG16 numerical reproduction
+        status: artifact_required
+        reason: VGG16 is not one of the fixed six source detectors; the local implementation preserves the method on registered two-stage sources.
+  naa:
+    method: naa
+    title: Neuron Attribution-Based Attacks Fooling Object Detectors
+    files: [Neuron Attribution-Based Attacks Fooling Object Detectors.pdf]
+    experiments:
+      - {id: transfer, label: Two-stage-source transfer, status: native, protocols: [extended_transfer]}
+      - {id: keeping_rate, label: Neuron keeping rate, status: native, studies: [naa_keeping_rate]}
+      - {id: epsilon, label: Exact epsilon 0.01 through 0.08, status: native, studies: [naa_epsilon]}
+      - {id: budget, label: Attribution and attack compute, status: native, studies: [naa_budget]}
+      - {id: target_stage, label: Registered backbone-stage sensitivity, status: diagnostic, studies: [naa_target_layer]}
+      - id: exact_residual_blocks
+        label: Nine named ResNet residual-block targets
+        status: artifact_required
+        reason: The public MMDetection backbone API exposes stage outputs; exact internal block hooks need a separate frozen implementation.
+  svfta:
+    method: svfta
+    title: SVFTA project method
+    files: []
+    experiments:
+      - {id: transfer, label: Main transfer and white-box strength, status: native, protocols: [main_transfer, whitebox]}
+      - {id: components, label: Strict 2x2x2 component ablation and frozen full-COCO confirmation, status: native, studies: [components]}
+      - {id: sensitivity, label: Epsilon/iterations/features/scale/momentum/risk/uncertainty, status: native, studies: [epsilon, iterations, feature_levels, scale_range, momentum, risk_warmup, uncertainty_decay_kappa]}
+      - {id: seeds, label: Three-seed validation, status: native, studies: [seeds]}
+      - {id: quality_runtime, label: "Quality, runtime and memory", status: derived, outputs: [runtime_efficiency.tex, perceptual_quality.tex]}

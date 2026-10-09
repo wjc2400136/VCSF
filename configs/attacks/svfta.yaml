@@ -1,0 +1,26 @@
+schema_version: 1
+id: svfta
+display_name: SVFTA
+executor: native
+fidelity_status: project_method
+fidelity_basis: project_specification
+paper: null
+semantic_contract: Preserve the registered scale-view feature objective, bounded one-time score-risk repair prefix, permanent repair-stop state, and uncertainty-gated update.
+implementation_note: Project method; MMDetection 3.x implementation uses a bounded one-time score-risk repair prefix (risk_warmup is the maximum repair-update count and stops permanently once the threshold is satisfied), the differentiable public score surface (pre-NMS class probabilities when post-NMS scores are empty or detached), strict-null diagnostics if neither surface exists, and scale-view feature decorrelation.
+parameters:
+  eps: 4/255
+  iterations: 20
+  step_size: 1/255
+  score_threshold: 1/20
+  feature_levels: [0, 1, 2]
+  feature_eps: 1/1000000
+  scale_min: 2/3
+  scale_max: 4/3
+  momentum: 2/3
+  risk_warmup: 2
+  risk_enabled: true
+  risk_to_feature_steps: 0
+  uncertainty_mode: uncertainty
+  uncertainty_decay: 7/10
+  uncertainty_kappa: 1/2
+  uncertainty_eps: 1/1000000000000

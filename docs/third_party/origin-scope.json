@@ -1,0 +1,115 @@
+{
+  "external_dependencies_not_vendored": {
+    "mmdetection": "3.0.0",
+    "mmyolo": "0.6.0"
+  },
+  "historical_byte_pinned_protocols_rebound": false,
+  "licenses": {
+    "GPL-3.0-upstream.txt": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+    "LGP-mmdet-Apache-2.0.txt": "874b8b2e6f12306a1ff7812c068a0dbf880418b8ac1f7190382bd6c6da9f23a1",
+    "NumbOD-MIT.txt": "bc14dbcc12b4c43ad1e382e8e315450784332208ddf75069834bdc18484a4277"
+  },
+  "limits": [
+    "Independent authorship not established",
+    "Legal derivative extent not adjudicated",
+    "No unconditional redistribution clearance",
+    "No first-party license selected"
+  ],
+  "notice_date": "2026-10-09",
+  "notice_modified_files": [
+    {
+      "after_sha256": "1ce62b628de65e41f4737db5e71cae416b6efeb2b75ea010cfccac2219e3b348",
+      "ast_equal": true,
+      "before_sha256": "4058e4c2528964bd37f3afa95c4f387a4af64d42a9224480c6bba9a85c428694",
+      "change": "comments_only",
+      "path": "src/lgp/attacks/numbod.py"
+    },
+    {
+      "after_sha256": "9fdc388f19142aa5c4d5259f7198d190d1fc56da44ed0dac88d42699bf55f173",
+      "ast_equal": true,
+      "before_sha256": "d0386f85676f85eb06c99ecc421d422ecfd773c78b06a22f025760d7b00c9d8d",
+      "change": "comments_only",
+      "path": "src/lgp/attacks/osfd.py"
+    },
+    {
+      "after_sha256": "ce8aeddc8221eb36191474c9c44fd5ecb26f39d767a3683d050d36720c931d60",
+      "ast_equal": true,
+      "before_sha256": "5283ccc16560f65b02b509c4fda29cf7cfa1319722f317b66633f8dd7ca68830",
+      "change": "comments_only",
+      "path": "src/lgp/attacks/lgp.py"
+    },
+    {
+      "after_sha256": "cb26a8afaa3bb65af53cfa8902211be36699fdcabf40c61bf4e560233de9ccd4",
+      "ast_equal": true,
+      "before_sha256": "7153e1aa29c35856e2f9acaace9ee3290532c35a79709e48fbff8ca15f8ecd3a",
+      "change": "comments_only",
+      "path": "src/lgp/attacks/lgp_assignment.py"
+    },
+    {
+      "after_sha256": "a052d6f96584bfe22294ef63e946bb59e8dcf1c63f64b458da79697ccf78e1aa",
+      "ast_equal": true,
+      "before_sha256": "29b3fa86a3742c52dd68b000ef973bfbffd0ee630f2e329e549dc4b562c0e547",
+      "change": "comments_only",
+      "path": "src/lgp/attacks/lgp_fidelity.py"
+    },
+    {
+      "after_sha256": "c5127bbab898e337b6bd05af41e71d4ab789053b7a55dbfd6c543dbc41e7ab5a",
+      "ast_equal": true,
+      "before_sha256": "ad5eb30dc45a5732df6e1e9a00c623985329b47025093823ad15b543cefb6a7a",
+      "change": "comments_only",
+      "path": "src/lgp/attacks/lgp_heatmap.py"
+    },
+    {
+      "after_sha256": "849e2b35e3745a2f0474e88120b25cd723b443031e8c82c173960080d270de42",
+      "ast_equal": true,
+      "before_sha256": "bc8d42f9d1bbd5f4607669c988827b4889dfb2e4abbfe0056ecc76492e07b5a2",
+      "change": "comments_only",
+      "path": "src/lgp/attacks/lgp_query.py"
+    },
+    {
+      "after_sha256": "f848f8d2044861e037a66516b841d561a774856fd3f5a957a6938802392d1944",
+      "ast_equal": true,
+      "before_sha256": "20eb92767ea9fe3665c72a9422d3ae704e6be4a619a0864f524ff0991b8a5cb9",
+      "change": "comments_only",
+      "path": "src/lgp/attacks/lgp_roi.py"
+    },
+    {
+      "after_sha256": "9d38249eb44aeb086ac037014ef52100d1a64d0be1ec0654d1dc5645f1419615",
+      "ast_equal": true,
+      "before_sha256": "ea52fbedfc19d1c5282d58ebaa8764acbcecd55bfc04fa8cb80abdd21a693c9c",
+      "change": "comments_only",
+      "path": "src/lgp/attacks/lgp_source.py"
+    },
+    {
+      "after_sha256": "3786ada1c98c4f7f3cfb2c818e8beea68c1e13d6efc5a290e88305ab5187edeb",
+      "ast_equal": true,
+      "before_sha256": "9209d8ac10c8792a52e2a2543884fc7acb46432492866c8017318414cb8a976c",
+      "change": "comments_only",
+      "path": "src/lgp/attacks/lgp_vfnet.py"
+    },
+    {
+      "after_sha256": "d1b309a570dbd94456a0f27d1dc6238b578fcb5d094047bfd816bac848cf4923",
+      "ast_equal": true,
+      "before_sha256": "9610aba9e81998d2eef0d18b9c70978fac5844d879b7aae23cc972c13dee027f",
+      "change": "comments_only",
+      "path": "src/lgp/attacks/lgp_yolo.py"
+    }
+  ],
+  "origin_decision_sha256": "dddcc38993012a9f0fc3a93f1a8bc1652f4191afd4030ba62e8af117c216b5b9",
+  "origin_report_sha256": "7caaedd0910cc8d7f88f522be68f566801e0f3307e33028ae8350cec6e29c890",
+  "release_accepted": false,
+  "schema": "lgp_notice_preparation_origin_scope_v1",
+  "science_changed": false,
+  "technical_observations": [
+    "TOG and AFOG inspected cores are release-informed local mathematical re-expressions, not pinned whole-file byte-identical copies.",
+    "Method fidelity port/adaptation labels alone do not establish copied copyrightable expression or independent authorship.",
+    "Inspected shared helpers and adapter paths retain unestablished expressive origin; short mathematical glue is not given a blanket component licence."
+  ],
+  "unchanged_origin_scope_files": {
+    "src/lgp/adapters/openmmlab.py": "553ab418de02fa4c9e2c5920e066b4be248225af4b68b660e17e2866998c4348",
+    "src/lgp/attacks/afog.py": "738c59ed38a0608e8c488f265e0eea902dc46297c3c8a643f2fd3b8a84b388a0",
+    "src/lgp/attacks/common.py": "850fbdfcb8908064c0380e5a30f66cec1c62814a287c26f7f388a980811709d3",
+    "src/lgp/attacks/lgp_semantic.py": "7072373a13992d5005c8b0fd7d25310b5491ba7d919aeaeed3b9dfbd49a27cea",
+    "src/lgp/attacks/tog.py": "cb825d60d4568496f9bca8060a19f2acd4da6a5646fecbca51714d9254dc7280"
+  }
+}

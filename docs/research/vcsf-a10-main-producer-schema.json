@@ -1,0 +1,299 @@
+{
+  "schema": "vcsf_a10_native_main_producer_layout_v1",
+  "status": "stable_layout_preparation_not_execution_or_audit_acceptance",
+  "authority": {
+    "protocols": "configs/experiments/protocols.yaml",
+    "parameters": "configs/attacks/vcsf.yaml",
+    "detectors": "configs/models.yaml"
+  },
+  "leaf": {
+    "formal": "outputs/experiments/{protocol}/{wave_id}",
+    "diagnostic": "outputs/diagnostics/{protocol}/{wave_id}",
+    "fresh_leaf_required": true,
+    "automatic_resume": false
+  },
+  "reference": {
+    "file": "absolute plain file",
+    "sha256": "64 lowercase hexadecimal characters"
+  },
+  "birth": {
+    "pid": "integer",
+    "ppid": "integer",
+    "pgid": "integer",
+    "start_ticks": "integer from proc stat field22",
+    "command_sha256": "sha256 of raw proc cmdline bytes including NUL delimiters"
+  },
+  "wave_files": [
+    "binding.json",
+    "assignments.json",
+    "ownership_samples.jsonl",
+    "records.json",
+    "completion.json"
+  ],
+  "binding_fields": [
+    "plan_reference",
+    "admission_reference",
+    "coordinator_birth",
+    "lanes",
+    "physical_gpu_uuids"
+  ],
+  "assignments_fields": {
+    "workers": [
+      "slot",
+      "birth",
+      "request_reference",
+      "job_ids",
+      "gpu_uuid",
+      "physical_device"
+    ]
+  },
+  "worker_directory": "workers/{zero_based_slot}",
+  "worker_files": [
+    "request.json",
+    "launch.json",
+    "registration.json",
+    "stdout.log",
+    "stderr.log",
+    "completion.json"
+  ],
+  "worker_request": {
+    "schema": "vcsf_a10_native_main_worker_v1",
+    "fields": [
+      "plan_reference",
+      "admission_reference",
+      "output",
+      "worker_slot",
+      "physical_device",
+      "gpu_uuid",
+      "job_ids",
+      "coordinator_pid",
+      "coordinator_start_ticks",
+      "reservation_fd",
+      "reservation_identity"
+    ],
+    "reservation_identity": "[st_dev,st_ino] of inherited locked descriptor"
+  },
+  "launch_fields": [
+    "birth",
+    "request_reference"
+  ],
+  "registration": {
+    "schema": "vcsf_gpu_context_registration_v1",
+    "fields": [
+      "gpu_uuid",
+      "worker_pid",
+      "worker_pid_start_ticks",
+      "nvml_pid",
+      "before_context_pids",
+      "registered_context_pids",
+      "assumption",
+      "registered_at",
+      "worker_birth",
+      "request_reference",
+      "plan_reference",
+      "admission_reference",
+      "assigned_job_ids"
+    ],
+    "nvml_pid_mapping": "sole idle-to-owned context; never relearned",
+    "assumption": "NVML enumerates every active compute context on the selected device"
+  },
+  "worker_completion": {
+    "status": "worker_complete_pending_independent_audit",
+    "fields": [
+      "worker_birth",
+      "registered_owner",
+      "assigned_job_ids",
+      "completed_job_ids",
+      "group_completions",
+      "request_reference",
+      "plan_reference",
+      "admission_reference"
+    ]
+  },
+  "ownership_sample": {
+    "fields": [
+      "elapsed_seconds",
+      "checked_at_utc",
+      "workers",
+      "output_allocated_bytes"
+    ],
+    "workers": [
+      "slot",
+      "birth",
+      "exit_code",
+      "gpu_uuid",
+      "observed_nvml_pids",
+      "registration_sha256",
+      "mapping_state"
+    ],
+    "mapping_states": [
+      "pending_not_adopted",
+      "registered"
+    ],
+    "terminal": "exit_code0 plus same child reaped and empty selected GPU context list; final sample before complete",
+    "elapsed_origin": "beginning of coordinator watch loop after startup birth handshakes",
+    "continuous_exclusivity_proved": false,
+    "empty_cmdline_exit_race": "only same pid/ppid/pgid/start_ticks with empty cmdline receives <=0.25 second bounded successful reap; nonempty changed command or birth rejected"
+  },
+  "group_directory": "groups/{six_digit_job_id}",
+  "group_files": [
+    "attack/run.json",
+    "attack/manifest.jsonl",
+    "attack/annotations.json",
+    "attack/native_cost.jsonl",
+    "attack/model/runtime_config.py",
+    "attack/model/native_loading.json",
+    "attack/images/{twelve_digit_image_id}.png",
+    "evaluations/{canonical_target}/metrics.json",
+    "evaluations/{canonical_target}/predictions.json.gz",
+    "evaluations/{canonical_target}/predictions_artifact.json",
+    "evaluations/{canonical_target}/coco_summary.txt",
+    "evaluations/{canonical_target}/coco_summary.csv",
+    "evaluations/{canonical_target}/coco_summary.tex",
+    "evaluations/{canonical_target}/model/runtime_config.py",
+    "evaluations/{canonical_target}/model/native_loading.json",
+    "completion.json"
+  ],
+  "native_metadata": [
+    "protocol",
+    "wave_id",
+    "job_id",
+    "plan_sha256",
+    "admission_sha256",
+    "request_sha256",
+    "source_manifest_sha256",
+    "parameters_sha256",
+    "worker_slot"
+  ],
+  "native_cost_row": {
+    "identity": [
+      "dataset",
+      "split",
+      "source",
+      "image_id",
+      "attack_seed"
+    ],
+    "raw_forward_events": [
+      "api",
+      "kind",
+      "batch_rows",
+      "shape",
+      "requires_grad"
+    ],
+    "raw_gradient_events": [
+      "kind",
+      "shape",
+      "batch_rows",
+      "finite"
+    ],
+    "raw_arrays": [
+      "adapter_forward_events",
+      "input_gradient_events"
+    ],
+    "counts": [
+      "logical_gradients",
+      "detector_initialization_forward_attempts",
+      "detector_input_backwards",
+      "feature_partial_input_backwards",
+      "clean_reference_image_rows",
+      "adversarial_differentiable_views",
+      "batched_feature_image_rows",
+      "feature_terms_from_trajectory"
+    ],
+    "resource_fields": [
+      "synchronized_instrumented_attack_seconds",
+      "base_allocated_bytes",
+      "peak_allocated_bytes",
+      "peak_reserved_bytes"
+    ],
+    "unknown_not_zero": [
+      "calibrated_whole_detector_BE",
+      "FLOPs"
+    ],
+    "empty_target_identity": "0 work only for the unchanged explicitly recorded empty-target identity branch; no missing evidence becomes 0"
+  },
+  "generation_completion": {
+    "fields": [
+      "run_sha256",
+      "sealed_generation_files",
+      "pixels",
+      "observed_cost_totals",
+      "whole_run_cuda_peak_bytes"
+    ],
+    "pixels": "image ID to PNG byte SHA; JSON serializes integer map keys as strings; decoded pixel audit is independent",
+    "whole_run_peak": "allocated/reserved max preserved across per-image resets and inter-image postprocessing; existing run.peak_cuda_memory_mb is allocated bytes/2^20"
+  },
+  "group_completion": {
+    "status": "complete_pending_independent_saved_result_audit",
+    "fields": [
+      "source",
+      "dataset",
+      "images",
+      "image_ids_sha256",
+      "seed",
+      "targets",
+      "target_cells",
+      "generation",
+      "evaluations",
+      "generation_runtime_seconds",
+      "observed_logical_gradients",
+      "observed_clean_reference_image_rows",
+      "observed_feature_partial_backwards",
+      "observed_initialization_forward_attempts",
+      "calibrated_whole_detector_BE",
+      "FLOPs",
+      "payload_retention",
+      "prediction_archive"
+    ]
+  },
+  "evaluation_seal": {
+    "fields": [
+      "target",
+      "metrics",
+      "file_sha256",
+      "record_reference"
+    ],
+    "metrics": "all12 standard unrounded COCO-style bbox metrics in canonical registry order",
+    "archives": "lossless gzip plus independently checkable artifact seal; archives include per-image coverage including no detections"
+  },
+  "wave_completion": {
+    "status": "wave_complete_pending_independent_saved_result_audit",
+    "fields": [
+      "plan_reference",
+      "admission_reference",
+      "completed_groups",
+      "completed_target_cells",
+      "failed_records",
+      "group_completions",
+      "worker_completions",
+      "records_reference",
+      "scientific_attack_cells",
+      "candidate_reuse_cells",
+      "reuse_not_accepted_here",
+      "all_children_reaped",
+      "sampled_ownership_not_continuous",
+      "automatic_resume",
+      "binding_reference",
+      "assignments_reference",
+      "ownership_samples_reference"
+    ]
+  },
+  "failure_files": [
+    "groups/{job_id}/failure.json",
+    "workers/{slot}/failure.json",
+    "abort.json",
+    "failure.json"
+  ],
+  "failure_policy": "stop only Popen children with immutable same process birth, signal peers before waits, preserve all partial leaves and prior qualification failures; no automatic retry/restart",
+  "flags": {
+    "formal_result_eligible": false,
+    "scientific_acceptance": false,
+    "implementation_promoted": false,
+    "result_reuse_accepted": false,
+    "project_wide_device_release_accepted": false,
+    "publication_accepted": false,
+    "deletion_authorized": false
+  },
+  "actual_auditor_implemented_here": false,
+  "real_device_mode_qualification_accepted": false
+}

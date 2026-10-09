@@ -1,0 +1,170 @@
+schema_version: 1
+manuscript: vcsf_pattern_recognition_submission
+headline:
+  epsilon: 4/255
+  max_complete_backward_image_equivalents: 20
+  coco_primary_metric: bbox_mAP
+  voc_primary_metric: bbox_mAP_50
+  source_matched_marker: "*"
+  source_matched_excluded_from_bb_mean: true
+  ranking_source: unrounded_json
+method_order:
+  - numbod
+  - hifa
+  - mlfadv
+  - tog
+  - augtrans
+  - lgp
+  - afog
+  - osfd
+  - sfim_b
+  - vcsf
+method_display:
+  sfim_b: SFIM-B
+  numbod: NumbOD
+  hifa: HIFA
+  mlfadv: MLFAdv
+  tog: TOG
+  augtrans: AugTrans
+  lgp: LGP
+  afog: AFOG
+  osfd: OSFD
+  vcsf: VCSF
+pending_formal_methods: [sfim_b, vcsf]
+reusable_unchanged_methods: [numbod, hifa, mlfadv, tog, augtrans, lgp, afog, osfd]
+vcsf_native_sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+body_table_order:
+  - coco_main
+  - voc_main
+  - preprocessing_paired
+  - training_state
+  - multi_budget
+  - vcsf_ablation
+supplementary_tables:
+  - complexity
+  - coco_ap50
+  - coco_ap75
+formal_rerun:
+  full_images:
+    coco: 5000
+    voc: 4952
+  ablation_sources: [faster_rcnn_r50, mask_rcnn_swin_t]
+  ablation_variants:
+    - neck_identity_reset
+    - neck_scale_reset
+    - cross_stage_identity_reset
+    - cross_stage_scale_feature_only
+    - cross_stage_scale_reset
+  preprocessing_sources: [faster_rcnn_r50, mask_rcnn_swin_t]
+  preprocessing_defenses: [identity, jpeg_q90, jpeg_q75, jpeg_q50, bit_depth_6, bit_depth_4, gaussian_sigma_1_2, gaussian_sigma_1, median_k3, resize_3_4, resize_5_4]
+  multi_budget_sources: [faster_rcnn_r50, mask_rcnn_swin_t]
+  multi_budget_epsilons: [2/255, 4/255, 8/255, 16/255, 32/255]
+  expected_new_attack_groups: 88
+  expected_new_payload_images: 259424
+execution:
+  first_stage_protocol: vcsf_submission_coco_main_refresh
+  first_stage_entrypoint: experiments/vcsf_submission_coco_main.py
+  status: user_authorized_pending_server_preflight
+  authorized_at: 2026-08-27
+  registered_method: sfim_b
+  isolated_candidate: vcsf
+  global_registry_switch: false
+  global_factory_switch: false
+  formal_images: 5000
+  clean_evaluations: 16
+  attack_groups: 12
+  attack_evaluations: 192
+  generated_images: 60000
+  devices: [cuda:0, cuda:1]
+  payload_retention: keep_all_until_dependent_experiments_complete
+  future_stage_order:
+    - coco_main_acceptance
+    - retained500_oblivious_adaptive_and_training_state
+    - coco_off_reference_multi_budget
+    - voc_main_after_checkpoint_provenance_mount
+    - common_hardware_runtime_profile_if_required
+    - vcsf_final_exact_ablation
+    - whole_campaign_acceptance_and_manuscript_regeneration
+  final_exact_ablation_is_last_gpu_numerical_stage: true
+baseline_reuse:
+  accepted_coco_source_commit: ae9da252a8a35d82609af3f3aba8b1d203041670
+  evaluator_transition:
+    path: src/lgp/runners/evaluate.py
+    prior_sha256: 3f38d0ea8a75af7f67ea37d87d7dfd35430f99ac60ad83f89149cccb7081a06b
+    current_sha256: b78eb7a6c8e4e9e2618cfedaf6cb83eedaeca29bc5bfe51332972d64e5db1a46
+    git_diff_sha256: 378b6ce5ed636f578864ae7208b692f1f01be69abb2429dfcde3225eece41386
+    status: accepted_exact_default_path_semantic_equivalence
+    unchanged_formal_conditions:
+      max_images: null
+      image_ids: null
+      target_checkpoint: null
+      progress_callback: null
+    added_nonmetric_capabilities:
+      - explicit_image_id_selection
+      - optional_checkpoint_override
+      - noninteractive_progress_suppression
+      - optional_progress_callback
+  adapter_transition:
+    path: src/lgp/adapters/openmmlab.py
+    prior_sha256: 1c5c218f10adc52043f19f8c9cc6ae22cde72bd74dcf9b3b1a355da12a513681
+    current_sha256: 553ab418de02fa4c9e2c5920e066b4be248225af4b68b660e17e2866998c4348
+    git_diff_sha256: bb85c0e18c2502c39a03dfe61949da69a518ec569a1671cbafbf6b1fa5b6b7e5
+    status: accepted_exact_default_path_semantic_equivalence
+    changed_existing_methods: [__init__, preprocess]
+    added_methods:
+      - _backbone_module
+      - _single_spatial_tensor
+      - backbone_module_feature_and_candidates
+      - deformable_encoder_attention_surface_and_candidates
+      - extract_backbone_module_feature
+    removed_methods: []
+    unchanged_formal_condition:
+      input_transform: null
+
+final_exact_ablation_execution:
+  protocol: vcsf_submission_final_exact_ablation
+  entrypoint: experiments/vcsf_submission_final_exact_ablation.py
+  status: user_authorized_pending_server_preflight
+  dataset: coco
+  split: val
+  formal_images: 5000
+  sources:
+  - faster_rcnn_r50
+  - mask_rcnn_swin_t
+  targets: all
+  variants:
+  - neck_identity_reset
+  - neck_scale_reset
+  - cross_stage_identity_reset
+  - cross_stage_scale_feature_only
+  - cross_stage_scale_reset
+  reference_variant: cross_stage_scale_reset
+  conceptual_attack_groups: 10
+  reference_attack_groups: 2
+  new_attack_groups: 8
+  clean_reference_evaluations: 16
+  attack_evaluations: 160
+  reference_attack_evaluations: 32
+  new_attack_evaluations: 128
+  records: 176
+  blackbox_cells_per_variant: 30
+  new_payload_images: 40000
+  retained_payload_images: 4000
+  pruned_payload_images: 36000
+  prediction_archives: 176
+  exact_backward_equivalents_per_image: 20
+  auxiliary_forward_passes_per_image: 0
+  auxiliary_backward_passes_per_image: 0
+  epsilon: 4/255
+  devices:
+  - cuda:0
+  - cuda:1
+  global_registry_switch: false
+  global_factory_switch: false
+  method_revision_permitted: false
+  formal_split_tuning_permitted: false
+  last_gpu_numerical_stage: true
+  prerequisite: independently_verified_voc_and_terminal_common_hardware_gate
+  accepted_reference: independently_verified_coco_submission_main
+  payload_retention: fixed_count_after_group_validation
+  retained_images_per_new_group: 500

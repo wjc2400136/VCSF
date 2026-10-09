@@ -1,0 +1,145 @@
+schema_version: 1
+policy: >-
+  The symbol -- is reserved for a published objective that is structurally undefined on the
+  selected source detector without changing the method. Missing wrappers, framework drift,
+  or an unvalidated port are never silently converted to --. This revision has no pending
+  external/adaptable cells: every runnable method/source pair is a local native executor and
+  every -- cell is a paper-defined objective without its required detector surface. AugTrans
+  and MLFAdv require RPN+ROI losses, NAA requires the published ResNet-50 conv4_3 plus ROI
+  proposal path, and Corrupting Attention requires final-encoder deformable-attention logits.
+statuses:
+  native: Implemented and validated in the pinned oda runtime (N); this is an executability status, not a claim that a local port is byte-identical to author code.
+  external: Legacy registry state for an imported artifact; no current pair uses it.
+  adaptable: Legacy registry state for an unvalidated faithful port; no current pair uses it.
+  unsupported: A required published branch or objective is absent; skip and render --.
+sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+source_capabilities:
+  faster_rcnn_r50:
+    backbone_features: true
+    raw_boxes_scores: true
+    objectness_branch: rpn
+    proposal_mechanism: rpn
+    roi_head: true
+    nms: true
+    resnet50_conv4_3: true
+    deformable_encoder_attention_logits: false
+  mask_rcnn_swin_t:
+    backbone_features: true
+    raw_boxes_scores: true
+    objectness_branch: rpn
+    proposal_mechanism: rpn
+    roi_head: true
+    nms: true
+    resnet50_conv4_3: false
+    deformable_encoder_attention_logits: false
+  yolov3_d53:
+    backbone_features: true
+    raw_boxes_scores: true
+    objectness_branch: dense_anchor
+    proposal_mechanism: dense_anchor
+    roi_head: false
+    nms: true
+    resnet50_conv4_3: false
+    deformable_encoder_attention_logits: false
+  vfnet_r50:
+    backbone_features: true
+    raw_boxes_scores: true
+    objectness_branch: null
+    proposal_mechanism: anchor_free_dense
+    roi_head: false
+    nms: true
+    resnet50_conv4_3: false
+    deformable_encoder_attention_logits: false
+  sparse_rcnn_r50:
+    backbone_features: true
+    raw_boxes_scores: true
+    objectness_branch: null
+    proposal_mechanism: learned_proposals
+    roi_head: dynamic
+    nms: false
+    resnet50_conv4_3: false
+    deformable_encoder_attention_logits: false
+  deformable_detr_r50:
+    backbone_features: true
+    raw_boxes_scores: true
+    objectness_branch: no_object_class
+    proposal_mechanism: object_queries
+    roi_head: false
+    nms: false
+    resnet50_conv4_3: false
+    deformable_encoder_attention_logits: true
+methods:
+  vcsf:
+    requires: [differentiable_detector_scores, backbone_features, neck_features]
+    native: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    qualification: preserved_selected_A10_identity_public_device_path_qualification_pending
+    reasons:
+      native: The selected A10 builder is reused without numerical changes on the six registered sources. New reproduction inputs use their current detector checkpoints; historical results are never inherited. This structural declaration does not grant device-mode, AP or release acceptance.
+  svfta:
+    requires: [differentiable_backbone_features]
+    native: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    reasons:
+      native: SVFTA uses the common extract_feat path exposed by all six sources in the pinned runtime.
+  lgp:
+    requires: [raw_pre_postprocess_boxes, class_scores, differentiable_box_geometry]
+    native: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    reasons:
+      native: Source-specific ROI, dense and query paths retain real differentiable rows, GT ownership and explicit-background or corresponding no-object semantics on the six registered sources. The common raw-pixel projection does not replace Adamax. Native status describes method structure; current corrected-executor evidence is bounded real-source diagnostic, not formal AP acceptance.
+  tog:
+    requires: [differentiable_object_or_background_scores]
+    native: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    reasons:
+      native: RPN, dense anchors, learned proposals and transformer queries are mapped to their native foreground/background score without requiring NMS.
+  osfd:
+    requires: [differentiable_multistage_backbone_features]
+    native: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    reasons:
+      native: OSFD-RRB uses differentiable multiscale features available and gradient-tested on all six sources.
+  afog:
+    requires: [differentiable_detector_attack_gradient]
+    native: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    reasons:
+      native: AFOG's joint input-attention update uses each source detector's audited native bbox/classification loss-family mapping, including its native background loss for an empty clean pseudo-target; no cross-architecture foreground-score surrogate is introduced.
+  corrupting_attention:
+    requires: [final_encoder_deformable_attention_logits, clean_predicted_boxes]
+    native: [deformable_detr_r50]
+    unsupported: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50]
+    reasons:
+      native: Deformable DETR exposes the final encoder attention-weight linear projection before softmax, reference points and multiscale geometry required by the paper objective.
+      unsupported: CNN, Swin-backbone and Sparse R-CNN sources do not expose the detection-transformer encoder attention surface defined by the paper; substituting backbone attention or decoder queries would create another method.
+  numbod:
+    requires: [raw_boxes, class_or_background_scores, differentiable_image_path, wavelet_reconstruction]
+    native: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    reasons:
+      native: The differentiable proposal/query mapping exposes both current-output selection tracks on all six sources; their joined 2k spatial/classification objective, Haar path and Adamax update pass the real-model smoke suite.
+  sfim_b:
+    requires: [differentiable_multistage_backbone_features]
+    native: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    reasons:
+      native: SFIM-B uses only multistage features and its SIM/FIM branches are gradient-tested on all six sources; no RPN is required.
+  augtrans:
+    requires: [rpn_objectness_loss, rpn_bbox_loss, roi_classification_loss, roi_bbox_loss]
+    native: [faster_rcnn_r50, mask_rcnn_swin_t]
+    unsupported: [yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    reasons:
+      native: Faster R-CNN and bbox-only Mask R-CNN expose and passed gradients through all four published loss branches.
+      unsupported: The complete published AugTrans objective requires separate RPN objectness/regression and ROI classification/regression losses; dropping or merging them changes the method.
+  hifa:
+    requires: [differentiable_intermediate_features, scalar_detection_decision]
+    native: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    reasons:
+      native: Target layers, integrated-gradient attribution and DEIG branches pass the real-model gradient suite on all six sources.
+  mlfadv:
+    requires: [rpn_proposals, roi_classification_scores, differentiable_intermediate_features, per_object_gradcam]
+    native: [faster_rcnn_r50, mask_rcnn_swin_t]
+    unsupported: [yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    reasons:
+      native: Both sources preserve the paper's RPN proposal and ROI classification pipeline; stage outputs replace named VGG16 layers without changing per-object Grad-CAM, ROI class confidence on those proposals or the frequency objectives.
+      unsupported: MLFAdv defines ROI class confidence on proposal boxes produced by an RPN. Replacing them with dense anchors, learned proposals or transformer queries changes the published method.
+  naa:
+    requires: [two_stage_detector, positive_roi_proposal_class_scores, resnet50_conv4_3]
+    native: [faster_rcnn_r50]
+    unsupported: [mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    reasons:
+      native: Faster R-CNN R50 exposes both positive ROI proposal class scores and the exact ResNet-50 conv4_3 output used by the paper.
+      unsupported: NAA's frozen paper setting requires positive RPN/ROI proposals and ResNet-50 conv4_3. A Swin stage output, dense anchor, learned proposal or transformer query is not that published attack surface.

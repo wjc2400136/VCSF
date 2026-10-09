@@ -1,0 +1,40 @@
+schema_version: 1
+id: vcsf_final_candidate
+display_name: VCSF-Attack (final candidate)
+expanded_name: View-Consistent Cross-Stage Feature-Survival Attack
+executor: native
+registry_status: frozen_unregistered_final_candidate
+evidence_status: development_complete_implementation_verified_formal_pending
+implementation: src/lgp/attacks/vcsf_final_candidate.py
+specification: docs/research/vcsf-final-candidate-spec.md
+specification_zh_cn: docs/research/vcsf-final-candidate-spec.zh-CN.md
+freeze_manifest: docs/research/vcsf-final-candidate-freeze.json
+parameters:
+  eps: 4/255
+  iterations: 20
+  step_size: 1/255
+  feature_levels: [0, 1, 2]
+  feature_eps: 1/1000000
+  scale_min: 2/3
+  scale_max: 4/3
+  momentum: 7/10
+parameter_roles:
+  eps: comparison_protocol
+  iterations: comparison_protocol
+  step_size: comparison_protocol
+  feature_levels: frozen_method_constant
+  feature_eps: numerical_stability
+  scale_min: frozen_method_constant
+  scale_max: frozen_method_constant
+  momentum: frozen_method_constant
+fixed_behavior:
+  output_initialization_updates: 1
+  output_initialization_objective: smooth_detector_log_odds
+  feature_updates: 19
+  feature_surface: three_neck_plus_three_backbone_tail
+  spatial_support: global_clean_energy
+  feature_objective: directional_cosine_survival_bottleneck
+  view_distribution: synchronized_scale_resize_crop_pad
+  phase_state: fresh_feature_momentum
+  auxiliary_forward_passes_per_image: 0
+  auxiliary_backward_passes_per_image: 0

@@ -1,0 +1,19 @@
+schema_version: 1
+id: bdd100k
+display_name: BDD100K Detection 2020
+root: data/bdd100k
+num_classes: 10
+classes: [pedestrian, rider, car, truck, bus, train, motorcycle, bicycle, traffic light, traffic sign]
+splits:
+  train: {annotation: annotations/det_train_coco.json, image_prefix: images/100k/train, expected_images: 70000}
+  val: {annotation: annotations/det_val_coco.json, image_prefix: images/100k/val, expected_images: 10000}
+download:
+  homepage: https://bdd-data.berkeley.edu/download.html
+  official_repository: https://github.com/bdd100k/bdd100k
+  mirror:
+    provider: kaggle
+    page: https://www.kaggle.com/datasets/alvaromalfaro/bdd100k
+    url: https://www.kaggle.com/api/v1/datasets/download/alvaromalfaro/bdd100k
+    target: raw/bdd100k/bdd100k.zip
+    expected_bytes: 5861357479
+    md5: 101e5a906c9f745b169f972889d42bcf

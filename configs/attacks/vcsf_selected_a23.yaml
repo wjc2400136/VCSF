@@ -1,0 +1,26 @@
+schema_version: 1
+id: vcsf_final_candidate
+display_name: VCSF
+executor: native
+selection_status: selected_pre_promotion_formal_closed
+implementation: src/lgp/attacks/vcsf_a23_isolated.py
+parameters:
+  eps: 4/255
+  iterations: 20
+  step_size: 1/255
+  feature_levels: [0, 1, 2]
+  feature_eps: 1/1000000
+  scale_min: 2/3
+  scale_max: 4/3
+  momentum: 85/100
+  initialization: detector
+  surface: cross_stage
+  levels_per_stage: 2
+  correspondence: shared
+  spatial_weight: energy
+  aggregation: log_mean_exp
+  gradient_centering: false
+  support: valid
+  image_interpolation: bilinear
+  placement: random
+  image_padding: zero

@@ -1,0 +1,198 @@
+schema_version: 1
+purpose: >-
+  Audited paper-default parameter provenance and optional artifact-import policy for
+  every published method. The current executors are local; these profiles preserve each
+  paper's threat model and define how a separately labelled paper-default result is audited.
+legacy_parameter_status: >-
+  The retained project contains no verifiable per-method manifest for the old locally
+  modified baselines. Do not reconstruct those values from memory or label them official.
+compute_matched_policy:
+  budget_profile: compute_matched
+  variant_suffix: CM
+  preserve: Published objective, gradient path, candidate selection, method-specific optimizer, loss coefficients, and transformations.
+  control: L-infinity cap and dominant source-detector backward-pass image-equivalent budget.
+  selection: Tune only on a disjoint development subset, then freeze across formal datasets and targets.
+  accounting: A backward over a batch of k transformed views costs k image-equivalent units.
+  auxiliary_accounting: Per-object Grad-CAM or other one-time head-only backwards are reported separately rather than hidden in the iteration count.
+  required_artifact_fields: [parameters_json, code_commit, gradient_evaluations_per_image, auxiliary_passes, attack_seconds_per_image, peak_memory_mb]
+methods:
+  tog:
+    objective: object_vanishing
+    paper_default:
+      threat_model: additive_linf
+      epsilon: 8/255
+      step_size: 2/255
+      iterations: 10
+      evidence: Adversarial Objectness Gradient Attacks, paper page 5.
+    compute_matched:
+      status: local_pinned_release_port
+      note: Apply the common cap/budget without changing the vanishing objective; report as TOG-CM.
+  lgp:
+    objective: local_global_hiding
+    paper_default:
+      threat_model: optimized_objectwise_distance_not_fixed_linf
+      optimizer: Adamax
+      learning_rate: 1/10
+      iterations: 50
+      lambda_attack: 1
+      lambda_imperceptibility: 1/10
+      assigned_iou_boxes: 5
+      assigned_score_boxes: 5
+      evidence: Towards Generic and Controllable Attacks, paper page 6.
+    compute_matched:
+      status: local_paper_release_adjudicated_port
+      note: >-
+        A common L-infinity projection and the reduced backward budget change the
+        constraint/horizon; disclose and report this as LGP-CM, never as the paper
+        default. Preserve the prescribed Adamax update exactly: there is no published
+        sign step or post-Adamax per-step clamp.
+  osfd:
+    objective: object_aware_significant_feature_distortion_rrb
+    paper_default:
+      threat_model: additive_linf
+      epsilon: 5/255
+      iterations: 200
+      amplification_factor: 3
+      rrb_center_size: 10
+      rrb_max_rotation_degrees: 7
+      rrb_resize_rho: 4/5
+      rrb_max_scale: 11/10
+      gaussian_sigma: 6
+      evidence: OSFD, paper page 6.
+    compute_matched:
+      status: local_paper_release_adjudicated_port
+      note: Retain OSFD-RRB and count every transformed image in a batch; report as OSFD-CM.
+  afog:
+    objective: generic_bbox_plus_class_attention
+    paper_default:
+      threat_model: additive_linf
+      epsilon: 8/255
+      iterations: 10
+      evidence: Adversarial Attention Perturbations, paper pages 5-6.
+      unresolved_from_main_paper: [attention_step_size, perturbation_step_size]
+    compute_matched:
+      status: local_paper_release_adjudicated_port
+      note: Resolve step sizes from the pinned release, preserve joint attention/perturbation gradients, and report as AFOG-CM.
+  corrupting_attention:
+    objective: final_encoder_pre_softmax_attention_corruption
+    paper_default:
+      threat_model: additive_linf
+      epsilon: 8/255
+      iterations: 10
+      step_size: 2/255
+      confidence_threshold: 1/2
+      random_start: true
+      common_corruption: dispersion
+      headline_dino_corruption: reranking
+      evidence: Corrupting Attention v1, Equations 3-10 and Section IV-A.
+    compute_matched:
+      status: local_paper_reconstruction
+      note: >-
+        Preserve the ten signed-PGD updates, clean frozen attention target and
+        pre-softmax objective. Change only the common radius to 4/255; expose
+        the required clean forward separately from the backward-equivalent count.
+  numbod:
+    objective: spatial_frequency_fusion
+    paper_default:
+      threat_model: additive_linf
+      epsilon: 8/255
+      per_image_epochs: 50
+      batch_size: 1
+      optimizer: Adamax
+      learning_rate: 3/100
+      weight_decay: 1/50
+      loss_lambda: 100
+      evidence: NumbOD, paper pages 5-6.
+    compute_matched:
+      status: local_paper_release_adjudicated_port
+      note: >-
+        Preserve the paper's joined 2k dual-track objective, Equation 5 and Adamax;
+        cap only the L-infinity constraint and actual backward units. Do not add a
+        post-Adamax step-size clamp. Archive the public-code adjudication and report as
+        NumbOD-CM.
+  sfim_b:
+    objective: spatial_frequency_information_masking_backbone
+    paper_default:
+      threat_model: additive_linf
+      epsilon: 16/255
+      iterations: 20
+      learning_rate: 1/2
+      spatial_mask_upper: 3/10
+      frequency_keep_upper: 4/5
+      evidence: SFIM paper pages 4-6.
+    compute_matched:
+      status: local_paper_reconstruction
+      note: >-
+        Preserve independent SIM/FIM branches, the published 0.5 normalized-gradient
+        learning rate and both transformed views. Ten paired-view iterations consume
+        the complete twenty-backward budget.
+  augtrans:
+    objective: object_aware_eot_four_branch_detector_loss
+    paper_default:
+      threat_model: additive_linf
+      epsilon: 5/255
+      iterations: 160
+      step_size: 1/2500
+      eot_samples: 10
+      base_rotation_degrees: 8
+      curriculum_scale: 1/2
+      scale_modulation: [-1/5, 1/2]
+      aspect_jitter: 1/10
+      gaussian_sigma: 1/50
+      salt_pepper_probability: 1/100
+      evidence: AugTrans paper Algorithm 2 and page 16.
+      internal_discrepancy: The complete pipeline conflicts with one sentence saying two randomly selected transforms; see reference.yaml.
+    compute_matched:
+      status: local_paper_reconstruction
+      note: Preserve all four augmentation and loss branches and reduce only iteration/EOT budget; report as AugTrans-CM.
+  hifa:
+    objective: diversity_enhanced_integrated_gradient_feature_attack
+    paper_default:
+      threat_model: additive_linf
+      epsilon: 16/255
+      iterations: 10
+      step_size: 8/1275
+      momentum: 1
+      transformation_probability: 1/2
+      integration_steps: 20
+      augmented_copies: 10
+      negative_balance: 1
+      evidence: HIFA paper Table 1 and pages 13-17.
+      internal_discrepancy: The prose states 30 copies while Table 1 states 10; the frozen paper-default record uses 10.
+    compute_matched:
+      status: local_paper_reconstruction
+      note: Preserve DEIG, all three published transform families and signed feature weighting; report as HIFA-CM.
+  mlfadv:
+    objective: gradcam_masked_roi_class_confidence_and_full_low_frequency_feature_attack
+    paper_default:
+      threat_model: iterative_linf
+      step_size_rule: epsilon/iterations
+      low_frequency_radius_pixels: 200
+      low_frequency_weight: 1
+      feature_weight: 10
+      positive_iou_threshold: 1/2
+      source_structure: Faster R-CNN with VGG16
+      unresolved_from_main_paper: [epsilon, iterations]
+      evidence: MLFAdv paper Algorithms 1-2 and pages 5-6.
+    compute_matched:
+      status: local_paper_reconstruction
+      note: Preserve ROI class confidence on RPN-generated proposals, per-object Grad-CAM and both image-frequency views; report per-object head backwards separately and label MLFAdv-CM.
+  naa:
+    objective: positive_proposal_neuron_attribution_suppression
+    paper_default:
+      threat_model: additive_linf
+      epsilon: 2/25
+      iterations: 20
+      learning_rate: 1/2
+      integration_steps: 30
+      keeping_rate: 2/5
+      target_layer: conv4_3
+      source_structure: two_stage_detector
+      evidence: NAA paper Algorithm 1 and pages 5-9.
+    compute_matched:
+      status: local_paper_reconstruction
+      note: >-
+        Preserve positive ROI proposal scores, conv4_3, the attribution mask,
+        L2 feature objective and published 0.5 normalized-gradient learning rate.
+        The 20-BE profile uses eight integration points plus twelve attack updates
+        and remains restricted to the registered ResNet-50 two-stage source.

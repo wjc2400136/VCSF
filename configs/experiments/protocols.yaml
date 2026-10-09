@@ -1,0 +1,3214 @@
+schema_version: 1
+protocols:
+  current_saved_main_qualitative:
+    description: Offline new-user fixed COCO display from one current main run, not author-certified figures.
+    budget_profile: compute_matched
+    method_source_protocol: main_transfer
+    budget_source_protocol: main_transfer
+    methods: []
+    datasets: [coco]
+    split: val
+    sources: [faster_rcnn_r50]
+    targets: [cascade_rcnn_r50]
+    full_images: 5000
+    image_ids: [785, 1503, 2157]
+    score_threshold: 0.50
+    max_detections: 100
+    originals: false
+    selection_note: Author-preselected COCO examples reused for new-user display only; not independent selection, scientific acceptance or certification of author figures.
+    input_mode: current_main_saved_predictions
+    generation_jobs: 0
+    model_calls: 0
+    AP_replays: 0
+    scientific_acceptance: false
+    independent_acceptance: false
+    author_figure_certified: false
+    generic_dispatch_forbidden: true
+    preparation_entrypoint: experiments/current_saved_qualitative.py
+    entrypoint: experiments/current_saved_qualitative.py
+  current_vcsf_final_background:
+    description: Fresh-input A10 and the nine unchanged registered final-background controls.
+    budget_profile: vcsf_final_background_observed_cost
+    datasets: [coco]
+    allowed_datasets: [coco]
+    split: val
+    sources: [faster_rcnn_r50]
+    targets: all
+    methods: [vcsf]
+    allowed_methods: [vcsf]
+    canonical_variant_study: vcsf_final_background_validation
+    seed: 42
+    seed_schedule: full_val_numeric_image_position
+    full_images: 5000
+    device_counts: [1, 2]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    payload_retention: {mode: keep_all}
+    prediction_archive: {format: gzip}
+    historical_result_inheritance: false
+    configuration_search: false
+    entrypoint: experiments/current_vcsf_final_background.py
+  vcsf_selected_a10_coco_main:
+    description: Native selected A10 six-source COCO main; Common-2 reuse candidates require a separate bridge.
+    budget_profile: vcsf_final_background_observed_cost
+    datasets: [coco]
+    split: val
+    sources: all_whitebox
+    targets: all
+    methods: [vcsf]
+    parameters_source: configs/attacks/vcsf.yaml
+    parameters_sha256: 2551944131096c1d74011f2eb8d789b858e6dce79748f5b5aada54ea18254328
+    configuration_choice_record: docs/research/vcsf-a10-recorded-configuration-choice.json
+    configuration_choice_sha256: 28f279d405fe6cda61efb7bc109267fed49dcf5ec294717b9da97a7ec58491b6
+    images: 5000
+    seed: 42
+    seed_schedule: full_val_numeric_image_position
+    execution_mode: native_a10_main
+    device_counts: [1, 2]
+    candidate_reuse_sources: [faster_rcnn_r50, mask_rcnn_swin_t]
+    scientific_attack_cells: 96
+    candidate_reuse_cells: 32
+    new_attack_cells: 64
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    payload_retention: keep_all_pending_independent_audit
+    prediction_archive: gzip
+    generic_dispatch_forbidden: true
+    preparation_entrypoint: experiments/vcsf_a10_main.py
+    audit_contract: docs/research/vcsf-a10-main-audit-contract.json
+    status: preparation_only
+    execution_authorized: false
+    result_reuse_accepted: false
+  vcsf_selected_a10_voc_main:
+    description: Native selected A10 six-source VOC main; all six source jobs are new.
+    budget_profile: vcsf_final_background_observed_cost
+    datasets: [voc]
+    split: val
+    sources: all_whitebox
+    targets: all
+    methods: [vcsf]
+    parameters_source: configs/attacks/vcsf.yaml
+    parameters_sha256: 2551944131096c1d74011f2eb8d789b858e6dce79748f5b5aada54ea18254328
+    configuration_choice_record: docs/research/vcsf-a10-recorded-configuration-choice.json
+    configuration_choice_sha256: 28f279d405fe6cda61efb7bc109267fed49dcf5ec294717b9da97a7ec58491b6
+    images: 4952
+    seed: 42
+    seed_schedule: full_val_numeric_image_position
+    execution_mode: native_a10_main
+    device_counts: [1, 2]
+    candidate_reuse_sources: []
+    scientific_attack_cells: 96
+    candidate_reuse_cells: 0
+    new_attack_cells: 96
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    payload_retention: keep_all_pending_independent_audit
+    prediction_archive: gzip
+    generic_dispatch_forbidden: true
+    preparation_entrypoint: experiments/vcsf_a10_main.py
+    audit_contract: docs/research/vcsf-a10-main-audit-contract.json
+    status: preparation_only
+    execution_authorized: false
+    result_reuse_accepted: false
+  vcsf_a10_f03_swin_fullval_sensitivity:
+    description: Retrospective full-val A10/F03 cross-source sensitivity; no final-method promotion or independent confirmation.
+    parent_study: vcsf_final_background_validation
+    budget_profile: vcsf_final_background_observed_cost
+    dataset: coco
+    split: val
+    annotation_sha256: e8c7f7908f1d7278341fae127d0da654f102f11bd7b21d8aeefa635b8c810b6f
+    ordered_image_ids_sha256: da6fc732d63651c32997a20b8f1197813a923613f059986297c5ddd5c6325190
+    new_sources: [mask_rcnn_swin_t]
+    reused_sources: [faster_rcnn_r50]
+    variants: [A10, F03]
+    variant_parameter_sha256:
+      A10: 2551944131096c1d74011f2eb8d789b858e6dce79748f5b5aada54ea18254328
+      F03: 81fec16f3ca9a2e3f5ed071b036e06a1846a88dd448178097e87aad2d397150f
+    targets: all
+    images_per_group: 5000
+    new_generation_groups: 2
+    new_target_evaluations: 32
+    existing_faster_groups: 2
+    seed: 42
+    seed_schedule: full_val_numeric_image_position
+    device_counts: [1, 2]
+    payload_retention: {mode: keep_all, cleanup_authorized: false}
+    prediction_archive: {format: gzip, retention: keep_all}
+    primary_metric: source_excluded_BB_Mean_bbox_mAP
+    primary_direction: lower_is_stronger
+    cross_source_rule: Compare A10 and F03 on the same full-val images within each source, then compare their equal-weight two-source source-excluded BB Mean. This criterion was set after observing the Faster F03 result but before the new Swin result; small differences remain descriptive, not stable superiority.
+    secondary_reporting: Preserve all twelve metrics, per-target directions, four architecture families and DINO. Do not use metric voting or an invented cost threshold to reverse the primary ranking.
+    selection_boundary: The same val2017 population was used in prior candidate and attribution selection; this retrospective result is not independent confirmation. The registered F03 control is not promoted automatically.
+    physical_cost: Record observed time and memory but do not infer cost from three versus six feature terms. A decisive cost veto requires a separate finite paired measurement.
+    execution_requires_independent_admission: true
+    diagnostic_only: true
+    execution_admitted: false
+    final_method_promoted: false
+  vcsf_final_background_validation:
+    description: Fixed A10-background attribution preparation; not final-method promotion.
+    budget_profile: vcsf_final_background_observed_cost
+    methods: []
+    ablation_study: vcsf_final_background_validation
+    process_local_candidate_overlay: true
+    isolated_candidate:
+      execution_alias: vcsf_final_background_isolated
+      implementation: src/lgp/attacks/vcsf_common_anchor_isolated.py
+      class_name: VCSFCommonAnchorCandidate
+      config_class_name: VCSFCommonAnchorConfig
+    request_file: docs/research/vcsf-final-background-request-20260929.json
+    request_sha256: b9c8ddf613a70dd6623cdb71c5070a83352a39c0bfe755ddaee24600cffc0084
+    dataset: coco
+    split: val
+    sources: [faster_rcnn_r50]
+    targets: all
+    seed: 42
+    seed_schedule: full_val_numeric_image_position
+    expected_images: 5000
+    logical_groups: 10
+    evaluation_cells: 160
+    conditional_new_groups: 9
+    conditional_new_evaluations: 144
+    potential_reuse_variant: A10
+    device_counts: [1, 2]
+    preparation_entrypoint: experiments/prepare_vcsf_final_background.py
+    execution_entrypoint: experiments/vcsf_final_background_experiments.py
+    execution_protocol: vcsf_final_background_execution
+    execution_requires_independent_admission: true
+    generic_dispatch_forbidden: true
+    preparation_only: true
+    execution_admitted: false
+    final_method_promoted: false
+    independent_confirmation: false
+    payload_retention: {mode: keep_all, cleanup_authorized: false}
+    prediction_archive: {format: gzip, retention: keep_all}
+  vcsf_final_adaptive_refresh:
+    description: Frozen VCSF defense-aware refresh using the registered source-pipeline BPDA policy.
+    paired_protocol: vcsf_final_oblivious_refresh
+    budget_profile: vcsf_single_source_ablation_observed_cost
+    methods: []
+    seed_schedule: full_val_numeric_image_position
+    generation_groups: 20
+    generated_evaluation_cells: 320
+    reused_identity_cells: 32
+    evaluation_cells: 352
+    execution_admitted: false
+  vcsf_final_oblivious_refresh:
+    description: Evaluate existing frozen VCSF payloads under fixed victim preprocessing.
+    budget_profile: vcsf_single_source_ablation_observed_cost
+    dataset: coco
+    split: val
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t]
+    targets: all
+    methods: []
+    seed: 42
+    full_images: 5000
+    retained_images: 500
+    generation_jobs: 0
+    evaluation_cells: 352
+    device_counts: [1, 2]
+    execution_admitted: false
+    parameters_sha256: 158acaf594c74b4f6a9c20fe28d6c2e38ef6ab9230b85f6d0b0b8b7e93dd7e9e
+    annotation_sha256: b35ed66b0b8b4c1b6a95ddda6ed973334508f122dde3a2036760bfed8f3333b5
+    full_image_ids_sha256: da6fc732d63651c32997a20b8f1197813a923613f059986297c5ddd5c6325190
+    retained_image_ids_sha256: e9651136f8310cc747c750f9c19704472611292cd4e35bc388666f6b476ab244
+    payload_bindings:
+      faster_rcnn_r50:
+        payload_run_sha256: bdc7cb7de628e3b5481fd18d695466486645be289e98ce9dc288ef2f68bc5d51
+        payload_manifest_sha256: 88b9e9ff44697b2f49c6f0f2713a2647f73c000eb6baf71b7b2de010a9f15c15
+      mask_rcnn_swin_t:
+        payload_run_sha256: d3a539bfbc477666864278b3401c8993cd9f28543f8e29be2553714a1aaac994
+        payload_manifest_sha256: 49bcc19e87d1b3ccc9a205fc57ff410f32b36cbe29b49d14baacf75ab160044b
+  vcsf_final_budget_refresh:
+    description: Frozen-background radius sensitivity; no new method selection.
+    budget_profile: vcsf_final_radius_observed_cost
+    methods: []
+    dataset: coco
+    split: val
+    images: 5000
+    seed: 42
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t]
+    targets: all
+    epsilon_order: [2/255, 4/255, 8/255, 16/255, 32/255]
+    stress_only: [32/255]
+    reference_epsilon: 4/255
+    step_size: 1/255
+    parameters_sha256: 158acaf594c74b4f6a9c20fe28d6c2e38ef6ab9230b85f6d0b0b8b7e93dd7e9e
+    authority: docs/research/vcsf-final-only-coverage-amendment-20260920.md
+    execution_admitted: false
+  vcsf_final_training_state_refresh:
+    description: Evaluate frozen VCSF payload on the existing qualified victim pair.
+    entrypoint: experiments/vcsf_final_training_state.py
+    audit_entrypoint: experiments/audit_vcsf_final_training_state.py
+    budget_profile: vcsf_single_source_ablation_observed_cost
+    methods: []
+    dataset: coco
+    split: val
+    source: mask_rcnn_swin_t
+    target: faster_rcnn_r50
+    victim_states: [standard_control, adversarial_training]
+    full_images: 5000
+    retained_images: 500
+    seed: 42
+    device_counts: [1, 2]
+    generation_jobs: 0
+    inference_jobs: 2
+    metric_records: 4
+    reuse_payload: true
+    retained_mode: official_coco_from_same_full_predictions
+    authority: docs/research/vcsf-final-only-coverage-amendment-20260920.md
+    freeze_record: docs/research/vcsf-final-method-freeze-20260917.json
+    parameters_sha256: 158acaf594c74b4f6a9c20fe28d6c2e38ef6ab9230b85f6d0b0b8b7e93dd7e9e
+    payload_run_sha256: d3a539bfbc477666864278b3401c8993cd9f28543f8e29be2553714a1aaac994
+    payload_manifest_sha256: 49bcc19e87d1b3ccc9a205fc57ff410f32b36cbe29b49d14baacf75ab160044b
+    annotation_sha256: b35ed66b0b8b4c1b6a95ddda6ed973334508f122dde3a2036760bfed8f3333b5
+    full_image_ids_sha256: da6fc732d63651c32997a20b8f1197813a923613f059986297c5ddd5c6325190
+    retained_image_ids_sha256: e9651136f8310cc747c750f9c19704472611292cd4e35bc388666f6b476ab244
+    pair_qualification_sha256: 0f588a90ca6824c8014bc0e301f1ea1d0d009a22ef2b62e34dba04619d793d85
+    checkpoint_sha256:
+      standard_control: 70cc278b6cf860e12f17bcfb35344ddb18602b006b5a0c3dffafa04661bfce86
+      adversarial_training: 93d7e7ea1e1f9eab2a0b6d88f17718257d4a607eff7b091107de6f77444d9720
+  vcsf_scale_operator_points:
+    description: Full five-panel operator point analysis with complete three-group input binding.
+    parent_protocol: vcsf_scale_point_stages
+    budget_profile: vcsf_retrospective_observed_cost
+    methods: []
+    entrypoint: experiments/vcsf_scale_operator_points.py
+    audit_entrypoint: experiments/audit_vcsf_scale_operator_points.py
+    owner_decision: docs/research/vcsf-exploration-statistics-amendment-20260909.md
+    stage: operators_at_anchor_width
+    original_group_ids: [29, 2]
+    new_group_ids: [3, 4, 5]
+    images: 5000
+    seed: 42
+    sources: [faster_rcnn_r50]
+    targets: all
+    observation_cells: 80
+    new_cells: 48
+    contrasts: 6
+    diagnostic_images_per_new_group: 1
+    full_stage_input_required: true
+    all_twelve_metrics_required: true
+    bootstrap_required: false
+    new_model_calls: false
+    original_roots_modified: false
+    independent_confirmation: false
+    significance_claimed: false
+    automatic_promotion: false
+  vcsf_scale_point_stages:
+    description: Prospective descriptive scale-stage contracts after the owner statistics amendment.
+    parent_protocol: vcsf_single_source_scale_execution
+    budget_profile: vcsf_retrospective_observed_cost
+    methods: []
+    contract_version: 2
+    point_protocol: vcsf_scale_point_analysis
+    owner_decision: docs/research/vcsf-exploration-statistics-amendment-20260909.md
+    stage_order: [baseline_and_identity, operators_at_anchor_width, remaining_widths]
+    contrast_assignment: earliest_stage_with_all_terms_available
+    contrast_counts: [1, 6, 30]
+    metric: bbox_mAP
+    scalar: equal_weight_fifteen_source_excluded_targets
+    seed_estimand: conditional_on_seed42_not_resampled
+    previous_stage_acceptance_required: true
+    previous_stage_decision_required: true
+    no_early_efficacy_pruning: true
+    bootstrap_required: false
+    significance_claimed: false
+    independent_confirmation: false
+    automatic_promotion: false
+    runner_armed: false
+  vcsf_scale_point_analysis:
+    description: Owner-amended full-panel point estimates without exploration bootstrap.
+    parent_protocol: vcsf_single_source_scale_execution
+    budget_profile: vcsf_retrospective_observed_cost
+    methods: []
+    entrypoint: experiments/vcsf_scale_points.py
+    audit_entrypoint: experiments/audit_vcsf_scale_points.py
+    execution_kind: cpu_existing_evidence_only
+    owner_decision: docs/research/vcsf-exploration-statistics-amendment-20260909.md
+    dataset: coco
+    split: val
+    images: 5000
+    seed: 42
+    sources: [faster_rcnn_r50]
+    targets: all
+    metric: bbox_mAP
+    scalar: equal_weight_fifteen_source_excluded_targets
+    coefficient_policy: preserve_registered_exact_contrasts
+    full_target_panel_required: true
+    all_twelve_metrics_required: true
+    independent_input_audit_required: true
+    qualified_replay_reuse: original_paths_hashes_and_invocation_identity
+    partial_replay_recovery: explicit_new_root_missing_targets_only
+    bootstrap_required: false
+    confidence_intervals_produced: false
+    significance_claimed: false
+    independent_confirmation: false
+    automatic_promotion: false
+    new_model_calls: false
+    original_roots_modified: false
+    automatic_resume: false
+  vcsf_single_source_scale_execution:
+    description: Fresh single-source scale-stage execution with explicit historical anchor mapping.
+    parent_protocol: vcsf_single_source_scale_research
+    budget_profile: vcsf_retrospective_observed_cost
+    methods: []
+    entrypoint: experiments/vcsf_single_source_scale.py
+    device_counts: [1, 2]
+    scheduling: round_robin_independent_complete_configuration_jobs
+    complete_group_atomicity: true
+    automatic_resume: false
+    accepted_group_rerun: false
+    independent_confirmation: false
+    prediction_archive: gzip
+    payload_retention:
+      mode: keep_all
+      retained_images: 500
+      selection_algorithm: canonical_equal_bins_center_v1
+      retained_image_ids_sha256: e9651136f8310cc747c750f9c19704472611292cd4e35bc388666f6b476ab244
+      preserve_all_predictions: true
+      preserve_all_manifests: true
+      preserve_failed_groups: true
+      preserve_historical_roots: true
+      deletion_authorized: false
+    first_stage: baseline_and_identity
+    first_stage_variants: [A_h2, A_h0]
+    historical_anchor_geometry_implementation_sha256: 65827ce3ed4eb1d16700a828648ed9d6595f5ff6d92103408343ab56df5047ef
+    first_stage_analysis:
+      metric: bbox_mAP
+      scalar: equal_weight_fifteen_source_excluded_targets
+      contrast: A_h2_minus_identity
+      coefficients: {A_h2: 1, A_h0: -1}
+      unit: image_with_all_annotations_and_detections
+      resampling: paired_nonparametric_image_bootstrap
+      replicates: 2000
+      rng: numpy_randomstate_mt19937
+      seed: 20260905
+      image_occurrence_order: original_id_then_duplicate_occurrence
+      alpha: 5/100
+      multiplicity: one_family_centered_max_absolute_bootstrap_error
+      family_size: 1
+      seed_estimand: conditional_on_seed42_not_resampled
+      selection_adjusted_inference: false
+      finite_sample_guarantee: false
+      independent_confirmation: false
+      selection: complete_panel_AP_paired_change_cost_complexity_keep_change_reject
+      automatic_promotion: false
+      historical_intervals_reused: false
+    staged_analysis:
+      contrast_assignment: earliest_stage_with_all_terms_available
+      stage_order: [baseline_and_identity, operators_at_anchor_width, remaining_widths]
+      family_sizes: [1, 6, 30]
+      uncertainty_definition: first_stage_analysis
+      multiplicity_scope: separate_prospectively_registered_stage_families
+      across_stage_error_control_claimed: false
+      prior_intervals_reused: false
+      selection_adjusted_inference: false
+      previous_stage_acceptance_required: true
+      previous_stage_decision_required: true
+      no_early_efficacy_pruning: true
+      runner_armed: false
+  vcsf_single_source_ablation_preflight:
+    description: Bounded source-only integration of every selected ablation-stage control.
+    parent_protocol: vcsf_single_source_ablation_research
+    budget_profile: vcsf_single_source_ablation_observed_cost
+    methods: []
+    entrypoint: experiments/vcsf_single_source_ablation_preflight.py
+    source: faster_rcnn_r50
+    dataset: coco
+    split: val
+    images_per_group: 1
+    image_selection: first_canonical_validation_image
+    seed: 42
+    device_counts: [1, 2]
+    scheduling: round_robin_independent_complete_configuration_jobs
+    complete_selected_stage_required: true
+    target_AP_evaluations: 0
+    diagnostic_only: true
+    payload_retention: keep_all
+    deletion_authorized: false
+    automatic_resume: false
+    historical_reuse_qualified: false
+    formal_execution_admission: false
+    scientific_acceptance: false
+    isolated_physical_cost_measurement: false
+    automatic_promotion: false
+  vcsf_single_source_ablation_executor_smoke:
+    description: Complete core executor diagnostic, not source-only controls or formal admission.
+    parent_protocol: vcsf_single_source_ablation_research
+    budget_profile: vcsf_single_source_ablation_observed_cost
+    methods: []
+    entrypoint: experiments/vcsf_single_source_ablation_executor_smoke.py
+    supported_stages: [core]
+    images_per_group: 1
+    image_selection: first_canonical_validation_image
+    device_counts: [1, 2]
+    scheduling: round_robin_independent_complete_configuration_jobs
+    complete_selected_stage_required: true
+    targets: all
+    prediction_archive: gzip
+    diagnostic_only: true
+    historical_reuse: no_historical_results_consumed_diagnostic_only
+    payload_retention:
+      mode: keep_all
+      deletion_authorized: false
+      prune_after_seal: false
+      preserve_failed_and_partial: true
+    capacity:
+      payload_bytes_per_group: 67108864
+      prediction_and_metadata_bytes_per_group: 67108864
+      failure_reserve_bytes: 1073741824
+    formal_execution_admission: false
+    scientific_acceptance: false
+    automatic_promotion: false
+  vcsf_single_source_ablation_reuse:
+    description: Original result reuse adjudication without execution or scientific admission.
+    parent_protocol: vcsf_single_source_ablation_research
+    budget_profile: vcsf_single_source_ablation_observed_cost
+    methods: []
+    entrypoint: experiments/vcsf_single_source_ablation_reuse.py
+    audit_entrypoint: experiments/audit_vcsf_single_source_ablation_reuse.py
+    supported_stages: [core]
+    logical_groups: 8
+    logical_target_slots: 128
+    registered_contrasts: 32
+    original_groups: 17
+    original_target_cells: 272
+    states: [qualified_reuse, requires_new, unresolved]
+    complete_scale_acceptance_and_selection_required: true
+    published_runtime_input_reconstruction_required: true
+    original_result_provenance_preserved: true
+    independent_reuse_acceptance_required: true
+    unknown_partition_counts: null
+    diagnostic_formal_qualification: false
+    physical_cost_inheritance: false
+    trajectory_identity_claim: false
+    formal_execution_admission: false
+    scientific_acceptance: false
+    automatic_promotion: false
+  vcsf_single_source_ablation_execution_contract:
+    description: Unarmed core-stage execution and keep-all lifecycle preparation.
+    parent_protocol: vcsf_single_source_ablation_research
+    budget_profile: vcsf_single_source_ablation_observed_cost
+    methods: []
+    entrypoint: experiments/prepare_vcsf_single_source_ablation_execution.py
+    supported_stages: [core]
+    device_counts: [1, 2]
+    scheduling: round_robin_independent_complete_configuration_jobs
+    complete_selected_stage_required: true
+    historical_reuse: unassessed_do_not_subtract
+    input_binding: canonical_full_split_ordered_ids_selected_position_seeds
+    result_binding: all_groups_all_targets_all_twelve_metrics
+    analysis_binding: exact_registered_stage_contrasts_point_estimates_only
+    payload_retention:
+      mode: keep_all
+      deletion_authorized: false
+      prune_after_seal: false
+      preserve_failed_and_partial: true
+    failure_policy: stop_only_owned_workers_preserve_all_evidence
+    output_policy: fresh_direct_namespace_child_no_merge
+    capacity_policy: full_stage_keep_all_bound_plus_failure_reserve_before_admission
+    required_admission_evidence:
+      - complete_preceding_scale_acceptance_and_selection
+      - actual_source_controls_and_independent_saved_control_acceptance
+      - source_bound_runtime_and_full_input_identity
+      - historical_reuse_independent_adjudication
+      - actual_single_and_dual_device_executor_qualification
+      - full_stage_keep_all_capacity_and_failure_reserve
+      - bound_prediction_index_and_exact_analysis_family
+      - required_cost_evidence_and_independent_contract_acceptance
+      - independent_formal_stage_admission
+    preparation_only: true
+    execution_profile_installed: false
+    runner_armed: false
+    automatic_resume: false
+    old_run_restart: false
+    automatic_promotion: false
+    scientific_acceptance: false
+    independent_confirmation: false
+  vcsf_single_source_ablation_research:
+    description: Bounded whole-ablation stages on one explicitly bound working baseline.
+    dataset: coco
+    split: val
+    images: 5000
+    seed: 42
+    sources: [faster_rcnn_r50]
+    targets: all
+    methods: []
+    process_local_candidate_overlay: true
+    isolated_candidate:
+      execution_alias: vcsf_ablation_isolated
+      implementation: src/lgp/attacks/vcsf_ablation_isolated.py
+      class_name: VCSFAblationCandidate
+      config_class_name: VCSFAblationConfig
+    ablation_study: vcsf_single_source_ablation
+    budget_profile: vcsf_single_source_ablation_observed_cost
+    owner_decision: docs/research/vcsf-whole-ablation-amendment-20260909.md
+    design_contract: docs/research/vcsf-whole-ablation-closure-20260909.md
+    planning_entrypoint: experiments/prepare_vcsf_single_source_ablation.py
+    prerequisite_study: vcsf_single_source_scale
+    status: registered_working_snapshot_pending_stage_selection_and_admission
+    execution_authorized: true
+    runner_armed: false
+    device_counts: [1, 2]
+    scheduling: independent_complete_configuration_jobs
+    automatic_resume: false
+    old_run_restart: false
+    selection_namespace: retrospective_fullval_single_source_staged
+    independent_confirmation: false
+    automatic_promotion: false
+    full_target_panel_required: true
+    source_matched_policy: exclude_from_BB_mean_report_separately
+    historical_reuse: exact_configuration_and_qualified_evidence_only
+    final_stability:
+      configuration_scope: author_frozen_final_only
+      seeds: [42, 43, 44, 45, 46]
+      execution_armed: false
+      source_scope: single_source_ablation
+      independent_confirmation: false
+  vcsf_final_followup_preparation:
+    description: Frozen final-only stability and affected main catalogue; no execution admission.
+    budget_profile: vcsf_single_source_ablation_observed_cost
+    methods: []
+    targets: all
+    main_sources: canonical_six
+    main_seed: 42
+    datasets:
+      coco: {split: val, images: 5000}
+      voc: {split: val, images: 4952}
+    stability_dataset: coco
+    stability_source: faster_rcnn_r50
+    stability_seeds: [42, 43, 44, 45, 46]
+    seed_schedule: selected_position
+    device_counts: [1, 2]
+    planning_entrypoint: experiments/prepare_vcsf_final_followup.py
+    registration: docs/research/vcsf-final-followup-registration-20260917.md
+    freeze_record: docs/research/vcsf-final-method-freeze-20260917.json
+    freeze_sha256: a697b1331cf54808633bcfc57d6f07adb630ef41beb7fea709402b749e1418d0
+    reuse_policy: exact_evidence_and_scope_qualification_required
+    full_target_panel_required: true
+    all_twelve_metrics_required: true
+    preparation_only: true
+    runner_armed: false
+    execution_authorized: false
+    independent_confirmation: false
+    bootstrap_required: false
+  vcsf_final_attribution_research:
+    description: One finite final-background attribution set without another candidate search.
+    dataset: coco
+    split: val
+    images: 5000
+    seed: 42
+    sources: [faster_rcnn_r50]
+    targets: all
+    methods: []
+    process_local_candidate_overlay: true
+    isolated_candidate:
+      execution_alias: vcsf_final_attribution_isolated
+      implementation: src/lgp/attacks/vcsf_common_anchor_isolated.py
+      class_name: VCSFCommonAnchorCandidate
+      config_class_name: VCSFCommonAnchorConfig
+    ablation_study: vcsf_single_source_ablation
+    budget_profile: vcsf_single_source_ablation_observed_cost
+    owner_decision: docs/research/vcsf-whole-ablation-revision-20260911.md
+    attribution_request: docs/research/vcsf-final-attribution-request-20260915.json
+    attribution_request_sha256: ebc961c382c54b64530cc94abc5f5598dc557370d6209657935feda4a5b1f59e
+    configuration_cap: 35
+    candidate_search_cycles: 0
+    planning_entrypoint: experiments/prepare_vcsf_final_attribution.py
+    execution_entrypoint: experiments/vcsf_final_attribution_experiments.py
+    execution_authorized: true
+    runner_armed: false
+    device_counts: [1, 2, 4]
+    scheduling: independent_complete_configuration_jobs
+    execution_lifecycle: full_stage_keep_all_v1
+    prediction_archive: gzip
+    payload_retention:
+      mode: keep_all
+      deletion_authorized: false
+      prune_after_seal: false
+      preserve_failed_and_partial: true
+    selection_namespace: final_background_attribution_after_fullval_selection
+    independent_confirmation: false
+    automatic_promotion: false
+    automatic_resume: false
+    old_run_restart: false
+    full_target_panel_required: true
+    all_twelve_metrics_required: true
+    source_matched_policy: exclude_from_BB_mean_report_separately
+    historical_reuse: exact_configuration_and_qualified_evidence_only
+  vcsf_single_source_common_anchor_research:
+    description: Fixed common-anchor ablations after accepted complete operator selection.
+    dataset: coco
+    split: val
+    images: 5000
+    seed: 42
+    sources: [faster_rcnn_r50]
+    targets: all
+    methods: []
+    process_local_candidate_overlay: true
+    isolated_candidate:
+      execution_alias: vcsf_common_anchor_isolated
+      implementation: src/lgp/attacks/vcsf_common_anchor_isolated.py
+      class_name: VCSFCommonAnchorCandidate
+      config_class_name: VCSFCommonAnchorConfig
+    ablation_study: vcsf_single_source_ablation
+    budget_profile: vcsf_single_source_ablation_observed_cost
+    owner_decision: docs/research/vcsf-whole-ablation-revision-20260911.md
+    planning_entrypoint: experiments/vcsf_common_anchor.py
+    execution_entrypoint: experiments/vcsf_common_anchor_experiments.py
+    execution_authorized: true
+    runner_armed: false
+    device_counts: [1, 2, 4]
+    scheduling: independent_complete_configuration_jobs
+    execution_lifecycle: full_stage_keep_all_v1
+    prediction_archive: gzip
+    payload_retention:
+      mode: keep_all
+      deletion_authorized: false
+      prune_after_seal: false
+      preserve_failed_and_partial: true
+    selection_namespace: retrospective_fullval_fixed_common_anchor
+    independent_confirmation: false
+    automatic_promotion: false
+    automatic_resume: false
+    old_run_restart: false
+    full_target_panel_required: true
+    source_matched_policy: exclude_from_BB_mean_report_separately
+    historical_reuse: exact_configuration_and_qualified_evidence_only
+  vcsf_single_source_operator_factorial_research:
+    description: Complete eight operator combinations at one fixed scale width, preserving the old scale study.
+    dataset: coco
+    split: val
+    images: 5000
+    seed: 42
+    sources: [faster_rcnn_r50]
+    targets: all
+    methods: []
+    process_local_candidate_overlay: true
+    isolated_candidate:
+      execution_alias: vcsf_operator_factorial_isolated
+      implementation: src/lgp/attacks/vcsf_operator_factorial_isolated.py
+      class_name: VCSFOperatorFactorialCandidate
+      config_class_name: VCSFOperatorFactorialConfig
+    ablation_study: vcsf_single_source_operator_factorial
+    budget_profile: vcsf_retrospective_observed_cost
+    owner_decision: docs/research/vcsf-whole-ablation-revision-20260911.md
+    planning_entrypoint: experiments/prepare_vcsf_operator_factorial.py
+    execution_entrypoint: experiments/vcsf_operator_factorial.py
+    execution_lifecycle: full_stage_keep_all_v1
+    prediction_archive: gzip
+    payload_retention:
+      mode: keep_all
+      deletion_authorized: false
+      prune_after_seal: false
+      preserve_failed_and_partial: true
+    status: registered_pending_ODA_and_independent_execution_admission
+    execution_authorized: true
+    runner_armed: false
+    device_counts: [1, 2, 4]
+    scheduling: independent_complete_configuration_jobs
+    automatic_resume: false
+    old_run_restart: false
+    independent_confirmation: false
+    automatic_promotion: false
+    selection_namespace: retrospective_fullval_fixed_width_operator_factorial
+    source_matched_policy: exclude_from_BB_mean_report_separately
+    full_target_panel_required: true
+    all_twelve_metrics_required: true
+    bootstrap_required: false
+    historical_reuse: exact_configuration_and_qualified_evidence_only
+    historical_reuse_failure: unresolved_not_automatic_new_run
+    requested_new_group_limit: 4
+  vcsf_single_source_scale_research:
+    description: Single-source four-level staged scale-operator research after owner stop.
+    dataset: coco
+    split: val
+    images: 5000
+    seed: 42
+    sources: [faster_rcnn_r50]
+    targets: all
+    methods: []
+    process_local_candidate_overlay: true
+    isolated_candidate:
+      execution_alias: vcsf_scale_isolated
+      implementation: src/lgp/attacks/vcsf_scale_isolated.py
+      class_name: VCSFScaleCandidate
+      config_class_name: VCSFScaleConfig
+    ablation_study: vcsf_single_source_scale
+    budget_profile: vcsf_retrospective_observed_cost
+    owner_decision: docs/research/vcsf-single-source-amendment-20260909.md
+    planning_entrypoint: experiments/prepare_vcsf_single_source_scale.py
+    structure_entrypoint: experiments/vcsf_single_source_scale_preflight.py
+    status: registered_pending_ODA_operator_and_execution_validation
+    execution_authorized: true
+    runner_armed: false
+    device_counts: [1, 2]
+    scheduling: independent_complete_configuration_jobs
+    automatic_resume: false
+    old_run_restart: false
+    selection_namespace: retrospective_fullval_single_source_staged
+    independent_confirmation: false
+    automatic_promotion: false
+    source_matched_policy: exclude_from_BB_mean_report_separately
+    full_target_panel_required: true
+    historical_reuse: exact_configuration_and_qualified_evidence_only
+    identity_reuse: requires_forward_backward_and_rng_equivalence
+  vcsf_seed42_amended_analysis:
+    description: Owner-amended seed-42 retrospective analysis after interim descriptive observations.
+    parent_protocol: vcsf_fullval_retrospective_ablation
+    budget_profile: vcsf_retrospective_observed_cost
+    methods: []
+    entrypoint: experiments/vcsf_seed42_analysis.py
+    execution_kind: cpu_existing_evidence_only
+    owner_decision: docs/research/vcsf-finalization-scope-amendment-20260908.md
+    included_attack_seeds: [42]
+    contrast_retention: all_terms_within_included_attack_seeds
+    coefficient_policy: retain_original_exact_coefficients
+    views: [pooled_source_excluded, each_source_excluded]
+    multiplicity: one_joint_family_centered_max_absolute_bootstrap_error
+    seed_estimand: conditional_on_declared_attack_seeds_not_resampled
+    original_resample_bytes: preserve_without_regeneration_or_metadata_relabeling
+    expected_parent: {source_groups: 96, contrasts: 69}
+    expected_amended:
+      source_groups: 56
+      all_cells: 896
+      blackbox_bootstrap_cells: 840
+      configuration_seed_pairs: 28
+      retained_contrasts: 61
+      withdrawn_contrasts: 8
+      joint_view_contrasts: 183
+    expected_cpu_subset:
+      tasks: 942
+      cells: 896
+      new_group_bindings: 46
+      reused_source_groups: 10
+      qualified_complete_reuse_cells: 1
+      new_invocations: 941
+    exact_complete_prefix_required: true
+    independent_input_audit_required: true
+    amendment_after_interim_observation: true
+    selection_adjusted_inference: false
+    finite_sample_guarantee: false
+    independent_confirmation: false
+    original_plan_completion: false
+    automatic_promotion: false
+    new_model_calls: 0
+  vcsf_layered_efficacy_execution:
+    description: Execution-only binding of the registered retrospective layered study.
+    parent_protocol: vcsf_fullval_retrospective_ablation
+    budget_profile: vcsf_retrospective_observed_cost
+    methods: []
+    entrypoint: experiments/vcsf_layered_efficacy.py
+    device_counts: [1, 2]
+    scheduling: alternating_source_to_gpu_by_configuration_seed_pair
+    complete_group_atomicity: true
+    automatic_resume: false
+    accepted_group_rerun: false
+    independent_confirmation: false
+    prediction_archive: gzip
+    payload_retention:
+      mode: fixed_count_after_group_validation
+      retained_images: 500
+      selection_algorithm: canonical_equal_bins_center_v1
+      retained_image_ids_sha256: e9651136f8310cc747c750f9c19704472611292cd4e35bc388666f6b476ab244
+      prune_after_complete_targets: 16
+      preserve_all_predictions: true
+      preserve_all_manifests: true
+      preserve_failed_groups: true
+      preserve_historical_roots: true
+      authorization: explicit_owner_new_roots_only_20260906
+    smoke_policy:
+      group_selection: canonical_first_pending_complete_source_pair
+      payload_retention: keep_all
+      formal_metrics_eligible: false
+    launch_gates:
+      - independent_cost_acceptance
+      - independent_structure_acceptance
+      - reference_fixed_state_acceptance
+      - semantic_reuse_adjudication
+      - bound_analysis_input_index
+      - independent_analysis_policy_lock
+      - independent_executor_lifecycle_acceptance
+      - deep_data_and_environment_check
+      - runtime_source_and_checkpoint_binding
+      - disk_and_exclusive_device_check
+  vcsf_fullval_retrospective_ablation:
+    description: Retrospective layered VCSF research, not independent final confirmation.
+    dataset: coco
+    split: val
+    images: 5000
+    seed: 42
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t]
+    targets: all
+    methods: []
+    process_local_candidate_overlay: true
+    isolated_candidate:
+      execution_alias: vcsf_research_isolated
+      implementation: src/lgp/attacks/vcsf_research_isolated.py
+      class_name: VCSFResearchCandidate
+      config_class_name: VCSFResearchConfig
+    ablation_study: vcsf_finalization_layered
+    budget_profile: vcsf_retrospective_observed_cost
+    execution_authorized: true
+    runner_armed: false
+    status: preparation_pending_server_validation
+    selection_namespace: retrospective_fullval_reuse
+    independent_confirmation: false
+    cost_precondition: independently_verified_cost
+    structure_devices: [cuda:0, cuda:1]
+    source_matched_policy: exclude_from_BB_mean_report_separately
+    all_image_ids_sha256: da6fc732d63651c32997a20b8f1197813a923613f059986297c5ddd5c6325190
+    frozen_vcsf_sha256: 99423c6892db7afc172dff0eb375970a603b44ed9885b0c04f71faa845da2c4a
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    disclosure:
+      - Common-2 contrasts do not establish six-source component generality.
+      - Full-val selection and repeated seeds do not create an independent test set.
+      - Logical gradient counts do not imply equal physical runtime.
+      - Partial AP must not change declared contrasts or thresholds.
+  current_paired_cost:
+    description: Current-input paired physical-cost reproduction of the current Common-2 method panel; no AP or inherited historical results.
+    status: public_reproduction_candidate_pending_device_qualification
+    datasets: [coco]
+    split: val
+    budget_profile: compute_matched
+    method_source_protocol: main_transfer
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t]
+    targets: []
+    metrics: []
+    full_images: 5000
+    retained_images: 500
+    warmup_images: 5
+    seed: 42
+    selection_algorithm: canonical_equal_bins_center_v1
+    all_image_ids_sha256: da6fc732d63651c32997a20b8f1197813a923613f059986297c5ddd5c6325190
+    retained_image_ids_sha256: e9651136f8310cc747c750f9c19704472611292cd4e35bc388666f6b476ab244
+    method_order_schedule: williams_balanced_position_and_within_image_carryover
+    allocator_policy: warm_cache_no_empty_cache_between_measured_calls
+    timing_scope: synchronized_attack_api_including_reference_work_excluding_decode_and_external_validation
+    reference_method: vcsf
+    execution_schedule: serial_source_jobs_for_uncontaminated_timing
+    device_counts: [1, 2]
+    concurrent_measurements: 1
+    entrypoint: experiments/current_paired_cost.py
+  vcsf_common2_cost_calibration:
+    description: >-
+      Outcome-independent paired cost calibration of ten accepted methods.
+      This is not an efficacy experiment and computes no AP. Full-val5000
+      remains mandatory for the separately registered efficacy ablations.
+    datasets: [coco]
+    split: val
+    seed: 42
+    budget_profile: vcsf_observed_physical_cost
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t]
+    targets: []
+    methods: [numbod, hifa, mlfadv, tog, augtrans, lgp, afog, osfd, sfim_b, vcsf]
+    metrics: []
+    retained_images: 500
+    warmup_images: 5
+    selection_algorithm: canonical_equal_bins_center_v1
+    all_image_ids_sha256: da6fc732d63651c32997a20b8f1197813a923613f059986297c5ddd5c6325190
+    retained_image_ids_sha256: e9651136f8310cc747c750f9c19704472611292cd4e35bc388666f6b476ab244
+    frozen_vcsf_sha256: 99423c6892db7afc172dff0eb375970a603b44ed9885b0c04f71faa845da2c4a
+    method_order_schedule: williams_balanced_position_and_within_image_carryover
+    allocator_policy: warm_cache_no_empty_cache_between_measured_calls
+    timing_scope: synchronized_attack_api_including_reference_work_excluding_decode_and_external_validation
+    reference_method: vcsf
+    entrypoint: experiments/vcsf_common2_cost_calibration.py
+  coco_all_methods:
+    description: >-
+      Formal unified COCO transfer benchmark over all eleven maintained
+      attacks, six canonical sources and sixteen canonical targets. Every
+      native source-method pair is generated once on all 5,000 val2017 images,
+      evaluated on the complete target panel, validated fail-closed, and only
+      then reduced to the one pre-frozen 500-image evidence subset.
+    datasets: [coco]
+    split: val
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: all
+    methods: [tog, lgp, osfd, afog, numbod, svfta, sfim_b, augtrans, hifa, mlfadv, naa]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    payload_retention:
+      mode: fixed_count_after_group_validation
+      retained_images: 500
+      selection_algorithm: canonical_equal_bins_center_v1
+      prune_after_complete_targets: 16
+    prediction_archive:
+      format: gzip
+      remove_uncompressed_after_verification: true
+    formal_all_methods: true
+    entrypoint: experiments/coco_all_methods.py
+  coco_method_fidelity_refresh:
+    description: >-
+      Frozen 1,000-image COCO development rerun for methods whose fidelity
+      changed after the August 2026 paper/code audit. SFIM-B restores the
+      published normalized-gradient learning rate, NAA restores that learning
+      rate and the exact ResNet-50 conv4_3 surface, and Corrupting Attention is
+      evaluated on its sole compatible canonical deformable-attention source.
+      This protocol is development-only and never overwrites or retroactively
+      validates the accepted eleven-method full-val run.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: all
+    methods: [sfim_b, naa, corrupting_attention]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    expected_images: 1000
+    expected_ready_attack_groups: 8
+    expected_attack_evaluations: 128
+    blackbox_mean_excludes_source_matched_target: true
+    development_only: true
+    entrypoint: experiments/coco_method_fidelity_refresh.py
+  coco_corrupting_attention_cm20:
+    description: >-
+      Preregistered COCO-1000 sensitivity run that gives Corrupting Attention
+      the complete 20-backward-equivalent headline budget. It preserves the
+      CA-10 dispersion objective and deformable-encoder surface, doubles the
+      update count and halves the step size so T times alpha remains fixed.
+      CA-CM20 is the only eligible Corrupting Attention row in a strict 20-BE
+      comparison; CA-10 remains a separately labelled efficiency result.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [deformable_detr_r50]
+    targets: all
+    methods: [corrupting_attention]
+    ablation_studies: [corrupting_attention_compute_budget]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    expected_images: 1000
+    expected_ready_attack_groups: 1
+    expected_attack_evaluations: 16
+    blackbox_mean_excludes_source_matched_target: true
+    development_only: true
+    entrypoint: experiments/coco_corrupting_attention_cm20.py
+  coco_fullval2017_common2_multi_budget_linf_zero_query_transfer:
+    description: >-
+      Formal one-factor L-infinity sensitivity benchmark on all 5,000 COCO
+      val2017 images. The Common-2 sources and all eleven maintained attacks
+      are evaluated against the complete sixteen-target panel at 2/255,
+      4/255, 8/255, 16/255 and 32/255. The accepted 4/255 full-val records are
+      reused by cryptographic reference; the other radii are regenerated with
+      every non-epsilon method setting frozen. The first four radii form the
+      core comparison and 32/255 is reported only as a high-distortion stress
+      point. No target query, target prediction or target gradient is exposed
+      during generation.
+    datasets: [coco]
+    split: val
+    seed: 42
+    budget_profile: compute_matched_multi_epsilon
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t]
+    targets: all
+    methods: [sfim_b, naa, numbod, hifa, mlfadv, tog, augtrans, lgp, afog, osfd, svfta]
+    epsilon_order: [2/255, 4/255, 8/255, 16/255, 32/255]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    experiment_registry: configs/experiments/multi_budget_linf.yaml
+    full_coco_val_claim: true
+    certified_robustness_claim: false
+    entrypoint: experiments/coco_multi_budget_linf.py
+    status: superseded_by_20260826_method_fidelity_revision
+  coco_retained500_common2_preprocessing_defense:
+    description: >-
+      Predeclared victim-side input-preprocessing benchmark over the one
+      retained 500-image evidence subset frozen before the accepted formal
+      COCO run. Common-2 is the project-defined pair of white-box sources on
+      which all eleven maintained methods are executable. Clean and attacked
+      inputs receive the same deterministic transform before each of the
+      sixteen target detectors. This is an oblivious, non-adaptive benchmark;
+      it is not a full-5000-image COCO main-transfer result.
+    datasets: [coco]
+    split: val
+    seed: 42
+    budget_profile: compute_matched
+    source_protocol: coco_all_methods
+    source_acceptance: outputs/reports/coco/formal_all_methods_acceptance.json
+    retained_images: 500
+    retained_selection_algorithm: canonical_equal_bins_center_v1
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t]
+    common_2_definition: >-
+      The two canonical white-box sources supported by every one of the eleven
+      maintained attack methods; Common-2 is a local comparison label, not a
+      term or protocol claimed by any source paper.
+    targets: all
+    methods: [sfim_b, naa, numbod, hifa, mlfadv, tog, augtrans, lgp, afog, osfd, svfta]
+    defenses: all
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    threat_model: oblivious_victim_input_preprocessing
+    clean_reference_required: true
+    blackbox_mean_excludes_source_matched_target: true
+    transformed_payload_retention: manifest_only_after_complete_target_panel
+    prediction_archive:
+      format: gzip
+      remove_uncompressed_after_verification: true
+    formal_retained_subset_benchmark: true
+    full_coco_val_claim: false
+    entrypoint: experiments/coco_preprocessing_defense.py
+    status: historical_pre_20260826_method_fidelity
+  coco_retained500_common2_adaptive_preprocessing_defense:
+    description: >-
+      Defense-aware companion to the accepted oblivious retained-500
+      preprocessing benchmark. Every Common-2 source, attack method and
+      defense variant is regenerated from the same clean 500 image IDs while
+      optimizing through the known preprocessing-to-source-detector pipeline
+      under a frozen BPDA policy. The resulting payload is evaluated against
+      all sixteen targets without target-model access. This is an empirical
+      adaptive retained-500 benchmark, not certified robustness and not a
+      full-val2017 claim.
+    datasets: [coco]
+    split: val
+    seed: 42
+    budget_profile: compute_matched
+    paired_oblivious_protocol: coco_retained500_common2_preprocessing_defense
+    paired_oblivious_acceptance: >-
+      outputs/experiments/coco_preprocessing_defense/20260811T033029Z/formal_preprocessing_defense_acceptance.json
+    retained_images: 500
+    retained_selection_algorithm: canonical_equal_bins_center_v1
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t]
+    common_2_definition: >-
+      The two canonical white-box sources supported by every one of the eleven
+      maintained attack methods; Common-2 is a local comparison label, not a
+      term or protocol claimed by any source paper.
+    targets: all
+    methods: [sfim_b, naa, numbod, hifa, mlfadv, tog, augtrans, lgp, afog, osfd, svfta]
+    defenses: all
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    threat_model: adaptive_source_pipeline_bpda
+    clean_reference: paired_oblivious_records
+    blackbox_mean_excludes_source_matched_target: true
+    generated_payload_retention: remove_after_complete_target_panel_and_manifest_hash
+    prediction_archive:
+      format: gzip
+      remove_uncompressed_after_verification: true
+    formal_retained_subset_benchmark: true
+    full_coco_val_claim: false
+    certified_robustness_claim: false
+    entrypoint: experiments/coco_adaptive_preprocessing_defense.py
+    status: historical_pre_20260826_method_fidelity
+  coco_retained500_victim_training_state_transfer:
+    description: >-
+      Training-state transfer benchmark using the accepted retained-500 COCO
+      evidence. Eleven attacks are reused byte-for-byte from the held-out Mask
+      R-CNN Swin-T source and evaluated without target queries against a
+      strictly training-controlled Faster R-CNN pair: matched benign
+      continuation and adversarial continuation from one identical detector
+      checkpoint. The formal qualification gate requires matched data order,
+      processed augmentation trace, optimizer steps and fixed final epoch.
+    datasets: [coco]
+    split: val
+    seed: 42
+    budget_profile: compute_matched
+    source_protocol: coco_all_methods
+    source_acceptance: outputs/reports/coco/formal_all_methods_acceptance.json
+    retained_images: 500
+    retained_selection_algorithm: canonical_equal_bins_center_v1
+    sources: [mask_rcnn_swin_t]
+    targets: [faster_rcnn_r50]
+    victim_states: [standard_control, adversarial_training]
+    methods: [sfim_b, naa, numbod, hifa, mlfadv, tog, augtrans, lgp, afog, osfd, svfta]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    threat_model: zero_query_oblivious_cross_model_transfer
+    pair_registry: configs/experiments/training_state_transfer.yaml
+    strict_training_controlled_pair_required: true
+    clean_reference_required: true
+    formal_retained_subset_benchmark: true
+    full_coco_val_claim: false
+    certified_robustness_claim: false
+    entrypoint: experiments/coco_training_state_transfer.py
+    status: historical_pre_20260826_method_fidelity
+  coco_fullval2017_victim_training_state_zero_query_transfer_confirmation:
+    description: >-
+      Full-val2017 confirmation of the accepted retained-500 victim
+      training-state result. All eleven attacks are regenerated on the exact
+      5,000-image numeric-ID-ordered COCO val2017 split from the held-out Mask
+      R-CNN Swin-T source, then the unchanged payload for each method is
+      evaluated without target access against the same strictly controlled
+      Faster R-CNN standard/adversarial checkpoint pair. Every regenerated
+      payload must match the accepted retained-500 payload byte-for-byte on
+      all 500 frozen overlap IDs. Agreement with retained-500 outcomes is
+      reported but is never an eligibility gate.
+    datasets: [coco]
+    split: val
+    seed: 42
+    budget_profile: compute_matched
+    source_protocol: coco_all_methods
+    paired_retained500_protocol: coco_retained500_victim_training_state_transfer
+    formal_images: 5000
+    sources: [mask_rcnn_swin_t]
+    targets: [faster_rcnn_r50]
+    victim_states: [standard_control, adversarial_training]
+    methods: [sfim_b, naa, numbod, hifa, mlfadv, tog, augtrans, lgp, afog, osfd, svfta]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    threat_model: zero_query_oblivious_cross_model_transfer
+    pair_registry: configs/experiments/training_state_transfer.yaml
+    payload_retention:
+      mode: keep_all
+      reason: reusable_immutable_mask_source_evidence_for_future_architecture_extension
+    overlap_reference:
+      images: 500
+      exact_payload_sha256_required: true
+    formal_counts:
+      clean_evaluations: 2
+      attack_evaluations: 22
+      records: 24
+      attack_groups: 11
+      payload_images: 55000
+    full_coco_val_claim: true
+    full_coco_val_claim_scope: one_source_one_victim_training_state_pair
+    certified_robustness_claim: false
+    entrypoint: experiments/coco_training_state_fullval_confirmation.py
+    status: historical_pre_20260826_method_fidelity
+  voc_all_methods:
+    description: >-
+      Formal unified Pascal VOC transfer benchmark over all eleven maintained
+      attacks, six canonical sources and sixteen canonical targets. Every
+      native source-method pair is generated once on all 4,952 VOC2007 test
+      images, evaluated on the complete target panel, validated fail-closed,
+      and only then reduced to one pre-frozen 500-image evidence subset.
+    datasets: [voc]
+    split: val
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: all
+    methods: [tog, lgp, osfd, afog, numbod, svfta, sfim_b, augtrans, hifa, mlfadv, naa]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    payload_retention:
+      mode: fixed_count_after_group_validation
+      retained_images: 500
+      selection_algorithm: canonical_equal_bins_center_v1
+      prune_after_complete_targets: 16
+    prediction_archive:
+      format: gzip
+      remove_uncompressed_after_verification: true
+    formal_all_methods: true
+    entrypoint: experiments/voc_transfer.py
+  lgp_corrected_coco_oblivious_preprocessing:
+    description: Corrected-LGP-only fixed-500 oblivious victim preprocessing, gated pending independent source reuse and execution authorization.
+    datasets: [coco]
+    split: val
+    seed: 42
+    budget_profile: compute_matched
+    source_protocol: lgp_corrected_coco_common2_main
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t]
+    targets: all
+    methods: [lgp]
+    defenses: all
+    defense_registry: configs/experiments/preprocessing_defenses.yaml
+    defense_contract_sha256: 1f8ad009f7e346c06a1204aa8802d01b94b658ec8d5597057c48f24238438c59
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    threat_model: oblivious_victim_input_preprocessing
+    image_order: numeric_coco_image_id
+    retained_images: 500
+    retained_selection_algorithm: canonical_equal_bins_center_v1
+    retained_image_ids_sha256: e9651136f8310cc747c750f9c19704472611292cd4e35bc388666f6b476ab244
+    seed_schedule: full_val_numeric_image_position
+    expected_attack_evaluations: 352
+    source_payload_retention: keep_all
+    independent_stage_audit_required: true
+    numerical_input_decision_required: true
+    downstream_payload_reuse_decision_required: true
+    storage_admission_required: true
+    lgp_corrected_downstream_stage: oblivious_preprocessing
+    execution_authorized: false
+    storage_safety_multiplier: 4
+    storage_margin_bytes: 10000000000
+    entrypoint: experiments/lgp_corrected_oblivious_preprocessing.py
+    admission_entrypoint: tools/inspect_lgp_corrected_oblivious_preprocessing.py
+  lgp_corrected_coco_defended_clean_current:
+    description: Current-identity clean evaluation for the ten non-identity fixed-500 victim transforms; identity is qualified from accepted full-COCO predictions.
+    status: preparation_only
+    execution_authorized: false
+    datasets: [coco]
+    split: val
+    budget_profile: compute_matched
+    source: clean
+    attack: clean
+    paired_attack_protocol: lgp_corrected_coco_oblivious_preprocessing
+    source_clean_protocol: lgp_corrected_coco_common2_main
+    targets: all
+    defenses: [jpeg_q90, jpeg_q75, jpeg_q50, bit_depth_6, bit_depth_4, gaussian_sigma_1_2, gaussian_sigma_1, median_k3, resize_3_4, resize_5_4]
+    defense_registry: configs/experiments/preprocessing_defenses.yaml
+    defense_contract_sha256: 1f8ad009f7e346c06a1204aa8802d01b94b658ec8d5597057c48f24238438c59
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    image_order: numeric_coco_image_id
+    retained_images: 500
+    retained_selection_algorithm: canonical_equal_bins_center_v1
+    retained_image_ids_sha256: e9651136f8310cc747c750f9c19704472611292cd4e35bc388666f6b476ab244
+    accepted_clean_binding_sha256: 60a866acb7febd26288b6b690807f5ac6d29d4c956fbd7f283a687d7a5b3eb98
+    accepted_full_clean_audit_sha256: ae1f35e21156a7b34d0cc9903b4fd1ceed012ce644ea7bd9c926035bf65562e0
+    identity_subset_qualification_sha256: f6353853f0bb3b3cdc5719507368873e836e25d33097d4d6330722883ecdc732
+    expected_transform_groups: 10
+    expected_transformed_images: 5000
+    expected_clean_evaluations: 160
+    expected_target_image_uses: 80000
+    prediction_archive: {format: gzip}
+    transformed_view_retention: keep_all_pending_independent_audit
+    independent_stage_audit_required: true
+    storage_admission_required: true
+    storage_safety_multiplier: 4
+    storage_margin_bytes: 10000000000
+    storage_reference_transformed_bytes: 1958447653
+    storage_reference_prediction_bytes: 379942500
+    storage_reference_basis: historical_candidate_current_byte_replay_capacity_estimate_only
+    storage_reference_receipt_sha256: 863c078a8941b4ddfe98d2c6c737c8489f4d4d01883f3e976ecab2f262d3a844
+    storage_current_measurement_sha256: 390be22162137f18c4490db15335384aa27f706f049f4bd8f831617c6ba61e54
+    storage_current_audit_sha256: 6f8aa10f4c2220c71564b882495d54b102f91f98c603fbb4df5e2aeb73a93bdd
+    storage_current_measured_transformed_bytes: 1958447653
+    storage_required_free_bytes: 19353560612
+    storage_admission_sha256: ff66589e634510e601d9bf953228dba97ef8223f3e6b4ee45a345fd77d7d7d40
+    minimum_gpu_free_mib: 16000
+    supervisor_required: true
+    max_supervised_elapsed_seconds: 259200
+    max_supervisor_observation_gap_seconds: 30
+    min_positive_gpu_observations_per_worker: 2
+    entrypoint: experiments/lgp_corrected_defended_clean_current.py
+    audit_entrypoint: tools/audit_lgp_corrected_defended_clean_current.py
+    stage_decision_entrypoint: tools/accept_lgp_corrected_defended_clean_stage.py
+    union_candidate_entrypoint: tools/audit_lgp_corrected_defended_clean_union.py
+    union_decision_entrypoint: tools/accept_lgp_corrected_defended_clean_union.py
+    supervisor_request_entrypoint: tools/prepare_lgp_corrected_defended_clean_supervisor_request.py
+    supervisor_entrypoint: tools/supervise_lgp_corrected_defended_clean_current.py
+    supervisor_stop_diagnostic_entrypoint: tools/verify_lgp_corrected_clean_supervisor_stop.py
+  lgp_corrected_coco_identity_clean_current:
+    description: New-current identity clean inference for the frozen fixed-500 panel; does not reuse unsealed full-clean runtime configs.
+    status: preparation_only
+    execution_authorized: false
+    datasets: [coco]
+    split: val
+    source: clean
+    attack: clean
+    budget_profile: compute_matched
+    paired_attack_protocol: lgp_corrected_coco_oblivious_preprocessing
+    paired_transformed_clean_protocol: lgp_corrected_coco_defended_clean_current
+    targets: all
+    defenses: [identity]
+    defense_registry: configs/experiments/preprocessing_defenses.yaml
+    defense_contract_sha256: 1f8ad009f7e346c06a1204aa8802d01b94b658ec8d5597057c48f24238438c59
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    image_order: numeric_coco_image_id
+    retained_images: 500
+    retained_selection_algorithm: canonical_equal_bins_center_v1
+    retained_image_ids_sha256: e9651136f8310cc747c750f9c19704472611292cd4e35bc388666f6b476ab244
+    accepted_clean_binding_sha256: 60a866acb7febd26288b6b690807f5ac6d29d4c956fbd7f283a687d7a5b3eb98
+    accepted_full_clean_audit_sha256: ae1f35e21156a7b34d0cc9903b4fd1ceed012ce644ea7bd9c926035bf65562e0
+    original_runtime_config_seal_required: true
+    prediction_archive: {format: gzip}
+    expected_clean_evaluations: 16
+    expected_target_image_uses: 8000
+    independent_stage_audit_required: true
+    supervisor_required: true
+    storage_admission_required: true
+    minimum_gpu_free_mib: 16000
+    max_supervised_elapsed_seconds: 86400
+    entrypoint: experiments/lgp_corrected_identity_clean_current.py
+    audit_entrypoint: tools/audit_lgp_corrected_identity_clean_current.py
+  lgp_corrected_coco_adaptive_preprocessing:
+    description: Corrected-LGP-only fixed-500 defense-aware BPDA preparation; execution is not authorized.
+    datasets: [coco]
+    split: val
+    seed: 42
+    budget_profile: compute_matched
+    source_protocol: lgp_corrected_coco_common2_main
+    paired_oblivious_protocol: lgp_corrected_coco_oblivious_preprocessing
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t]
+    targets: all
+    methods: [lgp]
+    defenses: all
+    defense_registry: configs/experiments/preprocessing_defenses.yaml
+    adaptive_contract_sha256: 33e8c2b093facfd92ea3fafdcf7ec51b35b17df8b67c704f98a2311525bc6a54
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    threat_model: adaptive_source_pipeline_bpda
+    image_order: numeric_coco_image_id
+    retained_images: 500
+    retained_selection_algorithm: canonical_equal_bins_center_v1
+    retained_image_ids_sha256: e9651136f8310cc747c750f9c19704472611292cd4e35bc388666f6b476ab244
+    seed_schedule: full_val_numeric_image_position
+    expected_generation_groups: 22
+    expected_attack_evaluations: 352
+    expected_metric_records: 352
+    identity_payload_reuse_authorized: false
+    generated_payload_retention: keep_all_pending_independent_audit
+    transformed_view_retention: keep_all_pending_independent_audit
+    clean_dependency: separate_defended_clean_acceptance_required_for_paper_table
+    source_stage_audit_required: true
+    paired_oblivious_numerical_input_required: true
+    storage_admission_required: true
+    storage_safety_multiplier: 6
+    storage_margin_bytes: 10000000000
+    entrypoint: experiments/lgp_corrected_adaptive_preprocessing.py
+    execution_authorized: false
+    status: preparation_only
+  lgp_corrected_coco_training_state:
+    description: Corrected-LGP Mask-source full-val2017 transfer to the existing strictly controlled Faster R-CNN victim-state pair.
+    datasets: [coco]
+    split: val
+    seed: 42
+    budget_profile: compute_matched
+    source_protocol: lgp_corrected_coco_common2_main
+    source: mask_rcnn_swin_t
+    target: faster_rcnn_r50
+    methods: [lgp]
+    victim_states: [standard_control, adversarial_training]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    expected_images: 5000
+    expected_attack_evaluations: 2
+    expected_metric_records: 2
+    generation_jobs: 0
+    source_payload_retention: keep_all
+    pair_registry: configs/experiments/training_state_transfer.yaml
+    pair_qualification: outputs/experiments/coco_training_state_fullval_confirmation/20260816T053441Z/checkpoint_pair_qualification.json
+    pair_qualification_sha256: 0f588a90ca6824c8014bc0e301f1ea1d0d009a22ef2b62e34dba04619d793d85
+    checkpoint_sha256:
+      standard_control: 70cc278b6cf860e12f17bcfb35344ddb18602b006b5a0c3dffafa04661bfce86
+      adversarial_training: 93d7e7ea1e1f9eab2a0b6d88f17718257d4a607eff7b091107de6f77444d9720
+    threat_model: zero_query_oblivious_cross_model_transfer
+    independent_stage_audit_required: true
+    numerical_input_decision_required: true
+    downstream_payload_reuse_decision_required: true
+    prediction_archive: {format: gzip}
+    minimum_gpu_free_mib: 16000
+    storage_required_free_bytes: 10000000000
+    execution_authorized: false
+    entrypoint: experiments/lgp_corrected_training_state.py
+  lgp_corrected_coco_multi_budget_linf:
+    description: Corrected-LGP-only Common-2 full-val radius sensitivity; contract preparation, not execution admission.
+    datasets: [coco]
+    split: val
+    seed: 42
+    budget_profile: compute_matched_multi_epsilon
+    source_protocol: lgp_corrected_coco_common2_main
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t]
+    targets: all
+    methods: [lgp]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    image_order: numeric_coco_image_id
+    seed_schedule: full_val_numeric_image_position
+    full_images: 5000
+    epsilon_order: [2/255, 4/255, 8/255, 16/255, 32/255]
+    reference_epsilon: 4/255
+    stress_only: [32/255]
+    parameter_policy: only_eps_changes_from_corrected_source201
+    reference_policy: accepted_common2_payload_candidate_only_pending_exact_reuse_decision
+    source_stage_audit_required: true
+    numerical_input_decision_required: true
+    downstream_payload_reuse_decision_required: true
+    expected_reference_groups: 2
+    expected_new_generation_groups: 8
+    expected_attack_evaluations: 160
+    expected_metric_records: 160
+    new_payload_retention: keep_all_pending_independent_audit
+    execution_authorized: false
+    status: preparation_only
+  lgp_corrected_coco_noncommon_main:
+    description: Corrected LGP-only COCO main producer for the four non-Common-2 sources.
+    datasets: [coco]
+    split: val
+    seed: 42
+    budget_profile: compute_matched
+    sources: [yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: all
+    methods: [lgp]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    expected_images: 5000
+    expected_attack_groups: 4
+    expected_attack_evaluations: 64
+    payload_retention:
+      mode: fixed_count_after_group_validation
+      retained_images: 500
+      selection_algorithm: canonical_equal_bins_center_v1
+      prune_after_complete_targets: 16
+      cleanup_authorized: false
+      recovery_decision_sha256: null
+    prediction_archive: {format: gzip}
+    clean_reference_acceptance_sha256: 677163a566816e8220e9707642ca41660de80b97813045b5c1574d1d3f3ccba3
+    clean_current_audit_sha256: ae1f35e21156a7b34d0cc9903b4fd1ceed012ce644ea7bd9c926035bf65562e0
+    clean_reuse_binding_sha256: 775ae5056b06f9fd942d8fc63f6e3df3a74fc2bcc921c6599d0e7e4a6195e964
+    qualified_lgp_implementation_sha256: 5283ccc16560f65b02b509c4fda29cf7cfa1319722f317b66633f8dd7ca68830
+    qualified_lgp_factory_sha256: d114a62596d87b512ca2ac33a2ac9ac5841058e936e6191d599f51a6497b4bfb
+    qualified_lgp_registry_sha256: 29fe48d3f6ec5c2cb5cb96ebf5cdb6742738edf52ee6969cbe3ce4dd135d6bb1
+    qualified_lgp_parameters_sha256: c891a7b44910501e4b106ed998747831a34dd19ad063a4f814de16ec80b3fb1a
+    lgp_corrected_stage: true
+    execution_authorized: false
+    storage_required_free_bytes: 10000000000
+    storage_required_free_bytes_per_additional_source: 6000000000
+    entrypoint: experiments/lgp_corrected_main.py
+  lgp_corrected_coco_common2_main:
+    description: Corrected LGP-only COCO main producer for the two Common-2 sources retained for downstream dimensions.
+    datasets: [coco]
+    split: val
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t]
+    targets: all
+    methods: [lgp]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    expected_images: 5000
+    expected_attack_groups: 2
+    expected_attack_evaluations: 32
+    payload_retention: {mode: keep_all}
+    prediction_archive: {format: gzip}
+    clean_reference_acceptance_sha256: 677163a566816e8220e9707642ca41660de80b97813045b5c1574d1d3f3ccba3
+    clean_current_audit_sha256: ae1f35e21156a7b34d0cc9903b4fd1ceed012ce644ea7bd9c926035bf65562e0
+    clean_reuse_binding_sha256: 60a866acb7febd26288b6b690807f5ac6d29d4c956fbd7f283a687d7a5b3eb98
+    qualified_lgp_implementation_sha256: 5283ccc16560f65b02b509c4fda29cf7cfa1319722f317b66633f8dd7ca68830
+    qualified_lgp_factory_sha256: d114a62596d87b512ca2ac33a2ac9ac5841058e936e6191d599f51a6497b4bfb
+    qualified_lgp_registry_sha256: 29fe48d3f6ec5c2cb5cb96ebf5cdb6742738edf52ee6969cbe3ce4dd135d6bb1
+    qualified_lgp_parameters_sha256: c891a7b44910501e4b106ed998747831a34dd19ad063a4f814de16ec80b3fb1a
+    lgp_corrected_stage: true
+    execution_authorized: false
+    storage_required_free_bytes: 10000000000
+    storage_required_free_bytes_per_additional_source: 6000000000
+    entrypoint: experiments/lgp_corrected_main.py
+  lgp_corrected_voc_main:
+    description: Corrected LGP-only VOC2007 test main producer for all six sources.
+    datasets: [voc]
+    split: val
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: all
+    methods: [lgp]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    expected_images: 4952
+    expected_attack_groups: 6
+    expected_attack_evaluations: 96
+    payload_retention:
+      mode: fixed_count_after_group_validation
+      retained_images: 500
+      selection_algorithm: canonical_equal_bins_center_v1
+      prune_after_complete_targets: 16
+      cleanup_authorized: false
+      recovery_decision_sha256: null
+    prediction_archive: {format: gzip}
+    clean_reference_acceptance_sha256: eaa8848d919fb457d431459872aa1f893858ae102b4052760322b1f8bac464a2
+    clean_current_audit_sha256: 8d494ed09b04b595e9ceacea48566eb174a8ae745f14285d3e393ad2cafaa3fd
+    clean_reuse_binding_sha256: 514fe598b506f8be5e39ef854aeab0ff0a46ab2ab3a41d174b6fcb9ac9111bb9
+    qualified_lgp_implementation_sha256: 5283ccc16560f65b02b509c4fda29cf7cfa1319722f317b66633f8dd7ca68830
+    qualified_lgp_factory_sha256: d114a62596d87b512ca2ac33a2ac9ac5841058e936e6191d599f51a6497b4bfb
+    qualified_lgp_registry_sha256: 29fe48d3f6ec5c2cb5cb96ebf5cdb6742738edf52ee6969cbe3ce4dd135d6bb1
+    qualified_lgp_parameters_sha256: c891a7b44910501e4b106ed998747831a34dd19ad063a4f814de16ec80b3fb1a
+    lgp_corrected_stage: true
+    execution_authorized: false
+    storage_required_free_bytes: 8000000000
+    storage_required_free_bytes_per_additional_source: 4000000000
+    entrypoint: experiments/lgp_corrected_main.py
+  current_vcsf_radius:
+    description: Current-input selected A10 Common-2 five-radius sensitivity; only epsilon changes, no configuration selection or inherited results.
+    status: public_reproduction_candidate_pending_device_qualification
+    datasets: [coco]
+    allowed_datasets: [coco]
+    split: val
+    budget_profile: vcsf_final_radius_observed_cost
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t]
+    targets: all
+    methods: [vcsf]
+    allowed_methods: [vcsf]
+    full_images: 5000
+    seed: 42
+    epsilon_order: [2/255, 4/255, 8/255, 16/255, 32/255]
+    reference_epsilon: 4/255
+    stress_epsilons: [32/255]
+    ablation_studies: [current_vcsf_radius_2_255, current_vcsf_radius_4_255, current_vcsf_radius_8_255, current_vcsf_radius_16_255, current_vcsf_radius_32_255]
+    device_counts: [1, 2]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    payload_retention: {mode: keep_all}
+    prediction_archive: {format: gzip}
+    entrypoint: experiments/current_vcsf_radius.py
+  main_transfer:
+    description: >-
+      Current COCO/VOC six-source, sixteen-target reproduction matrix in the
+      manuscript method order. Baseline schedules remain compute-matched;
+      VCSF retains its registered logical-update and observed-path accounting.
+    datasets: [coco, voc]
+    allowed_datasets: [coco, voc]
+    split: val
+    budget_profile: compute_matched
+    method_budget_profiles: {vcsf: vcsf_final_background_observed_cost}
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: all
+    methods: [numbod, hifa, mlfadv, tog, augtrans, lgp, afog, osfd, sfim_b, vcsf]
+    report_method_order: declared
+    allowed_methods: [numbod, hifa, mlfadv, tog, augtrans, lgp, afog, osfd, sfim_b, vcsf, naa, corrupting_attention]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    payload_retention: {mode: keep_all}
+    prediction_archive: {format: gzip}
+  current_training_state_transfer:
+    description: >-
+      Current-input COCO zero-query transfer against the registered controlled
+      Faster R-CNN checkpoint pair. Reuse preserved Swin-T main payloads;
+      full-val inference and retained-500 official saved-prediction projections
+      share the same predictions. This interface does not grant result acceptance.
+    status: public_reproduction_candidate_pending_device_qualification
+    datasets: [coco]
+    split: val
+    budget_profile: compute_matched
+    method_source_protocol: main_transfer
+    sources: [mask_rcnn_swin_t]
+    targets: [faster_rcnn_r50]
+    victim_states: [standard_control, adversarial_training]
+    full_images: 5000
+    retained_images: 500
+    retained_selection_algorithm: canonical_equal_bins_center_v1
+    training_pair_registry: configs/experiments/training_state_transfer.yaml
+    input_mode: reuse_current_main_complete_payloads
+    generation_jobs: 0
+    device_counts: [1, 2]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    entrypoint: experiments/training_state_transfer.py
+  current_oblivious_preprocessing_transfer:
+    description: >-
+      Current-main Common-2 payloads under eleven fixed oblivious victim
+      preprocessors. Reuse the canonical retained-500 population and original
+      full-validation attack seed mapping; preserve transformed pixels and
+      complete target predictions. No attack generation or inherited results.
+    status: public_reproduction_candidate_pending_device_qualification
+    datasets: [coco]
+    split: val
+    budget_profile: compute_matched
+    method_source_protocol: main_transfer
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t]
+    targets: all
+    full_images: 5000
+    retained_images: 500
+    retained_selection_algorithm: canonical_equal_bins_center_v1
+    preprocessing_registry: configs/experiments/preprocessing_defenses.yaml
+    input_mode: reuse_current_main_complete_payloads
+    generation_jobs: 0
+    device_counts: [1, 2]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    payload_retention: {mode: keep_all}
+    prediction_archive: {format: gzip}
+    entrypoint: experiments/preprocessing_transfer.py
+  current_adaptive_preprocessing_transfer:
+    description: >-
+      Current main-method Common-2 retained-500 defense-aware source-pipeline
+      BPDA reproduction. Preserve the original full-validation seeds and exact
+      method budgets. VCSF identity reuses current-main pixels; other identity
+      and all nonidentity attacks are generated from clean images. Keep all
+      generated pixels and complete predictions; inherit no author results.
+    status: public_reproduction_candidate_pending_device_qualification
+    datasets: [coco]
+    split: val
+    seed: 42
+    seed_schedule: full_val_numeric_image_position
+    budget_profile: compute_matched
+    method_source_protocol: main_transfer
+    paired_protocol: current_oblivious_preprocessing_transfer
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t]
+    targets: all
+    full_images: 5000
+    retained_images: 500
+    retained_selection_algorithm: canonical_equal_bins_center_v1
+    preprocessing_registry: configs/experiments/preprocessing_defenses.yaml
+    input_mode: current_main_seed_binding_with_fresh_adaptive_generation
+    identity_payload_reuse_methods: [vcsf]
+    identity_reuse_source_protocol: vcsf_final_adaptive_refresh
+    threat_model: adaptive_source_pipeline_bpda
+    device_counts: [1, 2]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    payload_retention: {mode: keep_all}
+    prediction_archive: {format: gzip}
+    entrypoint: experiments/adaptive_preprocessing_transfer.py
+  bdd100k_transfer:
+    description: Full BDD100K transfer matrix using the same six-source and sixteen-target panel as COCO and VOC.
+    datasets: [bdd100k]
+    split: val
+    budget_profile: compute_matched
+    sources: all
+    targets: all
+    methods: [tog, lgp, osfd, afog, numbod, svfta]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75]
+  whitebox:
+    description: Current COCO/VOC source-matched diagonal using the main method panel and unchanged per-method schedules.
+    datasets: [coco, voc]
+    allowed_datasets: [coco, voc]
+    split: val
+    budget_profile: compute_matched
+    method_budget_profiles:
+      vcsf: vcsf_final_background_observed_cost
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: source
+    source_matched_only: true
+    methods: [numbod, hifa, mlfadv, tog, augtrans, lgp, afog, osfd, sfim_b, vcsf]
+    allowed_methods: [numbod, hifa, mlfadv, tog, augtrans, lgp, afog, osfd, sfim_b, vcsf, naa, corrupting_attention]
+    report_method_order: declared
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    payload_retention:
+      mode: keep_all
+    prediction_archive:
+      format: gzip
+    entrypoint: experiments/whitebox.py
+  svfta_ablation:
+    description: Components, epsilon, iterations, levels, scale, maximum risk-repair updates, uncertainty grid and seeds on a frozen train-only development subset.
+    datasets: [coco]
+    split: dev
+    budget_profile: variable_ablation
+    sources: [faster_rcnn_r50]
+    targets: all_blackbox
+    methods: [svfta]
+    ablation_studies: [components, epsilon, iterations, feature_levels, scale_range, momentum, risk_warmup, uncertainty_decay_kappa, seeds]
+    derived_studies: [perceptual_quality, runtime]
+  svfta_scale_risk_search:
+    description: >-
+      Development-only paired search for a simpler and stronger SVFTA
+      scale+risk objective. The frozen COCO dev split is used with all six
+      canonical source families and five architecture-spanning non-source
+      targets. COCO val2017 is excluded from candidate selection.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: [cascade_rcnn_r50, yolov5_s, rtmdet_s, detr_r50, dino_r50]
+    methods: [svfta]
+    ablation_studies: [svfta_scale_risk_objective_search]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    selection_gate:
+      reference_variant: legacy_scale_risk
+      primary_metric: bbox_mAP
+      mean_delta_max: -1/500
+      cell_wins_min: 20
+      source_mean_wins_min: 4
+      target_mean_wins_min: 4
+      source_mean_regression_max: 1/200
+      require_zero_failures: true
+      require_budget_integrity: true
+    development_only: true
+    entrypoint: experiments/svfta_scale_risk_search.py
+  svfta_scale_risk_isolated_search:
+    description: >-
+      Development-only isolated search for a simpler and stronger SVFTA
+      scale+risk variant. One shared reference is paired with equal-instance
+      feature masking and smooth extremal log-odds risk on the frozen COCO dev
+      split. COCO val2017 is excluded from candidate selection.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: [cascade_rcnn_r50, yolov5_s, rtmdet_s, detr_r50, dino_r50]
+    methods: [svfta]
+    ablation_studies: [svfta_scale_risk_isolated_search]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    selection_gate:
+      reference_variant: legacy_scale_risk
+      primary_metric: bbox_mAP
+      mean_delta_max: -1/500
+      cell_wins_min: 20
+      source_mean_wins_min: 4
+      target_mean_wins_min: 4
+      source_mean_regression_max: 1/200
+      require_zero_failures: true
+      require_budget_integrity: true
+    development_only: true
+    entrypoint: experiments/svfta_scale_risk_isolated_search.py
+  svfta_smooth_risk_steps_search:
+    description: >-
+      Development-only paired allocation study for the smooth extremal
+      log-odds risk prefix. One global update count is selected across all six
+      canonical source families on the frozen COCO dev split; COCO val2017 is
+      excluded from selection.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: [cascade_rcnn_r50, yolov5_s, rtmdet_s, detr_r50, dino_r50]
+    methods: [svfta]
+    ablation_studies: [svfta_smooth_risk_steps_search]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    selection_gate:
+      reference_variant: smooth_steps_0
+      primary_metric: bbox_mAP
+      mean_delta_max: -1/500
+      cell_wins_min: 20
+      source_mean_wins_min: 4
+      target_mean_wins_min: 4
+      source_mean_regression_max: 1/200
+      require_zero_failures: true
+      require_budget_integrity: true
+    selection_policy:
+      eligible_variants: [smooth_steps_1, smooth_steps_2, smooth_steps_4]
+      benchmark_reference_variant: legacy_scale_risk
+      practical_tie_delta: 1/1000
+      tie_break_order: [smooth_steps_1, smooth_steps_2, smooth_steps_4]
+      rule: >-
+        Retain only positive-step variants that pass the gate against
+        smooth_steps_0 and also pass the same gate against the legacy anchor.
+        Select the lowest mean AP; variants within 0.001 AP of the best are
+        tied and the smaller global risk-prefix count wins.
+    development_only: true
+    entrypoint: experiments/svfta_smooth_risk_steps_search.py
+  svfta_smooth_risk_holdout_validation:
+    description: >-
+      Frozen validation of the selected one-step smooth log-odds risk prefix
+      on the 900 COCO-dev images disjoint from the first-100 selection screen.
+      This result validates or rejects the candidate and cannot retune it.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: [cascade_rcnn_r50, yolov5_s, rtmdet_s, detr_r50, dino_r50]
+    methods: [svfta]
+    ablation_studies: [svfta_smooth_risk_holdout_validation]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    image_selection:
+      strategy: ordered_slice
+      start: 100
+      stop: 1000
+      expected_total: 1000
+      role: frozen_disjoint_development_holdout
+    selection_gate:
+      reference_variant: legacy_scale_risk
+      primary_metric: bbox_mAP
+      mean_delta_max: -1/200
+      cell_wins_min: 20
+      source_mean_wins_min: 5
+      target_mean_wins_min: 5
+      source_mean_regression_max: 1/500
+      require_zero_failures: true
+      require_budget_integrity: true
+    frozen_candidate: smooth_steps_1
+    holdout_validation: true
+    development_only: true
+    entrypoint: experiments/svfta_smooth_risk_holdout_validation.py
+  svfta_smooth_risk_full_comparator:
+    description: >-
+      Frozen post-selection comparator of the one-step smooth scale+risk
+      candidate against the former full SVFTA with uncertainty gating. The
+      already inspected 900-image development holdout is reused transparently;
+      this run may accept or reject simplification but may not tune either
+      configuration.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: [cascade_rcnn_r50, yolov5_s, rtmdet_s, detr_r50, dino_r50]
+    methods: [svfta]
+    ablation_studies: [svfta_smooth_risk_full_comparator]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    image_selection:
+      strategy: ordered_slice
+      start: 100
+      stop: 1000
+      expected_total: 1000
+      role: frozen_comparator_extension
+    selection_gate:
+      reference_variant: legacy_full
+      primary_metric: bbox_mAP
+      mean_delta_max: -1/500
+      cell_wins_min: 20
+      source_mean_wins_min: 5
+      target_mean_wins_min: 5
+      source_mean_regression_max: 1/500
+      require_zero_failures: true
+      require_budget_integrity: true
+    frozen_candidate: smooth_scale_risk
+    comparator_extension: true
+    no_retuning: true
+    development_only: true
+    entrypoint: experiments/svfta_smooth_risk_full_comparator.py
+  svfta_smooth_reliability_interaction:
+    description: >-
+      Predeclared development interaction check for combining the frozen
+      one-step smooth log-odds risk update with the unchanged temporal
+      reliability gate. The first 100 ordered COCO-dev images are reused
+      transparently as a screening set; this experiment may reject the
+      combination but may not tune its fixed decay or threshold.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: [cascade_rcnn_r50, yolov5_s, rtmdet_s, detr_r50, dino_r50]
+    methods: [svfta]
+    ablation_studies: [svfta_smooth_reliability_interaction]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    image_selection:
+      strategy: ordered_slice
+      start: 0
+      stop: 100
+      expected_total: 1000
+      role: reused_development_interaction_screen
+    selection_gate:
+      reference_variant: legacy_full
+      primary_metric: bbox_mAP
+      mean_delta_max: -1/500
+      cell_wins_min: 20
+      source_mean_wins_min: 5
+      target_mean_wins_min: 5
+      source_mean_regression_max: 1/200
+      require_zero_failures: true
+      require_budget_integrity: true
+    frozen_candidate: smooth_reliability
+    diagnostic_reference_variant: smooth_scale_risk
+    interaction_screen: true
+    no_retuning: true
+    development_only: true
+    entrypoint: experiments/svfta_smooth_reliability_interaction.py
+  svfta_smooth_reliability_confirmation:
+    description: >-
+      Frozen 900-image development confirmation of the passing one-step
+      smooth log-odds risk plus unchanged temporal reliability gate against
+      the former full SVFTA. The slice was partially observed in an earlier
+      no-gate comparator and is therefore transparently labeled a reused
+      development confirmation extension, never an independent holdout.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: [cascade_rcnn_r50, yolov5_s, rtmdet_s, detr_r50, dino_r50]
+    methods: [svfta]
+    ablation_studies: [svfta_smooth_reliability_confirmation]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    image_selection:
+      strategy: ordered_slice
+      start: 100
+      stop: 1000
+      expected_total: 1000
+      role: reused_development_confirmation_extension
+    selection_gate:
+      reference_variant: legacy_full
+      primary_metric: bbox_mAP
+      mean_delta_max: -1/500
+      cell_wins_min: 20
+      source_mean_wins_min: 5
+      target_mean_wins_min: 5
+      source_mean_regression_max: 1/500
+      require_zero_failures: true
+      require_budget_integrity: true
+    frozen_candidate: smooth_reliability
+    comparator_extension: true
+    reused_development_confirmation: true
+    no_retuning: true
+    development_only: true
+    entrypoint: experiments/svfta_smooth_reliability_confirmation.py
+  svfta_smooth_reliability_gate_confirmation:
+    description: >-
+      Frozen 900-image same-run confirmation of the temporal reliability
+      gate inside the selected one-step smooth-log-odds candidate. The reused
+      development slice can accept or reject the fixed gate but cannot tune
+      its decay or threshold.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: [cascade_rcnn_r50, yolov5_s, rtmdet_s, detr_r50, dino_r50]
+    methods: [svfta]
+    ablation_studies: [svfta_smooth_reliability_gate_confirmation]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    image_selection:
+      strategy: ordered_slice
+      start: 100
+      stop: 1000
+      expected_total: 1000
+      role: reused_development_gate_confirmation
+    selection_gate:
+      reference_variant: smooth_scale_risk
+      primary_metric: bbox_mAP
+      mean_delta_max: -1/500
+      cell_wins_min: 20
+      source_mean_wins_min: 5
+      target_mean_wins_min: 5
+      source_mean_regression_max: 1/500
+      require_zero_failures: true
+      require_budget_integrity: true
+    frozen_candidate: smooth_reliability
+    gate_isolation: true
+    no_retuning: true
+    development_only: true
+    entrypoint: experiments/svfta_smooth_reliability_gate_confirmation.py
+  svfta_risk_to_feature_continuation_search:
+    description: >-
+      Predeclared development-only check on the fixed one-step smooth
+      log-odds prefix plus temporal-reliability schedule, testing whether a
+      bounded number of feature updates should be initialized from the final
+      risk direction state.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: [cascade_rcnn_r50, yolov5_s, rtmdet_s, detr_r50, dino_r50]
+    methods: [svfta]
+    ablation_studies: [svfta_risk_to_feature_continuation_search]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    image_selection:
+      strategy: ordered_slice
+      start: 0
+      stop: 100
+      expected_total: 1000
+      role: reused_development_risk_feature_continuation_screen
+    selection_gate:
+      reference_variant: no_carryover
+      primary_metric: bbox_mAP
+      mean_delta_max: -1/200
+      cell_wins_min: 20
+      source_mean_wins_min: 5
+      target_mean_wins_min: 4
+      source_mean_regression_max: 1/200
+      require_zero_failures: true
+      require_budget_integrity: true
+    final_qualification_gate:
+      primary_metric: bbox_mAP
+      paired_blackbox_mean_delta_max: -1/100
+      interpretation: raw_mAP_five_percentage_points
+      may_not_be_relaxed: true
+    reference_variant: no_carryover
+    no_retuning: true
+    development_only: true
+    entrypoint: experiments/svfta_risk_to_feature_continuation_search.py
+  svfta_risk_to_feature_continuation_grid_search:
+    description: >-
+      Predeclared development-only 4-point check on the fixed one-step smooth
+      log-odds prefix plus temporal-reliability schedule, testing whether
+      progressively longer bounded carryover windows materially improve transfer
+      pressure.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: [cascade_rcnn_r50, yolov5_s, rtmdet_s, detr_r50, dino_r50]
+    methods: [svfta]
+    ablation_studies: [svfta_risk_to_feature_continuation_grid_search]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    image_selection:
+      strategy: ordered_slice
+      start: 0
+      stop: 100
+      expected_total: 1000
+      role: reusable_development_risk_feature_continuation_grid_screen
+    selection_gate:
+      reference_variant: no_carryover
+      primary_metric: bbox_mAP
+      mean_delta_max: -1/200
+      cell_wins_min: 20
+      source_mean_wins_min: 5
+      target_mean_wins_min: 4
+      source_mean_regression_max: 1/200
+      require_zero_failures: true
+      require_budget_integrity: true
+    final_qualification_gate:
+      primary_metric: bbox_mAP
+      paired_blackbox_mean_delta_max: -1/100
+      interpretation: raw_mAP_five_percentage_points
+      may_not_be_relaxed: true
+    reference_variant: no_carryover
+    no_retuning: true
+    development_only: true
+    entrypoint: experiments/svfta_risk_to_feature_continuation_grid_search.py
+  svfta_risk_to_feature_continuation_grid_formal_confirmation:
+    description: >-
+      Strict full-COCO formal confirmation of the four-point risk-to-feature
+      continuation schedule on all target detectors. One source-method pair per
+      row is executed on all 5,000 COCO val2017 images to make the final
+      variant ranking unambiguous under fixed hardware-independent protocol
+      conditions.
+    datasets: [coco]
+    split: val
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: all
+    methods: [svfta]
+    ablation_studies: [svfta_risk_to_feature_continuation_grid_search]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    prediction_archive:
+      format: gzip
+      remove_uncompressed_after_verification: true
+    entrypoint: experiments/svfta_risk_to_feature_continuation_grid_formal_confirmation.py
+  svfta_scale_routing_objective_search:
+    execution_retired: true
+    retirement_record: docs/research/vcsf-maintenance-disposition-authorization-20260920.md
+    description: >-
+      Predeclared development-only high-leverage screen of two joint
+      scale-routing objectives against the frozen smooth-reliability bridge.
+      The first 100 ordered COCO-dev images are a reusable search slice, not
+      an independent holdout. Passing this screen only permits a larger
+      confirmation; the final method remains ineligible unless its paired
+      unrounded black-box mean improves by at least 0.0500 mAP.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: [cascade_rcnn_r50, yolov5_s, rtmdet_s, detr_r50, dino_r50]
+    methods: [svfta]
+    ablation_studies: [svfta_scale_routing_objective_search]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    image_selection:
+      strategy: ordered_slice
+      start: 0
+      stop: 100
+      expected_total: 1000
+      role: reused_development_high_leverage_screen
+    selection_gate:
+      reference_variant: smooth_reliability
+      primary_metric: bbox_mAP
+      mean_delta_max: -1/40
+      cell_wins_min: 20
+      source_mean_wins_min: 5
+      target_mean_wins_min: 4
+      source_mean_regression_max: 1/200
+      require_zero_failures: true
+      require_budget_integrity: true
+    final_qualification_gate:
+      primary_metric: bbox_mAP
+      paired_blackbox_mean_delta_max: -1/20
+      interpretation: raw_mAP_five_percentage_points
+      may_not_be_relaxed: true
+    reference_variant: smooth_reliability
+    high_leverage_screen: true
+    reused_development_search: true
+    development_only: true
+    entrypoint: experiments/svfta_scale_routing_objective_search.py
+  svfta_retained_projection_objective_search:
+    description: >-
+      Predeclared development-only high-leverage screen of a parameter-free
+      clean-aligned retained-evidence projection objective against the frozen
+      smooth-reliability bridge. The balanced five-target panel and first 100
+      ordered COCO-dev images are reused unchanged from the preceding
+      objective search. Passing permits a larger confirmation only; final
+      qualification still requires at least 0.0500 raw paired mAP gain.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: [cascade_rcnn_r50, yolov5_s, rtmdet_s, detr_r50, dino_r50]
+    methods: [svfta]
+    ablation_studies: [svfta_retained_projection_objective_search]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    image_selection:
+      strategy: ordered_slice
+      start: 0
+      stop: 100
+      expected_total: 1000
+      role: reused_development_high_leverage_screen
+    selection_gate:
+      reference_variant: smooth_reliability
+      primary_metric: bbox_mAP
+      mean_delta_max: -1/40
+      cell_wins_min: 20
+      source_mean_wins_min: 5
+      target_mean_wins_min: 4
+      source_mean_regression_max: 1/200
+      require_zero_failures: true
+      require_budget_integrity: true
+    final_qualification_gate:
+      primary_metric: bbox_mAP
+      paired_blackbox_mean_delta_max: -1/20
+      interpretation: raw_mAP_five_percentage_points
+      may_not_be_relaxed: true
+    reference_variant: smooth_reliability
+    high_leverage_screen: true
+    reused_development_search: true
+    development_only: true
+    entrypoint: experiments/svfta_retained_projection_objective_search.py
+  svfta_evidence_turnover_objective_search:
+    description: >-
+      Predeclared development-only high-leverage screen of a parameter-free
+      magnitude-aware feature objective against the frozen smooth-reliability
+      bridge. The balanced five-target panel and first 100 ordered COCO-dev
+      images are reused unchanged from the preceding projection screen. Passing
+      this screen permits a larger confirmation only; final qualification still
+      requires at least 0.0500 raw paired mAP gain.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: [cascade_rcnn_r50, yolov5_s, rtmdet_s, detr_r50, dino_r50]
+    methods: [svfta]
+    ablation_studies: [svfta_evidence_turnover_objective_search]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    image_selection:
+      strategy: ordered_slice
+      start: 0
+      stop: 100
+      expected_total: 1000
+      role: reused_development_high_leverage_screen
+    selection_gate:
+      reference_variant: smooth_reliability
+      primary_metric: bbox_mAP
+      mean_delta_max: -1/40
+      cell_wins_min: 20
+      source_mean_wins_min: 5
+      target_mean_wins_min: 4
+      source_mean_regression_max: 1/200
+      require_zero_failures: true
+      require_budget_integrity: true
+    final_qualification_gate:
+      primary_metric: bbox_mAP
+      paired_blackbox_mean_delta_max: -1/20
+      interpretation: raw_mAP_five_percentage_points
+      may_not_be_relaxed: true
+    reference_variant: smooth_reliability
+    high_leverage_screen: true
+    reused_development_search: true
+    development_only: true
+    entrypoint: experiments/svfta_evidence_turnover_objective_search.py
+  svfta_joint_evidence_screen:
+    description: >-
+      Development-only high-leverage screen of persistent and unified detector
+      evidence objectives against the frozen smooth-reliability bridge. The
+      balanced five-target panel and first 100 ordered COCO-dev images are
+      unchanged. A two-image execution is diagnostic only; passing the
+      registered 100-image gate permits a larger confirmation, while final
+      qualification still requires at least 0.0500 raw paired mAP gain.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: [cascade_rcnn_r50, yolov5_s, rtmdet_s, detr_r50, dino_r50]
+    methods: [svfta]
+    ablation_studies: [svfta_joint_evidence_screen]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    image_selection:
+      strategy: ordered_slice
+      start: 0
+      stop: 100
+      expected_total: 1000
+      role: reused_development_high_leverage_screen
+    selection_gate:
+      reference_variant: sequential_bridge
+      primary_metric: bbox_mAP
+      mean_delta_max: -1/40
+      cell_wins_min: 20
+      source_mean_wins_min: 5
+      target_mean_wins_min: 4
+      source_mean_regression_max: 1/200
+      require_zero_failures: true
+      require_budget_integrity: true
+    final_qualification_gate:
+      primary_metric: bbox_mAP
+      paired_blackbox_mean_delta_max: -1/20
+      interpretation: raw_mAP_five_percentage_points
+      may_not_be_relaxed: true
+    reference_variant: sequential_bridge
+    high_leverage_screen: true
+    reused_development_search: true
+    development_only: true
+    entrypoint: experiments/svfta_joint_evidence_screen.py
+  svfta_feature_surface_screen:
+    description: >-
+      Development-only high-leverage screen of whether the current neck
+      objective overfits source-specific detector heads. It compares the exact
+      frozen smooth-reliability bridge with backbone-tail and parameter-free
+      cross-stage alternatives on the unchanged balanced five-target panel.
+      Limited-image executions are structural diagnostics only. Advancement
+      requires the registered 100-image gate, while final qualification still
+      requires at least 0.0500 raw paired black-box mAP gain.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: [cascade_rcnn_r50, yolov5_s, rtmdet_s, detr_r50, dino_r50]
+    methods: [svfta]
+    ablation_studies: [svfta_feature_surface_screen]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    image_selection:
+      strategy: ordered_slice
+      start: 0
+      stop: 100
+      expected_total: 1000
+      role: reused_development_high_leverage_screen
+    selection_gate:
+      reference_variant: neck_bridge
+      primary_metric: bbox_mAP
+      mean_delta_max: -1/40
+      cell_wins_min: 20
+      source_mean_wins_min: 5
+      target_mean_wins_min: 4
+      source_mean_regression_max: 1/200
+      require_zero_failures: true
+      require_budget_integrity: true
+    final_qualification_gate:
+      primary_metric: bbox_mAP
+      paired_blackbox_mean_delta_max: -1/20
+      interpretation: raw_mAP_five_percentage_points
+      may_not_be_relaxed: true
+    reference_variant: neck_bridge
+    high_leverage_screen: true
+    reused_development_search: true
+    development_only: true
+    entrypoint: experiments/svfta_feature_surface_screen.py
+  svfta_evidence_turnover_signed_objective_search:
+    description: >-
+      Development-only high-leverage screen that adds a signed aligned-energy turnover
+      candidate. It reuses the same five-target development panel and 100 ordered COCO-dev
+      images as the previous projection screens while testing the same-schedule signed variant.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: [cascade_rcnn_r50, yolov5_s, rtmdet_s, detr_r50, dino_r50]
+    methods: [svfta]
+    ablation_studies: [svfta_evidence_turnover_signed_objective_search]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    image_selection:
+      strategy: ordered_slice
+      start: 0
+      stop: 100
+      expected_total: 1000
+      role: reused_development_high_leverage_screen
+    selection_gate:
+      reference_variant: smooth_reliability
+      primary_metric: bbox_mAP
+      mean_delta_max: -1/40
+      cell_wins_min: 20
+      source_mean_wins_min: 5
+      target_mean_wins_min: 4
+      source_mean_regression_max: 1/200
+      require_zero_failures: true
+      require_budget_integrity: true
+    final_qualification_gate:
+      primary_metric: bbox_mAP
+      paired_blackbox_mean_delta_max: -1/20
+      interpretation: raw_mAP_five_percentage_points
+      may_not_be_relaxed: true
+    reference_variant: smooth_reliability
+    high_leverage_screen: true
+    reused_development_search: true
+    development_only: true
+    entrypoint: experiments/svfta_evidence_turnover_signed_objective_search.py
+  svfta_evidence_turnover_hard_objective_search:
+    description: >-
+      Development-only objective replacement on the established five-target
+      high-leverage COCO-dev panel. This protocol compares a hard sign-sensitive
+      turnover candidate against directional, retained-projection-energy, and plain
+      turnover objectives under the same frozen bridge schedule.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: [cascade_rcnn_r50, yolov5_s, rtmdet_s, detr_r50, dino_r50]
+    methods: [svfta]
+    ablation_studies: [svfta_evidence_turnover_hard_objective_search]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    image_selection:
+      strategy: ordered_slice
+      start: 0
+      stop: 100
+      expected_total: 1000
+      role: reused_development_high_leverage_screen
+    selection_gate:
+      reference_variant: smooth_reliability
+      primary_metric: bbox_mAP
+      mean_delta_max: -1/40
+      cell_wins_min: 20
+      source_mean_wins_min: 5
+      target_mean_wins_min: 4
+      source_mean_regression_max: 1/200
+      require_zero_failures: true
+      require_budget_integrity: true
+    final_qualification_gate:
+      primary_metric: bbox_mAP
+      paired_blackbox_mean_delta_max: -1/20
+      interpretation: raw_mAP_five_percentage_points
+      may_not_be_relaxed: true
+    reference_variant: smooth_reliability
+    high_leverage_screen: true
+    reused_development_search: true
+    development_only: true
+    entrypoint: experiments/svfta_evidence_turnover_hard_objective_search.py
+  svfta_evidence_turnover_hard_control_search:
+    description: >-
+      Controlled four-variant dev study on the hard signed turnover objective to
+      isolate whether risk repair and uncertainty gating remain active benefits.
+      Uses the established 100-image high-leverage panel for selection and
+      preserves the same target/metric footprint as prior signed-turnover screens.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: [cascade_rcnn_r50, yolov5_s, rtmdet_s, detr_r50, dino_r50]
+    methods: [svfta]
+    ablation_studies: [svfta_evidence_turnover_hard_control_search]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    image_selection:
+      strategy: ordered_slice
+      start: 0
+      stop: 100
+      expected_total: 1000
+      role: reused_development_high_leverage_screen
+    selection_gate:
+      reference_variant: smooth_reliability
+      primary_metric: bbox_mAP
+      mean_delta_max: -1/40
+      cell_wins_min: 20
+      source_mean_wins_min: 5
+      target_mean_wins_min: 4
+      source_mean_regression_max: 1/200
+      require_zero_failures: true
+      require_budget_integrity: true
+    final_qualification_gate:
+      primary_metric: bbox_mAP
+      paired_blackbox_mean_delta_max: -1/20
+      interpretation: raw_mAP_five_percentage_points
+      may_not_be_relaxed: true
+    reference_variant: smooth_reliability
+    high_leverage_screen: true
+    reused_development_search: true
+    development_only: true
+    entrypoint: experiments/svfta_evidence_turnover_hard_control_search.py
+  svfta_component_confirmatory:
+    description: >-
+      Predeclared confirmatory 2x2x2 SVFTA component ablation on all 5,000
+      COCO val2017 images after development choices are frozen. One Faster
+      R-CNN source is evaluated on the complete sixteen-target panel; the
+      source-matched white-box cell is reported diagnostically and excluded
+      from the fifteen-target BB Mean.
+    datasets: [coco]
+    split: val
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50]
+    targets: all
+    methods: [svfta]
+    ablation_studies: [components]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    prediction_archive:
+      format: gzip
+      remove_uncompressed_after_verification: true
+    formal_component_confirmatory: true
+    entrypoint: experiments/svfta_component_confirmatory.py
+  method_ablation:
+    description: All paper-motivated component, objective and hyperparameter studies on a frozen train-only development subset.
+    datasets: [coco]
+    split: dev
+    budget_profile: variable_ablation
+    sources: [faster_rcnn_r50]
+    targets: all_blackbox
+    methods: all
+    ablation_studies: all
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75]
+  extended_transfer:
+    description: >-
+      Legacy five-method COCO diagnostic and reproduction matrix. Its output
+      must not be spliced into main_transfer or a formal all-method result.
+    datasets: [coco]
+    split: val
+    budget_profile: compute_matched
+    sources: all
+    targets: all
+    methods: [sfim_b, augtrans, hifa, mlfadv, naa]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75]
+  svfta_observation_correction_screen:
+    description: >-
+      Development-only factorial test of two estimator corrections induced by
+      stochastic scale crops. The exact smooth-log-odds plus nineteen-feature
+      bridge is the reference. A one-image execution is a structural audit
+      only and its AP must not be interpreted. Every performance decision uses
+      all 1,000 frozen COCO-dev images and requires at least 0.0500 raw paired
+      black-box mAP gain.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: [cascade_rcnn_r50, yolov5_s, rtmdet_s, detr_r50, dino_r50]
+    methods: [svfta]
+    ablation_studies: [svfta_observation_correction_screen]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    image_selection:
+      strategy: ordered_slice
+      start: 0
+      stop: 1000
+      expected_total: 1000
+      role: complete_development_candidate_confirmation
+    selection_gate:
+      reference_variant: legacy_observation
+      primary_metric: bbox_mAP
+      mean_delta_max: -1/20
+      cell_wins_min: 20
+      source_mean_wins_min: 5
+      target_mean_wins_min: 4
+      source_mean_regression_max: 1/200
+      require_zero_failures: true
+      require_budget_integrity: true
+    final_qualification_gate:
+      primary_metric: bbox_mAP
+      paired_blackbox_mean_delta_max: -1/20
+      interpretation: raw_mAP_five_percentage_points
+      may_not_be_relaxed: true
+    reference_variant: legacy_observation
+    high_leverage_screen: true
+    reused_development_search: true
+    development_only: true
+    entrypoint: experiments/svfta_observation_correction_screen.py
+  svfta_residual_evidence_confirmation:
+    description: >-
+      Complete 1,000-image COCO-dev paired confirmation of residual object
+      evidence control. The exact one-step smooth-log-odds plus nineteen-step
+      directional-mean bridge is the reference. A one-image override is
+      permitted only for execution and budget auditing; no performance claim
+      may use fewer than all 1,000 frozen development images.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: [cascade_rcnn_r50, yolov5_s, rtmdet_s, detr_r50, dino_r50]
+    methods: [svfta]
+    ablation_studies: [svfta_residual_evidence_confirmation]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    image_selection:
+      strategy: ordered_slice
+      start: 0
+      stop: 1000
+      expected_total: 1000
+      role: complete_development_candidate_confirmation
+    selection_gate:
+      reference_variant: directional_mean
+      primary_metric: bbox_mAP
+      mean_delta_max: -1/20
+      cell_wins_min: 20
+      source_mean_wins_min: 5
+      target_mean_wins_min: 4
+      source_mean_regression_max: 1/200
+      require_zero_failures: true
+      require_budget_integrity: true
+    factorial_analysis:
+      factors: [evidence_statistic, spatial_aggregation]
+      reference_cell: directional_mean
+      full_cell: symmetric_tail
+      use_unrounded_json: true
+    final_qualification_gate:
+      primary_metric: bbox_mAP
+      paired_blackbox_mean_delta_max: -1/20
+      interpretation: raw_mAP_five_percentage_points
+      may_not_be_relaxed: true
+    reference_variant: directional_mean
+    high_leverage_confirmation: true
+    reused_development_search: true
+    development_only: true
+    entrypoint: experiments/svfta_residual_evidence_confirmation.py
+  svfta_evidence_bottleneck_confirmation:
+    description: >-
+      Complete 1,000-image COCO-dev paired two-by-two confirmation of whether
+      the frozen SVFTA bridge leaves transferable evidence in candidate
+      outputs or backbone features. No performance decision may use fewer
+      than all 1,000 images. Passing development evidence remains ineligible
+      for a paper claim until a newly frozen 5,000-image confirmation.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: [cascade_rcnn_r50, yolov5_s, rtmdet_s, detr_r50, dino_r50]
+    methods: [svfta]
+    ablation_studies: [svfta_evidence_bottleneck_confirmation]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    image_selection:
+      strategy: ordered_slice
+      start: 0
+      stop: 1000
+      expected_total: 1000
+      role: complete_development_high_leverage_confirmation
+    selection_gate:
+      reference_variant: neck_sequential
+      primary_metric: bbox_mAP
+      mean_delta_max: -1/40
+      cell_wins_min: 20
+      source_mean_wins_min: 5
+      target_mean_wins_min: 4
+      source_mean_regression_max: 1/200
+      require_zero_failures: true
+      require_budget_integrity: true
+    factorial_analysis:
+      factors: [persistent_output_evidence, include_backbone_surface]
+      reference_cell: neck_sequential
+      full_cell: cross_stage_joint
+      use_unrounded_json: true
+      require_main_effects_and_interaction_report: true
+    final_qualification_gate:
+      primary_metric: bbox_mAP
+      paired_blackbox_mean_delta_max: -1/20
+      interpretation: raw_mAP_five_percentage_points
+      may_not_be_relaxed: true
+    reference_variant: neck_sequential
+    high_leverage_confirmation: true
+    reused_development_search: true
+    development_only: true
+    entrypoint: experiments/svfta_evidence_bottleneck_confirmation.py
+  svfta_cross_stage_component_deletion_confirmation:
+    description: >-
+      Complete 1,000-image COCO-dev risk-by-uncertainty deletion factorial for
+      the frozen cross-stage performance incumbent. All sixteen registered
+      detectors are evaluated for every source and variant. Source-matched
+      white-box cells are diagnostic only and are excluded from black-box
+      means, wins and simplification decisions. No result may tune a retained
+      parameter or relax the previously declared advancement thresholds.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: all
+    methods: [svfta]
+    ablation_studies: [svfta_cross_stage_component_deletion_confirmation]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    image_selection:
+      strategy: ordered_slice
+      start: 0
+      stop: 1000
+      expected_total: 1000
+      role: complete_development_component_deletion
+    factorial_analysis:
+      factors: [risk_enabled, uncertainty_gate]
+      reference_cell: cross_stage_core
+      full_cell: cross_stage_full
+      use_unrounded_json: true
+      exclude_source_matched_whitebox: true
+      require_main_effects_and_interaction_report: true
+    simplification_policy:
+      primary_metric: bbox_mAP
+      practical_equivalence_tolerance: 1/500
+      material_component_effect: 1/200
+      cell_wins_min: 60
+      source_mean_wins_min: 5
+      target_mean_wins_min: 12
+      source_mean_regression_max: 1/200
+      choose_simplest_within_tolerance: true
+      require_zero_failures: true
+      require_budget_integrity: true
+      may_only_remove_components: true
+    source_matched_whitebox_diagnostic_only: true
+    exclude_source_matched_from_blackbox_decisions: true
+    complete_detector_panel: true
+    frozen_performance_incumbent: cross_stage_full
+    no_retuning: true
+    development_only: true
+    entrypoint: experiments/svfta_cross_stage_component_deletion_confirmation.py
+  svfta_feature_support_deletion_confirmation:
+    description: >-
+      Complete 1,000-image COCO-dev final internal deletion factorial for the
+      uncertainty-free minimal SVFTA anchor. It evaluates four frozen
+      feature-surface by spatial-support cells on all sixteen registered
+      targets for every canonical source. Source-matched white-box cells are
+      diagnostic only and are excluded from all black-box decisions. The
+      experiment may remove factors but may not tune or add a component.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: all
+    methods: [svfta]
+    ablation_studies: [svfta_feature_support_deletion_confirmation]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    image_selection:
+      strategy: ordered_slice
+      start: 0
+      stop: 1000
+      expected_total: 1000
+      role: complete_development_final_internal_deletion
+    factorial_analysis:
+      factors: [feature_surface_mode, spatial_support_mode]
+      reference_cell: neck_global
+      full_cell: cross_stage_object
+      use_unrounded_json: true
+      exclude_source_matched_whitebox: true
+      require_main_effects_and_interaction_report: true
+    simplification_policy:
+      primary_metric: bbox_mAP
+      practical_equivalence_tolerance: 1/500
+      material_component_effect: 1/200
+      cell_wins_min: 60
+      source_mean_wins_min: 5
+      target_mean_wins_min: 12
+      source_mean_regression_max: 1/200
+      choose_simplest_within_tolerance: true
+      require_zero_failures: true
+      require_budget_integrity: true
+      may_only_remove_components: true
+    source_matched_whitebox_diagnostic_only: true
+    exclude_source_matched_from_blackbox_decisions: true
+    complete_detector_panel: true
+    frozen_performance_incumbent: cross_stage_object
+    final_internal_deletion: true
+    no_retuning: true
+    development_only: true
+    entrypoint: experiments/svfta_feature_support_deletion_confirmation.py
+  svfta_spatial_incidence_confirmation:
+    description: >-
+      Complete 1,000-image COCO-dev confirmation of the parameter-free spatial
+      incidence survival hypothesis. It compares the exact frozen
+      cross-stage-global node anchor, an edge-only mechanism control and their
+      node-edge survival bottleneck on all sixteen targets for all six
+      sources. Source-matched cells are diagnostic only. No result may tune an
+      edge radius, orientation weight, mixing coefficient or optimizer.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: all
+    methods: [svfta]
+    ablation_studies: [svfta_spatial_incidence_confirmation]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    image_selection:
+      strategy: ordered_slice
+      start: 0
+      stop: 1000
+      expected_total: 1000
+      role: complete_development_high_leverage_confirmation
+    selection_gate:
+      reference_variant: node_anchor
+      eligible_variant: node_edge_bottleneck
+      mechanism_control: edge_only
+      primary_metric: bbox_mAP
+      gross_viability_mean_delta_max: -1/40
+      final_mean_delta_max: -1/20
+      cell_wins_min: 60
+      source_mean_wins_min: 5
+      target_mean_wins_min: 12
+      source_mean_regression_max: 1/200
+      runtime_ratio_max: 5/4
+      require_zero_failures: true
+      require_budget_integrity: true
+      exclude_source_matched_whitebox: true
+      may_not_be_relaxed: true
+    decision_policy:
+      below_gross_viability: reject_without_retuning
+      between_gross_and_final: at_most_one_theory_driven_revision
+      pass_final: freeze_for_formal_confirmation
+      forbidden_search: [edge_radius, orientation_weight, mixing_coefficient, threshold, temperature]
+    source_matched_whitebox_diagnostic_only: true
+    exclude_source_matched_from_blackbox_decisions: true
+    complete_detector_panel: true
+    frozen_anchor: node_anchor
+    high_leverage_confirmation: true
+    no_retuning: true
+    development_only: true
+    entrypoint: experiments/svfta_spatial_incidence_confirmation.py
+  svfta_cross_stage_claim_confirmation:
+    description: >-
+      Complete 1,000-image COCO-dev final-condition confirmation of the
+      frozen cross-stage-global paper claim boundary. Four reset cells form a
+      scale-view by feature-surface factorial. Feature-only and continuous-
+      carryover controls isolate the risk initializer and state reset at the
+      exact cross-stage-scale point. Source-matched cells are diagnostic only.
+    datasets: [coco]
+    split: dev
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: all
+    methods: [svfta]
+    ablation_studies: [svfta_cross_stage_claim_confirmation]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    image_selection:
+      strategy: ordered_slice
+      start: 0
+      stop: 1000
+      expected_total: 1000
+      role: complete_development_final_claim_confirmation
+    factorial_analysis:
+      factors: [scale_view_mode, feature_surface_mode]
+      reference_cell: neck_identity_reset
+      full_cell: cross_stage_scale_reset
+      interaction_formula: difference_of_differences
+      use_unrounded_json: true
+      exclude_source_matched_whitebox: true
+      require_main_effects_and_interaction_report: true
+    phase_contrasts:
+      final_anchor: cross_stage_scale_reset
+      feature_only_control: cross_stage_scale_feature_only
+      continuous_carryover_control: cross_stage_scale_carryover
+      initializer_effect: final_anchor_minus_feature_only
+      reset_effect: final_anchor_minus_continuous_carryover
+      use_unrounded_json: true
+    claim_policy:
+      primary_metric: bbox_mAP
+      practical_equivalence_tolerance: 1/500
+      material_effect: 1/200
+      cell_wins_min: 60
+      source_mean_wins_min: 5
+      target_mean_wins_min: 12
+      source_mean_regression_max: 1/200
+      synergy_interaction_max: -1/200
+      antagonistic_interaction_min: 1/200
+      choose_simplest_within_tolerance: true
+      require_zero_failures: true
+      require_budget_integrity: true
+      may_not_be_relaxed: true
+    expected_execution:
+      clean_evaluations: 16
+      attack_groups: 36
+      attack_evaluations: 576
+      generated_images: 36000
+      gradient_evaluations_per_image: 20
+      auxiliary_forward_passes_per_image: 0
+      auxiliary_backward_passes_per_image: 0
+    source_matched_whitebox_diagnostic_only: true
+    exclude_source_matched_from_blackbox_decisions: true
+    complete_detector_panel: true
+    frozen_anchor: cross_stage_scale_reset
+    no_retuning: true
+    development_only: true
+    entrypoint: experiments/svfta_cross_stage_claim_confirmation.py
+  vcsf_coco_formal_confirmation:
+    description: >-
+      Locked, isolated formal-confirmation contract for the frozen VCSF-Attack
+      development candidate. The canonical registry intentionally exposes no
+      executable method while execution_authorized is false. A read-only
+      preflight constructs and audits the expected six-source by sixteen-target
+      plan without registering VCSF, loading a detector or running AP.
+    datasets: [coco]
+    split: val
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: all
+    methods: []
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    isolated_candidate:
+      id: vcsf_final_candidate
+      display_name: VCSF-Attack
+      implementation: src/lgp/attacks/vcsf_final_candidate.py
+      config: configs/attacks/vcsf_final_candidate.yaml
+      freeze_manifest: docs/research/vcsf-final-candidate-freeze.json
+      process_local_overlay_required: true
+      global_registry_entry_forbidden_before_formal_acceptance: true
+    execution_lock:
+      execution_authorized: false
+      runner_armed: false
+      reason: manuscript_and_protocol_preparation_only
+      unlock_requires:
+        - explicit_user_authorization
+        - unchanged_candidate_hash
+        - accepted_protocol_preflight
+        - formal_runner_lifecycle_audit
+    expected_execution:
+      clean_evaluations: 16
+      attack_groups: 6
+      attack_evaluations: 96
+      blackbox_decision_cells: 90
+      source_matched_whitebox_cells: 6
+      generated_images: 30000
+      gradient_evaluations_per_image: 20
+      auxiliary_forward_passes_per_image: 0
+      auxiliary_backward_passes_per_image: 0
+      failed_records: 0
+    prediction_archive:
+      format: gzip
+      lossless_verification: true
+    acceptance:
+      require_all_5000_images: true
+      require_all_six_sources: true
+      require_all_sixteen_targets: true
+      require_unrounded_json: true
+      exclude_source_matched_from_blackbox_mean: true
+      require_twelve_coco_rows: true
+      require_exact_image_id_hash: true
+      require_checkpoint_hashes: true
+      require_candidate_hash: true
+      require_zero_failures: true
+      require_budget_integrity: true
+      require_prediction_archive_integrity: true
+      forbid_formal_split_tuning: true
+      forbid_automatic_resume_or_run_merge: true
+    source_matched_whitebox_diagnostic_only: true
+    exclude_source_matched_from_blackbox_decisions: true
+    complete_detector_panel: true
+    no_retuning: true
+    development_only: false
+    formal_candidate_confirmation: true
+    entrypoint: experiments/vcsf_coco_formal_confirmation.py
+  vcsf_submission_coco_main_refresh:
+    description: >-
+      User-authorized selective COCO val2017 formal refresh for the corrected
+      compute-matched SFIM-B implementation and the frozen VCSF candidate. VCSF
+      is exposed only through a process-local execution descriptor; the global
+      attack registry, compatibility matrix and factory remain unchanged.
+    datasets: [coco]
+    split: val
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: all
+    methods: [sfim_b]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    isolated_candidate:
+      id: vcsf_final_candidate
+      execution_alias: vcsf
+      display_name: VCSF
+      implementation: src/lgp/attacks/vcsf_final_candidate.py
+      config: configs/attacks/vcsf_final_candidate.yaml
+      freeze_manifest: docs/research/vcsf-final-candidate-freeze.json
+    process_local_candidate_overlay: true
+    execution_authorized: true
+    authorization_scope: explicit_user_request_2026_08_27_server_formal_followup
+    expected_execution:
+      clean_evaluations: 16
+      attack_groups: 12
+      attack_evaluations: 192
+      blackbox_decision_cells: 180
+      source_matched_whitebox_cells: 12
+      generated_images: 60000
+      gradient_evaluations_per_image: 20
+      auxiliary_forward_passes_per_image: 0
+      auxiliary_backward_passes_per_image: 0
+      failed_records: 0
+    payload_retention:
+      mode: keep_all
+      reason: downstream_paired_preprocessing_ablation_and_budget_authority
+    prediction_archive:
+      format: gzip
+      lossless_verification: true
+      remove_uncompressed_after_verification: true
+    acceptance:
+      require_all_5000_images: true
+      require_all_six_sources_per_method: true
+      require_all_sixteen_targets: true
+      require_unrounded_json: true
+      exclude_source_matched_from_blackbox_mean: true
+      require_twelve_coco_rows: true
+      require_exact_image_id_hash: true
+      require_checkpoint_hashes: true
+      require_candidate_hash: true
+      require_zero_failures: true
+      require_budget_integrity: true
+      require_prediction_archive_integrity: true
+      forbid_formal_split_tuning: true
+      forbid_automatic_resume_or_run_merge: true
+    formal_selective_refresh: true
+    development_only: false
+    entrypoint: experiments/vcsf_submission_coco_main.py
+  vcsf_submission_voc_main:
+    description: >-
+      Retained Pascal VOC2007 test submission refresh for corrected compute-matched
+      SFIM-B and the frozen VCSF candidate. The original accepted evidence remains
+      immutable; restoring this protocol does not schedule a repeated matrix.
+    datasets: [voc]
+    split: val
+    seed: 42
+    budget_profile: compute_matched
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: all
+    methods: [sfim_b]
+    metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+    primary_metric: bbox_mAP_50
+    isolated_candidate:
+      id: vcsf_final_candidate
+      execution_alias: vcsf
+      display_name: VCSF
+      implementation: src/lgp/attacks/vcsf_final_candidate.py
+      config: configs/attacks/vcsf_final_candidate.yaml
+      freeze_manifest: docs/research/vcsf-final-candidate-freeze.json
+    process_local_candidate_overlay: true
+    execution_authorized: true
+    authorization_scope: explicit_user_request_2026_08_27_server_formal_followup
+    dataset_authority:
+      annotation_sha256: 90a5dc2c8a802133a4ac0f93b4752017db4f36638b865c2e6a1bb1b3509d59fd
+      image_ids_sha256: f95fa720f5342f1f10830950826bc77b25133870045675f4c927f8f55baf06c7
+      retained_image_ids_sha256: aa47b3eaa1d763fbc2b37b9bb8d37c66daa095d47996aac371eeadc0fbf83f50
+    expected_execution:
+      clean_evaluations: 16
+      attack_groups: 12
+      attack_evaluations: 192
+      blackbox_decision_cells: 180
+      source_matched_whitebox_cells: 12
+      generated_images: 59424
+      retained_payload_images: 6000
+      pruned_payload_images: 53424
+      prediction_archives: 208
+      gradient_evaluations_per_image: 20
+      auxiliary_forward_passes_per_image: 0
+      auxiliary_backward_passes_per_image: 0
+      failed_records: 0
+    payload_retention:
+      mode: fixed_count_after_group_validation
+      retained_images_per_group: 500
+      pruned_images_per_group: 4452
+      require_complete_sixteen_target_panel_before_prune: true
+    prediction_archive:
+      format: gzip
+      lossless_verification: true
+      remove_uncompressed_after_verification: true
+    acceptance:
+      require_all_4952_images: true
+      require_all_six_sources_per_method: true
+      require_all_sixteen_targets: true
+      require_unrounded_json: true
+      exclude_source_matched_from_blackbox_mean: true
+      require_twelve_coco_style_metric_rows: true
+      require_exact_image_id_hash: true
+      require_checkpoint_hashes: true
+      require_candidate_hash: true
+      require_zero_failures: true
+      require_exact_twenty_backward_equivalents: true
+      require_zero_auxiliary_passes: true
+      require_zero_linf_violations: true
+      require_prediction_archive_integrity: true
+      require_fixed_retained_payload_integrity: true
+      require_separate_memory_bounded_independent_audit: true
+      forbid_formal_split_tuning: true
+      forbid_automatic_resume_or_run_merge: true
+    formal_selective_refresh: true
+    development_only: false
+    entrypoint: experiments/vcsf_submission_voc_main.py
+
+  vcsf_submission_multi_budget_off_reference:
+    description: Submission-only Common-2 full-val2017 L-infinity sensitivity stage
+      for the corrected SFIM-B implementation and the process-local frozen VCSF candidate.
+      The accepted COCO submission main supplies the 4/255 clean and attack references;
+      only 2/255, 8/255, 16/255 and 32/255 payloads are newly generated. Only eps changes
+      within each source-method group.
+    datasets:
+    - coco
+    split: val
+    seed: 42
+    budget_profile: compute_matched_multi_epsilon
+    sources:
+    - faster_rcnn_r50
+    - mask_rcnn_swin_t
+    registered_methods:
+    - sfim_b
+    submission_methods:
+    - sfim_b
+    - vcsf
+    targets: all
+    epsilon_order:
+    - 2/255
+    - 4/255
+    - 8/255
+    - 16/255
+    - 32/255
+    epsilon_roles:
+      2/255: core
+      4/255: current_submission_reference
+      8/255: core
+      16/255: core
+      32/255: high_distortion_stress
+    reference_epsilon: 4/255
+    isolated_candidate:
+      id: vcsf_final_candidate
+      execution_alias: vcsf
+      implementation: src/lgp/attacks/vcsf_final_candidate.py
+      config: configs/attacks/vcsf_final_candidate.yaml
+      freeze_manifest: docs/research/vcsf-final-candidate-freeze.json
+    process_local_candidate_overlay: true
+    expected_execution:
+      clean_reference_evaluations: 16
+      reference_attack_groups: 4
+      reference_attack_evaluations: 64
+      new_attack_groups: 16
+      new_attack_evaluations: 256
+      new_payload_images: 80000
+      records: 336
+      gradient_evaluations_per_image: 20
+      auxiliary_forward_passes_per_image: 0
+      auxiliary_backward_passes_per_image: 0
+      failed_records: 0
+    payload_retention:
+      mode: manifest_only_after_complete_target_panel
+      retained_intermediate_images: 500
+      remove_generated_pngs_after_validation: true
+    storage_preflight:
+      concurrent_workers: 2
+      high_distortion_payload_safety_multiplier: 2
+      additional_free_margin_gib: 20
+    acceptance:
+      require_current_main_and_independent_acceptance: true
+      require_all_5000_images: true
+      require_all_sixteen_targets: true
+      require_exact_image_id_hash: true
+      require_checkpoint_hashes: true
+      require_only_epsilon_changed: true
+      require_exact_twenty_backward_equivalents: true
+      require_zero_auxiliary_passes: true
+      require_zero_failures: true
+      require_zero_linf_violations: true
+      require_zero_remaining_payload_pngs: true
+      forbid_formal_split_tuning: true
+      forbid_automatic_resume_or_run_merge: true
+    formal_selective_refresh: true
+    development_only: false
+    entrypoint: experiments/vcsf_submission_multi_budget_off_reference.py
+
+  vcsf_submission_final_exact_ablation:
+    description: Final frozen COCO val2017 exact ablation for the VCSF claim boundary.
+      Five predeclared cells isolate scale view, feature surface and the detector-risk
+      initialization under one exact twenty-backward budget. The two Full VCSF source
+      groups and all clean records are reused only from the independently accepted COCO
+      submission main; eight non-full source-variant groups are generated once. Results
+      cannot revise or tune the already frozen method.
+    datasets:
+    - coco
+    split: val
+    seed: 42
+    budget_profile: compute_matched
+    sources:
+    - faster_rcnn_r50
+    - mask_rcnn_swin_t
+    targets: all
+    submission_method: vcsf
+    study: vcsf_final_exact_ablation
+    variants:
+    - neck_identity_reset
+    - neck_scale_reset
+    - cross_stage_identity_reset
+    - cross_stage_scale_feature_only
+    - cross_stage_scale_reset
+    reference_variant: cross_stage_scale_reset
+    metrics:
+    - bbox_mAP
+    - bbox_mAP_50
+    - bbox_mAP_75
+    - bbox_mAP_small
+    - bbox_mAP_medium
+    - bbox_mAP_large
+    - bbox_AR_1
+    - bbox_AR_10
+    - bbox_AR_100
+    - bbox_AR_small
+    - bbox_AR_medium
+    - bbox_AR_large
+    primary_metric: bbox_mAP
+    isolated_candidate:
+      id: vcsf_final_candidate
+      execution_alias: vcsf
+      display_name: VCSF
+      implementation: src/lgp/attacks/vcsf_final_candidate.py
+      config: configs/attacks/vcsf_final_candidate.yaml
+      freeze_manifest: docs/research/vcsf-final-candidate-freeze.json
+      ablation_implementation: src/lgp/attacks/svfta_cross_stage_claim_confirmation.py
+      ablation_registry: configs/experiments/ablations.yaml
+    process_local_candidate_overlay: true
+    execution_authorized: true
+    authorization_scope: explicit_user_request_2026_08_27_server_formal_followup
+    method_revision_permitted: false
+    last_gpu_numerical_stage: true
+    expected_execution:
+      clean_reference_evaluations: 16
+      conceptual_attack_groups: 10
+      reference_attack_groups: 2
+      new_attack_groups: 8
+      attack_evaluations: 160
+      reference_attack_evaluations: 32
+      new_attack_evaluations: 128
+      records: 176
+      blackbox_cells_per_variant: 30
+      source_matched_diagnostic_cells_per_variant: 2
+      new_payload_images: 40000
+      retained_payload_images: 4000
+      pruned_payload_images: 36000
+      prediction_archives: 176
+      gradient_evaluations_per_image: 20
+      auxiliary_forward_passes_per_image: 0
+      auxiliary_backward_passes_per_image: 0
+      failed_records: 0
+    payload_retention:
+      mode: fixed_count_after_group_validation
+      retained_images_per_new_group: 500
+      pruned_images_per_new_group: 4500
+      require_complete_sixteen_target_panel_before_prune: true
+    prediction_archive:
+      format: gzip
+      lossless_verification: true
+      remove_uncompressed_after_verification: true
+    acceptance:
+      require_independently_accepted_coco_main_reference: true
+      require_all_5000_images: true
+      require_all_two_sources: true
+      require_all_five_variants: true
+      require_all_sixteen_targets: true
+      require_unrounded_json: true
+      exclude_source_matched_from_blackbox_mean: true
+      require_thirty_blackbox_cells_per_variant: true
+      require_twelve_coco_rows: true
+      require_exact_image_id_hash: true
+      require_checkpoint_hashes: true
+      require_candidate_and_oracle_hashes: true
+      require_zero_failures: true
+      require_exact_twenty_backward_equivalents: true
+      require_zero_auxiliary_passes: true
+      require_zero_linf_violations: true
+      require_prediction_archive_integrity: true
+      require_fixed_retained_payload_integrity: true
+      require_separate_memory_bounded_independent_audit: true
+      forbid_result_driven_method_revision: true
+      forbid_formal_split_tuning: true
+      forbid_automatic_resume_or_run_merge: true
+    formal_selective_refresh: true
+    development_only: false
+    entrypoint: experiments/vcsf_submission_final_exact_ablation.py
+  vcsf_selected_a23_coco_main:
+    description: Selected A23 one-method COCO six-source main preparation; no formal dispatch.
+    status: preparation_only
+    execution_authorized: false
+    budget_profile: compute_matched
+    datasets: [coco]
+    split: val
+    seed: 42
+    selection_scope: author_authorized_full_coco_val2017_retrospective
+    selection_overlap_with_evaluation: true
+    images: 5000
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: all
+    methods: []
+    isolated_method: vcsf
+    execution_mode: selected_a23
+    parameters_sha256: 5079f4495309ec03b4650a4f5a19f291115c84b7155e7f50d15b2086b3de9afd
+    freeze_manifest: docs/research/vcsf-selected-a23-freeze.json
+    freeze_manifest_sha256: 4da291b775904f6eb3ffb450bae80f648a6ce511dfb7d5331066676a93a31fcd
+    candidate_clean_binding_sha256: 775ae5056b06f9fd942d8fc63f6e3df3a74fc2bcc921c6599d0e7e4a6195e964
+    candidate_clean_audit_sha256: ae1f35e21156a7b34d0cc9903b4fd1ceed012ce644ea7bd9c926035bf65562e0
+    clean_reuse_admitted: false
+    payload_retention: keep_all_pending_independent_audit
+    expected_execution:
+      candidate_reused_clean_cells: 16
+      attack_groups: 6
+      attack_evaluations: 96
+      logical_report_cells_if_clean_admitted: 112
+      blackbox_decision_cells: 90
+      source_matched_whitebox_cells: 6
+      generated_images: 30000
+      gradient_evaluations_per_image: 20
+      failed_records: 0
+  vcsf_selected_a23_voc_main:
+    description: Selected A23 one-method VOC six-source main preparation; no formal dispatch.
+    status: preparation_only
+    execution_authorized: false
+    budget_profile: compute_matched
+    datasets: [voc]
+    split: val
+    seed: 42
+    selection_scope: author_authorized_full_coco_val2017_retrospective
+    selection_overlap_with_evaluation: false
+    images: 4952
+    sources: [faster_rcnn_r50, mask_rcnn_swin_t, yolov3_d53, vfnet_r50, sparse_rcnn_r50, deformable_detr_r50]
+    targets: all
+    methods: []
+    isolated_method: vcsf
+    execution_mode: selected_a23
+    parameters_sha256: 5079f4495309ec03b4650a4f5a19f291115c84b7155e7f50d15b2086b3de9afd
+    freeze_manifest: docs/research/vcsf-selected-a23-freeze.json
+    freeze_manifest_sha256: 4da291b775904f6eb3ffb450bae80f648a6ce511dfb7d5331066676a93a31fcd
+    candidate_clean_binding_sha256: 514fe598b506f8be5e39ef854aeab0ff0a46ab2ab3a41d174b6fcb9ac9111bb9
+    candidate_clean_audit_sha256: 8d494ed09b04b595e9ceacea48566eb174a8ae745f14285d3e393ad2cafaa3fd
+    clean_reuse_admitted: false
+    payload_retention: keep_all_pending_independent_audit
+    expected_execution:
+      candidate_reused_clean_cells: 16
+      attack_groups: 6
+      attack_evaluations: 96
+      logical_report_cells_if_clean_admitted: 112
+      blackbox_decision_cells: 90
+      source_matched_whitebox_cells: 6
+      generated_images: 29712
+      gradient_evaluations_per_image: 20
+      failed_records: 0

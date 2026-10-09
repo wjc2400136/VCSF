@@ -1,0 +1,38 @@
+schema_version: 1
+id: vcsf
+display_name: VCSF
+executor: native
+internal_configuration: A10
+status: public_reproduction_candidate_execution_enabled
+implementation: src/lgp/attacks/vcsf_common_anchor_isolated.py
+public_builder: lgp.attacks.vcsf_public.build_public_vcsf
+parameters_sha256: 2551944131096c1d74011f2eb8d789b858e6dce79748f5b5aada54ea18254328
+selection_protocol: docs/research/vcsf-a10-selection-protocol.json
+source_freeze: docs/research/vcsf-a10-public-source-freeze.json
+fidelity_status: registered_A10_numeric_identity_preserved
+fidelity_basis: actual_common_anchor_builder_not_alias_derived_identity
+execution_authorized: true
+scientific_selection_closed: true
+science: false
+formal: false
+release: false
+parameters:
+  eps: 4/255
+  iterations: 20
+  step_size: 1/255
+  feature_levels: [0, 1, 2]
+  feature_eps: 1/1000000
+  scale_min: 2/3
+  scale_max: 4/3
+  momentum: 85/100
+  initialization: detector
+  surface: cross_stage
+  levels_per_stage: 3
+  correspondence: shared
+  spatial_weight: energy
+  aggregation: log_mean_exp
+  gradient_centering: true
+  support: valid
+  image_interpolation: bilinear
+  placement: random
+  image_padding: zero

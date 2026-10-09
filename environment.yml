@@ -1,0 +1,10 @@
+name: oda
+channels:
+  - defaults
+dependencies:
+  - python=3.8.20
+  - pip=24.2
+  - setuptools=75.1.0
+  - wheel=0.44.0
+  - pip:
+      - -r requirements/locked-cu118.txt

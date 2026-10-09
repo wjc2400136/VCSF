@@ -1,0 +1,48 @@
+{
+  "schema": "vcsf_a10_native_main_saved_result_contract_v1",
+  "status": "audit_contract_prepared_actual_auditor_not_qualified",
+  "parameters_source": "configs/attacks/vcsf.yaml",
+  "protocol_source": "configs/experiments/protocols.yaml",
+  "detector_order_source": "configs/models.yaml",
+  "producer_schema_reference": "docs/research/vcsf-a10-main-producer-schema.json",
+  "required_scope": [
+    "exact independently admitted immutable wave",
+    "all assigned complete source jobs with full canonical target panel",
+    "COCO 5000 or VOC 4952 unless explicitly diagnostic",
+    "all twelve official bbox summary rows",
+    "same per-image selected-position seeds",
+    "native vcsf public factory only; no historical alias/overlay"
+  ],
+  "required_evidence": [
+    "plan/admission/request SHA-256 and execution source freeze",
+    "fresh exact engineering diff bridge and nine unchanged numerical files",
+    "current complete image bytes/annotations/16 checkpoints/transitive configs and method-independent clean acceptance",
+    "strict actual loaded tensors, nonpersistent buffers and effective runtime configuration",
+    "full preserved PNG manifest with decoded pixel bound",
+    "lossless gzip predictions and coverage of every selected image including images with no detections",
+    "independent official COCO-style replay of all twelve metrics",
+    "native read-only adapter events and cost rows keyed by dataset/source/image/seed/worker/wave",
+    "native cost totals independently equal generation gradients and time; whole-run allocated/reserved peaks dominate all per-image peaks and preserve inter-image work",
+    "coordinator/worker PID, parent, PGID, start ticks, command, inherited reservation and immutable NVML context mapping",
+    "all sampled observations plus terminal exit and reap; samples do not prove continuous exclusivity",
+    "all completion seals and canonical unrounded record order",
+    "no missing or failed or reused-candidate cell encoded as zero"
+  ],
+  "acceptance_route": "Independent auditor implementation and CPU fixture qualification, owner review, then separately authorized original-output audit. This contract and its plan-only output do not qualify that auditor or admit execution.",
+  "scope_partitions": "Full scientific scope is retained in every wave plan. COCO Common-2 32 cells remain candidates requiring a separate exact native-result bridge; no legacy namespace rename. COCO four other sources 64 new cells and VOC six sources 96 new cells may be produced in canonical registered source waves without pruning or shrinking scope.",
+  "limits": {
+    "calibrated_whole_detector_BE": null,
+    "FLOPs": null,
+    "bitwise_CUDA_equivalence": null,
+    "paired_physical_speedup": null
+  },
+  "flags": {
+    "formal_result_eligible": false,
+    "scientific_acceptance": false,
+    "implementation_promoted": false,
+    "result_reuse_accepted": false,
+    "project_wide_device_release_accepted": false,
+    "publication_accepted": false,
+    "deletion_authorized": false
+  }
+}

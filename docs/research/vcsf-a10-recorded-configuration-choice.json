@@ -1,0 +1,304 @@
+{
+  "AP_replays": 0,
+  "GPU_jobs": 0,
+  "alternative_comparison": {
+    "A10_vs_A01_delta_pp": 0.0789446019420062,
+    "A10_vs_A23_delta_pp": 0.07218083100362649,
+    "F03_adverse_Faster_primary_BB_AP": 0.06841397146151937,
+    "full_23_primary_ranking_reference": "LGP-vcsf-a10-selection-decision-20260930-01/outputs/decisions/vcsf_a10/full01/decision.json",
+    "nested_level_comparison": [
+      "A09",
+      "A01",
+      "A10"
+    ],
+    "primary_BB_AP": {
+      "A01": 0.07203803004672414,
+      "A09": 0.07826923774945947,
+      "A10": 0.07124858402730408,
+      "A23": 0.07197039233734034
+    },
+    "secondary_metric_and_target_negative_results_retained": true,
+    "two_source_primary_BB_AP": {
+      "A10": 0.09071169920658759,
+      "F03": 0.09550538890499541
+    }
+  },
+  "authority": {
+    "clarification_date": "2026-09-29",
+    "no_new_method_family_or_resource_authorization": true,
+    "objective_sha256": "93caa07d05c5930e3fb3df4cbeabd1eb59fb6385d2aac48469eb65ff6e81880b",
+    "subject": "Author-delegated VCSF configuration adjudication and final-background ablation standard"
+  },
+  "chosen_parameters_for_qualification": {
+    "aggregation": "log_mean_exp",
+    "correspondence": "shared",
+    "eps": 0.01568627450980392,
+    "feature_eps": 1e-06,
+    "feature_levels": [
+      0,
+      1,
+      2
+    ],
+    "gradient_centering": true,
+    "image_interpolation": "bilinear",
+    "image_padding": "zero",
+    "initialization": "detector",
+    "iterations": 20,
+    "levels_per_stage": 3,
+    "momentum": 0.85,
+    "placement": "random",
+    "scale_max": 1.3333333333333333,
+    "scale_min": 0.6666666666666666,
+    "spatial_weight": "energy",
+    "step_size": 0.00392156862745098,
+    "support": "valid",
+    "surface": "cross_stage"
+  },
+  "configuration_choice_recorded": true,
+  "criterion": [
+    "Primary attacked BB AP takes priority within the original 23 registered configurations and their own declared schedules; preserve each control setting rather than replacing the complete family with the nominee schedule.",
+    "Nominate A10 using full-panel primary ranking, direct alternative comparisons, descriptive target/family composition sensitivity and existing nested-layer evidence; none of these establish global or cross-seed optimality.",
+    "Accept the observed YOLO-family and some small/medium-object or recall tradeoffs for this overall-AP objective; disclose them rather than voting across correlated secondary metrics.",
+    "A real pre-existing resource or budget violation can block execution. Additional feature terms or an ordinary measured timing difference alone do not invent a new veto threshold.",
+    "Final scientific freeze additionally requires adequate final-background evidence for the actual paper claims, exact implementation qualification and accepted cost/input provenance. Contradictory core evidence triggers recorded reconsideration, not automatic fallback or silent method splicing."
+  ],
+  "decision_owner": "delegated_execution_owner",
+  "exact_public_implementation_qualified": false,
+  "exact_rationals": {
+    "eps": "4/255",
+    "scale_max": "4/3",
+    "scale_min": "2/3",
+    "step_size": "1/255"
+  },
+  "external_release_authorized_by_this_record": false,
+  "final_configuration_selection_closed": false,
+  "formal_generation_authorized_by_this_record": false,
+  "formal_result_accepted": false,
+  "history_roles": {
+    "exact_existing_layer_comparison": [
+      "A09",
+      "A01",
+      "A10"
+    ],
+    "historical_context": [
+      "eight-operator programme",
+      "common-background analysis",
+      "A01 core/objective/optimizer factorials"
+    ],
+    "not_added": [
+      "width search",
+      "momentum search",
+      "uncentered-three nominee",
+      "none+19/random+19 absent equal-followup claim",
+      "uniform-plus-mean absent interaction claim",
+      "new AP seed grid absent a specific decision-relevant uncertainty"
+    ],
+    "not_automatically_final_background": [
+      "A01 module controls",
+      "A01 seed variation",
+      "A01 cross-source and VOC results"
+    ]
+  },
+  "independent_dataset_confirmation": false,
+  "input_bindings": {
+    "independent_review": {
+      "reference": "LGP-vcsf-a10-selection-independent-review-20260930-01/review.json",
+      "sha256": "42c96f47c55aa7f42e1eb5088903c405c9b75670baa076a9d5d8c842655d0bcd"
+    },
+    "independent_review_receipt": {
+      "reference": "LGP-vcsf-a10-selection-independent-review-20260930-01/receipt.json",
+      "sha256": "2ba7712df335749f43de0f8aabbaab6a0da3046b12e547b35abf8acf21f2e10c"
+    },
+    "recommendation": {
+      "reference": "LGP-vcsf-a10-selection-decision-20260930-01/outputs/decisions/vcsf_a10/full01/decision.json",
+      "sha256": "af3fa1e176e1829bd073154c92d031cc5cbadb983d40eae8d913ec36cd080562"
+    },
+    "recommendation_receipt": {
+      "reference": "LGP-vcsf-a10-selection-decision-20260930-01/outputs/decisions/vcsf_a10/full01/receipt.json",
+      "sha256": "3f416249638bd7d9604859e9f55b40f8fe83bba3a1cf35d4e7af38458e8cf39e"
+    }
+  },
+  "later_contradiction_rule": "Record a dated reconsideration and refresh affected identity and results; no silent post-main-table switching.",
+  "manuscript_accepted": false,
+  "model_calls": 0,
+  "new_complete_public_execution_hash": null,
+  "next_gates": [
+    "Qualify the exact public A10 parameter mapping, numerical path, full source identity and bounded real-model behavior in fixed ODA.",
+    "Decide exact reuse of each accepted Common-2 payload and result through a separately accepted identity bridge; do not rename results.",
+    "Admit and independently accept only the genuinely affected final-method results and required current cost/qualitative evidence.",
+    "Integrate final-identity tables, attribution, negative outcomes and selection explanation into the paper before closing submission selection."
+  ],
+  "original_files_modified": 0,
+  "paper_evidence_map": [
+    {
+      "claim": "paired-view clean-energy feature survival",
+      "controls": [
+        "F01",
+        "F04",
+        "F05",
+        "F08"
+      ],
+      "presentation": "main contribution and compact final-background ablation; full metric/target tables in supplement"
+    },
+    {
+      "claim": "joint backbone-neck smooth objective versus the respective single-stage alternatives",
+      "controls": [
+        "F02",
+        "F03",
+        "F09"
+      ],
+      "presentation": "joint-design effects with disclosed term count; do not infer equal-cost pure-stage effect",
+      "supporting_existing": [
+        "A09",
+        "A01",
+        "A10"
+      ]
+    },
+    {
+      "claim": "one budgeted detector-semantic initialization plus19 feature updates",
+      "controls": [
+        "F06",
+        "F07"
+      ],
+      "presentation": "schedule benefit under20 logical gradients; no unique-necessity or identical-physical-cost claim"
+    },
+    {
+      "claim": "chosen configuration within the registered family",
+      "presentation": "effect-first rationale and actual cost; detailed candidate table in supplement; no significant or global optimum claim",
+      "supporting_existing": "all23 unrounded primary/12metrics/target directions plus architecture sensitivity"
+    }
+  ],
+  "parameters_sha256": "2551944131096c1d74011f2eb8d789b858e6dce79748f5b5aada54ea18254328",
+  "payload_deletions": 0,
+  "preservation": {
+    "A01_results_relabelled": false,
+    "all_candidate_outcomes_preserved": true,
+    "earlier_A23_choice_and_promotion_preserved": true,
+    "original_recommendation_and_pending_flags_preserved": true
+  },
+  "public_implementation_promoted": false,
+  "public_method_name": "VCSF",
+  "rationale": [
+    "Select the complete registered A10 configuration, not a splice. The complete Faster-source family has no lower primary BB AP configuration under the declared retrospective rule.",
+    "Exact A10-background controls support the paired-view construction and budgeted detector-plus-feature schedule. Layer, energy and aggregation choices are tied to their tested background, not relabeled A01 ablations.",
+    "The Faster backbone-only F03 counterexample is material and retained, including all twelve BB summaries. The pre-Swin equal-source supplement supports the joint design only against that alternative, not a two-source all23 optimum.",
+    "Bounded paired A01/A10/A23 time and memory measurements do not establish equal physical cost or a significant advantage; they provide no resource veto against A10. Unknown F03 calibrated physical cost remains unknown.",
+    "A01 and A23 are preserved as historical identities. Their accepted efficacy, seed or cross-dataset results cannot be inherited by A10."
+  ],
+  "recorded_at_utc": "2026-09-30T15:18:56.741118+00:00",
+  "retrospective_selection": true,
+  "reviewed_binding_mismatches": 0,
+  "reviewed_lightweight_bindings_rehashed": 31,
+  "schema_version": 1,
+  "scientific_acceptance": false,
+  "selected_configuration": "A10",
+  "selected_configuration_independently_reviewed": true,
+  "selected_numerical_implementation_identity": {
+    "actual_class_mro": [
+      "lgp.attacks.vcsf_common_anchor_isolated.VCSFCommonAnchorCandidate",
+      "lgp.attacks.vcsf_scale_isolated.VCSFScaleCandidate",
+      "lgp.attacks.vcsf_research_isolated.VCSFResearchCandidate",
+      "lgp.attacks.vcsf_final_candidate.VCSFFinalCandidate",
+      "builtins.object"
+    ],
+    "current_full_source_snapshot_sha256": "24dc24290b773511ebfac2b4c90ea4d658f1a8f4e9f7f3a5b812c35ba00d073a",
+    "dispatch_change": {
+      "current_sha256": "8bff6aaecf7b0e3d23f0084b23bd4dea397cee288bfc48380b96b1258ce5c271",
+      "historical_sha256": "f96ae927c6c30845e059e01dc5c4b692c3cd5e2c67c1d4ee588d4846e5d0c3da",
+      "path": "src/lgp/runners/attack.py",
+      "whole_execution_equivalence_claimed": false
+    },
+    "historical_actual_builder": "lgp.attacks.vcsf_common_anchor_execution_isolation.build_common_anchor_execution",
+    "historical_runtime_snapshot_sha256": "0541e0c6236dab892d5321531061049e04810077d0bac62635eff6916346237a",
+    "legacy_run_implementation_field": "alias-derived label; actual builder and original runtime snapshot govern source identity",
+    "new_complete_public_execution_hash": null,
+    "numeric_source_map_sha256": "5f7174ae7ac4f0f49c385955d3cfa64bc8c1d1893f1a43d8e08d9895c3792acd",
+    "numeric_source_sha256": {
+      "src/lgp/adapters/openmmlab.py": "553ab418de02fa4c9e2c5920e066b4be248225af4b68b660e17e2866998c4348",
+      "src/lgp/attacks/base.py": "9288b61e8168b1738d84d3e4c6860c713a340b5cfaf45b0a984694dc4fd3259e",
+      "src/lgp/attacks/common.py": "850fbdfcb8908064c0380e5a30f66cec1c62814a287c26f7f388a980811709d3",
+      "src/lgp/attacks/vcsf_common_anchor_execution_isolation.py": "44b8ea7f9cc3df7fce511f79bc9dae671fb6ea0dd709178a095b5717c7464b63",
+      "src/lgp/attacks/vcsf_common_anchor_isolated.py": "b55c7ebe5a307249a8776c0370a8e149044ef2fbc923954e9f1dddccaa1843da",
+      "src/lgp/attacks/vcsf_final_candidate.py": "99423c6892db7afc172dff0eb375970a603b44ed9885b0c04f71faa845da2c4a",
+      "src/lgp/attacks/vcsf_research_isolated.py": "b78fbbddc1638f4f74ddb44771c131a6f5301272bc5d75110c700828f40099b0",
+      "src/lgp/attacks/vcsf_scale_isolated.py": "65827ce3ed4eb1d16700a828648ed9d6595f5ff6d92103408343ab56df5047ef",
+      "src/lgp/modeling.py": "db4301db6f420a490d3ad09340fa6610924268320abebf3576401cb1191fd6c5"
+    }
+  },
+  "selection_population": {
+    "aggregation": "unrounded_equal_target_mean_excluding_source",
+    "blackbox_targets": [
+      "cascade_rcnn_r50",
+      "mask_rcnn_swin_t",
+      "yolov3_d53",
+      "yolov5_s",
+      "yolox_s",
+      "yolov8_s",
+      "retinanet_free_anchor_r50",
+      "reppoints_r50",
+      "vfnet_r50",
+      "tood_r50",
+      "rtmdet_s",
+      "sparse_rcnn_r50",
+      "detr_r50",
+      "deformable_detr_r50",
+      "dino_r50"
+    ],
+    "candidates": [
+      "A01",
+      "A02",
+      "A03",
+      "A04",
+      "A05",
+      "A06",
+      "A07",
+      "A08",
+      "A09",
+      "A10",
+      "A11",
+      "A12",
+      "A13",
+      "A14",
+      "A15",
+      "A16",
+      "A17",
+      "A18",
+      "A19",
+      "A20",
+      "A21",
+      "A22",
+      "A23"
+    ],
+    "dataset": "coco",
+    "images": 5000,
+    "primary_metric": "bbox_mAP",
+    "retrospective": true,
+    "seed": 42,
+    "source": "faster_rcnn_r50",
+    "split": "val",
+    "targets": [
+      "faster_rcnn_r50",
+      "cascade_rcnn_r50",
+      "mask_rcnn_swin_t",
+      "yolov3_d53",
+      "yolov5_s",
+      "yolox_s",
+      "yolov8_s",
+      "retinanet_free_anchor_r50",
+      "reppoints_r50",
+      "vfnet_r50",
+      "tood_r50",
+      "rtmdet_s",
+      "sparse_rcnn_r50",
+      "detr_r50",
+      "deformable_detr_r50",
+      "dino_r50"
+    ]
+  },
+  "selection_recommendation_accepted_for_declared_scope": true,
+  "selection_scope": "Full original 23-configuration Faster R-CNN val2017 source-excluded AP ranking and setting rationale, followed by a pre-Swin equal-source A10/F03 check addressing the specific adverse backbone-only alternative. This is not a common two-source ranking of all23 or a cross-source/seed/global optimum.",
+  "status": "reviewed_A10_configuration_choice_recorded_pending_exact_public_qualification_and_final_results",
+  "submission_selection_explanation_complete": false,
+  "two_source_rule": "Compare A10 and F03 on the same full-val images within each source, then compare their equal-weight two-source source-excluded BB Mean. This criterion was set after observing the Faster F03 result but before the new Swin result; small differences remain descriptive, not stable superiority.",
+  "whole_project_device_release_accepted": false
+}

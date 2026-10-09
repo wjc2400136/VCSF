@@ -1,0 +1,31 @@
+{
+  "GPL_original_text_sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+  "all_source_expressive_origin_established": false,
+  "date": "2026-10-09",
+  "grant_scope": "project_owned_source_and_accompanying_project_owned_source_guides",
+  "integrated_source_distribution_license": "GPL-3.0-only",
+  "manuscript_media_datasets_and_checkpoints_included": false,
+  "new_method_or_numerical_acceptance": false,
+  "previous_public_metadata_commit": "c863b288affd926c8b1cb15e36fa51d3316522df",
+  "previous_source_preparation_manifest_sha256": "277af97b7a416120eece0c2eaac0f98df8be6bf2d498739aea5f5009776265e4",
+  "primary_references": [
+    "https://apache.org/licenses/GPL-compatibility.html",
+    "https://github.com/open-mmlab/mmyolo/blob/v0.6.0/LICENSE",
+    "https://github.com/wakuwu/OSFD/blob/3744caf69e60b46012a6895c095f18c33db491a9/LICENSE"
+  ],
+  "project_license": "GPL-3.0-only",
+  "retained_third_party_terms": [
+    "MIT",
+    "Apache-2.0",
+    "GNU GPL version 3 as supplied upstream"
+  ],
+  "retained_upstream_license_sha256": {
+    "docs/third_party/licenses/GPL-3.0-upstream.txt": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+    "docs/third_party/licenses/LGP-mmdet-Apache-2.0.txt": "874b8b2e6f12306a1ff7812c068a0dbf880418b8ac1f7190382bd6c6da9f23a1",
+    "docs/third_party/licenses/NumbOD-MIT.txt": "bc14dbcc12b4c43ad1e382e8e315450784332208ddf75069834bdc18484a4277"
+  },
+  "schema": "vcsf_source_licence_selection_v1",
+  "selection_authority": "project_owner_delegated_common_and_appropriate_licence_choice",
+  "unconditional_legal_clearance_claimed": false,
+  "upstream_later_version_option_inferred": false
+}
