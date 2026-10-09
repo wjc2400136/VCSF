@@ -1,0 +1,374 @@
+schema_version: 1
+policy: >-
+  Every method below has a local executor in src/lgp/attacks. Local executability,
+  paper/release fidelity, and numerical reproduction are separate audit fields. The
+  parameters below are the frozen compute-matched profile (epsilon 4/255 and at most
+  20 source-detector backward image-equivalents), never an undisclosed paper default.
+attacks:
+  tog:
+    display_name: TOG
+    executor: native
+    fidelity_status: pinned_release_port_with_audited_adapter_extension
+    fidelity_basis: release_port_with_detector_native_losses
+    validation_level: structural_gradient
+    comparison_profile: compute_matched
+    implementation: src/lgp/attacks/tog.py
+    paper: https://doi.org/10.1109/TPS-ISA50397.2020.00042
+    repository: https://github.com/git-disl/TOG
+    audit_commit: b5f59354cbc6f324b218761905a1724aedebfb2d
+    semantic_contract: Preserve the published vanishing/untargeted detector-loss objectives and released sign-update rule; do not invent one cross-architecture fabrication target.
+    parameters:
+      eps: 4/255
+      iterations: 20
+      step_size: 1/255
+      mode: vanishing
+      random_start: true
+      prediction_threshold: 1/5
+  lgp:
+    display_name: LGP
+    executor: native
+    fidelity_status: paper_first_pinned_release_adjudicated_port
+    fidelity_basis: paper_equations_then_pinned_release_for_open_details
+    validation_level: bounded_real_diagnostic_not_formal
+    comparison_profile: compute_matched
+    implementation: src/lgp/attacks/lgp.py
+    paper: https://arxiv.org/abs/2307.12342
+    repository: https://github.com/liguopeng0923/LGP
+    audit_commit: fce86da91f2dc4a69cc69751806f0caae80e51a3
+    discrepancy_resolution: >-
+      The maintained executor follows the paper equations before the pinned release's
+      unspecified details. Both proposal tracks retain real source rows, their GT
+      provenance and duplicates; missing slots never become synthetic loss rows.
+      Equation 6 uses the same real tracked rows for localization, shape and semantic
+      terms. Equation 5 and pinned LogitLossAdv minimize the negative explicit
+      background score, not its negative logarithm; other heads use native no-object
+      CE/BCE. Equation 8 uses the complete Equation 7 heatmap in the valid resized
+      pre-defense image domain. Adamax optimizes a normalized original-grid variable;
+      LGP-CM projects its raw-pixel image against the clean input after each update.
+      The inherited two-step success warmup and next-entrance stop are explicit.
+    semantic_contract: >-
+      Preserve real dual-track proposals or queries, per-object ownership, the
+      localization, shape, background-semantic and adaptive perceptibility terms,
+      their paper-adjudicated aggregation, and Adamax. The HQ set is indexed by valid
+      non-crowd GT; an empty set yields an explicit identity image and zero calls.
+      Valid GT with no real clean target is an execution error. If the later
+      real tracked set is empty, stop before loss or backward and retain the
+      last projected image; this is neither a structural skip nor a zero metric.
+      The disappearance IoU sum uses every real
+      current candidate, not only selected loss rows. Report actual early-stop
+      gradients and the separate clean-target source forward. The accepted
+      six-source and VOC/adaptive three-step diagnostics qualify only their fixed
+      inputs, not full-scale AP or scientific efficacy.
+    parameters:
+      eps: 4/255
+      iterations: 20
+      learning_rate: 1/10
+      weight_decay: 0
+      iou_candidates: 5
+      score_candidates: 5
+      localization_weight: 1
+      shape_weight: 1
+      classification_weight: 1
+      imperceptibility_weight: 1/10
+      foreground_scale: 3/2
+      shape_scale: 1/10
+      target_source: hq
+      prediction_threshold: 1/20
+      perceptibility_mode: adaptive_fbs
+      random_start: false
+  osfd:
+    display_name: OSFD
+    executor: native
+    fidelity_status: paper_first_pinned_release_adjudicated_port
+    fidelity_basis: paper_rrb_with_release_gaussian_implementation
+    validation_level: structural_gradient
+    comparison_profile: compute_matched
+    implementation: src/lgp/attacks/osfd.py
+    paper: https://doi.org/10.1609/aaai.v38i2.27920
+    repository: https://github.com/wakuwu/OSFD
+    audit_commit: 3744caf69e60b46012a6895c095f18c33db491a9
+    discrepancy_resolution: >-
+      The paper defines rotation and adaptive resizing as parallel RRB branches and rho=0.8
+      as the resize-intensity coefficient. The release mutates the first branch before
+      constructing the second, which makes the second branch sequential, and its function
+      named gaussian_blur performs additive Gaussian noise. The unique executor follows the
+      paper's parallel branch definition while retaining the released differentiable Gaussian
+      operation; both choices are fixed and disclosed.
+    semantic_contract: Preserve object-aware feature distortion and the two parallel RRB views.
+    parameters:
+      eps: 4/255
+      iterations: 10
+      step_size: 1/255
+      views: 2
+      amplification: 3
+      feature_levels: [0, 1, 2, 3]
+      momentum: 1
+      max_rotation_degrees: 7
+      rotation_center_jitter: 10
+      transform_probability: 1
+      enable_rotation: true
+      enable_resize: true
+      enable_noise: true
+      resize_factor: 4/5
+      max_scale: 11/10
+      gaussian_sigma: 6
+      random_start: true
+      initial_noise_pixels: 2
+  afog:
+    display_name: AFOG
+    executor: native
+    fidelity_status: paper_first_pinned_release_adjudicated_port
+    fidelity_basis: paper_algorithm_with_release_comparison
+    validation_level: structural_gradient
+    comparison_profile: compute_matched
+    implementation: src/lgp/attacks/afog.py
+    paper: https://arxiv.org/abs/2508.02987
+    repository: https://github.com/zacharyyahn/AFOG
+    audit_commit: b32d5cd28c7a650968ee46fa8d25489a39f15da5
+    deviation: >-
+      Paper Algorithm 1 keeps attention A and perturbation P as independent states;
+      the public release overwrites P with A*P. The local executor follows the paper
+      recurrence. When the frozen clean-prediction threshold yields no object, it
+      retains the exact empty target and uses the detector-native background loss,
+      matching the executable release behavior without lowering the threshold or
+      substituting ground-truth labels.
+    semantic_contract: Preserve independent attention and perturbation states, frozen clean pseudo-targets, detector-native bbox/classification loss-family mappings, and the joint input-attention gradient update.
+    parameters:
+      eps: 4/255
+      iterations: 20
+      step_size: 1/255
+      attention_step_size: 1/10
+      learn_attention: true
+      mode: baseline
+      random_start: true
+      normalization_eps: 1/100000000
+      prediction_threshold: 1/2
+  corrupting_attention:
+    display_name: Corrupting Attention
+    executor: native
+    fidelity_status: local_paper_reconstruction
+    fidelity_basis: paper_equations_and_algorithm_deformable_attention_only
+    validation_level: structural_gradient
+    comparison_profile: compute_matched
+    implementation: src/lgp/attacks/corrupting_attention.py
+    paper: https://arxiv.org/abs/2608.06674
+    repository: null
+    reconstruction_basis: >-
+      The v1 paper fully specifies the clean predicted-box token selection,
+      final-encoder pre-softmax attention-logit objective, four corruption
+      operators, random-start PGD update and optimization hyperparameters. No
+      author repository was linked by the paper or arXiv record at audit time.
+    semantic_contract: >-
+      Select clean predicted boxes at the fixed confidence threshold, map them
+      to final-layer encoder object tokens, freeze the clean corruption target,
+      minimize per-head pre-softmax attention-logit MSE, and use signed PGD.
+      The maintained source is restricted to a detector whose final encoder
+      exposes native deformable-attention logits.
+    implementation_adjudication: >-
+      The paper uses dispersion as the common corruption in its eight-model
+      comparison and re-ranking for the best DINO result in its headline table.
+      The unique local default is dispersion because it is parameter-free and
+      is the paper's cross-model default; other published operators remain
+      explicit configuration values. The headline registry changes only the
+      L-infinity radius from 8/255 to 4/255.
+    parameters:
+      eps: 4/255
+      iterations: 10
+      step_size: 2/255
+      confidence_threshold: 1/2
+      corruption: dispersion
+      random_start: true
+      empty_target_behavior: identity_output
+  numbod:
+    display_name: NumbOD
+    executor: native
+    fidelity_status: paper_first_pinned_release_adjudicated_port
+    fidelity_basis: paper_equations_then_pinned_release_for_open_details
+    validation_level: structural_gradient
+    comparison_profile: compute_matched
+    implementation: src/lgp/attacks/numbod.py
+    paper: https://doi.org/10.1609/aaai.v39i1.32108
+    repository: https://github.com/CGCL-codes/NumbOD
+    audit_commit: 0b22cbfb020ea20730fafd23e8e4ebe33b3adda7
+    discrepancy_resolution: >-
+      Figure 2 and the pinned release concatenate the IoU and matching-label tracks
+      into one 2k target set and apply both the spatial and classification objectives
+      to that union. Paper Equation 5 uses log(c_true)-log(c_background), so the
+      release's log(1+c_true) expression is not retained. Candidate tracks are selected
+      from the current adversarial detector outputs as specified for B_adv. A short
+      matching-label track keeps the release's fixed-capacity GT-box/background-row
+      completion: completed rows have zero direct classification numerator but remain
+      in the published mean denominator.
+    repair: >-
+      Undefined release variables and incomplete Haar reconstruction are repaired
+      without changing the paper objective. Adamax uses PyTorch's numerically
+      equivalent single-tensor backend for the pinned CUDA runtime; no post-optimizer
+      step-size clamp is added. NumbOD-CM adds only the disclosed common L-infinity
+      projection and backward-equivalent budget. With no valid non-crowd ground-truth
+      object, both object-indexed tracks are empty and the executor records an exact
+      identity output instead of optimizing an unrelated frequency-only background.
+    semantic_contract: >-
+      Preserve current-output dual-track selection, the joined 2k attack-target set,
+      paper Equation 5, directional box suppression, differentiable Haar low/high
+      frequency objectives, their registered weights, and Adamax.
+    parameters:
+      eps: 4/255
+      iterations: 20
+      learning_rate: 3/100
+      weight_decay: 1/50
+      iou_candidates: 15
+      score_candidates: 15
+      location_weight: 1
+      classification_weight: 100
+      low_frequency_weight: 1
+      high_frequency_weight: 1
+  sfim_b:
+    display_name: SFIM-B
+    executor: native
+    fidelity_status: local_paper_reconstruction
+    fidelity_basis: paper_equations_and_algorithm
+    validation_level: structural_gradient
+    comparison_profile: compute_matched
+    implementation: src/lgp/attacks/sfim.py
+    paper: https://doi.org/10.1109/TrustCom66490.2025.00269
+    repository: null
+    reconstruction_basis: Equations and algorithm in the paper; no official repository was published.
+    semantic_contract: Preserve independent SIM and FIM views, backbone-feature MSE, and L-infinity gradient normalization.
+    parameters:
+      eps: 4/255
+      iterations: 10
+      learning_rate: 1/2
+      feature_levels: [0, 1, 2, 3]
+      spatial_scale_upper: 3/10
+      frequency_scale_upper: 4/5
+      spatial_scale_lower: 1/10
+      frequency_scale_lower: 3/10
+      spatial_weight: 1
+      frequency_weight: 1
+      spatial_views: 1
+      frequency_views: 1
+  augtrans:
+    display_name: AugTrans
+    executor: native
+    fidelity_status: local_paper_reconstruction
+    fidelity_basis: paper_equations_and_algorithm_with_discrepancy_resolution
+    validation_level: structural_gradient
+    comparison_profile: compute_matched
+    implementation: src/lgp/attacks/augtrans.py
+    paper: https://doi.org/10.32604/cmc.2026.074811
+    repository: https://github.com/sudhirpandey243/LLM-Model
+    repository_status: Advertised by the paper but currently unavailable at the published URL.
+    reconstruction_basis: Paper equations and ablations; restricted to detectors with all four required loss branches.
+    paper_discrepancy_resolution: >-
+      Sections 3.3.5, Algorithm 2 and Figure 1 define the full rotation-resize-crop/pad-noise
+      pipeline, while one hyperparameter sentence says to sample two transformation types.
+      The unique executor follows the complete pipeline because resize and crop/pad are a
+      coupled shape-restoration operation and the four-branch formulation is the complete
+      algorithmic definition.
+    semantic_contract: Preserve the full transformation pipeline and all four RPN/ROI loss branches.
+    parameters:
+      eps: 4/255
+      iterations: 10
+      step_size: 1/255
+      eot_samples: 2
+      base_rotation_degrees: 8
+      curriculum_scale: 1/2
+      enable_rotation: true
+      enable_resize: true
+      enable_noise: true
+      dominant_objects: 3
+      scale_modulation_min: -1/5
+      scale_modulation_max: 1/2
+      aspect_jitter: 1/10
+      gaussian_sigma: 1/50
+      salt_pepper_probability: 1/100
+      roi_cls_weight: 1
+      roi_box_weight: 1
+      rpn_objectness_weight: 2
+      rpn_box_weight: 1
+      cls_exponent: 4/5
+      objectness_exponent: 4/5
+      target_source: ground_truth
+      prediction_threshold: 1/2
+  hifa:
+    display_name: HIFA
+    executor: native
+    fidelity_status: local_paper_reconstruction
+    fidelity_basis: paper_equations_and_algorithm_with_discrepancy_resolution
+    validation_level: structural_gradient
+    comparison_profile: compute_matched
+    implementation: src/lgp/attacks/hifa.py
+    paper: https://doi.org/10.1007/s11227-025-07225-7
+    repository: null
+    reconstruction_basis: Paper equations and algorithm; no official repository was published.
+    paper_discrepancy_resolution: >-
+      Figure 4 enumerates motion blur, Gaussian noise and impulse noise, so each augmented
+      copy samples from those three loss-preserving transformations. Equation 11 explicitly
+      maximizes the signed DEIG feature objective; this resolves the opposite update sign in
+      Algorithm 1. Table 1's copies_num=10 is used as the paper-default record because the
+      surrounding prose inconsistently states 30.
+    semantic_contract: Preserve DEIG attribution, signed positive/negative feature weighting, and MI-FGSM.
+    parameters:
+      eps: 4/255
+      iterations: 12
+      step_size: 1/255
+      target_layer: -2
+      integration_steps: 4
+      augmented_copies: 2
+      negative_balance: 1
+      momentum: 1
+      noise_sigma: 1/50
+      transformation_probability: 1/2
+      salt_pepper_probability: 1/100
+      motion_blur_kernel_size: 5
+  mlfadv:
+    display_name: MLFAdv
+    executor: native
+    fidelity_status: local_paper_reconstruction
+    fidelity_basis: paper_equations_and_algorithm_two_stage_only
+    validation_level: structural_gradient
+    comparison_profile: compute_matched
+    implementation: src/lgp/attacks/mlfadv.py
+    paper: https://doi.org/10.1109/ISSSR61934.2024.00032
+    repository: null
+    reconstruction_basis: >-
+      Paper equations and algorithm; no official repository was published. The paper defines
+      confidence on RPN proposals, so the executor is restricted to RPN+ROI sources.
+    semantic_contract: Preserve per-object Grad-CAM, ROI class confidence evaluated on RPN-generated proposals, two feature-cosine terms, and the paired full/low-frequency objectives.
+    accounting_note: Per-object Grad-CAM head-only backwards are written to auxiliary_passes and are not hidden inside the dominant two-view iteration count.
+    parameters:
+      eps: 4/255
+      iterations: 9
+      step_size: 1/255
+      target_layer: -2
+      auxiliary_target_layer: -3
+      low_frequency_radius_pixels: 200
+      low_frequency_weight: 1
+      feature_weight: 10
+      momentum: 1
+      prediction_threshold: 1/2
+      positive_iou_threshold: 1/2
+      use_gradcam: true
+  naa:
+    display_name: NAA
+    executor: native
+    fidelity_status: local_paper_reconstruction
+    fidelity_basis: paper_equations_and_algorithm_two_stage_only
+    validation_level: structural_gradient
+    comparison_profile: compute_matched
+    implementation: src/lgp/attacks/naa.py
+    paper: https://doi.org/10.1007/978-981-99-8178-6_8
+    repository: null
+    reconstruction_basis: >-
+      Paper equations and Algorithm 1; no official repository was published. The paper's
+      input is a two-stage detector and its attribution sums true-class scores from positive
+      ROI proposal boxes, so dense/query sources are not substituted.
+    semantic_contract: Preserve positive-proposal integrated attribution, top-k-percent neuron masking, and L2 feature suppression.
+    parameters:
+      eps: 4/255
+      iterations: 12
+      learning_rate: 1/2
+      target_module: layer3.2
+      integration_steps: 8
+      keeping_rate: 2/5
+      positive_iou_threshold: 1/2

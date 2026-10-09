@@ -1,0 +1,88 @@
+schema_version: 1
+benchmark: coco_retained500_victim_training_state_transfer
+dataset: coco
+train_split: train
+evaluation_split: val
+seed: 42
+source_protocol: coco_all_methods
+source_acceptance: outputs/reports/coco/formal_all_methods_acceptance.json
+retained_images: 500
+retained_selection_algorithm: canonical_equal_bins_center_v1
+source: mask_rcnn_swin_t
+source_rationale: >-
+  Mask R-CNN Swin-T supports every maintained method and is not the Faster
+  R-CNN victim architecture. Excluding the Faster R-CNN source keeps every
+  reported attacked cell a zero-query cross-model transfer evaluation.
+victim_model: faster_rcnn_r50
+victim_states:
+  - standard_control
+  - adversarial_training
+methods: [sfim_b, naa, numbod, hifa, mlfadv, tog, augtrans, lgp, afog, osfd, svfta]
+metrics: [bbox_mAP, bbox_mAP_50, bbox_mAP_75, bbox_mAP_small, bbox_mAP_medium, bbox_mAP_large, bbox_AR_1, bbox_AR_10, bbox_AR_100, bbox_AR_small, bbox_AR_medium, bbox_AR_large]
+threat_model: zero_query_oblivious_cross_model_transfer
+pair_training:
+  design: paired_continuation_from_identical_detector_checkpoint
+  initial_checkpoint: checkpoints/coco/faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth
+  outer_epochs: 1
+  replay_steps_per_minibatch: 4
+  batch_size: 2
+  num_workers: 2
+  dataset_filter:
+    filter_empty_gt: false
+    min_size: 0
+  diagnostic_smoke:
+    max_images: 47
+    required_empty_gt_dataset_index: 46
+    required_empty_gt_image_id: 262284
+  optimizer:
+    type: AdamW
+    lr: 1.0e-4
+    betas: [0.9, 0.999]
+    weight_decay: 0.1
+    backbone_lr_multiplier: 0.1
+    norm_decay_multiplier: 0.0
+    gradient_clip_max_norm: 100.0
+    gradient_clip_norm_type: 2
+  scheduler: constant
+  augmentation_trace_required: true
+  checkpoint_selection: fixed_final_epoch
+  formal_val_during_training: false
+  adversarial_branch:
+    norm: linf
+    epsilon: 4/255
+    epsilon_pixel_255: 4.0
+    step_size: 4/255
+    step_size_pixel_255: 4.0
+    initialization: zero
+    input_update: signed_total_detector_loss
+    reset_delta_each_minibatch: true
+    padding_policy: zero_outside_img_shape
+pairing_requirements:
+  all_registered_train_images_including_empty_gt: true
+  identical_initial_checkpoint_sha256: true
+  identical_train_annotation_sha256: true
+  identical_train_image_ids_sha256: true
+  identical_processed_sample_trace_sha256: true
+  identical_model_architecture_sha256: true
+  identical_weight_optimizer_sha256: true
+  identical_schedule_sha256: true
+  identical_optimizer_steps: true
+  fixed_final_epoch_only: true
+  strict_state_dict_load: true
+  finite_state_dict: true
+  train_inference_verification: true
+  no_formal_val_checkpoint_selection: true
+artifacts:
+  root: checkpoints/coco/training_state_transfer
+  pair_manifest: checkpoints/coco/training_state_transfer/pair_manifest.json
+  standard_checkpoint: checkpoints/coco/training_state_transfer/faster_rcnn_r50_standard_control.pth
+  adversarial_checkpoint: checkpoints/coco/training_state_transfer/faster_rcnn_r50_adversarial_training.pth
+formal_counts:
+  clean_evaluations: 2
+  attack_evaluations: 22
+  records: 24
+  attack_groups: 11
+formal_retained_subset_benchmark: true
+full_coco_val_claim: false
+certified_robustness_claim: false
+controlled_training_state_claim_requires_strict_pair: true

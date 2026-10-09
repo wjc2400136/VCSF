@@ -1,24 +1,24 @@
 {
   "files": [
     {
-      "bytes": 5939,
+      "bytes": 6589,
       "path": "README.md",
-      "sha256": "1765a9fa89161073616485df61de7d95f5eab1a1b5aef3065df2f1bdb35236e2"
+      "sha256": "885638c042e9d86030c14834c8a0b62e60b1f34a006518732df7908fc2add949"
     },
     {
-      "bytes": 4841,
+      "bytes": 5853,
       "path": "README.zh-CN.md",
-      "sha256": "b2f7c5febb01ccd82bd0990d32f7931e2a558b1034a362d6785b6773c7dde541"
+      "sha256": "38ee47d5ce379b36f7dfb2444252adf47dc49228a5c9fa70f56bad9ff9d225be"
     },
     {
-      "bytes": 5596,
+      "bytes": 5854,
       "path": "current-evidence-status.json",
-      "sha256": "8ff26b8819a0e41b594dbcbd5d5e484bb9de43713cc5e4c24612c2de9555fb22"
+      "sha256": "895984bbd5f20374ebab3040e982443734c7976e089795879ed54c275ee5c64a"
     },
     {
-      "bytes": 4432,
+      "bytes": 4550,
       "path": "docs/en/vcsf-method.md",
-      "sha256": "f47be8e362eef79f5358cec1e537085dc560c540552cdd4755f76741ef2fca4b"
+      "sha256": "74588b086f6c30f502d1eae653951dabbfae7c381eb51b73140077b0a110c5df"
     },
     {
       "bytes": 2181,
@@ -26,9 +26,9 @@
       "sha256": "aa6569c1ec69d5673822a50203256ed60971ffeb8f5b2ef69316836651e3fd0a"
     },
     {
-      "bytes": 3713,
+      "bytes": 3789,
       "path": "docs/zh_CN/vcsf-method.md",
-      "sha256": "d3202eb6ddec522476d892457162c0860e75ae44976c1b2779e8f906b70a8e3f"
+      "sha256": "2e56994c703b1f21e442a96bdd4428c5a690bcacb032ca3d1d4f6e93ac3a83a3"
     },
     {
       "bytes": 36244,
@@ -57,9 +57,11 @@
     "historical-implementation-inventory.json",
     "docs/history/previous-a23-selection-status.json"
   ],
-  "previous_public_commit": "71adae3b4a27d0744a1ba4c20730306096c94722",
-  "project_license_granted": false,
-  "publication_scope": "accepted_documentation_current_identity_and_revision11_delivery_status_metadata_only",
-  "schema_version": 4,
-  "software_release": false
+  "previous_public_commit": "c863b288affd926c8b1cb15e36fa51d3316522df",
+  "project_license": "GPL-3.0-only",
+  "project_license_granted": true,
+  "publication_scope": "complete_lightweight_executable_source_with_retained_scientific_metadata",
+  "schema_version": 5,
+  "software_release": true,
+  "whole_research_goal_accepted": false
 }

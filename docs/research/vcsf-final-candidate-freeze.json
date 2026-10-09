@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "id": "vcsf_final_candidate_freeze_v1",
+  "status": "frozen_development_candidate_implementation_verified_formal_pending",
+  "frozen_at": "2026-08-26T02:55:00Z",
+  "method": {
+    "id": "vcsf_final_candidate",
+    "display_name": "VCSF-Attack",
+    "expanded_name": "View-Consistent Cross-Stage Feature-Survival Attack",
+    "implementation": "src/lgp/attacks/vcsf_final_candidate.py",
+    "config": "configs/attacks/vcsf_final_candidate.yaml",
+    "specification_en": "docs/research/vcsf-final-candidate-spec.md",
+    "specification_zh_cn": "docs/research/vcsf-final-candidate-spec.zh-CN.md"
+  },
+  "behavior": {
+    "eps": "4/255",
+    "iterations": 20,
+    "step_size": "1/255",
+    "schedule": "one_smooth_detector_log_odds_plus_nineteen_feature_updates",
+    "feature_surface": "three_neck_plus_three_backbone_tail",
+    "spatial_support": "global_clean_energy",
+    "feature_objective": "directional_cosine_survival_log_mean_exp",
+    "view_distribution": "synchronized_scale_resize_crop_pad_2_over_3_to_4_over_3",
+    "feature_momentum": "ordinary_first_moment_7_over_10",
+    "risk_carryover": false,
+    "uncertainty_gate": false,
+    "auxiliary_forward_passes_per_image": 0,
+    "auxiliary_backward_passes_per_image": 0,
+    "complete_backward_image_equivalents_per_image": 20
+  },
+  "file_sha256": {
+    "src/lgp/attacks/vcsf_final_candidate.py": "99423c6892db7afc172dff0eb375970a603b44ed9885b0c04f71faa845da2c4a",
+    "configs/attacks/vcsf_final_candidate.yaml": "58730864bd840ce1cf3df117bcd085820333a917055938cbf05b7fad6df6f7eb",
+    "tests/test_vcsf_final_candidate.py": "0df53bd864e2fa9caf70aaacf49d794b0b48f25d6f80935df6a61460e8072bf1",
+    "experiments/run_vcsf_final_candidate_preflight_pycharm.py": "107082a5b8700bcdcd5e2afe03ef2c5b3df831232cb018f8be928364dce7f3f6",
+    "experiments/run_vcsf_final_candidate_freeze_check_pycharm.py": "aaeb42dd08345433457581e1c0d6ab99c72ce5f6bcbef6b88cd64980f93d7d94",
+    "tests/test_vcsf_final_candidate_freeze.py": "11bb63776e9f25ae27ddefeb1aba8de56b4d99ba0cf8dfe449949468356ec917",
+    "docs/research/vcsf-final-candidate-spec.md": "d70817b01ab8ff8c6a0a24530e2dcd13b12db9288f4d311bec5461bc140a3075",
+    "docs/research/vcsf-final-candidate-spec.zh-CN.md": "34fbad585a0191d582a543aa2b11104c4fcff8501901c5397ca8472eeec77692",
+    "docs/svfta-cross-stage-claim-scientific-audit.md": "29dd763de2a969b211eb0ada9c8e7fcf41a21bd42dca22752329a4217b842d6d",
+    "docs/svfta-cross-stage-global-claim-audit.md": "274aff684b6a386ba31cfb5887e7809700ef857d0d769f464ba98840c4bd815f",
+    "docs/research/svfta-cross-stage-prior-art-boundary.md": "8e28629640a3f3cf1b93b30eb1e7e9173e37bdf303d1fb7379b306532fdec01c",
+    "src/lgp/attacks/svfta.py": "4585fdf57d2a13d800af8966d946fa7056a5bd0e9255bb0b20a03d7096b8e739",
+    "src/lgp/attacks/svfta1.py": "d590da798b12dc549ec23c49da212ac0373b2e5a6f3b73ec2be6e1a8b4664360",
+    "src/lgp/attacks/svfta_minimal_anchor.py": "e7d8dbb1a50896f16055e9d3c85fcc77bbfa6e27ea27a400eb5e8ec421367e2b",
+    "src/lgp/attacks/svfta_feature_support_deletion.py": "4597ce4473bfa9c13bbe0f05c6d48cd4a840c015c37660525fc09a3dc9b6c2e2",
+    "src/lgp/attacks/svfta_cross_stage_claim_confirmation.py": "96c2e73a8ec874e7d7a3a2dd1e078313aa279efbd802ff273e8061cf487b4bc6"
+  },
+  "development_evidence": {
+    "role": "development_only_single_seed_component_and_claim_confirmation",
+    "run": "outputs/experiments/svfta_cross_stage_claim_confirmation/20260824T132745Z",
+    "summary": "outputs/experiments/svfta_cross_stage_claim_confirmation/20260824T132745Z/summary.json",
+    "summary_sha256": "dfc1ddef99bc28e228003b136af5dbb20b9f0e2cddac620693164110f1aa8dd5",
+    "records": "outputs/experiments/svfta_cross_stage_claim_confirmation/20260824T132745Z/records.json",
+    "records_sha256": "28c71877725e7c0f79df68a45bf22a3dcc1ec89b6bdfa20f56aeaae9984f70ce",
+    "selected_image_ids_sha256": "6100285027f6c3f642bb572675e757da8faff99378192c95d54826857deca40d",
+    "dataset": "coco",
+    "split": "dev",
+    "images": 1000,
+    "seed": 42,
+    "sources": 6,
+    "targets": 16,
+    "source_matched_white_box_excluded_from_bb_mean": true,
+    "black_box_cells_per_variant": 90,
+    "contrasts_raw_map": {
+      "scale_at_cross_stage": -0.12374351581002638,
+      "cross_stage_at_scale": -0.022803203951081555,
+      "risk_initializer": -0.015002332557435922,
+      "reset_vs_carryover": -0.002151926360121533,
+      "scale_by_surface_interaction": 0.009471140039330521
+    }
+  },
+  "implementation_preflight": {
+    "role": "user_launched_independent_oda_preflight",
+    "report": "outputs/diagnostics/vcsf_final_candidate_preflight/20260826T024730Z/structural_equivalence.json",
+    "report_sha256": "2cc13c625d9adca6e7c91d5338600317a298d768f75060e872e02ab57fb44a26",
+    "status": "verified_cpu_exact_and_six_source_fixed_state_equivalence",
+    "image_id": 133,
+    "sources": 6,
+    "accepted_sources": 6,
+    "ap_evaluation_performed": false,
+    "registry_switch_performed": false
+  },
+  "claim_boundary": {
+    "primary_design": "view_consistent_cross_stage_global_feature_survival_objective",
+    "supporting_principle": "one_counted_smooth_detector_log_odds_initialization",
+    "empirical_contribution": "matched_budget_six_source_sixteen_target_evaluation",
+    "not_independent_contributions": [
+      "scale_transform",
+      "cosine_loss",
+      "multi_layer_features",
+      "momentum",
+      "phase_reset",
+      "zero_risk_carryover",
+      "log_mean_exp",
+      "twenty_iteration_budget"
+    ],
+    "synergy_claim_allowed": false,
+    "unqualified_first_or_novel_claim_allowed": false
+  },
+  "formal_validation": {
+    "status": "pending",
+    "dataset": "coco",
+    "split": "val",
+    "images": 5000,
+    "sources": 6,
+    "targets": 16,
+    "frozen_behavior_required": true,
+    "tuning_from_formal_split_forbidden": true,
+    "registry_switch_authorized": false,
+    "formal_ap_claim_authorized": false
+  }
+}

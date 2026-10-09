@@ -1,117 +1,105 @@
-# VCSF
-
-**Feature-based adversarial transfer across object detectors**
+# VCSF COCO and Pascal VOC Reproduction
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-VCSF studies how perturbations generated on one object detector transfer to
-other detector architectures. The current configuration is A10, selected through
-the recorded 23-configuration comparison and final-background analysis. This
-repository currently distributes scientific metadata and documentation; the
-complete executable package remains a separate pending software release.
+This lightweight source distribution maintains COCO and Pascal VOC. It preserves
+the selected A10 numerical implementation and complete registered parameters,
+corrected-LGP source201, sixteen canonical targets and six independent sources.
+BDD100K execution is cancelled; its declaration and retired SVFTA dependencies
+remain internal compatibility inputs, not maintained experiment programmes.
 
-## Project Overview
+Project-owned source and its accompanying project-owned source guides use **GPL-3.0-only**;
+see [LICENSE](LICENSE), [licence scope](docs/licensing/license-scope.md), and
+[Third-Party Notices](THIRD_PARTY_NOTICES.md). Retained upstream terms remain in force.
+This source distribution does not create numerical acceptance or complete the research goal.
+The original six selection/provenance documents are unchanged.
+The [package identity guide](docs/public-package-identity.md) explains the new
+closure identity; it does not claim equivalence to the old whole-author-tree freeze.
 
-| | Scope |
-| --- | --- |
-| Task | Transfer-based adversarial attacks on object detection |
-| Source panel | Six white-box detectors |
-| Target panel | Sixteen detectors across two-stage, YOLO, dense/point-based and query/set-based families |
-| Main datasets | COCO val2017 and Pascal VOC2007 test |
-| Main perturbation bound | L-infinity, 4/255 |
-| Method identity | One VCSF method name; the complete A10 configuration, with no per-target configuration selection |
+## Prerequisites and Source Check
 
-The research includes main transfer comparisons, controlled ablations,
-preprocessing, victim training-state and perturbation-budget studies.
-The scope above describes the research programme, not a claim that a complete
-executable release is already available here.
+Get the project repository from its supplied GitHub page using **Code > Download ZIP**,
+then extract it, or use an existing checkout. Open a terminal in the repository root,
+containing `environment.yml`, `pyproject.toml`, `experiments/` and `src/`.
+A fresh machine needs Conda, network access for dependencies/data/weights, sufficient
+disk space and a compatible NVIDIA driver for the CUDA 11.8 stack.
 
-## Method At A Glance
+Use Linux and the pinned Conda environment named `oda`: Python 3.8.20,
+PyTorch 2.0.0+cu118, torchvision 0.15.1+cu118, MMCV 2.0.1, MMEngine 0.7.4,
+MMDetection 3.0.0 and MMYOLO 0.6.0. The exact additional dependencies are in
+[the lock file](requirements/locked-cu118.txt). Create the environment only if `oda`
+does not already exist:
 
-VCSF combines detector-based initialization with feature updates across backbone
-and neck stages. The selected A10 configuration uses shared clean/adversarial
-geometry, energy weighting, log-mean-exp aggregation, momentum and gradient
-centering. Three levels are selected in each stage, giving six feature terms.
-
-| Component | Selected A10 setting |
-| --- | --- |
-| Schedule | Detector initialization followed by 19 feature updates |
-| Feature selection | Three selected layers per stage, six backbone/neck terms in total |
-| Scale range | [2/3, 4/3] |
-| Geometry | Bilinear interpolation, random placement, zero padding and valid support |
-| Momentum | 0.85 |
-
-Read the [method and interpretation guide](docs/en/vcsf-method.md) for the
-selection boundary and scientific limitations. The current identity record
-separately binds the selected parameters and nine numerical source files; a
-parameter hash alone is not a result-acceptance certificate.
-
-## Available Materials
-
-- [Current A10 selection status and complete parameters](vcsf-selection-status.json)
-- [Current A10 numerical source identity](vcsf-current-scientific-identity.json)
-- [Previous A23 selection record](docs/history/previous-a23-selection-status.json)
-- [Historical A01 scientific identity](vcsf-scientific-identity.json)
-- [Historical implementation file hashes](historical-implementation-inventory.json)
-- [English method guide](docs/en/vcsf-method.md)
-- [中文方法说明](docs/zh_CN/vcsf-method.md)
-
-The selected A10 parameter SHA-256 is:
-
-```text
-2551944131096c1d74011f2eb8d789b858e6dce79748f5b5aada54ea18254328
+```bash
+conda env create -f environment.yml
 ```
 
-The historical A01 identity and implementation inventory remain unchanged.
-They identify the original producer, not A10, and are not a validation
-certificate for a future public code package.
+For an existing pinned `oda`, activate it without recreating or independently
+upgrading packages. This direct-entry setup uses `PYTHONPATH` and does not require
+an editable package installation. Do not install `mmcv-full==1.7.2`, `mmcv-lite`
+or MMDetection 2.x, or independently upgrade OpenMMLab components. Do not add
+top-level source copies that shadow the installed packages. On setup failure,
+retain the error log and resolve the pinned wheel/driver requirement.
+Run the following from the repository root. The source check needs no datasets or weights:
 
-## Reproduction Status
+```bash
+conda activate oda
+export PYTHONPATH="$PWD/src"
+python -m lgp --help
+CUDA_VISIBLE_DEVICES="" python experiments/verify_public_package.py --plan-only
+CUDA_VISIBLE_DEVICES="" python experiments/qualify_vcsf_a10_public.py --plan-only
+python experiments/main_transfer.py --help
+python experiments/main_transfer.py --plan-only --datasets coco,voc --devices cuda:0,cuda:1
+```
 
-**This publication contains project documentation and scientific
-metadata, not the complete executable reproduction package.**
+Success means the source checks exit zero, the complete source manifest matches
+and the plan lists the intended full jobs. CPU checks and plans are not GPU or
+formal-mAP acceptance. Use `--devices cuda:0` for the same work on one GPU;
+dual mode schedules independent complete jobs without DDP or pooled memory.
+Every selected device must be available and individually fit its workload.
+Accepted one/dual evidence covers only the documented scopes, not global release.
 
-The current internal source candidate has its own qualified interfaces and
-separate accepted result evidence. This metadata publication does not include
-that source package or replace its original acceptance records. Third-party
-redistribution conditions and final delivery still need closure before the
-complete executable package can be published.
-No dataset, model checkpoint, private execution log or unaccepted result is
-included in this publication. Configuration selection does not itself admit a
-formal run or transfer any A01 or A23 result to A10.
+## Reproduction Guides
 
-The corrected-LGP five-radius numerical inputs and their manuscript comparison
-are complete, with 32/255 kept as a separate stress setting. One/two-device
-dispatch validation covers all 37 declared maintained paths at their recorded
-roles; it does not mean every default study or CLI option ran on native GPUs.
-See the [current evidence and delivery status](current-evidence-status.json).
-The current working manuscript also restores identity-matched cost records for
-ten methods on two common sources and two conditional design comparisons.
-Its accepted nine-file source archive is synchronized to the author's private
-cloud manuscript project. These are artifact and interpretation updates,
-not new model experiments or a controlled baseline speed ranking.
-These updates do not publish the private executable package.
+- [Data preparation and validation](data/README.md), [checkpoints](checkpoints/README.md), [outputs](outputs/README.md).
+- [COCO/VOC main](docs/current-public-reproduction.md): ten default methods; NAA and Corrupting Attention remain selectable.
+- [Fixed preprocessing](docs/current-preprocessing-reproduction.md) and [adaptive/BPDA preprocessing](docs/current-adaptive-preprocessing-reproduction.md).
+- [Training-state evaluation](docs/current-training-state-reproduction.md) and distinct [controlled-pair training](docs/current-training-pair-reproduction.md).
+- [Final-background controls](docs/current-vcsf-background-reproduction.md), [A10 radii](docs/current-vcsf-radius-reproduction.md), [paired cost](docs/current-paired-cost-reproduction.md).
+- [Offline qualitative panels](docs/current-qualitative-reproduction.md), [online prediction visualization](docs/prediction-visualization-device-interface.md).
+- [Optional white-box diagnostic](docs/current-whitebox-reproduction.md), [saved report export](docs/saved-report-export.md), [dispatch evidence](docs/current-dispatch-evidence.md).
 
-## Scientific Scope
+Retained baseline wrappers, `all_method_ablations.py`, `coco_all_methods.py`,
+`extended_transfer.py`, `naa_experiments.py`, `visualize_predictions.py`
+and `voc_transfer.py` are shipped. Inspect each entry with `--help` and
+`--plan-only` before intentionally executing it. Shipping an entry does not
+reactivate retired SVFTA protocols or require rerunning accepted matrices.
+The full study declarations remain unchanged; author-history support modules
+are not new GPU tasks. Formal runs omit `--max-images`; bounded results are diagnostics.
 
-A10 was selected from the original retrospective 23-configuration Faster R-CNN
-panel on reused COCO val2017, prioritizing unrounded source-excluded attacked
-BB Mean AP. The registered final-background controls and a specific two-source
-A10/backbone-only comparison informed the recorded decision. The latter is not
-a two-source ranking of all 23 configurations. Target-specific disagreements,
-negative results and actual cost differences remain part of the evidence.
+## Verification and Recovery
 
-DINO was excluded from attack generation but observed during offline COCO
-configuration selection. Neither DINO nor this reused validation split is an
-untouched independent configuration-selection holdout. These metadata records
-establish no global optimum, statistical significance, measured speedup or
-exactly equal physical compute. BDD100K is outside the current maintained scope.
+Prepare data manifests and strict detector checkpoint provenance before execution.
+VOC needs its dataset-specific checkpoints, not a COCO classification head.
+A new run writes an immutable output leaf; follow the corresponding guide for
+its plan, state, records and automatic CSV/TeX/plot outputs. Keep raw JSON precision
+and all twelve metrics. Preserve failures and partial originals; do not overwrite,
+merge immutable runs or treat loss of visibility as permission to relaunch.
 
-## License
+If the source check fails, stop dependent execution and compare the exact missing,
+tampered or extra path with `public-package.json`. Restore a clean extracted
+source distribution or create an explicitly reviewed new identity; do not silently refresh
+hashes. Data, weights, accepted author results and private launch/audit history
+are not distributed here and have not been deleted. No automatic result inheritance,
+checkpoint publication or external upload is performed.
 
-A project-wide software license has not yet been selected. Third-party
-license texts and scoped modification notices have been prepared in a
-separate source copy, without changing scientific behavior. The author has
-authorized continuing publication preparation; the specific project license
-and remaining distribution conditions are distinct from that authorization.
-The complete executable package is not published by this metadata update.
+## Evidence and Publication Status
+
+[Current evidence status](current-evidence-status.json) describes the accepted
+manuscript, corrected-LGP radius integration and device scopes. The manuscript
+remains a revised working draft, and its private Overleaf synchronization is
+accepted; no paper/photo copy or raw result payload is shipped here. Earlier
+scientific identity and historical inventory JSON files retain their original
+snapshot boundaries. Their old documentation-only distribution fields are not
+the current licence decision; use [the licence scope](docs/licensing/license-scope.md)
+and the current source manifest for this distribution.

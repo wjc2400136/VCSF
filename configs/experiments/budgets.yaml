@@ -1,0 +1,98 @@
+schema_version: 1
+profiles:
+  vcsf_final_background_observed_cost:
+    role: Fixed final-background attribution; observed work, not equal physical computation.
+    threat_model: untargeted_additive_linf
+    epsilon: 4/255
+    step_size: 1/255
+    required_iterations: 20
+    max_gradient_evaluations_per_image: 20
+    allowed_iterations_by_initialization: {detector: [20], none: [20], random_sign: [20]}
+    accounting_unit: Logical differentiated image updates; paired reference slots and partial feature paths are reported separately.
+    physical_cost: Unresolved until actual time, memory and execution counters are independently checked.
+    parameter_selection: Nine registered controls on the unchanged A10 background; not new selectable nominees.
+    request_sha256: b9c8ddf613a70dd6623cdb71c5070a83352a39c0bfe755ddaee24600cffc0084
+  vcsf_final_radius_observed_cost:
+    role: Frozen VCSF radius sensitivity; not equal physical computation or new selection.
+    threat_model: untargeted_additive_linf
+    epsilon: registered_axis
+    allowed_epsilons: [2/255, 4/255, 8/255, 16/255, 32/255]
+    step_size: 1/255
+    required_iterations: 20
+    max_gradient_evaluations_per_image: 20
+    accounting_unit: Logical differentiated image updates; disclose feature/reference paths and paired time/memory separately.
+    parameter_selection: Change only the registered radius on the frozen background; 32/255 is stress-only.
+  vcsf_single_source_ablation_observed_cost:
+    role: Whole single-source ablation controls with observed cost, not equal physical computation.
+    threat_model: untargeted_additive_linf
+    epsilon: 4/255
+    max_gradient_evaluations_per_image: 20
+    accounting_unit: Logical differentiated image updates; disclose feature/reference paths and paired time/memory separately.
+    allowed_iterations_by_initialization: {detector: [20], none: [19, 20], random_sign: [19, 20]}
+    exception: None and random-sign controls may use 19 feature updates to match post-initialization steps, without a detector-score call.
+    parameter_selection: Only registered same-baseline cells; preserve negative outcomes and all prior budget identities.
+  vcsf_retrospective_observed_cost:
+    role: Frozen-reference retrospective deletions with observed cost, not exact physical matching.
+    threat_model: untargeted_additive_linf
+    epsilon: 4/255
+    max_gradient_evaluations_per_image: 20
+    accounting_unit: Logical differentiated image updates; disclose feature/reference paths and actual time separately.
+    exception: Random-sign initialization with 19 feature updates intentionally uses 19 logical gradients and no detector-score call.
+    parameter_selection: Change only predeclared isolated factors; preserve original method and accepted roots.
+  vcsf_observed_physical_cost:
+    role: Cost measurement of accepted configurations, not a new AP ranking regime.
+    threat_model: inherited_from_accepted_coco_main
+    epsilon: 4/255
+    max_gradient_evaluations_per_image: inherited
+    accounting_unit: >-
+      Preserve declared logical gradient counts and auxiliary work. Measure
+      synchronized attack-call wall time and peak allocated CUDA memory;
+      reference-side computation is included in timing. No equality of
+      physical cost is assumed from iteration or backward counters.
+    parameter_selection: Exact accepted per-source configuration; no tuning.
+  compute_matched:
+    role: Primary cross-method comparison used for superiority claims.
+    threat_model: untargeted_additive_linf
+    epsilon: 4/255
+    max_gradient_evaluations_per_image: 20
+    accounting_unit: One complete white-box source-detector forward/backward for one image view; a batch of k transformed views counts as k image-equivalent units. One-time partial head-only attribution passes are excluded from this cap and recorded separately in auxiliary_passes.
+    parameter_selection: Tune only on development images disjoint from every formal val split, then freeze parameters for all targets and datasets.
+  compute_matched_multi_epsilon:
+    role: >-
+      Formal Common-2 sensitivity benchmark. It inherits each method's accepted
+      compute-matched configuration and changes only the L-infinity radius.
+      Values at 2/255 through 16/255 form the core comparison; 32/255 is a
+      separately labelled high-distortion stress point.
+    threat_model: untargeted_additive_linf_zero_query_transfer
+    epsilon: variable
+    epsilon_order: [2/255, 4/255, 8/255, 16/255, 32/255]
+    core_epsilon: [2/255, 4/255, 8/255, 16/255]
+    stress_epsilon: [32/255]
+    reference_epsilon: 4/255
+    max_gradient_evaluations_per_image: 20
+    accounting_unit: One complete white-box source-detector forward/backward for one image view; a batch of k transformed views counts as k image-equivalent units. One-time partial head-only attribution passes are excluded from this cap and recorded separately in auxiliary_passes.
+    parameter_selection: >-
+      Change only eps. Freeze every method's accepted compute-matched step
+      size, iteration count, optimizer, transform distribution, source loss,
+      seed and gradient accounting across all five radii.
+  paper_default:
+    role: Reproduction appendix using each release's documented defaults; not a compute-fair ranking table.
+    threat_model: method_specific
+    epsilon: method_specific
+    max_gradient_evaluations_per_image: method_specific
+    accounting_unit: Record actual source-detector backward-pass image equivalents; a batch of k transformed views counts as k.
+    parameter_selection: Use the cited release defaults and document every necessary repair or deviation.
+  variable_ablation:
+    role: SVFTA sensitivity and component studies; values are supplied by the selected ablation variant.
+    threat_model: untargeted_additive_linf
+    epsilon: variable
+    max_gradient_evaluations_per_image: variable
+    accounting_unit: One complete source-detector forward/backward per image view.
+    parameter_selection: Change only the named ablation factor.
+  recorded_results:
+    role: Post-hoc analysis of already generated artifacts; inherit the originating run budget metadata.
+    threat_model: inherited
+    epsilon: inherited
+    max_gradient_evaluations_per_image: inherited
+    accounting_unit: inherited
+    parameter_selection: inherited

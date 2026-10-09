@@ -1,0 +1,24 @@
+{
+  "candidate_id": "vcsf_final_candidate",
+  "execution_mode": "selected_a23",
+  "file_sha256": {
+    "configs/attacks/vcsf_selected_a23.yaml": "06e7033d73bf9c261af8f19cb16fd05feb8a385b123603e916a1531821828ef1",
+    "src/lgp/attacks/base.py": "9288b61e8168b1738d84d3e4c6860c713a340b5cfaf45b0a984694dc4fd3259e",
+    "src/lgp/attacks/common.py": "850fbdfcb8908064c0380e5a30f66cec1c62814a287c26f7f388a980811709d3",
+    "src/lgp/attacks/isolated.py": "d95aab4b1a5754c1cd7a061ada24bf8f7b2232f09fc2899c3615a4351f306ecc",
+    "src/lgp/attacks/vcsf_a23_isolated.py": "a1d9d74ea8e4669d6ff9818906a5e4b8858d6a9526c40a711c495c9e5ce72bad",
+    "src/lgp/attacks/vcsf_common_anchor_isolated.py": "b55c7ebe5a307249a8776c0370a8e149044ef2fbc923954e9f1dddccaa1843da",
+    "src/lgp/attacks/vcsf_final_candidate.py": "99423c6892db7afc172dff0eb375970a603b44ed9885b0c04f71faa845da2c4a",
+    "src/lgp/attacks/vcsf_research_isolated.py": "b78fbbddc1638f4f74ddb44771c131a6f5301272bc5d75110c700828f40099b0",
+    "src/lgp/attacks/vcsf_scale_isolated.py": "65827ce3ed4eb1d16700a828648ed9d6595f5ff6d92103408343ab56df5047ef",
+    "src/lgp/runners/attack.py": "8bff6aaecf7b0e3d23f0084b23bd4dea397cee288bfc48380b96b1258ce5c271",
+    "src/lgp/runners/vcsf_research_plan.py": "70691379b5fc23b462c0d252efc51b940d099c80a2794b0260a9655c57139079"
+  },
+  "formal_execution_authorized": false,
+  "parameters_sha256": "5079f4495309ec03b4650a4f5a19f291115c84b7155e7f50d15b2086b3de9afd",
+  "schema_version": 1,
+  "scientific_acceptance": false,
+  "selection_record": "docs/research/vcsf-final-configuration-adjudication-20260928.md",
+  "selection_record_sha256": "6cee0fc77eaa79880123efe4071f7cacebb4c3dabfeaee5c9694b07c8e3ab812",
+  "status": "selected_a23_pre_promotion_formal_closed"
+}

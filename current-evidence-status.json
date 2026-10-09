@@ -56,12 +56,12 @@
   },
   "distribution_boundary": {
     "author_publication_continuation_authorized": true,
-    "complete_executable_source_publication_performed": false,
-    "complete_software_release": false,
+    "complete_executable_source_publication_performed": true,
+    "complete_software_release": true,
     "confers_new_execution_admission": false,
-    "contains_executable_source": false,
+    "contains_executable_source": true,
     "contains_raw_results_or_private_receipts": false,
-    "documentation_and_metadata_only": true,
+    "documentation_and_metadata_only": false,
     "notice_preparation": {
       "accepted_source_only_preparation": true,
       "additional_notices_and_license_files": 6,
@@ -74,9 +74,13 @@
     },
     "previous_docs_only_author_boundary_sha256": "f5e25d3da582d42ed807289202e254fa79c2b1b10811e873324237c5b33993af",
     "previous_docs_only_deferral_superseded": true,
-    "project_source_license_granted": false,
-    "specific_project_license_choice_pending": true,
-    "third_party_redistribution_cleared": false
+    "project_source_license": "GPL-3.0-only",
+    "project_source_license_granted": true,
+    "source_distribution_schema": "lgp_public_source_distribution_v2",
+    "specific_project_license_choice_pending": false,
+    "third_party_distribution_conditions_addressed_within_recorded_scope": true,
+    "third_party_redistribution_cleared": false,
+    "unconditional_legal_clearance_established": false
   },
   "documentation": {
     "acceptance_sha256": "4d2ebd77cea4536e35643e1c228387ab177f481600a7fab48168edd418fab3fd",
@@ -87,7 +91,7 @@
   "hashes_are_references_not_standalone_acceptance_certificates": true,
   "method_name": "VCSF",
   "original_evidence_and_failed_roots_preserved": true,
-  "record_type": "accepted_evidence_and_delivery_status_metadata_only",
+  "record_type": "accepted_evidence_and_complete_source_distribution_status",
   "schema_version": 1,
   "working_manuscript": {
     "acceptance_sha256": "3f085d1aa96eaa00241f9a04778e29be0b16bcfad104bd0fde521da0f59050db",

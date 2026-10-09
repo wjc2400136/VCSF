@@ -1,0 +1,24 @@
+schema_version: 1
+id: voc
+display_name: PASCAL VOC 2007+2012
+root: data/VOCdevkit
+num_classes: 20
+classes: [aeroplane, bicycle, bird, boat, bottle, bus, car, cat, chair, cow, diningtable, dog, horse, motorbike, person, pottedplant, sheep, sofa, train, tvmonitor]
+splits:
+  train: {annotation: annotations/voc0712_trainval.json, image_prefix: '', expected_images: 16551}
+  val: {annotation: annotations/voc2007_test.json, image_prefix: '', expected_images: 4952}
+download:
+  homepage: http://host.robots.ox.ac.uk/pascal/VOC/
+  archives:
+    voc2007_trainval:
+      url: http://host.robots.ox.ac.uk/pascal/VOC/voc2007/VOCtrainval_06-Nov-2007.tar
+      target: raw/voc/VOCtrainval_06-Nov-2007.tar
+      md5: c52e279531787c972589f7e41ab4ae64
+    voc2007_test:
+      url: http://host.robots.ox.ac.uk/pascal/VOC/voc2007/VOCtest_06-Nov-2007.tar
+      target: raw/voc/VOCtest_06-Nov-2007.tar
+      md5: b6e924de25625d8de591ea690078ad9f
+    voc2012_trainval:
+      url: http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar
+      target: raw/voc/VOCtrainval_11-May-2012.tar
+      md5: 6cd6e144f989b92b3379bac3b3de84fd

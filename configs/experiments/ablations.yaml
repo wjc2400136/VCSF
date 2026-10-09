@@ -1,0 +1,2273 @@
+schema_version: 1
+studies:
+  current_vcsf_radius_2_255:
+    method: vcsf
+    protocol: current_vcsf_radius
+    variants: {epsilon_2_255: {parameters: {eps: 2/255}}}
+  current_vcsf_radius_4_255:
+    method: vcsf
+    protocol: current_vcsf_radius
+    variants: {epsilon_4_255: {parameters: {eps: 4/255}}}
+  current_vcsf_radius_8_255:
+    method: vcsf
+    protocol: current_vcsf_radius
+    variants: {epsilon_8_255: {parameters: {eps: 8/255}}}
+  current_vcsf_radius_16_255:
+    method: vcsf
+    protocol: current_vcsf_radius
+    variants: {epsilon_16_255: {parameters: {eps: 16/255}}}
+  current_vcsf_radius_32_255:
+    method: vcsf
+    protocol: current_vcsf_radius
+    variants: {epsilon_32_255: {parameters: {eps: 32/255}}}
+  vcsf_final_background_validation:
+    method: vcsf_final_background_isolated
+    protocol: vcsf_final_background_validation
+    description: A10 plus nine paper-claim controls; exact finite request, no new configuration search.
+    anchor: A10
+    anchor_parameters_sha256: 2551944131096c1d74011f2eb8d789b858e6dce79748f5b5aada54ea18254328
+    row_order: [A10, F01, F02, F03, F04, F05, F06, F07, F08, F09]
+    base_parameters:
+      eps: 4/255
+      iterations: 20
+      step_size: 1/255
+      feature_levels: [0, 1, 2]
+      feature_eps: 1.0e-6
+      scale_min: 2/3
+      scale_max: 4/3
+      momentum: 85/100
+      initialization: detector
+      surface: cross_stage
+      levels_per_stage: 3
+      correspondence: shared
+      spatial_weight: energy
+      aggregation: log_mean_exp
+      gradient_centering: true
+      support: valid
+      image_interpolation: bilinear
+      placement: random
+      image_padding: zero
+    variants:
+      A10: {parameters: {}}
+      F01: {parameters: {scale_min: 1/1, scale_max: 1/1}}
+      F02: {parameters: {surface: neck}}
+      F03: {parameters: {surface: backbone}}
+      F04: {parameters: {correspondence: independent_offsets}}
+      F05: {parameters: {correspondence: independent_geometry}}
+      F06: {parameters: {initialization: none}}
+      F07: {parameters: {initialization: random_sign}}
+      F08: {parameters: {spatial_weight: uniform}}
+      F09: {parameters: {aggregation: mean}}
+  vcsf_single_source_operator_factorial:
+    method: vcsf_operator_factorial_isolated
+    protocol: vcsf_single_source_operator_factorial_research
+    description: Complete three-binary-factor operator study at fixed half-width 1/3.
+    base_study: vcsf_finalization_layered
+    base_variant: levels_two
+    half_width: 1/3
+    factor_order: [image_interpolation, placement, image_padding]
+    factor_levels:
+      image_interpolation: [bilinear, nearest]
+      placement: [random, center]
+      image_padding: [reflect, zero]
+    variants:
+      A: {parameters: {image_interpolation: bilinear, placement: random, image_padding: reflect}}
+      B: {parameters: {image_interpolation: bilinear, placement: center, image_padding: reflect}}
+      C: {parameters: {image_interpolation: bilinear, placement: random, image_padding: zero}}
+      D: {parameters: {image_interpolation: nearest, placement: random, image_padding: reflect}}
+      E: {parameters: {image_interpolation: bilinear, placement: center, image_padding: zero}}
+      F: {parameters: {image_interpolation: nearest, placement: center, image_padding: reflect}}
+      G: {parameters: {image_interpolation: nearest, placement: random, image_padding: zero}}
+      H: {parameters: {image_interpolation: nearest, placement: center, image_padding: zero}}
+    row_order: [A, B, C, D, E, F, G, H]
+    historical_reference_variants: {A: A_h2, B: B_h2, C: C_h2, D: D_h2}
+    requested_new_variants: [E, F, G, H]
+    historical_reuse_policy: exact_identity_and_complete_qualified_evidence_before_partition
+    historical_failure_policy: unresolved_not_automatic_new_run
+    blocks:
+      operators:
+        variants: [A, B, C, D, E, F, G, H]
+        seeds: [42]
+        allowed_fields: [image_interpolation, placement, image_padding]
+    analysis_policy:
+      metric: bbox_mAP
+      scalar: equal_weight_source_excluded_cells
+      anchor: A
+      primary_seed: 42
+      factorials:
+        - block: operators
+          low: A
+          high: H
+          axes:
+            image_interpolation: [image_interpolation]
+            placement: [placement]
+            image_padding: [image_padding]
+          seeds: [42]
+      anchor_comparisons: every_nonanchor_variant_at_primary_seed
+      additional_pairs: []
+      coefficient_convention: unnormalized_active_axis_finite_difference_averaged_over_inactive_axes
+      expected_contrasts: {averaged_factorial: 7, conditional_factorial: 18, anchor: 7, total: 32}
+      uncertainty:
+        bootstrap_required: false
+        significance_claimed: false
+        confidence_intervals_produced: false
+        independent_confirmation: false
+        selection_adjusted_inference: false
+      selection:
+        automatic_promotion: false
+        complete_target_panel_required: true
+        decision: keep_change_or_reject_with_AP_cost_complexity
+        positive_effect_required: false
+        width_search_reopened: false
+        final_author_freeze_required: true
+    planning_totals_before_reuse:
+      source_groups: 8
+      generated_image_instances: 40000
+      target_evaluations: 128
+    conditional_new_work_after_four_qualified_reuses:
+      source_groups: 4
+      generated_image_instances: 20000
+      target_evaluations: 64
+  vcsf_single_source_ablation:
+    method: vcsf_ablation_isolated
+    protocol: vcsf_single_source_ablation_research
+    description: Same-baseline complete ablation catalogue, not an automatically armed matrix.
+    base_scale_study: vcsf_single_source_scale
+    base_scale_variant: A_h2
+    baseline_status: working_snapshot_not_final_selection
+    variants:
+      full: {parameters: {}}
+      neck_identity_none: {parameters: {surface: neck, scale_min: 1, scale_max: 1, initialization: none}}
+      neck_scale_none: {parameters: {surface: neck, initialization: none}}
+      cross_identity_none: {parameters: {scale_min: 1, scale_max: 1, initialization: none}}
+      cross_scale_none: {parameters: {initialization: none}}
+      neck_identity_detector: {parameters: {surface: neck, scale_min: 1, scale_max: 1}}
+      neck_scale_detector: {parameters: {surface: neck}}
+      cross_identity_detector: {parameters: {scale_min: 1, scale_max: 1}}
+      levels_one: {parameters: {levels_per_stage: 1}}
+      levels_three: {parameters: {levels_per_stage: 3}}
+      backbone_two: {parameters: {surface: backbone}}
+      none_19_features: {parameters: {initialization: none, iterations: 19}}
+      random_19_features: {parameters: {initialization: random_sign, iterations: 19}}
+      random_20_features: {parameters: {initialization: random_sign}}
+      independent_offsets: {parameters: {correspondence: independent_offsets}}
+      independent_geometry: {parameters: {correspondence: independent_geometry}}
+      uniform_log_mean_exp: {parameters: {spatial_weight: uniform}}
+      energy_mean: {parameters: {aggregation: mean}}
+      uniform_mean: {parameters: {spatial_weight: uniform, aggregation: mean}}
+      all_model_locations: {parameters: {support: all_model_locations}}
+      uncentered_gradient: {parameters: {gradient_centering: false}}
+      momentum_zero: {parameters: {momentum: 0}}
+      uncentered_zero: {parameters: {gradient_centering: false, momentum: 0}}
+      momentum_040: {parameters: {momentum: 4/10}}
+      momentum_055: {parameters: {momentum: 55/100}}
+      momentum_085: {parameters: {momentum: 85/100}}
+      momentum_100: {parameters: {momentum: 1}}
+    execution_order: [core, feature_coverage, matched_terms, initialization_specificity, correspondence, objective_simplicity, spatial_support, centering_momentum, momentum_sensitivity]
+    blocks:
+      core:
+        variants: [neck_identity_none, neck_scale_none, cross_identity_none, cross_scale_none, neck_identity_detector, neck_scale_detector, cross_identity_detector, full]
+        seeds: [42]
+        purpose: Scale by stage by initializer schedule factorial on the same baseline.
+        allowed_fields: [scale_min, scale_max, surface, initialization]
+      feature_coverage:
+        variants: [levels_one, full, levels_three, neck_scale_detector, backbone_two]
+        seeds: [42]
+        purpose: Nested original layer subsets and stage coverage; count is not held constant here.
+        allowed_fields: [surface, levels_per_stage]
+      matched_terms:
+        variants: [neck_scale_detector, backbone_two, levels_one]
+        seeds: [42]
+        purpose: Neck two, backbone two and cross-stage one plus one, each with two feature terms.
+        allowed_fields: [surface, levels_per_stage]
+        equal_fields: [initialization, iterations, scale_min, scale_max, momentum, correspondence, spatial_weight, aggregation, gradient_centering, support, image_interpolation, placement, image_padding]
+        feature_terms: 2
+      initialization_specificity:
+        variants: [full, none_19_features, cross_scale_none, random_19_features, random_20_features]
+        seeds: [42]
+        purpose: Separate equal post-initialization feature updates from equal logical-gradient ceilings.
+        allowed_fields: [initialization, iterations]
+        schedules:
+          full: {risk_updates: 1, feature_updates: 19}
+          none_19_features: {risk_updates: 0, feature_updates: 19}
+          cross_scale_none: {risk_updates: 0, feature_updates: 20}
+          random_19_features: {risk_updates: 0, feature_updates: 19}
+          random_20_features: {risk_updates: 0, feature_updates: 20}
+      correspondence:
+        variants: [full, independent_offsets, independent_geometry]
+        seeds: [42]
+        purpose: Shared geometry versus controlled correspondence violations.
+        allowed_fields: [correspondence]
+      objective_simplicity:
+        variants: [uniform_mean, energy_mean, uniform_log_mean_exp, full]
+        seeds: [42]
+        purpose: Spatial weight by feature aggregation factorial.
+        allowed_fields: [spatial_weight, aggregation]
+      spatial_support:
+        variants: [full, all_model_locations]
+        seeds: [42]
+        purpose: Valid input support versus all model locations, separate from weighting.
+        allowed_fields: [support]
+      centering_momentum:
+        variants: [uncentered_zero, momentum_zero, uncentered_gradient, full]
+        seeds: [42]
+        purpose: Gradient centering by zero versus baseline momentum factorial.
+        allowed_fields: [gradient_centering, momentum]
+      momentum_sensitivity:
+        variants: [momentum_zero, momentum_040, momentum_055, full, momentum_085, momentum_100]
+        seeds: [42]
+        purpose: Centered-gradient one-dimensional momentum sensitivity.
+        allowed_fields: [momentum]
+    analysis_policy:
+      metric: bbox_mAP
+      scalar: equal_weight_source_excluded_cells
+      anchor: full
+      primary_seed: 42
+      factorials:
+        - block: core
+          low: neck_identity_none
+          high: full
+          axes: {scale: [scale_min, scale_max], stage: [surface], initializer_schedule: [initialization]}
+          seeds: [42]
+        - block: objective_simplicity
+          low: uniform_mean
+          high: full
+          axes: {energy_weight: [spatial_weight], log_mean_exp: [aggregation]}
+          seeds: [42]
+        - block: centering_momentum
+          low: uncentered_zero
+          high: full
+          axes: {centering: [gradient_centering], momentum: [momentum]}
+          seeds: [42]
+      anchor_comparisons: every_nonanchor_variant_at_primary_seed
+      additional_pairs:
+        - {block: matched_terms, candidate: levels_one, reference: neck_scale_detector, seeds: [42]}
+        - {block: matched_terms, candidate: levels_one, reference: backbone_two, seeds: [42]}
+        - {block: matched_terms, candidate: backbone_two, reference: neck_scale_detector, seeds: [42]}
+        - {block: initialization_specificity, candidate: full, reference: none_19_features, seeds: [42]}
+        - {block: initialization_specificity, candidate: full, reference: random_19_features, seeds: [42]}
+        - {block: initialization_specificity, candidate: none_19_features, reference: cross_scale_none, seeds: [42]}
+        - {block: initialization_specificity, candidate: random_19_features, reference: random_20_features, seeds: [42]}
+        - {block: initialization_specificity, candidate: random_20_features, reference: cross_scale_none, seeds: [42]}
+      uncertainty:
+        status: not_armed_requires_new_bound_prediction_index_and_family_lock
+        unit: image_with_all_annotations_and_detections
+        paired: true
+        attack_seed_estimand: conditional_on_seed42
+        selection_adjusted_inference: false
+        independent_confirmation: false
+      selection:
+        automatic_promotion: false
+        complete_target_panel_required: true
+        decision: keep_change_or_reject_with_AP_cost_complexity
+        combine_winning_settings_automatically: false
+        positive_effect_required: false
+        final_consistency_passes: 1
+        changed_baseline_requires_rebinding: true
+    planning_totals_before_reuse:
+      unique_variants: 27
+      source_groups: 27
+      generated_image_instances: 135000
+      target_evaluations: 432
+  vcsf_single_source_scale:
+    method: vcsf_scale_isolated
+    protocol: vcsf_single_source_scale_research
+    description: Four-level single-source scale operator by half-width study.
+    base_study: vcsf_finalization_layered
+    base_variant: levels_two
+    variants:
+      A: {parameters: {image_interpolation: bilinear, placement: random, image_padding: reflect}}
+      B: {parameters: {image_interpolation: bilinear, placement: center, image_padding: reflect}}
+      C: {parameters: {image_interpolation: bilinear, placement: random, image_padding: zero}}
+      D: {parameters: {image_interpolation: nearest, placement: random, image_padding: reflect}}
+    row_order: [A, B, C, D]
+    half_widths: [0, 1/6, 1/3, 1/2, 2/3]
+    anchor: {row: A, half_width: 1/3}
+    identity_alias_policy: shared_A_zero_after_forward_backward_and_rng_validation
+    bridge_diagnostic:
+      entrypoint: experiments/vcsf_single_source_scale_bridge.py
+      image_positions: [0, 1]
+      image_ids: [139, 285]
+      attack_seeds: [42, 43]
+      selection: first_two_canonical_ids_with_landscape_and_portrait_metadata
+      trajectory_repeats: 2
+      fixed_state_repeats: 3
+      fixed_state_phases: [risk, feature]
+      numerical_policy_source: experiments/run_vcsf_final_candidate_preflight_pycharm.py
+      complete_attack_calls: 24
+      fixed_state_backward_calls: 72
+      AP_evaluations: 0
+      automatic_extra_probes: false
+      historical_reuse_granted: false
+      trajectory_comparison: report_exact_first_divergence_not_global_equivalence
+      alias_gate: exact_geometry_rng_identity_vjp_and_fixed_state_numerical_compatibility
+    stage_order: [baseline_and_identity, operators_at_anchor_width, remaining_widths]
+    stages:
+      baseline_and_identity: {rows: [A], half_widths: [1/3, 0]}
+      operators_at_anchor_width: {rows: [B, C, D], half_widths: [1/3]}
+      remaining_widths: {rows: [A, B, C, D], half_widths: [1/6, 1/2, 2/3]}
+    planning_totals_before_reuse:
+      display_cells: 20
+      unique_configurations: 17
+      source_groups: 17
+      generated_image_instances: 85000
+      target_evaluations: 272
+    analysis_policy:
+      primary_metric: bbox_mAP
+      scalar: equal_weight_fifteen_source_excluded_targets
+      direction: lower_attacked_AP_is_better
+      report_all_twelve_metrics: true
+      contrasts: [operator_minus_A_at_each_nonzero_width, operator_difference_relative_to_anchor_width, each_nonzero_cell_minus_identity]
+      incomplete_panel_policy: no_ranking_or_selection
+      selection_rule: complete_panel_AP_cost_complexity_review_not_automatic_promotion
+      tie_policy: no_claim_of_superiority_from_rounded_or_near_equal_AP
+      uncertainty: paired_image_analysis_requires_separate_bound_input_and_validated_contract
+      selection_adjusted_inference: false
+      automatic_promotion: false
+      no_early_efficacy_pruning: true
+  vcsf_finalization_layered:
+    method: vcsf_research_isolated
+    protocol: vcsf_fullval_retrospective_ablation
+    description: >-
+      Author-authorized retrospective full-val layered deletion and sensitivity.
+      Research switches never enter the public frozen VCSF configuration.
+    defaults:
+      eps: 4/255
+      iterations: 20
+      step_size: 1/255
+      feature_levels: [0, 1, 2]
+      feature_eps: 1.0e-6
+      scale_min: 2/3
+      scale_max: 4/3
+      momentum: 7/10
+      initialization: detector
+      surface: cross_stage
+      levels_per_stage: 3
+      correspondence: shared
+      spatial_weight: energy
+      aggregation: log_mean_exp
+      gradient_centering: true
+      support: valid
+    variants:
+      full: {parameters: {}}
+      neck_identity_detector: {parameters: {surface: neck, scale_min: 1, scale_max: 1}}
+      neck_scale_detector: {parameters: {surface: neck}}
+      cross_identity_detector: {parameters: {scale_min: 1, scale_max: 1}}
+      neck_identity_none: {parameters: {surface: neck, scale_min: 1, scale_max: 1, initialization: none}}
+      neck_scale_none: {parameters: {surface: neck, initialization: none}}
+      cross_identity_none: {parameters: {scale_min: 1, scale_max: 1, initialization: none}}
+      cross_scale_none: {parameters: {initialization: none}}
+      independent_offsets: {parameters: {correspondence: independent_offsets}}
+      independent_geometry: {parameters: {correspondence: independent_geometry}}
+      scale_width_1_6: {parameters: {scale_min: 10/12, scale_max: 14/12}}
+      scale_width_1_2: {parameters: {scale_min: 6/12, scale_max: 18/12}}
+      scale_width_2_3: {parameters: {scale_min: 4/12, scale_max: 20/12}}
+      levels_one: {parameters: {levels_per_stage: 1}}
+      levels_two: {parameters: {levels_per_stage: 2}}
+      backbone_only: {parameters: {surface: backbone}}
+      uniform_log_mean_exp: {parameters: {spatial_weight: uniform}}
+      energy_mean: {parameters: {aggregation: mean}}
+      uniform_mean: {parameters: {spatial_weight: uniform, aggregation: mean}}
+      uncentered_gradient: {parameters: {gradient_centering: false}}
+      all_model_locations: {parameters: {support: all_model_locations}}
+      momentum_040: {parameters: {momentum: 4/10}}
+      momentum_055: {parameters: {momentum: 55/100}}
+      momentum_085: {parameters: {momentum: 85/100}}
+      momentum_100: {parameters: {momentum: 1}}
+      momentum_zero: {parameters: {momentum: 0}}
+      random_19_features: {parameters: {initialization: random_sign, iterations: 19}}
+      random_20_features: {parameters: {initialization: random_sign}}
+    blocks:
+      core:
+        variants: [neck_identity_none, neck_scale_none, cross_identity_none, cross_scale_none, neck_identity_detector, neck_scale_detector, cross_identity_detector, full]
+        seeds: [42]
+        purpose: Full scale by surface by initializer schedule factorial.
+      correspondence:
+        variants: [full, independent_offsets, independent_geometry]
+        seeds: [42]
+        purpose: Shared input geometry versus controlled correspondence violations.
+      scale_width:
+        variants: [cross_identity_detector, scale_width_1_6, full, scale_width_1_2, scale_width_2_3]
+        seeds: [42]
+        purpose: Exact five equally spaced author-requested scale half-widths.
+      feature_coverage:
+        variants: [levels_one, levels_two, full, neck_scale_detector, backbone_only]
+        seeds: [42]
+        purpose: Nested original layer subsets and separately stage coverage.
+      objective_simplicity:
+        variants: [full, uniform_log_mean_exp, energy_mean, uniform_mean, uncentered_gradient, all_model_locations]
+        seeds: [42]
+        purpose: Spatial weighting and level aggregation factorial, then separate normalization/support diagnostics.
+      momentum:
+        variants: [momentum_040, momentum_055, full, momentum_085, momentum_100, momentum_zero]
+        seeds: [42]
+        purpose: Requested sensitivity grid plus the distinct zero-momentum deletion.
+      initialization_specificity:
+        variants: [cross_scale_none, random_19_features, random_20_features, full]
+        seeds: [42]
+        purpose: Equal post-initialization update count and equal logical-gradient ceiling are separate comparisons.
+      stability:
+        variants: [neck_identity_detector, neck_scale_detector, cross_identity_detector, full, cross_scale_none]
+        seeds: [42, 43, 44, 45, 46]
+        purpose: Paired seed repeats of the scale by surface contrast and full-anchor initialization deletion.
+    execution_order: [core, correspondence, scale_width, feature_coverage, objective_simplicity, momentum, initialization_specificity, stability]
+    analysis_policy:
+      status: prepared_pending_server_validation_and_receipt_lock
+      metric: bbox_mAP
+      scalar: equal_weight_source_excluded_cells
+      anchor: full
+      primary_seed: 42
+      factorials:
+        - block: core
+          low: neck_identity_none
+          high: full
+          axes:
+            scale: [scale_min, scale_max]
+            surface: [surface]
+            initialization: [initialization]
+          seeds: [42]
+        - block: objective_simplicity
+          low: uniform_mean
+          high: full
+          axes:
+            energy_weight: [spatial_weight]
+            log_mean_exp: [aggregation]
+          seeds: [42]
+        - block: stability
+          low: neck_identity_detector
+          high: full
+          axes:
+            scale: [scale_min, scale_max]
+            surface: [surface]
+          seeds: [42, 43, 44, 45, 46]
+      anchor_comparisons: every_nonanchor_variant_at_primary_seed
+      additional_pairs:
+        - {block: initialization_specificity, candidate: random_19_features, reference: random_20_features, seeds: [42]}
+        - {block: initialization_specificity, candidate: random_20_features, reference: cross_scale_none, seeds: [42]}
+        - {block: stability, candidate: full, reference: cross_scale_none, seeds: [42, 43, 44, 45, 46]}
+      uncertainty:
+        unit: image_with_all_annotations_and_detections
+        resampling: paired_nonparametric_image_bootstrap
+        replicates: 2000
+        rng: numpy_randomstate_mt19937
+        seed: 20260905
+        image_occurrence_order: original_id_then_duplicate_occurrence
+        alpha: 0.05
+        multiplicity: one_family_centered_max_absolute_bootstrap_error
+        seed_estimand: conditional_on_the_five_registered_seeds_not_resampled
+        missing_prediction_evidence: block_inference_not_zero_imputation
+        finite_sample_guarantee: false
+      reporting:
+        all_source_target_cells: true
+        source_matched_role: diagnostic_only
+        seed_spread: paired_deltas_mean_sample_sd_min_max
+        missing_or_failed_cells: stop_not_drop
+        statistical_claim_before_complete_family: false
+        independent_confirmation: false
+      selection:
+        automatic_promotion: false
+        maximum_author_concession_raw_AP: 0.02
+        concession_is_equivalence: false
+        equal_component_effects_required: false
+        combine_winning_settings_automatically: false
+        changed_public_method_requires_author_decision: true
+    planning_totals_before_reuse:
+      unique_variants: 28
+      configuration_seed_pairs: 48
+      source_groups: 96
+      generated_image_instances: 480000
+      attack_evaluations: 1536
+    state_policy:
+      carryover: zero
+      uncertainty_gate: absent
+      random_initialization: symmetric_sign_times_existing_step_size
+      random_stream: separate_from_view_stream
+      view_pairing: feature_index_not_absolute_iteration
+      mismatched_support: intersection_of_both_valid_view_masks
+      layer_nesting: prefixes_of_original_neck_first_three_and_backbone_last_three
+      reflection: native_when_defined_repeated_reflection_when_not
+      identity_scale_reuse: same_configuration_as_core_cross_identity_detector
+  components:
+    method: svfta
+    description: Strict 2x2x2 factorial isolation of scale-view, score-risk repair and uncertainty gating over the fixed feature objective; kappa zero removes only the uncertainty gate while preserving its first-moment optimizer.
+    variants:
+      core: {parameters: {scale_min: 1, scale_max: 1, risk_enabled: false, uncertainty_kappa: 0}}
+      scale_only: {parameters: {risk_enabled: false, uncertainty_kappa: 0}}
+      risk_only: {parameters: {scale_min: 1, scale_max: 1, uncertainty_kappa: 0}}
+      uncertainty_only: {parameters: {scale_min: 1, scale_max: 1, risk_enabled: false}}
+      scale_risk: {parameters: {uncertainty_kappa: 0}}
+      scale_uncertainty: {parameters: {risk_enabled: false}}
+      risk_uncertainty: {parameters: {scale_min: 1, scale_max: 1}}
+      full: {parameters: {}}
+  svfta_scale_risk_objective_search:
+    method: svfta
+    description: >-
+      Development-only paired comparison of the exact scale+risk reference
+      against a fixed two-step normalized cumulative-hazard initialization.
+      Both variants disable the uncertainty gate while preserving the same
+      first-moment feature optimizer, scale range, 4/255 radius and exactly
+      twenty source-detector backward evaluations.
+    variants:
+      legacy_scale_risk: {parameters: {uncertainty_kappa: 0}}
+      cumulative_hazard: {parameters: {uncertainty_kappa: 0, risk_objective: cumulative_hazard}}
+  svfta_scale_risk_isolated_search:
+    method: svfta
+    description: >-
+      Development-only isolated screen of equal-instance spatial weighting and
+      smooth extremal log-odds risk against one shared exact scale+risk
+      reference. Candidates are not combined. Every variant disables the
+      uncertainty gate and retains 4/255, twenty iterations and exactly
+      twenty source-detector backward evaluations.
+    variants:
+      legacy_scale_risk: {parameters: {uncertainty_kappa: 0}}
+      equal_instance_mask: {parameters: {uncertainty_kappa: 0, object_mask_weighting: equal_instance}}
+      smooth_log_odds: {parameters: {uncertainty_kappa: 0, risk_objective: smooth_log_odds}}
+  svfta_smooth_risk_steps_search:
+    method: svfta
+    description: >-
+      Development-only compute-allocation ablation for smooth extremal
+      log-odds risk. The zero-step feature-only reference and positive
+      prefixes all retain exactly twenty source-detector backward
+      evaluations; a legacy two-step max-hinge variant is included only as a
+      same-process benchmark anchor and is not eligible for step selection.
+    variants:
+      legacy_scale_risk: {parameters: {uncertainty_kappa: 0}}
+      smooth_steps_0: {parameters: {uncertainty_kappa: 0, risk_objective: smooth_log_odds, risk_warmup: 0}}
+      smooth_steps_1: {parameters: {uncertainty_kappa: 0, risk_objective: smooth_log_odds, risk_warmup: 1}}
+      smooth_steps_2: {parameters: {uncertainty_kappa: 0, risk_objective: smooth_log_odds, risk_warmup: 2}}
+      smooth_steps_4: {parameters: {uncertainty_kappa: 0, risk_objective: smooth_log_odds, risk_warmup: 4}}
+  svfta_smooth_risk_holdout_validation:
+    method: svfta
+    description: >-
+      Frozen two-variant validation of the selected one-step smooth log-odds
+      prefix against the maintained two-step max-hinge scale+risk anchor. No
+      setting may be revised from the disjoint holdout result.
+    variants:
+      legacy_scale_risk: {parameters: {uncertainty_kappa: 0}}
+      smooth_steps_1: {parameters: {uncertainty_kappa: 0, risk_objective: smooth_log_odds, risk_warmup: 1}}
+  svfta_smooth_risk_full_comparator:
+    method: svfta
+    description: >-
+      Frozen development comparator between the former maintained full SVFTA
+      and the already selected one-step smooth scale+risk candidate. This is
+      not a parameter search: both configurations are explicit, the same 900
+      holdout images are reused only to test whether removing the uncertainty
+      gate sacrifices attack strength, and no setting may be revised from the
+      result.
+    variants:
+      legacy_full:
+        parameters:
+          risk_enabled: true
+          risk_objective: max_hinge
+          risk_warmup: 2
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+      smooth_scale_risk:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 0
+  svfta_smooth_reliability_interaction:
+    method: svfta
+    description: >-
+      Fixed three-variant development interaction check after the no-gate
+      smooth candidate failed its predeclared comparator. The experiment
+      changes no gate parameter: it combines the independently selected
+      one-step smooth log-odds risk update with the former full method's
+      existing temporal reliability gate, while retaining both parents as
+      exact same-process references.
+    variants:
+      legacy_full:
+        parameters:
+          risk_enabled: true
+          risk_objective: max_hinge
+          risk_warmup: 2
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+      smooth_scale_risk:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 0
+      smooth_reliability:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+  svfta_smooth_reliability_confirmation:
+    method: svfta
+    description: >-
+      Frozen 900-image development confirmation of the passing smooth-risk
+      plus temporal-reliability combination against the former full SVFTA.
+      This is a two-variant confirmation extension only: the one-step smooth
+      objective and the gate's existing decay and threshold may not be tuned.
+    variants:
+      legacy_full:
+        parameters:
+          risk_enabled: true
+          risk_objective: max_hinge
+          risk_warmup: 2
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+      smooth_reliability:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+  svfta_smooth_reliability_gate_confirmation:
+    method: svfta
+    description: >-
+      Frozen same-run isolation of the temporal reliability gate after the
+      combined smooth candidate passed against legacy. Both variants use one
+      smooth log-odds score step and nineteen scale-view feature steps; kappa
+      zero removes only the gate while preserving the identical first-moment
+      recurrence, decay, views, seed and twenty-backward budget.
+    variants:
+      smooth_scale_risk:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 0
+      smooth_reliability:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+  svfta_scale_routing_objective_search:
+    execution_retired: true
+    retirement_record: docs/research/vcsf-maintenance-disposition-authorization-20260920.md
+    method: svfta
+    description: >-
+      Predeclared high-leverage development screen of two parameter-free
+      joint scale-routing objectives against the frozen smooth-reliability
+      bridge. All three variants use one smooth log-odds score initialization
+      and nineteen feature updates, one source-detector backward evaluation
+      per iteration, the same synchronized scale views and the unchanged
+      temporal reliability gate. The candidates differ only in whether the
+      object-conditioned feature energy distribution across selected levels
+      is driven toward a uniform route or the normalized complement of its
+      fixed clean route.
+    variants:
+      smooth_reliability:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          feature_objective: directional_cosine
+      scale_route_uniform:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          feature_objective: scale_route_uniform
+      scale_route_reverse:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+  svfta_risk_to_feature_continuation_search:
+    method: svfta
+    description: >-
+      Development-only fixed-schedule continuation check that tests whether
+      carrying the final risk-prefix direction into a bounded number of
+      subsequent feature steps improves transfer pressure.
+      All candidates keep the one-step smooth log-odds prefix, the
+      uncertainty gate and the same five-target dev panel.
+    variants:
+      no_carryover:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          risk_to_feature_steps: 0
+      carryover_19:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          risk_to_feature_steps: 19
+  svfta_risk_to_feature_continuation_grid_search:
+    method: svfta
+    description: >-
+      Development-only 4-point fixed-schedule continuation check that tests whether
+      progressively longer risk-direction carryover windows improve transfer
+      pressure. All candidates keep the one-step smooth log-odds prefix,
+      uncertainty gate and the same five-target dev panel.
+    variants:
+      no_carryover:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          risk_to_feature_steps: 0
+      carryover_4:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          risk_to_feature_steps: 4
+      carryover_8:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          risk_to_feature_steps: 8
+      carryover_19:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          risk_to_feature_steps: 19
+  svfta_retained_projection_objective_search:
+    method: svfta
+    description: >-
+      Predeclared parameter-free objective replacement screen against the
+      frozen smooth-reliability bridge. Retained projection minimizes the
+      object-weighted least-squares coefficient of each adversarial feature
+      on its fixed clean counterpart. It changes no view, level, mask,
+      optimizer, temporal gate or backward budget and introduces no mixing
+      coefficient.
+    variants:
+      smooth_reliability:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          feature_objective: directional_cosine
+      retained_projection:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          feature_objective: retained_projection
+  svfta_evidence_turnover_objective_search:
+    method: svfta
+    description: >-
+      Predeclared development-only high-leverage screen of two magnitude-aware,
+      orthogonality-aware feature-objective replacements against the frozen
+      smooth-reliability bridge. The candidates replace the angular-only
+      similarity with retained-evidence-energy matching and direct aligned-
+      minus-orthogonal turnover suppression on the same synchronized scale view,
+      uncertainty gate, temporal-reliability setting and 4/255 budget.
+    variants:
+      smooth_reliability:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          feature_objective: directional_cosine
+      retained_projection_energy:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          feature_objective: retained_projection_energy
+      evidence_turnover:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          feature_objective: evidence_turnover
+  svfta_joint_evidence_screen:
+    method: svfta
+    description: >-
+      Development-only four-variant screen of whether the frozen one-step
+      smooth-log-odds initialization should be followed by feature-only
+      optimization, persistent output suppression, or a parameter-free joint
+      output/feature survival objective. Joint variants capture neck features
+      and pre-NMS/query candidates from the same detector forward and retain
+      exactly twenty source-gradient evaluations.
+    variants:
+      sequential_bridge:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          feature_objective: directional_cosine
+          joint_evidence_mode: sequential_bridge
+      persistent_output:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          feature_objective: directional_cosine
+          joint_evidence_mode: persistent_output
+      joint_mean_survival:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          feature_objective: directional_cosine
+          joint_evidence_mode: joint_mean_survival
+      joint_log_mean_odds:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          feature_objective: directional_cosine
+          joint_evidence_mode: joint_log_mean_odds
+  svfta_feature_surface_screen:
+    method: svfta
+    description: >-
+      Development-only four-variant screen of the representation surface used
+      by the frozen smooth-reliability bridge. Every variant fixes the complete
+      twenty-gradient schedule and differs only in whether the nineteen feature
+      steps attack three neck levels, the last three backbone levels, alternate
+      those surfaces, or minimize their parameter-free smooth maximum from one
+      shared detector forward.
+    variants:
+      neck_bridge:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          feature_surface_mode: neck
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 2/3
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          uncertainty_eps: 1.0e-12
+      backbone_tail3:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          feature_surface_mode: backbone_tail3
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 2/3
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          uncertainty_eps: 1.0e-12
+      cross_stage_alternate:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          feature_surface_mode: cross_stage_alternate
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 2/3
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          uncertainty_eps: 1.0e-12
+      cross_stage_bottleneck:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          feature_surface_mode: cross_stage_bottleneck
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 2/3
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          uncertainty_eps: 1.0e-12
+  svfta_evidence_turnover_signed_objective_search:
+    method: svfta
+    description: >-
+      Development-only expansion of objective sign treatment in the projected-evidence
+      turnover family. The signed variant uses a smooth sign-weighted aligned-energy term,
+      preserving the same scale-view, one-step smooth log-odds initialization and temporal
+      reliability gate as the frozen bridge while testing if explicit phase reversal of
+      object evidence gives stronger transfer pressure.
+    variants:
+      smooth_reliability:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          feature_objective: directional_cosine
+      retained_projection_energy:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          feature_objective: retained_projection_energy
+      evidence_turnover:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          feature_objective: evidence_turnover
+      evidence_turnover_signed:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          feature_objective: evidence_turnover_signed
+  svfta_evidence_turnover_hard_objective_search:
+    method: svfta
+    description: >-
+      Development-only strict four-variant objective screen that evaluates a hard
+      sign-sensitive turnover variant against the same frozen bridge schedule.
+      The hard sign objective increases phase-pressure without adding any free
+      parameters.
+    variants:
+      smooth_reliability:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          feature_objective: directional_cosine
+      retained_projection_energy:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          feature_objective: retained_projection_energy
+      evidence_turnover:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          feature_objective: evidence_turnover
+      evidence_turnover_signed_hard:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          feature_objective: evidence_turnover_signed_hard
+  svfta_evidence_turnover_hard_control_search:
+    method: svfta
+    description: >-
+      Four-variant controlled matrix to test whether risk repair and
+      uncertainty-gated updates help or hurt the hard signed turnover objective.
+      A clean reference preserves the prior smooth-reliability baseline.
+    variants:
+      smooth_reliability:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          feature_objective: directional_cosine
+      signed_turnover_hard:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          feature_objective: evidence_turnover_signed_hard
+      signed_turnover_hard_no_risk:
+        parameters:
+          risk_enabled: false
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          feature_objective: evidence_turnover_signed_hard
+      signed_turnover_hard_no_uncertainty:
+        parameters:
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          risk_warmup: 1
+          object_mask_weighting: union
+          uncertainty_mode: none
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          feature_objective: evidence_turnover_signed_hard
+  epsilon:
+    method: svfta
+    description: L-infinity budget sensitivity.
+    variants:
+      eps_2_255: {parameters: {eps: 2/255, step_size: 1/510}}
+      eps_4_255: {parameters: {eps: 4/255, step_size: 1/255}}
+      eps_8_255: {parameters: {eps: 8/255, step_size: 1/255}}
+  iterations:
+    method: svfta
+    description: Optimization-budget sensitivity at the fixed 4/255 budget.
+    variants:
+      iter_10: {parameters: {iterations: 10}}
+      iter_20: {parameters: {iterations: 20}}
+      iter_50: {parameters: {iterations: 50}}
+  feature_levels:
+    method: svfta
+    description: Backbone level selection.
+    variants:
+      level_0: {parameters: {feature_levels: [0]}}
+      level_1: {parameters: {feature_levels: [1]}}
+      level_2: {parameters: {feature_levels: [2]}}
+      levels_0_1_2: {parameters: {feature_levels: [0, 1, 2]}}
+  scale_range:
+    method: svfta
+    description: Scale-view transformation range.
+    variants:
+      no_scale: {parameters: {scale_min: 1, scale_max: 1}}
+      scale_0_8_1_2: {parameters: {scale_min: 4/5, scale_max: 6/5}}
+      scale_2_3_4_3: {parameters: {scale_min: 2/3, scale_max: 4/3}}
+      scale_0_5_1_5: {parameters: {scale_min: 1/2, scale_max: 3/2}}
+  momentum:
+    method: svfta
+    description: Gradient-momentum coefficient.
+    variants:
+      momentum_0: {parameters: {momentum: 0}}
+      momentum_0_5: {parameters: {momentum: 1/2}}
+      momentum_2_3: {parameters: {momentum: 2/3}}
+      momentum_1: {parameters: {momentum: 1}}
+  risk_warmup:
+    method: svfta
+    description: Maximum update count for the one-time score-risk repair prefix; repair stops early once the threshold is satisfied and never re-enters.
+    variants:
+      max_updates_0: {parameters: {risk_warmup: 0}}
+      max_updates_1: {parameters: {risk_warmup: 1}}
+      max_updates_2: {parameters: {risk_warmup: 2}}
+      max_updates_4: {parameters: {risk_warmup: 4}}
+  uncertainty_decay_kappa:
+    method: svfta
+    description: Complete 4x3 uncertainty grid; all values are written as exact rational fractions.
+    variants:
+      d0_00_k0_25: {parameters: {uncertainty_decay: 0, uncertainty_kappa: 1/4}}
+      d0_00_k0_50: {parameters: {uncertainty_decay: 0, uncertainty_kappa: 1/2}}
+      d0_00_k0_75: {parameters: {uncertainty_decay: 0, uncertainty_kappa: 3/4}}
+      d0_50_k0_25: {parameters: {uncertainty_decay: 1/2, uncertainty_kappa: 1/4}}
+      d0_50_k0_50: {parameters: {uncertainty_decay: 1/2, uncertainty_kappa: 1/2}}
+      d0_50_k0_75: {parameters: {uncertainty_decay: 1/2, uncertainty_kappa: 3/4}}
+      d0_70_k0_25: {parameters: {uncertainty_decay: 7/10, uncertainty_kappa: 1/4}}
+      d0_70_k0_50: {parameters: {uncertainty_decay: 7/10, uncertainty_kappa: 1/2}}
+      d0_70_k0_75: {parameters: {uncertainty_decay: 7/10, uncertainty_kappa: 3/4}}
+      d0_90_k0_25: {parameters: {uncertainty_decay: 9/10, uncertainty_kappa: 1/4}}
+      d0_90_k0_50: {parameters: {uncertainty_decay: 9/10, uncertainty_kappa: 1/2}}
+      d0_90_k0_75: {parameters: {uncertainty_decay: 9/10, uncertainty_kappa: 3/4}}
+  seeds:
+    method: svfta
+    description: Three-seed robustness validation with the fixed best parameters.
+    variants:
+      seed_40: {parameters: {}, seed: 40}
+      seed_41: {parameters: {}, seed: 41}
+      seed_42: {parameters: {}, seed: 42}
+
+  tog_objective:
+    method: tog
+    description: Published TOG attack goals; use vanishing for the headline comparison.
+    variants:
+      vanishing: {parameters: {mode: vanishing}}
+      untargeted: {parameters: {mode: untargeted}}
+  tog_budget:
+    method: tog
+    description: TOG backward-pass budget and convergence.
+    variants:
+      grad_5: {parameters: {iterations: 5}}
+      grad_10: {parameters: {iterations: 10}}
+      grad_20: {parameters: {iterations: 20}}
+
+  lgp_components:
+    method: lgp
+    description: LGP localization, shape, classification and perceptibility objectives.
+    variants:
+      full: {parameters: {}}
+      no_localization: {parameters: {localization_weight: 0}}
+      no_shape: {parameters: {shape_weight: 0}}
+      no_classification: {parameters: {classification_weight: 0}}
+      no_perceptibility: {parameters: {imperceptibility_weight: 0}}
+  lgp_loss_build_up:
+    method: lgp
+    description: Paper Table VI loss and perceptibility construction, from classification-only to adaptive foreground/background splitting.
+    variants:
+      classification_image: {parameters: {localization_weight: 0, shape_weight: 0, classification_weight: 1, perceptibility_mode: image}}
+      class_shape_image: {parameters: {localization_weight: 0, shape_weight: 1, classification_weight: 1, perceptibility_mode: image}}
+      all_losses_image: {parameters: {localization_weight: 1, shape_weight: 1, classification_weight: 1, perceptibility_mode: image}}
+      all_losses_image_l2: {parameters: {perceptibility_mode: image_l2}}
+      static_fbs: {parameters: {perceptibility_mode: static_fbs}}
+      adaptive_fbs: {parameters: {perceptibility_mode: adaptive_fbs}}
+  lgp_original_targets:
+    method: lgp
+    description: Paper Table VI comparison of high-quality, all pre-NMS, and post-NMS original targets.
+    variants:
+      high_quality: {parameters: {target_source: hq}}
+      pre_nms: {parameters: {target_source: pre_nms}}
+      post_nms: {parameters: {target_source: post_nms}}
+  lgp_foreground_scale:
+    method: lgp
+    description: Foreground-space controllability trade-off from paper Figure 7.
+    variants:
+      scale_1_2: {parameters: {foreground_scale: 1/2}}
+      scale_3_4: {parameters: {foreground_scale: 3/4}}
+      scale_1: {parameters: {foreground_scale: 1}}
+      scale_5_4: {parameters: {foreground_scale: 5/4}}
+      scale_3_2: {parameters: {foreground_scale: 3/2}}
+  lgp_candidate_count:
+    method: lgp
+    description: Number of high-quality proposal targets per selector.
+    variants:
+      five: {parameters: {iou_candidates: 5, score_candidates: 5}}
+      twenty_five: {parameters: {iou_candidates: 25, score_candidates: 25}}
+      fifty: {parameters: {iou_candidates: 50, score_candidates: 50}}
+  lgp_candidate_selection:
+    method: lgp
+    description: High-quality IoU/score candidate count.
+    variants:
+      one_plus_one: {parameters: {iou_candidates: 1, score_candidates: 1}}
+      five_plus_five: {parameters: {iou_candidates: 5, score_candidates: 5}}
+      ten_plus_ten: {parameters: {iou_candidates: 10, score_candidates: 10}}
+  lgp_budget:
+    method: lgp
+    description: LGP backward-pass budget and convergence.
+    variants:
+      grad_5: {parameters: {iterations: 5}}
+      grad_10: {parameters: {iterations: 10}}
+      grad_20: {parameters: {iterations: 20}}
+
+  osfd_rrb:
+    method: osfd
+    description: Released random resize block components.
+    variants:
+      full_rrb: {parameters: {}}
+      no_rotation: {parameters: {enable_rotation: false}}
+      no_resize: {parameters: {enable_resize: false}}
+      no_noise: {parameters: {enable_noise: false}}
+      feature_only: {parameters: {enable_rotation: false, enable_resize: false, enable_noise: false}}
+  osfd_amplification:
+    method: osfd
+    description: Clean-feature amplification coefficient.
+    variants:
+      amp_1: {parameters: {amplification: 1}}
+      amp_2: {parameters: {amplification: 2}}
+      amp_3: {parameters: {amplification: 3}}
+      amp_4: {parameters: {amplification: 4}}
+  osfd_budget:
+    method: osfd
+    description: Two RRB views are counted per outer update.
+    variants:
+      grad_4: {parameters: {iterations: 2}}
+      grad_10: {parameters: {iterations: 5}}
+      grad_20: {parameters: {iterations: 10}}
+
+  afog_attention:
+    method: afog
+    description: AFOG learnable attention-map update rate.
+    variants:
+      fixed_attention: {parameters: {learn_attention: false}}
+      attention_0_01: {parameters: {attention_step_size: 1/100}}
+      attention_0_10: {parameters: {attention_step_size: 1/10}}
+      attention_0_20: {parameters: {attention_step_size: 1/5}}
+  afog_modes:
+    method: afog
+    description: Released untargeted and vanishing victim gradients. Fabrication is excluded because the unified benchmark has no paper-defined target construction for it.
+    variants:
+      baseline_untargeted: {parameters: {mode: baseline}}
+      vanishing: {parameters: {mode: vanishing}}
+  afog_budget:
+    method: afog
+    description: AFOG backward-pass budget and convergence.
+    variants:
+      grad_5: {parameters: {iterations: 5}}
+      grad_10: {parameters: {iterations: 10}}
+      grad_20: {parameters: {iterations: 20}}
+
+  corrupting_attention_corruptions:
+    method: corrupting_attention
+    description: Four structured final-encoder attention corruptions from the paper.
+    variants:
+      dispersion: {parameters: {corruption: dispersion}}
+      reranking: {parameters: {corruption: reranking}}
+      permutation: {parameters: {corruption: permutation}}
+      peak_suppression: {parameters: {corruption: peak_suppression}}
+
+  corrupting_attention_compute_budget:
+    method: corrupting_attention
+    description: Preregistered strict 20-BE sensitivity with fixed total unprojected step length; this does not replace the separately preserved CA-10 result.
+    variants:
+      cm20: {parameters: {iterations: 20, step_size: 1/255, empty_target_behavior: identity_budget_padding}}
+
+  numbod_components:
+    method: numbod
+    description: NumbOD spatial-frequency fusion losses A/B/C/D.
+    variants:
+      full: {parameters: {}}
+      no_location: {parameters: {location_weight: 0}}
+      no_classification: {parameters: {classification_weight: 0}}
+      no_low_frequency: {parameters: {low_frequency_weight: 0}}
+      no_high_frequency: {parameters: {high_frequency_weight: 0}}
+  numbod_budget:
+    method: numbod
+    description: NumbOD backward-pass budget and convergence.
+    variants:
+      grad_5: {parameters: {iterations: 5}}
+      grad_10: {parameters: {iterations: 10}}
+      grad_20: {parameters: {iterations: 20}}
+
+  sfim_components:
+    method: sfim_b
+    description: Spatial information masking versus frequency information masking.
+    variants:
+      sim_plus_fim: {parameters: {spatial_views: 1, frequency_views: 1}}
+      sim_only: {parameters: {spatial_views: 1, frequency_views: 0}}
+      fim_only: {parameters: {spatial_views: 0, frequency_views: 1}}
+      parallel_sim: {parameters: {spatial_views: 2, frequency_views: 0}}
+      parallel_fim: {parameters: {spatial_views: 0, frequency_views: 2}}
+  sfim_epsilon:
+    method: sfim_b
+    description: Exact perturbation-constraint sweep in SFIM Table IV.
+    variants:
+      eps_4_255: {parameters: {eps: 4/255}}
+      eps_8_255: {parameters: {eps: 8/255}}
+      eps_12_255: {parameters: {eps: 12/255}}
+      eps_16_255: {parameters: {eps: 16/255}}
+      eps_20_255: {parameters: {eps: 20/255}}
+  sfim_mask_ranges:
+    method: sfim_b
+    description: Spatial and low-frequency retained-region ranges from the paper.
+    variants:
+      narrow: {parameters: {spatial_scale_lower: 1/20, spatial_scale_upper: 1/5, frequency_scale_lower: 1/5, frequency_scale_upper: 3/5}}
+      default: {parameters: {}}
+      wide: {parameters: {spatial_scale_lower: 1/5, spatial_scale_upper: 1/2, frequency_scale_lower: 2/5, frequency_scale_upper: 9/10}}
+  sfim_budget:
+    method: sfim_b
+    description: SIM and FIM each count as one image-equivalent per update.
+    variants:
+      grad_4: {parameters: {iterations: 2}}
+      grad_10: {parameters: {iterations: 5}}
+      grad_20: {parameters: {iterations: 10}}
+
+  augtrans_augmentations:
+    method: augtrans
+    description: Dynamic rotation, object-aware resize/crop and noise branches.
+    variants:
+      baseline_eot: {parameters: {enable_rotation: false, enable_resize: false, enable_noise: false}}
+      rotation_only: {parameters: {enable_rotation: true, enable_resize: false, enable_noise: false}}
+      resize_only: {parameters: {enable_rotation: false, enable_resize: true, enable_noise: false}}
+      noise_only: {parameters: {enable_rotation: false, enable_resize: false, enable_noise: true}}
+      rotation_resize: {parameters: {enable_rotation: true, enable_resize: true, enable_noise: false}}
+      rotation_resize_noise: {parameters: {enable_rotation: true, enable_resize: true, enable_noise: true, curriculum_scale: 0}}
+      full: {parameters: {}}
+      no_rotation: {parameters: {enable_rotation: false}}
+      no_resize_crop: {parameters: {enable_resize: false}}
+      no_noise: {parameters: {enable_noise: false}}
+      no_dynamic_curriculum: {parameters: {curriculum_scale: 0}}
+  augtrans_eot_samples:
+    method: augtrans
+    description: Local EOT-sample sensitivity; exact supplemental grid was not present in the supplied PDF and must be labelled diagnostic.
+    variants:
+      eot_1: {parameters: {eot_samples: 1}}
+      eot_2: {parameters: {eot_samples: 2}}
+      eot_4: {parameters: {eot_samples: 4}}
+  augtrans_dominant_objects:
+    method: augtrans
+    description: Dominant-object count sensitivity around the paper's stated K_obj=3.
+    variants:
+      kobj_1: {parameters: {dominant_objects: 1}}
+      kobj_3: {parameters: {dominant_objects: 3}}
+      kobj_5: {parameters: {dominant_objects: 5}}
+  augtrans_gradient_exponent:
+    method: augtrans
+    description: Nonlinear gradient-balancing exponent sensitivity around gamma=4/5.
+    variants:
+      gamma_1_2: {parameters: {cls_exponent: 1/2, objectness_exponent: 1/2}}
+      gamma_4_5: {parameters: {cls_exponent: 4/5, objectness_exponent: 4/5}}
+      gamma_1: {parameters: {cls_exponent: 1, objectness_exponent: 1}}
+  augtrans_box_source:
+    method: augtrans
+    description: Practical comparison between ground-truth and frozen clean predicted boxes.
+    variants:
+      ground_truth: {parameters: {target_source: ground_truth}}
+      predicted: {parameters: {target_source: predicted}}
+  augtrans_losses:
+    method: augtrans
+    description: Full RPN and ROI four-branch objective.
+    variants:
+      full: {parameters: {}}
+      no_roi_class: {parameters: {roi_cls_weight: 0}}
+      no_roi_box: {parameters: {roi_box_weight: 0}}
+      no_rpn_objectness: {parameters: {rpn_objectness_weight: 0}}
+      no_rpn_box: {parameters: {rpn_box_weight: 0}}
+  augtrans_budget:
+    method: augtrans
+    description: EOT views are counted separately.
+    variants:
+      grad_4: {parameters: {iterations: 2}}
+      grad_10: {parameters: {iterations: 5}}
+      grad_20: {parameters: {iterations: 10}}
+
+  hifa_components:
+    method: hifa
+    description: HIFA integrated attribution, DEIG and positive/negative balancing.
+    variants:
+      full: {parameters: {}}
+      no_deig: {parameters: {augmented_copies: 1, transformation_probability: 0}}
+      positive_only: {parameters: {negative_balance: 0}}
+      balanced: {parameters: {negative_balance: 1}}
+  hifa_target_layer:
+    method: hifa
+    description: Intermediate feature target depth.
+    variants:
+      layer_minus_1: {parameters: {target_layer: -1}}
+      layer_minus_2: {parameters: {target_layer: -2}}
+      layer_minus_3: {parameters: {target_layer: -3}}
+  hifa_balance_factor:
+    method: hifa
+    description: Signed positive/negative feature balance over the stable interval reported in the paper.
+    variants:
+      balance_3_5: {parameters: {negative_balance: 3/5}}
+      balance_4_5: {parameters: {negative_balance: 4/5}}
+      balance_1: {parameters: {negative_balance: 1}}
+      balance_6_5: {parameters: {negative_balance: 6/5}}
+      balance_3_2: {parameters: {negative_balance: 3/2}}
+  hifa_integration_steps:
+    method: hifa
+    description: DEIG integration-step sweep; the paper reports saturation after 25 and selects 20.
+    variants:
+      steps_5: {parameters: {integration_steps: 5}}
+      steps_10: {parameters: {integration_steps: 10}}
+      steps_15: {parameters: {integration_steps: 15}}
+      steps_20: {parameters: {integration_steps: 20}}
+      steps_25: {parameters: {integration_steps: 25}}
+      steps_30: {parameters: {integration_steps: 30}}
+      steps_35: {parameters: {integration_steps: 35}}
+  hifa_copies:
+    method: hifa
+    description: Exact copies_num values reported in HIFA Tables 14 and 15.
+    variants:
+      copies_1: {parameters: {augmented_copies: 1}}
+      copies_3: {parameters: {augmented_copies: 3}}
+      copies_5: {parameters: {augmented_copies: 5}}
+      copies_10: {parameters: {augmented_copies: 10}}
+      copies_15: {parameters: {augmented_copies: 15}}
+  hifa_budget:
+    method: hifa
+    description: Eight attribution evaluations plus attack updates.
+    variants:
+      grad_12: {parameters: {iterations: 4}}
+      grad_16: {parameters: {iterations: 8}}
+      grad_20: {parameters: {iterations: 12}}
+
+  mlfadv_components:
+    method: mlfadv
+    description: Confidence/feature, low-frequency and Grad-CAM mask components.
+    variants:
+      full: {parameters: {}}
+      no_low_frequency: {parameters: {low_frequency_weight: 0}}
+      no_feature_similarity: {parameters: {feature_weight: 0}}
+      no_gradcam_mask: {parameters: {use_gradcam: false}}
+  mlfadv_frequency:
+    method: mlfadv
+    description: Low-frequency FFT radius.
+    variants:
+      radius_50: {parameters: {low_frequency_radius_pixels: 50}}
+      radius_100: {parameters: {low_frequency_radius_pixels: 100}}
+      radius_150: {parameters: {low_frequency_radius_pixels: 150}}
+      radius_200: {parameters: {low_frequency_radius_pixels: 200}}
+      radius_250: {parameters: {low_frequency_radius_pixels: 250}}
+      radius_300: {parameters: {low_frequency_radius_pixels: 300}}
+      radius_350: {parameters: {low_frequency_radius_pixels: 350}}
+      radius_400: {parameters: {low_frequency_radius_pixels: 400}}
+      radius_450: {parameters: {low_frequency_radius_pixels: 450}}
+      radius_500: {parameters: {low_frequency_radius_pixels: 500}}
+  mlfadv_budget:
+    method: mlfadv
+    description: Two dominant full-image views per update; per-object Grad-CAM head backwards are reported separately.
+    variants:
+      dominant_8: {parameters: {iterations: 4}}
+      dominant_12: {parameters: {iterations: 6}}
+      dominant_18: {parameters: {iterations: 9}}
+
+  naa_keeping_rate:
+    method: naa
+    description: Fraction of top-attribution neurons retained.
+    variants:
+      keep_20: {parameters: {keeping_rate: 1/5}}
+      keep_40: {parameters: {keeping_rate: 2/5}}
+      keep_60: {parameters: {keeping_rate: 3/5}}
+      keep_80: {parameters: {keeping_rate: 4/5}}
+  naa_target_layer:
+    method: naa
+    description: Named ResNet-50 residual-block diagnostic around paper-default conv4_3.
+    variants:
+      conv3_3: {parameters: {target_module: layer2.2}}
+      conv4_3: {parameters: {target_module: layer3.2}}
+      conv4_6: {parameters: {target_module: layer3.5}}
+  naa_epsilon:
+    method: naa
+    description: Exact normalized perturbation constraints from the NAA paper.
+    variants:
+      eps_1_100: {parameters: {eps: 1/100}}
+      eps_1_50: {parameters: {eps: 1/50}}
+      eps_1_25: {parameters: {eps: 1/25}}
+      eps_3_50: {parameters: {eps: 3/50}}
+      eps_2_25: {parameters: {eps: 2/25}}
+  naa_budget:
+    method: naa
+    description: Eight integrated-gradient passes plus attack updates.
+    variants:
+      grad_12: {parameters: {iterations: 4}}
+      grad_16: {parameters: {iterations: 8}}
+      grad_20: {parameters: {iterations: 12}}
+  svfta_observation_correction_screen:
+    method: svfta
+    description: >-
+      Development-only two-by-two factorial correction of the scale-view
+      gradient estimator. The first factor controls whether centering and
+      normalization use every raw pixel or only pixels observed by the sampled
+      crop. The second controls whether exponential uncertainty moments treat
+      absent pixels as zeros or condition each pixel on its observation mass.
+      No variant adds a detector forward, backward, surrogate or numeric
+      hyperparameter.
+    variants:
+      legacy_observation:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 2/3
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          uncertainty_eps: 1.0e-12
+          observation_normalization: global
+          observation_moments: unconditional
+      observed_normalization:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 2/3
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          uncertainty_eps: 1.0e-12
+          observation_normalization: observed
+          observation_moments: unconditional
+      conditional_moments:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 2/3
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          uncertainty_eps: 1.0e-12
+          observation_normalization: global
+          observation_moments: conditional
+      observed_conditional:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 2/3
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          uncertainty_eps: 1.0e-12
+          observation_normalization: observed
+          observation_moments: conditional
+  svfta_residual_evidence_confirmation:
+    method: svfta
+    description: >-
+      Development-only two-by-two factorial test of the feature evidence
+      statistic and its spatial aggregation. Directional versus symmetric
+      alignment isolates magnitude sensitivity; weighted mean versus
+      parameter-free weighted log-mean-exp isolates upper-tail control. Every
+      cell preserves the frozen one-step smooth-log-odds initialization,
+      nineteen feature updates, synchronized scale view, temporal reliability
+      gate, source detector, gradient budget and perturbation budget.
+    variants:
+      directional_mean:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 2/3
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          uncertainty_eps: 1.0e-12
+          evidence_statistic: directional
+          spatial_aggregation: mean
+      directional_tail:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 2/3
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          uncertainty_eps: 1.0e-12
+          evidence_statistic: directional
+          spatial_aggregation: entropic_tail
+      symmetric_mean:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 2/3
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          uncertainty_eps: 1.0e-12
+          evidence_statistic: symmetric_alignment
+          spatial_aggregation: mean
+      symmetric_tail:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 2/3
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          uncertainty_eps: 1.0e-12
+          evidence_statistic: symmetric_alignment
+          spatial_aggregation: entropic_tail
+  svfta_evidence_bottleneck_confirmation:
+    method: svfta
+    description: >-
+      Frozen development-only two-by-two factorial over persistent output
+      evidence and the backbone representation surface. The reference is the
+      exact one-step smooth-log-odds plus nineteen-step neck bridge. Each
+      non-reference cell changes only one or both structural factors, adds no
+      numerical hyperparameter and retains exactly twenty source-detector
+      backward image-equivalents.
+    variants:
+      neck_sequential:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 2/3
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          uncertainty_eps: 1.0e-12
+          persistent_output_evidence: false
+          include_backbone_surface: false
+      cross_stage_sequential:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 2/3
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          uncertainty_eps: 1.0e-12
+          persistent_output_evidence: false
+          include_backbone_surface: true
+      neck_joint:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 2/3
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          uncertainty_eps: 1.0e-12
+          persistent_output_evidence: true
+          include_backbone_surface: false
+      cross_stage_joint:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 2/3
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          uncertainty_eps: 1.0e-12
+          persistent_output_evidence: true
+          include_backbone_surface: true
+  svfta_cross_stage_component_deletion_confirmation:
+    method: svfta
+    description: >-
+      Frozen complete-panel two-by-two deletion factorial for the current
+      cross-stage performance incumbent. It crosses the one-step smooth
+      log-odds initialization with the temporal uncertainty gate while fixing
+      scale alignment, backbone-plus-neck directional features, object
+      weighting, zero risk carryover and the twenty-backward budget. The
+      experiment may remove components but may not tune them or promote the
+      cross-stage mechanism past its previously failed advancement gate.
+    variants:
+      cross_stage_core:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 2/3
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: false
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 0
+          uncertainty_eps: 1.0e-12
+          persistent_output_evidence: false
+          include_backbone_surface: true
+      cross_stage_risk:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 2/3
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 0
+          uncertainty_eps: 1.0e-12
+          persistent_output_evidence: false
+          include_backbone_surface: true
+      cross_stage_uncertainty:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 2/3
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: false
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          uncertainty_eps: 1.0e-12
+          persistent_output_evidence: false
+          include_backbone_surface: true
+      cross_stage_full:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 2/3
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          uncertainty_mode: uncertainty
+          uncertainty_decay: 7/10
+          uncertainty_kappa: 1/2
+          uncertainty_eps: 1.0e-12
+          persistent_output_evidence: false
+          include_backbone_surface: true
+  svfta_feature_support_deletion_confirmation:
+    method: svfta
+    description: >-
+      Final internal two-by-two deletion factorial for the uncertainty-free
+      minimal research anchor. It crosses neck versus backbone-plus-neck
+      directional features with global clean-energy versus object-supported
+      clean-energy weighting. Every cell keeps one smooth-log-odds prefix,
+      nineteen feature updates, synchronized scale views, ordinary momentum,
+      zero risk carryover and exactly twenty source backwards. It may only
+      remove structure and may not tune any numeric parameter.
+    variants:
+      neck_global:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 7/10
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          feature_surface_mode: neck
+          spatial_support_mode: global_energy
+      neck_object:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 7/10
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          feature_surface_mode: neck
+          spatial_support_mode: object_energy
+      cross_stage_global:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 7/10
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          feature_surface_mode: cross_stage
+          spatial_support_mode: global_energy
+      cross_stage_object:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 7/10
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          feature_surface_mode: cross_stage
+          spatial_support_mode: object_energy
+  svfta_spatial_incidence_confirmation:
+    method: svfta
+    description: >-
+      Frozen high-leverage test of whether native spatial relations survive
+      the uncertainty-free cross-stage global anchor. Node-only is the exact
+      incumbent, edge-only isolates right/down feature-grid incidence, and
+      their joint cell uses one parameter-free log-mean-exp bottleneck. Every
+      cell keeps one smooth-log-odds initialization, synchronized scale views,
+      ordinary momentum, zero risk carryover and exactly twenty backwards.
+    variants:
+      node_anchor:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 7/10
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          incidence_mode: node
+      edge_only:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 7/10
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          incidence_mode: edge
+      node_edge_bottleneck:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 7/10
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          incidence_mode: node_edge_bottleneck
+  svfta_cross_stage_claim_confirmation:
+    method: svfta
+    description: >-
+      Frozen six-cell final-condition confirmation for the paper claim
+      boundary. Four reset cells form the scale-view by feature-surface
+      factorial. Two controls at the exact cross-stage-scale point isolate
+      the detector-risk initialization and optimizer-state reset. Every cell
+      uses global clean-energy support and exactly twenty source backwards;
+      no numeric parameter may be tuned from this result.
+    variants:
+      neck_identity_reset:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 7/10
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          feature_surface_mode: neck
+          spatial_support_mode: global_energy
+          scale_view_mode: identity
+          phase_boundary_mode: reset
+      neck_scale_reset:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 7/10
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          feature_surface_mode: neck
+          spatial_support_mode: global_energy
+          scale_view_mode: synchronized_scale
+          phase_boundary_mode: reset
+      cross_stage_identity_reset:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 7/10
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          feature_surface_mode: cross_stage
+          spatial_support_mode: global_energy
+          scale_view_mode: identity
+          phase_boundary_mode: reset
+      cross_stage_scale_reset:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 7/10
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          feature_surface_mode: cross_stage
+          spatial_support_mode: global_energy
+          scale_view_mode: synchronized_scale
+          phase_boundary_mode: reset
+      cross_stage_scale_feature_only:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 7/10
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: false
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          feature_surface_mode: cross_stage
+          spatial_support_mode: global_energy
+          scale_view_mode: synchronized_scale
+          phase_boundary_mode: feature_only
+      cross_stage_scale_carryover:
+        parameters:
+          eps: 4/255
+          iterations: 20
+          step_size: 1/255
+          score_threshold: 1/20
+          feature_levels: [0, 1, 2]
+          feature_eps: 1.0e-6
+          feature_objective: directional_cosine
+          scale_min: 2/3
+          scale_max: 4/3
+          momentum: 7/10
+          risk_warmup: 1
+          risk_to_feature_steps: 0
+          risk_enabled: true
+          risk_objective: smooth_log_odds
+          object_mask_weighting: union
+          feature_surface_mode: cross_stage
+          spatial_support_mode: global_energy
+          scale_view_mode: synchronized_scale
+          phase_boundary_mode: carryover

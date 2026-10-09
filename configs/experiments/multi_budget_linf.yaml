@@ -1,0 +1,132 @@
+schema_version: 1
+benchmark: coco_fullval2017_common2_multi_budget_linf_zero_query_transfer
+status: superseded_by_20260826_method_fidelity_revision
+supersession_reason: >-
+  The accepted source run and the multi-budget campaign used the pre-refresh
+  SFIM-B learning rate and the stage-adapted Mask-Swin NAA executor. The current
+  SFIM-B and NAA definitions are not implementation-equivalent, and NAA no
+  longer has native Mask-Swin support. This immutable historical protocol must
+  not be resumed or regenerated with current code; freeze a successor only
+  after the COCO-1000 method-fidelity refresh and a new 4/255 formal source run.
+dataset: coco
+split: val
+formal_images: 5000
+seed: 42
+budget_profile: compute_matched_multi_epsilon
+sources: [faster_rcnn_r50, mask_rcnn_swin_t]
+methods: [sfim_b, naa, numbod, hifa, mlfadv, tog, augtrans, lgp, afog, osfd, svfta]
+targets: all
+epsilon_order: [2/255, 4/255, 8/255, 16/255, 32/255]
+epsilon_roles:
+  2/255: core
+  4/255: core_accepted_reference
+  8/255: core
+  16/255: core
+  32/255: high_distortion_stress
+reference:
+  protocol: coco_all_methods
+  acceptance: outputs/reports/coco/formal_all_methods_acceptance.json
+  epsilon: 4/255
+  policy: reuse_accepted_records_with_hash_binding
+  accepted_generation_commit: ae9da252a8a35d82609af3f3aba8b1d203041670
+  implementation_equivalence_audit:
+    unchanged_paths:
+      - configs/attacks
+      - configs/models.yaml
+      - src/lgp/attacks
+      - src/lgp/metrics.py
+    approved_additive_default_noop_paths:
+      - src/lgp/adapters/openmmlab.py
+      - src/lgp/modeling.py
+      - src/lgp/runners/attack.py
+      - src/lgp/runners/evaluate.py
+      - src/lgp/data/coco.py
+    approved_patch_sha256: 784b27a58119f94b3fbb67f9813d9cab8f7382be3c8d0d11958a75753150f7c9
+    adjudication: >-
+      Attack implementations, attack registries, detector registry and metric
+      definitions are byte-identical to the accepted generation commit. The
+      approved shared-code diff only adds optional input/checkpoint/image-ID/
+      progress hooks whose defaults preserve the original full-val path; the
+      noninteractive progress change does not alter predictions or metrics.
+controlled_factor:
+  changed_parameter: eps
+  frozen_parameters:
+    - step_size
+    - iterations
+    - optimizer
+    - transform_distribution
+    - source_objective
+    - seed
+    - gradient_accounting
+  rationale: >-
+    A one-factor sensitivity study must not silently co-vary the update size or
+    compute. The achieved perturbation norm and perceptual quality are reported
+    so under-utilisation of a larger upper bound remains observable.
+threat_model:
+  name: zero_query_oblivious_cross_model_transfer
+  source_access: white_box
+  target_queries: 0
+  target_gradients: 0
+  target_predictions_during_generation: 0
+  norm: linf
+  input_scale: normalized_0_1
+  certified_robustness_claim: false
+reporting:
+  primary_metric: bbox_mAP_50
+  all_coco_metrics: true
+  blackbox_mean_excludes_source_matched_target: true
+  core_claim_epsilon: [2/255, 4/255, 8/255, 16/255]
+  stress_epsilon_excluded_from_core_aggregate: [32/255]
+  report_achieved_linf: true
+  report_psnr: true
+  report_ssim: true
+payload_lifecycle:
+  new_payload_groups: 88
+  images_per_group: 5000
+  validate_all_targets_before_prune: 16
+  intermediate_retained_images: 500
+  final_state: manifest_only_after_complete_target_panel
+  preserve:
+    - full_image_manifest_gzip
+    - retained_and_pruned_hash_manifests
+    - full_annotation_hash
+    - source_checkpoint_hash
+    - parameter_hash
+    - prediction_archives
+    - per_group_quality_and_gradient_accounting
+  remove_after_validation: generated_png_payloads
+storage_preflight:
+  estimate_new_evaluations_from: accepted_common2_4_255_evaluation_bytes
+  new_to_reference_evaluation_multiplier: 4
+  estimate_concurrent_payload_from: accepted_common2_retained_payload_bytes
+  full_to_retained_image_multiplier: 10
+  high_distortion_payload_safety_multiplier: 2
+  concurrent_workers: 2
+  additional_free_margin_gib: 20
+  fail_closed: true
+formal_counts:
+  sources: 2
+  methods: 11
+  targets: 16
+  epsilon_budgets: 5
+  attack_groups: 110
+  reference_attack_groups: 22
+  new_attack_groups: 88
+  conceptual_payload_images: 550000
+  reference_payload_images: 110000
+  new_payload_images: 440000
+  clean_evaluations: 16
+  attack_evaluations: 1760
+  reference_attack_evaluations: 352
+  new_attack_evaluations: 1408
+  records: 1776
+  failed_records: 0
+eligibility:
+  full_coco_val_claim: true
+  full_coco_val_claim_scope: common2_five_epsilon_zero_query_transfer
+  certified_robustness_claim: false
+  require_clean_git: true
+  require_two_gpus: true
+  require_zero_linf_violations: true
+  require_zero_gradient_accounting_violations: true
+  require_zero_remaining_new_payload_pngs: true

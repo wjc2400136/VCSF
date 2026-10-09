@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "record_type": "vcsf_final_scientific_configuration_disposition",
+  "date": "2026-09-17",
+  "decision": "KEEP_F_WITH_NARROWED_CLAIMS",
+  "configuration_frozen": true,
+  "decision_actor": "agent_under_recorded_author_delegation",
+  "method_name": "VCSF",
+  "new_candidate_created": false,
+  "candidate": {
+    "common_group_id": 26,
+    "common_variant": "B:momentum_085",
+    "final_group_id": 1,
+    "final_variant": "A01",
+    "parameters_sha256": "158acaf594c74b4f6a9c20fe28d6c2e38ef6ab9230b85f6d0b0b8b7e93dd7e9e",
+    "parameters_json_pointer": "/inputs/catalogue/groups/0/parameters"
+  },
+  "authenticated_input_report": {
+    "server_tree_name": "LGP-final-result-consumer-validation-20260916",
+    "relative_path": "outputs/plans/vcsf_final_result_inputs/full01/report.json",
+    "sha256": "968f7227282a16b25f9947e2af7f1d95ac28fcdf18ebf0d0f4d54e1f41373f84"
+  },
+  "implementation": {
+    "server_tree_name": "LGP-final-admission-source-validation-20260915",
+    "inventory_json_pointer": "/inputs/execution_plan/runtime_sha256",
+    "inventory_sha256": "0541e0c6236dab892d5321531061049e04810077d0bac62635eff6916346237a",
+    "inventory_files": 326,
+    "all_inventory_files_readback_matched": true,
+    "critical_files": {
+      "src/lgp/attacks/vcsf_final_candidate.py": "99423c6892db7afc172dff0eb375970a603b44ed9885b0c04f71faa845da2c4a",
+      "src/lgp/attacks/vcsf_research_isolated.py": "b78fbbddc1638f4f74ddb44771c131a6f5301272bc5d75110c700828f40099b0",
+      "src/lgp/runners/vcsf_efficacy_runner.py": "67ea9ce3962423bbf81392984c36a82cf8160ee68a46b49de259686d5f5c9d0d"
+    },
+    "historical_public_runner_equivalence_claimed": false,
+    "historical_freeze_descriptor_modified": false
+  },
+  "review_records_sha256": {
+    "docs/research/vcsf-final-nomination-20260915.md": "a0b1dc2c896aecb7a53785577d2539d551f553ffff0d18317f0ab747fd854060",
+    "docs/research/vcsf-final-panel-interpretation-20260917.md": "56f4b0372a87c5ecd9f97e4b31d8deb4e8756a6be2a0f11d6a46398825c65cfe",
+    "docs/research/vcsf-final-claim-control-review-20260917.md": "e4ca9423b06cb34e65fe43ce017f29ef66c075d7fd449770aa00c6a7ecbb1885",
+    "docs/research/vcsf-final-disposition-20260917.md": "a72bcb3f5ca2c28bd42978b6a9d0d9977377c9d7a5e3063c9d9a09feecdc83fc"
+  },
+  "independent_review": {
+    "scope": "read_only_claim_control_interpretation_review_not_numerical_certification",
+    "material_findings": 2,
+    "findings_resolved_and_rechecked": 2,
+    "new_issue_in_focused_recheck": false
+  },
+  "attribution_evidence": {
+    "source": "faster_rcnn_r50",
+    "dataset": "coco",
+    "split": "val",
+    "images_per_group": 5000,
+    "seed": 42,
+    "groups": 23,
+    "new_groups": 20,
+    "qualified_reused_groups": 3,
+    "target_count": 16,
+    "BB_target_count": 15,
+    "cells": 368,
+    "metrics_per_cell": 12,
+    "registered_contrasts": 69,
+    "report_binding_sha256": "90faf33e73f65ab0ece8a14bca995ffe2909040c37a1cc32926b6668f4a40f7e",
+    "cost_audit_sha256": "0136de97dc0cd0fc1dba227c30e5e1f332618ed36b4033a9a170a90cc8fec139",
+    "raw_acceptance_records_rewritten": false
+  },
+  "withdrawn_claims": [
+    "independent_positive_centering_efficacy",
+    "monotone_depth_benefit",
+    "pure_correspondence_causality",
+    "universal_stage_or_layer_optimality",
+    "optimal_momentum",
+    "independent_confirmation",
+    "statistical_significance",
+    "exact_physical_compute_equality",
+    "final_momentum_operator_interactions_from_earlier_background"
+  ],
+  "limitations": [
+    "A01 was observed in the exploratory sweep before final control registration",
+    "Single source and reused full validation split do not establish independent confirmation",
+    "Target and secondary metric disagreements are retained, including Swin",
+    "DINO was not used as a whitebox source but its target metrics were inspected",
+    "Observed timing is not isolated physical calibration; unknown physical costs remain unknown"
+  ],
+  "next_scope": {
+    "final_stability_seeds": [42, 43, 44, 45, 46],
+    "seed42_reuse": "requires_exact_identity_and_scope_qualification",
+    "six_source_refresh": "affected_VCSF_rows_only_with_dataset_specific_scope",
+    "new_candidate_search_authorized": false,
+    "unaffected_clean_or_other_method_reruns_authorized": false,
+    "retired_bootstrap_reactivated": false
+  },
+  "formal_execution_admission": false,
+  "runner_armed": false,
+  "final_stability_registered": false,
+  "six_source_refresh_registered": false,
+  "whole_project_device_acceptance": false,
+  "paper_publication_ready": false,
+  "whole_goal_complete": false
+}

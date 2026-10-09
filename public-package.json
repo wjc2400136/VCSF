@@ -1,0 +1,2758 @@
+{
+  "active_entrypoints": [
+    "experiments/_common.py",
+    "experiments/adaptive_preprocessing_transfer.py",
+    "experiments/afog_experiments.py",
+    "experiments/all_method_ablations.py",
+    "experiments/augtrans_experiments.py",
+    "experiments/clean_map.py",
+    "experiments/coco_all_methods.py",
+    "experiments/coco_training_state_pair.py",
+    "experiments/current_paired_cost.py",
+    "experiments/current_saved_qualitative.py",
+    "experiments/current_vcsf_final_background.py",
+    "experiments/current_vcsf_radius.py",
+    "experiments/extended_transfer.py",
+    "experiments/finetune_voc.py",
+    "experiments/generate_reports.py",
+    "experiments/hifa_experiments.py",
+    "experiments/lgp_experiments.py",
+    "experiments/main_transfer.py",
+    "experiments/mlfadv_experiments.py",
+    "experiments/naa_experiments.py",
+    "experiments/numbod_experiments.py",
+    "experiments/osfd_experiments.py",
+    "experiments/paper_experiment_catalog.py",
+    "experiments/preprocessing_transfer.py",
+    "experiments/qualify_vcsf_a10_public.py",
+    "experiments/reexport_saved_reports.py",
+    "experiments/render_qualitative_panel.py",
+    "experiments/sfim_experiments.py",
+    "experiments/tog_experiments.py",
+    "experiments/training_state_transfer.py",
+    "experiments/verify_public_package.py",
+    "experiments/visualization_settings.py",
+    "experiments/visualize_predictions.py",
+    "experiments/voc_transfer.py",
+    "experiments/whitebox.py",
+    "src/lgp/__main__.py",
+    "src/lgp/cli.py"
+  ],
+  "base_freeze_sha256": "835ecf45606670c9f92e34caf7a8c42e1e5b89119c0adc273ec1afff445fbb2f",
+  "candidate_only": false,
+  "configuration_sha256": {
+    "configs/attacks/baselines.yaml": "392ae29cd66e0b3006ebf5ac61d99e894770a798ad9e668b384111950d4b7870",
+    "configs/attacks/reference.yaml": "29fe48d3f6ec5c2cb5cb96ebf5cdb6742738edf52ee6969cbe3ce4dd135d6bb1",
+    "configs/attacks/svfta.yaml": "b1004ef64f017ad9896f02a8e3bba2a2ee88624077641a06fa56fa04fc95eb33",
+    "configs/attacks/vcsf.yaml": "d3f0c8322c065a7da1c145b8614ab3c6369350f91fb365be2cad2e904c937ba3",
+    "configs/attacks/vcsf_final_candidate.yaml": "58730864bd840ce1cf3df117bcd085820333a917055938cbf05b7fad6df6f7eb",
+    "configs/attacks/vcsf_selected_a23.yaml": "06e7033d73bf9c261af8f19cb16fd05feb8a385b123603e916a1531821828ef1",
+    "configs/compatibility.yaml": "153c75a80644d160eeb299ddab1015bd405e9be7638e368d195f494bf4f8c920",
+    "configs/datasets/bdd100k.yaml": "029471f0852089369b6db9aba885a76978a5964bd89f4c6b7440a408e68848dd",
+    "configs/datasets/coco.yaml": "eb76d2a2cc778aa2ef17f387e149e079edad262e55f525bd8f0d449086f6aef9",
+    "configs/datasets/voc.yaml": "90c96b6d6b5de956274b02677e7b47fe515e0037bf6c4d45e63290ebd37ffe21",
+    "configs/experiments/ablations.yaml": "09e2f8d17395efaf4888b81825d70c370519ec8410a614ab2256af3e5efc77df",
+    "configs/experiments/budgets.yaml": "269ce01b0d137562ed096f5f8aa56c6e193517360bd4c15545d1cc1dfb493fe5",
+    "configs/experiments/multi_budget_linf.yaml": "c538a2d39d37187e02c049901ebd7c4b0bc2bc4be812f87b23e345271700f8cc",
+    "configs/experiments/paper_catalog.yaml": "599e43bd201d58d5f6aaea3939aafad3d3009718e658bd79b6b4316568e18ec4",
+    "configs/experiments/preprocessing_defenses.yaml": "0d1bdbd65b7a39d6c2cfa098e94cd37ab3be4c7cd72ffc67875392c9e02384a6",
+    "configs/experiments/protocols.yaml": "be7be95537cf717fa4faad91a24b49d7ba57c4c7e443aa4dd39b4da1790b222f",
+    "configs/experiments/training_state_fullval_confirmation.yaml": "e216cafb579f0439701572fe436bf3c9ff1edb5881d768449966dcd9c50aab67",
+    "configs/experiments/training_state_transfer.yaml": "4b61c7572873eb9e256cd965f06d7b8aab263df9e1c28785ff2c969e770d19fc",
+    "configs/experiments/vcsf_submission.yaml": "721deaba94d6dbe32f492e930fc67dc7a741fae6f5e4bb04c6994940b53a9b2b",
+    "configs/models.yaml": "f50d3fd2b4698bc07c760305b9e61c95a2b4bf8a7aed34fca20f506909c50588"
+  },
+  "formal": false,
+  "historical_missing_metadata": [
+    {
+      "path": "docs/research/vcsf-final-only-coverage-amendment-20260920.md",
+      "protocols": [
+        "vcsf_final_budget_refresh",
+        "vcsf_final_training_state_refresh"
+      ],
+      "status": "absent_in_original_not_current_runtime_input_not_repaired"
+    }
+  ],
+  "licensing": {
+    "grant_scope": "project_owned_source",
+    "license_file": "LICENSE",
+    "license_text_sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+    "media_datasets_checkpoints_covered": false,
+    "project_license": "GPL-3.0-only",
+    "third_party_terms_retained": true,
+    "unconditional_legal_clearance_claimed": false
+  },
+  "numeric_source_sha256": {
+    "src/lgp/adapters/openmmlab.py": "553ab418de02fa4c9e2c5920e066b4be248225af4b68b660e17e2866998c4348",
+    "src/lgp/attacks/base.py": "9288b61e8168b1738d84d3e4c6860c713a340b5cfaf45b0a984694dc4fd3259e",
+    "src/lgp/attacks/common.py": "850fbdfcb8908064c0380e5a30f66cec1c62814a287c26f7f388a980811709d3",
+    "src/lgp/attacks/vcsf_common_anchor_execution_isolation.py": "44b8ea7f9cc3df7fce511f79bc9dae671fb6ea0dd709178a095b5717c7464b63",
+    "src/lgp/attacks/vcsf_common_anchor_isolated.py": "b55c7ebe5a307249a8776c0370a8e149044ef2fbc923954e9f1dddccaa1843da",
+    "src/lgp/attacks/vcsf_final_candidate.py": "99423c6892db7afc172dff0eb375970a603b44ed9885b0c04f71faa845da2c4a",
+    "src/lgp/attacks/vcsf_research_isolated.py": "b78fbbddc1638f4f74ddb44771c131a6f5301272bc5d75110c700828f40099b0",
+    "src/lgp/attacks/vcsf_scale_isolated.py": "65827ce3ed4eb1d16700a828648ed9d6595f5ff6d92103408343ab56df5047ef",
+    "src/lgp/modeling.py": "db4301db6f420a490d3ad09340fa6610924268320abebf3576401cb1191fd6c5"
+  },
+  "provenance_sha256": {
+    "docs/research/vcsf-a10-configuration-recommendation-provenance.md": "159e0883d58e9c802b33269897dd4e4e92eec7a913183cc6ddfafbd32025b955",
+    "docs/research/vcsf-a10-main-audit-contract.json": "4f9198056319925330209ed6f4cd8098bbfd7eecb578ab139c457795e7e46db9",
+    "docs/research/vcsf-a10-main-producer-schema.json": "55da0a8865a3a0a09232626c954547ec886008e887c3277b8500b89ea8048036",
+    "docs/research/vcsf-a10-public-source-freeze.json": "835ecf45606670c9f92e34caf7a8c42e1e5b89119c0adc273ec1afff445fbb2f",
+    "docs/research/vcsf-a10-recorded-configuration-choice.json": "28f279d405fe6cda61efb7bc109267fed49dcf5ec294717b9da97a7ec58491b6",
+    "docs/research/vcsf-a10-selection-protocol.json": "b9c8ddf613a70dd6623cdb71c5070a83352a39c0bfe755ddaee24600cffc0084"
+  },
+  "release": true,
+  "rights_status": "recorded_source_distribution_conditions_addressed",
+  "runtime_file_dependencies": {
+    "configs/attacks/baselines.yaml": [],
+    "configs/attacks/reference.yaml": [
+      "src/lgp/attacks/afog.py",
+      "src/lgp/attacks/augtrans.py",
+      "src/lgp/attacks/corrupting_attention.py",
+      "src/lgp/attacks/hifa.py",
+      "src/lgp/attacks/lgp.py",
+      "src/lgp/attacks/mlfadv.py",
+      "src/lgp/attacks/naa.py",
+      "src/lgp/attacks/numbod.py",
+      "src/lgp/attacks/osfd.py",
+      "src/lgp/attacks/sfim.py",
+      "src/lgp/attacks/tog.py"
+    ],
+    "configs/attacks/svfta.yaml": [],
+    "configs/attacks/vcsf.yaml": [
+      "docs/research/vcsf-a10-public-source-freeze.json",
+      "docs/research/vcsf-a10-selection-protocol.json",
+      "src/lgp/attacks/vcsf_common_anchor_isolated.py"
+    ],
+    "configs/attacks/vcsf_final_candidate.yaml": [
+      "docs/research/vcsf-final-candidate-freeze.json",
+      "docs/research/vcsf-final-candidate-spec.md",
+      "docs/research/vcsf-final-candidate-spec.zh-CN.md",
+      "src/lgp/attacks/vcsf_final_candidate.py"
+    ],
+    "configs/attacks/vcsf_selected_a23.yaml": [
+      "src/lgp/attacks/vcsf_a23_isolated.py"
+    ],
+    "configs/compatibility.yaml": [],
+    "configs/datasets/bdd100k.yaml": [],
+    "configs/datasets/coco.yaml": [],
+    "configs/datasets/voc.yaml": [],
+    "configs/experiments/ablations.yaml": [
+      "docs/research/vcsf-maintenance-disposition-authorization-20260920.md"
+    ],
+    "configs/experiments/budgets.yaml": [],
+    "configs/experiments/multi_budget_linf.yaml": [
+      "src/lgp/adapters/openmmlab.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/metrics.py",
+      "src/lgp/modeling.py",
+      "src/lgp/runners/attack.py",
+      "src/lgp/runners/evaluate.py"
+    ],
+    "configs/experiments/paper_catalog.yaml": [],
+    "configs/experiments/preprocessing_defenses.yaml": [],
+    "configs/experiments/protocols.yaml": [
+      "docs/research/vcsf-a10-main-audit-contract.json",
+      "docs/research/vcsf-a10-recorded-configuration-choice.json",
+      "docs/research/vcsf-exploration-statistics-amendment-20260909.md",
+      "docs/research/vcsf-final-attribution-request-20260915.json",
+      "docs/research/vcsf-final-background-request-20260929.json",
+      "docs/research/vcsf-final-candidate-freeze.json",
+      "docs/research/vcsf-final-followup-registration-20260917.md",
+      "docs/research/vcsf-final-method-freeze-20260917.json",
+      "docs/research/vcsf-finalization-scope-amendment-20260908.md",
+      "docs/research/vcsf-maintenance-disposition-authorization-20260920.md",
+      "docs/research/vcsf-selected-a23-freeze.json",
+      "docs/research/vcsf-single-source-amendment-20260909.md",
+      "docs/research/vcsf-whole-ablation-amendment-20260909.md",
+      "docs/research/vcsf-whole-ablation-closure-20260909.md",
+      "docs/research/vcsf-whole-ablation-revision-20260911.md",
+      "src/lgp/attacks/svfta_cross_stage_claim_confirmation.py",
+      "src/lgp/attacks/vcsf_ablation_isolated.py",
+      "src/lgp/attacks/vcsf_common_anchor_isolated.py",
+      "src/lgp/attacks/vcsf_final_candidate.py",
+      "src/lgp/attacks/vcsf_operator_factorial_isolated.py",
+      "src/lgp/attacks/vcsf_research_isolated.py",
+      "src/lgp/attacks/vcsf_scale_isolated.py"
+    ],
+    "configs/experiments/training_state_fullval_confirmation.yaml": [],
+    "configs/experiments/training_state_transfer.yaml": [],
+    "configs/experiments/vcsf_submission.yaml": [
+      "src/lgp/adapters/openmmlab.py",
+      "src/lgp/runners/evaluate.py"
+    ],
+    "configs/models.yaml": [],
+    "experiments/_common.py": [
+      "experiments/visualization_settings.py",
+      "src/lgp/__init__.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/experiment.py"
+    ],
+    "experiments/adaptive_preprocessing_transfer.py": [
+      "experiments/visualization_settings.py",
+      "src/lgp/__init__.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/current_preprocessing.py"
+    ],
+    "experiments/afog_experiments.py": [
+      "experiments/_common.py"
+    ],
+    "experiments/all_method_ablations.py": [
+      "experiments/_common.py"
+    ],
+    "experiments/augtrans_experiments.py": [
+      "experiments/_common.py"
+    ],
+    "experiments/clean_map.py": [
+      "experiments/visualization_settings.py",
+      "src/lgp/__init__.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/clean.py"
+    ],
+    "experiments/coco_adaptive_preprocessing_defense.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/adaptive_preprocessing_defense.py"
+    ],
+    "experiments/coco_all_methods.py": [
+      "experiments/_common.py"
+    ],
+    "experiments/coco_preprocessing_defense.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/preprocessing_defense.py"
+    ],
+    "experiments/coco_training_state_pair.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/training_state_pair.py"
+    ],
+    "experiments/current_paired_cost.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/current_cost.py"
+    ],
+    "experiments/current_saved_qualitative.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/current_qualitative.py"
+    ],
+    "experiments/current_vcsf_final_background.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/current_background.py"
+    ],
+    "experiments/current_vcsf_radius.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/current_radius.py"
+    ],
+    "experiments/extended_transfer.py": [
+      "experiments/_common.py"
+    ],
+    "experiments/finetune_voc.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/finetune.py"
+    ],
+    "experiments/generate_reports.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/cli.py"
+    ],
+    "experiments/hifa_experiments.py": [
+      "experiments/_common.py"
+    ],
+    "experiments/lgp_experiments.py": [
+      "experiments/_common.py"
+    ],
+    "experiments/main_transfer.py": [
+      "experiments/_common.py"
+    ],
+    "experiments/mlfadv_experiments.py": [
+      "experiments/_common.py"
+    ],
+    "experiments/naa_experiments.py": [
+      "experiments/_common.py"
+    ],
+    "experiments/numbod_experiments.py": [
+      "experiments/_common.py"
+    ],
+    "experiments/osfd_experiments.py": [
+      "experiments/_common.py"
+    ],
+    "experiments/paper_experiment_catalog.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/__init__.py"
+    ],
+    "experiments/preprocessing_transfer.py": [
+      "experiments/visualization_settings.py",
+      "src/lgp/__init__.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/current_preprocessing.py"
+    ],
+    "experiments/qualify_vcsf_a10_public.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/factory.py",
+      "src/lgp/attacks/vcsf_public.py",
+      "src/lgp/registry.py"
+    ],
+    "experiments/reexport_saved_reports.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/reporting/reexport.py"
+    ],
+    "experiments/render_qualitative_panel.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/reporting/qualitative_inputs.py",
+      "src/lgp/reporting/qualitative_panel.py"
+    ],
+    "experiments/sfim_experiments.py": [
+      "experiments/_common.py"
+    ],
+    "experiments/tog_experiments.py": [
+      "experiments/_common.py"
+    ],
+    "experiments/training_state_transfer.py": [
+      "experiments/visualization_settings.py",
+      "src/lgp/__init__.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/current_training_state.py"
+    ],
+    "experiments/vcsf_common2_cost_calibration.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/cost_calibration.py"
+    ],
+    "experiments/verify_public_package.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/public_package.py"
+    ],
+    "experiments/visualization_settings.py": [],
+    "experiments/visualize_predictions.py": [
+      "experiments/visualization_settings.py",
+      "src/lgp/__init__.py",
+      "src/lgp/runners/prediction_visualization.py"
+    ],
+    "experiments/voc_transfer.py": [
+      "experiments/_common.py"
+    ],
+    "experiments/whitebox.py": [
+      "experiments/_common.py"
+    ],
+    "src/lgp/__init__.py": [],
+    "src/lgp/__main__.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/cli.py"
+    ],
+    "src/lgp/adapters/__init__.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/adapters/openmmlab.py"
+    ],
+    "src/lgp/adapters/openmmlab.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/adapters/__init__.py"
+    ],
+    "src/lgp/attacks/__init__.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/afog.py",
+      "src/lgp/attacks/augtrans.py",
+      "src/lgp/attacks/base.py",
+      "src/lgp/attacks/corrupting_attention.py",
+      "src/lgp/attacks/factory.py",
+      "src/lgp/attacks/hifa.py",
+      "src/lgp/attacks/lgp.py",
+      "src/lgp/attacks/mlfadv.py",
+      "src/lgp/attacks/naa.py",
+      "src/lgp/attacks/numbod.py",
+      "src/lgp/attacks/osfd.py",
+      "src/lgp/attacks/sfim.py",
+      "src/lgp/attacks/svfta.py",
+      "src/lgp/attacks/tog.py"
+    ],
+    "src/lgp/attacks/afog.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/adapters/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/base.py",
+      "src/lgp/attacks/common.py"
+    ],
+    "src/lgp/attacks/augtrans.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/adapters/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/base.py",
+      "src/lgp/attacks/common.py"
+    ],
+    "src/lgp/attacks/base.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py"
+    ],
+    "src/lgp/attacks/common.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/adapters/openmmlab.py",
+      "src/lgp/attacks/__init__.py"
+    ],
+    "src/lgp/attacks/corrupting_attention.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/adapters/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/base.py",
+      "src/lgp/attacks/common.py"
+    ],
+    "src/lgp/attacks/current_vcsf_background.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/vcsf_common_anchor_execution_isolation.py",
+      "src/lgp/attacks/vcsf_common_anchor_isolated.py",
+      "src/lgp/attacks/vcsf_public.py"
+    ],
+    "src/lgp/attacks/current_vcsf_radius.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/vcsf_common_anchor_isolated.py",
+      "src/lgp/attacks/vcsf_public.py"
+    ],
+    "src/lgp/attacks/factory.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/adapters/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/afog.py",
+      "src/lgp/attacks/augtrans.py",
+      "src/lgp/attacks/corrupting_attention.py",
+      "src/lgp/attacks/hifa.py",
+      "src/lgp/attacks/lgp.py",
+      "src/lgp/attacks/mlfadv.py",
+      "src/lgp/attacks/naa.py",
+      "src/lgp/attacks/numbod.py",
+      "src/lgp/attacks/osfd.py",
+      "src/lgp/attacks/sfim.py",
+      "src/lgp/attacks/svfta.py",
+      "src/lgp/attacks/tog.py",
+      "src/lgp/attacks/vcsf_common_anchor_isolated.py",
+      "src/lgp/attacks/vcsf_public.py"
+    ],
+    "src/lgp/attacks/hifa.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/adapters/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/base.py",
+      "src/lgp/attacks/common.py"
+    ],
+    "src/lgp/attacks/isolated.py": [
+      "configs/attacks/vcsf_selected_a23.yaml",
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/factory.py",
+      "src/lgp/attacks/svfta_cross_stage_claim_confirmation.py",
+      "src/lgp/attacks/vcsf_a23_isolated.py",
+      "src/lgp/attacks/vcsf_common_anchor_isolated.py",
+      "src/lgp/attacks/vcsf_final_candidate.py",
+      "src/lgp/registry.py"
+    ],
+    "src/lgp/attacks/lgp.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/base.py",
+      "src/lgp/attacks/common.py",
+      "src/lgp/attacks/lgp_assignment.py",
+      "src/lgp/attacks/lgp_fidelity.py",
+      "src/lgp/attacks/lgp_heatmap.py",
+      "src/lgp/attacks/lgp_source.py"
+    ],
+    "src/lgp/attacks/lgp_assignment.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py"
+    ],
+    "src/lgp/attacks/lgp_fidelity.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py"
+    ],
+    "src/lgp/attacks/lgp_heatmap.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py"
+    ],
+    "src/lgp/attacks/lgp_query.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py"
+    ],
+    "src/lgp/attacks/lgp_roi.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py"
+    ],
+    "src/lgp/attacks/lgp_semantic.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py"
+    ],
+    "src/lgp/attacks/lgp_source.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/lgp_assignment.py",
+      "src/lgp/attacks/lgp_fidelity.py",
+      "src/lgp/attacks/lgp_query.py",
+      "src/lgp/attacks/lgp_roi.py",
+      "src/lgp/attacks/lgp_semantic.py",
+      "src/lgp/attacks/lgp_vfnet.py",
+      "src/lgp/attacks/lgp_yolo.py",
+      "src/lgp/defenses/preprocessing.py"
+    ],
+    "src/lgp/attacks/lgp_vfnet.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py"
+    ],
+    "src/lgp/attacks/lgp_yolo.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py"
+    ],
+    "src/lgp/attacks/mlfadv.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/adapters/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/base.py",
+      "src/lgp/attacks/common.py"
+    ],
+    "src/lgp/attacks/naa.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/adapters/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/base.py",
+      "src/lgp/attacks/common.py"
+    ],
+    "src/lgp/attacks/numbod.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/adapters/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/base.py",
+      "src/lgp/attacks/common.py"
+    ],
+    "src/lgp/attacks/osfd.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/adapters/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/base.py",
+      "src/lgp/attacks/common.py"
+    ],
+    "src/lgp/attacks/sfim.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/adapters/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/base.py",
+      "src/lgp/attacks/common.py"
+    ],
+    "src/lgp/attacks/svfta.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/adapters/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/base.py",
+      "src/lgp/attacks/common.py"
+    ],
+    "src/lgp/attacks/svfta_cross_stage_claim_confirmation.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/base.py",
+      "src/lgp/attacks/svfta_feature_support_deletion.py"
+    ],
+    "src/lgp/attacks/svfta_evidence_bottleneck.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/base.py",
+      "src/lgp/attacks/svfta.py"
+    ],
+    "src/lgp/attacks/svfta_feature_support_deletion.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/base.py",
+      "src/lgp/attacks/svfta.py",
+      "src/lgp/attacks/svfta_minimal_anchor.py"
+    ],
+    "src/lgp/attacks/svfta_minimal_anchor.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/base.py",
+      "src/lgp/attacks/common.py",
+      "src/lgp/attacks/svfta_evidence_bottleneck.py"
+    ],
+    "src/lgp/attacks/tog.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/adapters/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/base.py",
+      "src/lgp/attacks/common.py"
+    ],
+    "src/lgp/attacks/vcsf_a10_f03_swin_fullval_isolation.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/factory.py",
+      "src/lgp/attacks/vcsf_common_anchor_isolated.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/io.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/vcsf_efficacy_contract.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/attacks/vcsf_a23_isolated.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/vcsf_common_anchor_isolated.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/attacks/vcsf_ablation_executor_isolation.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/factory.py",
+      "src/lgp/attacks/vcsf_ablation_isolated.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_ablation_executor_smoke.py",
+      "src/lgp/runners/vcsf_efficacy_runner.py"
+    ],
+    "src/lgp/attacks/vcsf_ablation_isolated.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/vcsf_research_isolated.py",
+      "src/lgp/attacks/vcsf_scale_isolated.py"
+    ],
+    "src/lgp/attacks/vcsf_ablation_preflight_isolation.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/factory.py",
+      "src/lgp/attacks/vcsf_ablation_isolated.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_ablation_preflight.py"
+    ],
+    "src/lgp/attacks/vcsf_common_anchor_execution_isolation.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/factory.py",
+      "src/lgp/attacks/vcsf_common_anchor_isolated.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_common_anchor_execution_contract.py",
+      "src/lgp/runners/vcsf_efficacy_runner.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/attacks/vcsf_common_anchor_isolated.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/vcsf_research_isolated.py",
+      "src/lgp/attacks/vcsf_scale_isolated.py"
+    ],
+    "src/lgp/attacks/vcsf_efficacy_isolation.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/factory.py",
+      "src/lgp/attacks/vcsf_research_isolated.py",
+      "src/lgp/attacks/vcsf_research_isolation.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/vcsf_efficacy_contract.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/attacks/vcsf_final_adaptive_isolation.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/factory.py",
+      "src/lgp/attacks/vcsf_common_anchor_execution_isolation.py",
+      "src/lgp/attacks/vcsf_common_anchor_isolated.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/defenses/preprocessing.py",
+      "src/lgp/io.py",
+      "src/lgp/modeling.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/training_pair_processes.py",
+      "src/lgp/runners/vcsf_adaptive_admission.py",
+      "src/lgp/runners/vcsf_final_adaptive_contract.py",
+      "src/lgp/runners/vcsf_final_training_state.py",
+      "src/lgp/runners/vcsf_gpu_context_owner.py",
+      "src/lgp/runners/vcsf_oblivious_admission.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_structure_workers.py"
+    ],
+    "src/lgp/attacks/vcsf_final_budget_isolation.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/factory.py",
+      "src/lgp/attacks/vcsf_final_radius_isolated.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/io.py",
+      "src/lgp/modeling.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/training_pair_processes.py",
+      "src/lgp/runners/vcsf_final_budget.py",
+      "src/lgp/runners/vcsf_gpu_context_owner.py",
+      "src/lgp/runners/vcsf_oblivious_admission.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_structure_workers.py"
+    ],
+    "src/lgp/attacks/vcsf_final_candidate.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/base.py",
+      "src/lgp/attacks/common.py"
+    ],
+    "src/lgp/attacks/vcsf_final_followup_execution_isolation.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/factory.py",
+      "src/lgp/attacks/vcsf_common_anchor_isolated.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/vcsf_ablation_execution_contract.py",
+      "src/lgp/runners/vcsf_efficacy_contract.py",
+      "src/lgp/runners/vcsf_efficacy_runner.py",
+      "src/lgp/runners/vcsf_final_followup_dispatch.py",
+      "src/lgp/runners/vcsf_final_followup_execution_contract.py",
+      "src/lgp/runners/vcsf_gpu_context_owner.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_structure_workers.py",
+      "tools/audit_vcsf_cpu_analysis.py",
+      "tools/vcsf_final_followup_bound_dispatch.py"
+    ],
+    "src/lgp/attacks/vcsf_final_followup_successor_isolation.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/factory.py",
+      "src/lgp/attacks/vcsf_common_anchor_isolated.py",
+      "src/lgp/attacks/vcsf_final_followup_execution_isolation.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/vcsf_ablation_execution_contract.py",
+      "src/lgp/runners/vcsf_efficacy_contract.py",
+      "src/lgp/runners/vcsf_efficacy_runner.py",
+      "src/lgp/runners/vcsf_final_followup_dispatch.py",
+      "src/lgp/runners/vcsf_final_followup_successor_contract.py",
+      "src/lgp/runners/vcsf_final_followup_successor_coordinator.py",
+      "src/lgp/runners/vcsf_gpu_context_owner.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_structure_workers.py",
+      "tools/audit_vcsf_cpu_analysis.py",
+      "tools/vcsf_final_followup_successor_bound_dispatch.py",
+      "tools/vcsf_successor_evidence.py"
+    ],
+    "src/lgp/attacks/vcsf_final_radius_isolated.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/vcsf_common_anchor_isolated.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/attacks/vcsf_operator_execution_isolation.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/factory.py",
+      "src/lgp/attacks/vcsf_operator_factorial_isolated.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_efficacy_runner.py",
+      "src/lgp/runners/vcsf_operator_execution_contract.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/attacks/vcsf_operator_factorial_isolated.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/vcsf_research_isolated.py",
+      "src/lgp/attacks/vcsf_scale_isolated.py"
+    ],
+    "src/lgp/attacks/vcsf_public.py": [
+      "configs/attacks/vcsf.yaml",
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/current_vcsf_background.py",
+      "src/lgp/attacks/current_vcsf_radius.py",
+      "src/lgp/attacks/vcsf_common_anchor_execution_isolation.py",
+      "src/lgp/attacks/vcsf_common_anchor_isolated.py",
+      "src/lgp/public_package.py",
+      "src/lgp/runners/vcsf_a10_main_context.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/attacks/vcsf_research_isolated.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/base.py",
+      "src/lgp/attacks/common.py",
+      "src/lgp/attacks/vcsf_final_candidate.py"
+    ],
+    "src/lgp/attacks/vcsf_research_isolation.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/factory.py",
+      "src/lgp/attacks/vcsf_research_isolated.py",
+      "src/lgp/io.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/attacks/vcsf_scale_execution_isolation.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/factory.py",
+      "src/lgp/attacks/vcsf_scale_isolated.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_scale_execution_contract.py"
+    ],
+    "src/lgp/attacks/vcsf_scale_isolated.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/vcsf_research_isolated.py"
+    ],
+    "src/lgp/attacks/vcsf_scale_isolation.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/factory.py",
+      "src/lgp/attacks/vcsf_research_isolation.py",
+      "src/lgp/attacks/vcsf_scale_isolated.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_scale_plan.py"
+    ],
+    "src/lgp/cli.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/common.py",
+      "src/lgp/data/manager.py",
+      "src/lgp/doctor.py",
+      "src/lgp/io.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/__init__.py",
+      "src/lgp/runners/artifacts.py",
+      "src/lgp/runners/attack.py",
+      "src/lgp/runners/evaluate.py",
+      "src/lgp/runners/experiment.py",
+      "src/lgp/runners/train.py",
+      "src/lgp/runners/weights.py",
+      "src/lgp/runtime_config.py"
+    ],
+    "src/lgp/data/__init__.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/data/manager.py"
+    ],
+    "src/lgp/data/bdd.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/data/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/registry.py"
+    ],
+    "src/lgp/data/coco.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/data/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/paths.py",
+      "src/lgp/registry.py"
+    ],
+    "src/lgp/data/manager.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/data/__init__.py",
+      "src/lgp/data/bdd.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/data/voc.py",
+      "src/lgp/io.py",
+      "src/lgp/paths.py",
+      "src/lgp/registry.py"
+    ],
+    "src/lgp/data/voc.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/data/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/registry.py"
+    ],
+    "src/lgp/defenses/__init__.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/defenses/preprocessing.py"
+    ],
+    "src/lgp/defenses/preprocessing.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/common.py",
+      "src/lgp/defenses/__init__.py"
+    ],
+    "src/lgp/doctor.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/data/manager.py",
+      "src/lgp/io.py",
+      "src/lgp/modeling.py",
+      "src/lgp/registry.py",
+      "src/lgp/runtime_config.py",
+      "src/lgp/training_artifacts.py"
+    ],
+    "src/lgp/io.py": [
+      "src/lgp/__init__.py"
+    ],
+    "src/lgp/metrics.py": [
+      "src/lgp/__init__.py"
+    ],
+    "src/lgp/mmdet_compat.py": [
+      "src/lgp/__init__.py"
+    ],
+    "src/lgp/modeling.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/paths.py",
+      "src/lgp/registry.py",
+      "src/lgp/runtime_config.py"
+    ],
+    "src/lgp/paths.py": [
+      "src/lgp/__init__.py"
+    ],
+    "src/lgp/public_package.py": [
+      "configs/experiments/protocols.yaml",
+      "src/lgp/__init__.py"
+    ],
+    "src/lgp/registry.py": [
+      "configs/experiments/preprocessing_defenses.yaml",
+      "configs/experiments/training_state_transfer.yaml",
+      "configs/models.yaml",
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/vcsf_public.py",
+      "src/lgp/metrics.py",
+      "src/lgp/paths.py",
+      "src/lgp/runners/vcsf_a10_main_contract.py"
+    ],
+    "src/lgp/reporting/__init__.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/reporting/all_methods.py",
+      "src/lgp/reporting/catalog.py",
+      "src/lgp/reporting/coco_summary.py",
+      "src/lgp/reporting/latex.py",
+      "src/lgp/reporting/plots.py"
+    ],
+    "src/lgp/reporting/all_methods.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/io.py",
+      "src/lgp/metrics.py",
+      "src/lgp/modeling.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/__init__.py",
+      "src/lgp/reporting/formatting.py"
+    ],
+    "src/lgp/reporting/catalog.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/__init__.py"
+    ],
+    "src/lgp/reporting/clean_map.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/metrics.py",
+      "src/lgp/paths.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/__init__.py",
+      "src/lgp/reporting/formatting.py"
+    ],
+    "src/lgp/reporting/coco_subset.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/metrics.py",
+      "src/lgp/reporting/__init__.py"
+    ],
+    "src/lgp/reporting/coco_summary.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/reporting/__init__.py",
+      "src/lgp/reporting/formatting.py",
+      "src/lgp/reporting/scope.py"
+    ],
+    "src/lgp/reporting/cost_units.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/reporting/__init__.py"
+    ],
+    "src/lgp/reporting/current_qualitative.py": [
+      "configs/attacks/reference.yaml",
+      "configs/attacks/vcsf.yaml",
+      "configs/datasets/coco.yaml",
+      "configs/experiments/budgets.yaml",
+      "configs/experiments/protocols.yaml",
+      "configs/models.yaml",
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/vcsf_public.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/__init__.py",
+      "src/lgp/reporting/qualitative_inputs.py",
+      "src/lgp/reporting/qualitative_panel.py"
+    ],
+    "src/lgp/reporting/formatting.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/reporting/__init__.py"
+    ],
+    "src/lgp/reporting/latex.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/metrics.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/__init__.py",
+      "src/lgp/reporting/cost_units.py",
+      "src/lgp/reporting/formatting.py",
+      "src/lgp/reporting/preprocessing_cost.py",
+      "src/lgp/reporting/scope.py"
+    ],
+    "src/lgp/reporting/plots.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/__init__.py",
+      "src/lgp/reporting/scope.py"
+    ],
+    "src/lgp/reporting/preprocessing_cost.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/reporting/__init__.py"
+    ],
+    "src/lgp/reporting/qualitative_inputs.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/reporting/__init__.py"
+    ],
+    "src/lgp/reporting/qualitative_panel.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/reporting/__init__.py",
+      "src/lgp/reporting/qualitative_inputs.py",
+      "src/lgp/visualization.py"
+    ],
+    "src/lgp/reporting/reexport.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/metrics.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/__init__.py",
+      "src/lgp/reporting/coco_summary.py",
+      "src/lgp/reporting/latex.py",
+      "src/lgp/reporting/plots.py",
+      "src/lgp/reporting/preprocessing_cost.py",
+      "src/lgp/reporting/scope.py",
+      "src/lgp/runners/current_background.py",
+      "src/lgp/runners/current_cost.py",
+      "src/lgp/runners/current_preprocessing.py",
+      "src/lgp/runners/current_radius.py",
+      "src/lgp/runners/current_training_state.py"
+    ],
+    "src/lgp/reporting/scope.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/reporting/__init__.py"
+    ],
+    "src/lgp/reporting/vcsf_ablation_cost.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/vcsf_ablation_isolated.py",
+      "src/lgp/io.py",
+      "src/lgp/reporting/__init__.py",
+      "src/lgp/runners/vcsf_ablation_stage_plan.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/reporting/vcsf_analysis_inputs.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/metrics.py",
+      "src/lgp/reporting/__init__.py",
+      "src/lgp/reporting/vcsf_prediction_evidence.py"
+    ],
+    "src/lgp/reporting/vcsf_coco_replay.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/metrics.py",
+      "src/lgp/reporting/__init__.py",
+      "src/lgp/reporting/vcsf_image_bootstrap.py"
+    ],
+    "src/lgp/reporting/vcsf_core_points.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/metrics.py",
+      "src/lgp/reporting/__init__.py",
+      "src/lgp/reporting/vcsf_paired_statistics.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/reporting/vcsf_image_bootstrap.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/reporting/__init__.py"
+    ],
+    "src/lgp/reporting/vcsf_oblivious_audit.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/reporting/__init__.py",
+      "src/lgp/reporting/coco_subset.py",
+      "src/lgp/reporting/vcsf_oblivious_checkpoint_binding.py",
+      "src/lgp/reporting/vcsf_training_state_audit.py",
+      "src/lgp/runners/preprocessing_defense.py",
+      "src/lgp/runners/vcsf_final_oblivious.py",
+      "src/lgp/runners/vcsf_final_oblivious_contract.py",
+      "src/lgp/runners/vcsf_final_oblivious_views.py",
+      "src/lgp/runners/vcsf_final_training_state.py",
+      "src/lgp/runners/vcsf_final_training_state_contract.py",
+      "src/lgp/runners/vcsf_oblivious_admission.py"
+    ],
+    "src/lgp/reporting/vcsf_oblivious_checkpoint_binding.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/reporting/__init__.py",
+      "src/lgp/runners/vcsf_final_oblivious_contract.py"
+    ],
+    "src/lgp/reporting/vcsf_paired_statistics.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/reporting/__init__.py"
+    ],
+    "src/lgp/reporting/vcsf_prediction_evidence.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/metrics.py",
+      "src/lgp/reporting/__init__.py"
+    ],
+    "src/lgp/reporting/vcsf_training_state_audit.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/metrics.py",
+      "src/lgp/reporting/__init__.py",
+      "src/lgp/reporting/coco_subset.py",
+      "src/lgp/runners/vcsf_final_training_state.py",
+      "src/lgp/runners/vcsf_final_training_state_contract.py"
+    ],
+    "src/lgp/result_runtime.py": [
+      "src/lgp/__init__.py"
+    ],
+    "src/lgp/runners/__init__.py": [
+      "src/lgp/__init__.py"
+    ],
+    "src/lgp/runners/adaptive_preprocessing_defense.py": [
+      "experiments/coco_adaptive_preprocessing_defense.py",
+      "src/lgp/__init__.py",
+      "src/lgp/defenses/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/paths.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/all_methods.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/attack.py",
+      "src/lgp/runners/evaluate.py",
+      "src/lgp/runners/formal_parallel.py",
+      "src/lgp/runners/preprocessing_defense.py"
+    ],
+    "src/lgp/runners/artifacts.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/common.py",
+      "src/lgp/io.py",
+      "src/lgp/paths.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py"
+    ],
+    "src/lgp/runners/attack.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/adapters/__init__.py",
+      "src/lgp/attacks/__init__.py",
+      "src/lgp/attacks/common.py",
+      "src/lgp/attacks/current_vcsf_background.py",
+      "src/lgp/attacks/current_vcsf_radius.py",
+      "src/lgp/attacks/isolated.py",
+      "src/lgp/attacks/vcsf_a10_f03_swin_fullval_isolation.py",
+      "src/lgp/attacks/vcsf_ablation_executor_isolation.py",
+      "src/lgp/attacks/vcsf_ablation_preflight_isolation.py",
+      "src/lgp/attacks/vcsf_common_anchor_execution_isolation.py",
+      "src/lgp/attacks/vcsf_efficacy_isolation.py",
+      "src/lgp/attacks/vcsf_final_adaptive_isolation.py",
+      "src/lgp/attacks/vcsf_final_budget_isolation.py",
+      "src/lgp/attacks/vcsf_final_followup_execution_isolation.py",
+      "src/lgp/attacks/vcsf_final_followup_successor_isolation.py",
+      "src/lgp/attacks/vcsf_operator_execution_isolation.py",
+      "src/lgp/attacks/vcsf_public.py",
+      "src/lgp/attacks/vcsf_research_isolation.py",
+      "src/lgp/attacks/vcsf_scale_execution_isolation.py",
+      "src/lgp/attacks/vcsf_scale_isolation.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/io.py",
+      "src/lgp/modeling.py",
+      "src/lgp/paths.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_final_attribution_execution_contract.py",
+      "src/lgp/runners/vcsf_final_background_execution_contract.py",
+      "src/lgp/runners/vcsf_public_execution.py"
+    ],
+    "src/lgp/runners/clean.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/paths.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/clean_map.py",
+      "src/lgp/reporting/formatting.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/evaluate.py",
+      "src/lgp/runners/formal_parallel.py"
+    ],
+    "src/lgp/runners/cost_calibration.py": [
+      "experiments/vcsf_common2_cost_calibration.py",
+      "src/lgp/__init__.py",
+      "src/lgp/adapters/__init__.py",
+      "src/lgp/attacks/factory.py",
+      "src/lgp/attacks/vcsf_final_candidate.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/io.py",
+      "src/lgp/modeling.py",
+      "src/lgp/paths.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/attack.py",
+      "src/lgp/runners/retention.py"
+    ],
+    "src/lgp/runners/current_adaptive_payload.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/defenses/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/attack.py",
+      "src/lgp/runners/current_reproduction_inputs.py"
+    ],
+    "src/lgp/runners/current_background.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/current_vcsf_background.py",
+      "src/lgp/attacks/vcsf_public.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/io.py",
+      "src/lgp/metrics.py",
+      "src/lgp/paths.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/__init__.py",
+      "src/lgp/reporting/scope.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/experiment.py",
+      "src/lgp/runners/formal_parallel.py"
+    ],
+    "src/lgp/runners/current_cost.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/factory.py",
+      "src/lgp/attacks/vcsf_public.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/io.py",
+      "src/lgp/modeling.py",
+      "src/lgp/paths.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/cost_units.py",
+      "src/lgp/reporting/scope.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/attack.py",
+      "src/lgp/runners/cost_calibration.py",
+      "src/lgp/runners/current_reproduction_inputs.py",
+      "src/lgp/runners/formal_parallel.py",
+      "src/lgp/runners/retention.py",
+      "src/lgp/runners/training_pair_processes.py",
+      "src/lgp/runners/vcsf_structure_workers.py"
+    ],
+    "src/lgp/runners/current_preprocessing.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/vcsf_public.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/io.py",
+      "src/lgp/metrics.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/coco_subset.py",
+      "src/lgp/reporting/latex.py",
+      "src/lgp/reporting/preprocessing_cost.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/current_adaptive_payload.py",
+      "src/lgp/runners/current_reproduction_inputs.py",
+      "src/lgp/runners/evaluate.py",
+      "src/lgp/runners/formal_parallel.py",
+      "src/lgp/runners/preprocessing_defense.py",
+      "src/lgp/runners/training_pair_processes.py",
+      "src/lgp/runners/vcsf_final_training_state_contract.py",
+      "src/lgp/runners/vcsf_gpu_context_owner.py",
+      "src/lgp/runners/vcsf_structure_workers.py"
+    ],
+    "src/lgp/runners/current_radius.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/current_vcsf_radius.py",
+      "src/lgp/attacks/vcsf_public.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/io.py",
+      "src/lgp/metrics.py",
+      "src/lgp/paths.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/__init__.py",
+      "src/lgp/reporting/scope.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/experiment.py",
+      "src/lgp/runners/formal_parallel.py"
+    ],
+    "src/lgp/runners/current_reproduction_inputs.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/factory.py",
+      "src/lgp/attacks/vcsf_public.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/io.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_final_training_state_contract.py"
+    ],
+    "src/lgp/runners/current_training_state.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/vcsf_public.py",
+      "src/lgp/io.py",
+      "src/lgp/metrics.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/coco_subset.py",
+      "src/lgp/reporting/coco_summary.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/current_reproduction_inputs.py",
+      "src/lgp/runners/evaluate.py",
+      "src/lgp/runners/formal_parallel.py",
+      "src/lgp/runners/training_pair_processes.py",
+      "src/lgp/runners/training_state_pair.py",
+      "src/lgp/runners/training_state_transfer.py",
+      "src/lgp/runners/vcsf_final_training_state_contract.py",
+      "src/lgp/runners/vcsf_gpu_context_owner.py",
+      "src/lgp/runners/vcsf_structure_workers.py"
+    ],
+    "src/lgp/runners/dispatch_journal.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/training_pair_processes.py",
+      "src/lgp/runners/vcsf_gpu_context_owner.py"
+    ],
+    "src/lgp/runners/evaluate.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/io.py",
+      "src/lgp/modeling.py",
+      "src/lgp/paths.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/coco_summary.py",
+      "src/lgp/reporting/formatting.py",
+      "src/lgp/reporting/scope.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/retention.py",
+      "src/lgp/runners/vcsf_a10_main_context.py",
+      "src/lgp/visualization.py"
+    ],
+    "src/lgp/runners/experiment.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/vcsf_public.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/io.py",
+      "src/lgp/metrics.py",
+      "src/lgp/paths.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/__init__.py",
+      "src/lgp/reporting/scope.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/attack.py",
+      "src/lgp/runners/evaluate.py",
+      "src/lgp/runners/formal_parallel.py",
+      "src/lgp/runners/retention.py"
+    ],
+    "src/lgp/runners/finetune.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/modeling.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/formal_parallel.py",
+      "src/lgp/runners/train.py",
+      "src/lgp/runners/training_pair_processes.py",
+      "src/lgp/training_artifacts.py",
+      "tools/run_finetune_dual_queue.py",
+      "tools/run_finetune_queue.py"
+    ],
+    "src/lgp/runners/formal_parallel.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/attack.py",
+      "src/lgp/runners/dispatch_journal.py",
+      "src/lgp/runners/evaluate.py",
+      "src/lgp/runners/retention.py",
+      "src/lgp/runners/vcsf_selected_a23_owner.py",
+      "src/lgp/runners/vcsf_structure_workers.py"
+    ],
+    "src/lgp/runners/lgp_corrected_main.py": [
+      "configs/attacks/reference.yaml",
+      "src/lgp/__init__.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/io.py",
+      "src/lgp/metrics.py",
+      "src/lgp/modeling.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/experiment.py",
+      "src/lgp/runners/formal_parallel.py",
+      "src/lgp/runners/retention.py"
+    ],
+    "src/lgp/runners/prediction_visualization.py": [
+      "configs/models.yaml",
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/evaluate.py",
+      "src/lgp/runners/formal_parallel.py",
+      "src/lgp/runners/training_pair_processes.py"
+    ],
+    "src/lgp/runners/preprocessing_defense.py": [
+      "experiments/coco_preprocessing_defense.py",
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/common.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/io.py",
+      "src/lgp/paths.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/all_methods.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/evaluate.py",
+      "src/lgp/runners/formal_parallel.py"
+    ],
+    "src/lgp/runners/public_config_helpers.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/runners/public_device_helpers.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/__init__.py"
+    ],
+    "src/lgp/runners/public_observation.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/runners/retention.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/io.py",
+      "src/lgp/metrics.py",
+      "src/lgp/modeling.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py"
+    ],
+    "src/lgp/runners/train.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/io.py",
+      "src/lgp/modeling.py",
+      "src/lgp/paths.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runtime_config.py",
+      "src/lgp/training_diagnostic.py"
+    ],
+    "src/lgp/runners/training_pair_processes.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/__init__.py"
+    ],
+    "src/lgp/runners/training_state_pair.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/io.py",
+      "src/lgp/modeling.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/formal_parallel.py",
+      "src/lgp/runners/training_pair_processes.py",
+      "src/lgp/runtime_config.py",
+      "src/lgp/training_state.py"
+    ],
+    "src/lgp/runners/training_state_transfer.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/paths.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/all_methods.py",
+      "src/lgp/reporting/scope.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/evaluate.py",
+      "src/lgp/runners/formal_parallel.py",
+      "src/lgp/runners/preprocessing_defense.py",
+      "src/lgp/runners/training_state_pair.py"
+    ],
+    "src/lgp/runners/vcsf_a10_main_context.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/vcsf_public.py",
+      "src/lgp/io.py",
+      "src/lgp/modeling.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/cost_calibration.py",
+      "src/lgp/runners/public_config_helpers.py",
+      "src/lgp/runners/public_observation.py",
+      "src/lgp/runners/vcsf_a10_main_contract.py",
+      "src/lgp/runners/vcsf_gpu_context_owner.py",
+      "src/lgp/runtime_config.py"
+    ],
+    "src/lgp/runners/vcsf_a10_main_contract.py": [
+      "configs/attacks/vcsf.yaml",
+      "configs/experiments/protocols.yaml",
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/vcsf_public.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/io.py",
+      "src/lgp/metrics.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/lgp_corrected_main.py",
+      "src/lgp/runtime_config.py"
+    ],
+    "src/lgp/runners/vcsf_ablation_execution_contract.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/metrics.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/vcsf_ablation_cost.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_ablation_stage_plan.py",
+      "src/lgp/runners/vcsf_efficacy_contract.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/runners/vcsf_ablation_executor_smoke.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_ablation_execution_contract.py",
+      "src/lgp/runners/vcsf_ablation_preflight.py",
+      "src/lgp/runners/vcsf_ablation_runtime_inputs.py",
+      "src/lgp/runners/vcsf_ablation_stage_plan.py",
+      "src/lgp/runners/vcsf_efficacy_contract.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/runners/vcsf_ablation_preflight.py": [
+      "configs/datasets/coco.yaml",
+      "src/lgp/__init__.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/io.py",
+      "src/lgp/modeling.py",
+      "src/lgp/reporting/vcsf_ablation_cost.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/attack.py",
+      "src/lgp/runners/cost_calibration.py",
+      "src/lgp/runners/vcsf_ablation_stage_plan.py",
+      "src/lgp/runners/vcsf_efficacy_contract.py",
+      "src/lgp/runners/vcsf_efficacy_runner.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_structure_workers.py"
+    ],
+    "src/lgp/runners/vcsf_ablation_runtime_inputs.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/io.py",
+      "src/lgp/modeling.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_ablation_execution_contract.py",
+      "src/lgp/runners/vcsf_ablation_preflight.py",
+      "src/lgp/runners/vcsf_efficacy_contract.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runtime_config.py"
+    ],
+    "src/lgp/runners/vcsf_ablation_stage_plan.py": [
+      "configs/compatibility.yaml",
+      "configs/experiments/ablations.yaml",
+      "configs/experiments/budgets.yaml",
+      "configs/experiments/protocols.yaml",
+      "configs/models.yaml",
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/factory.py",
+      "src/lgp/attacks/vcsf_ablation_isolated.py",
+      "src/lgp/attacks/vcsf_research_isolated.py",
+      "src/lgp/attacks/vcsf_scale_isolated.py",
+      "src/lgp/io.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_layered_contrasts.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_stage_evidence.py"
+    ],
+    "src/lgp/runners/vcsf_adaptive_admission.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_final_adaptive_contract.py",
+      "src/lgp/runners/vcsf_final_training_state.py",
+      "src/lgp/runners/vcsf_oblivious_admission.py"
+    ],
+    "src/lgp/runners/vcsf_budget_admission.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_final_budget_contract.py",
+      "src/lgp/runners/vcsf_final_training_state.py",
+      "src/lgp/runners/vcsf_oblivious_admission.py"
+    ],
+    "src/lgp/runners/vcsf_budget_lifecycle.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "tools/audit_vcsf_budget_group.py"
+    ],
+    "src/lgp/runners/vcsf_common_anchor_catalogue.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/vcsf_common_anchor_isolated.py",
+      "src/lgp/attacks/vcsf_operator_factorial_isolated.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_layered_contrasts.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/runners/vcsf_common_anchor_execution_contract.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_ablation_execution_contract.py",
+      "src/lgp/runners/vcsf_common_anchor_execution_design.py",
+      "src/lgp/runners/vcsf_efficacy_contract.py",
+      "src/lgp/runners/vcsf_efficacy_runner.py",
+      "src/lgp/runners/vcsf_operator_execution_contract.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/runners/vcsf_common_anchor_execution_design.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_common_anchor_catalogue.py",
+      "src/lgp/runners/vcsf_operator_execution_contract.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/runners/vcsf_common_anchor_numerical_mapping.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/vcsf_common_anchor_isolated.py",
+      "src/lgp/attacks/vcsf_research_isolated.py",
+      "src/lgp/attacks/vcsf_scale_isolated.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_core_numerical_mapping.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/runners/vcsf_core_numerical_mapping.py": [
+      "configs/datasets/coco.yaml",
+      "configs/models.yaml",
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/vcsf_ablation_isolated.py",
+      "src/lgp/attacks/vcsf_common_anchor_isolated.py",
+      "src/lgp/attacks/vcsf_operator_factorial_isolated.py",
+      "src/lgp/attacks/vcsf_research_isolated.py",
+      "src/lgp/attacks/vcsf_scale_isolated.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_common_anchor_numerical_mapping.py",
+      "src/lgp/runners/vcsf_operator_numerical_mapping.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_stage_evidence.py"
+    ],
+    "src/lgp/runners/vcsf_core_result_origins.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_stage_evidence.py"
+    ],
+    "src/lgp/runners/vcsf_core_reuse_contract.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/runners/vcsf_core_reuse_inputs.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_ablation_runtime_inputs.py",
+      "src/lgp/runners/vcsf_core_result_origins.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_scale_execution_contract.py",
+      "src/lgp/runners/vcsf_stage_evidence.py"
+    ],
+    "src/lgp/runners/vcsf_efficacy_contract.py": [
+      "configs/experiments/protocols.yaml",
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/reporting/vcsf_analysis_inputs.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_structure_workers.py"
+    ],
+    "src/lgp/runners/vcsf_efficacy_runner.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/io.py",
+      "src/lgp/metrics.py",
+      "src/lgp/modeling.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/attack.py",
+      "src/lgp/runners/evaluate.py",
+      "src/lgp/runners/retention.py",
+      "src/lgp/runners/vcsf_efficacy_contract.py",
+      "src/lgp/runners/vcsf_gpu_context_owner.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_structure_workers.py"
+    ],
+    "src/lgp/runners/vcsf_final_adaptive_contract.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/vcsf_common_anchor_isolated.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_final_oblivious_contract.py",
+      "src/lgp/runners/vcsf_oblivious_admission.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/runners/vcsf_final_attribution_execution_contract.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_ablation_execution_contract.py",
+      "src/lgp/runners/vcsf_ablation_runtime_inputs.py",
+      "src/lgp/runners/vcsf_common_anchor_catalogue.py",
+      "src/lgp/runners/vcsf_common_anchor_execution_contract.py",
+      "src/lgp/runners/vcsf_efficacy_contract.py",
+      "src/lgp/runners/vcsf_efficacy_runner.py",
+      "src/lgp/runners/vcsf_operator_execution_contract.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/runners/vcsf_final_background.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/vcsf_common_anchor_isolated.py",
+      "src/lgp/io.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_operator_execution_contract.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/runners/vcsf_final_background_execution_contract.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/paths.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/attack.py",
+      "src/lgp/runners/vcsf_ablation_execution_contract.py",
+      "src/lgp/runners/vcsf_common_anchor_catalogue.py",
+      "src/lgp/runners/vcsf_common_anchor_execution_contract.py",
+      "src/lgp/runners/vcsf_efficacy_contract.py",
+      "src/lgp/runners/vcsf_efficacy_runner.py",
+      "src/lgp/runners/vcsf_final_background.py",
+      "src/lgp/runners/vcsf_operator_execution_contract.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/runners/vcsf_final_budget.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/training_pair_processes.py",
+      "src/lgp/runners/vcsf_budget_admission.py",
+      "src/lgp/runners/vcsf_budget_lifecycle.py",
+      "src/lgp/runners/vcsf_final_budget_contract.py",
+      "src/lgp/runners/vcsf_final_budget_group.py",
+      "src/lgp/runners/vcsf_final_training_state.py",
+      "src/lgp/runners/vcsf_gpu_context_owner.py",
+      "src/lgp/runners/vcsf_oblivious_admission.py",
+      "src/lgp/runners/vcsf_structure_workers.py"
+    ],
+    "src/lgp/runners/vcsf_final_budget_contract.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/vcsf_final_radius_isolated.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_final_training_state_contract.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/runners/vcsf_final_budget_group.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/adaptive_preprocessing_defense.py",
+      "src/lgp/runners/attack.py",
+      "src/lgp/runners/evaluate.py",
+      "src/lgp/runners/vcsf_final_training_state.py",
+      "src/lgp/runners/vcsf_final_training_state_contract.py",
+      "src/lgp/runners/vcsf_oblivious_admission.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/runners/vcsf_final_followup_dispatch.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/retention.py",
+      "src/lgp/runners/vcsf_final_followup_execution_contract.py",
+      "src/lgp/runners/vcsf_final_followup_plan.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/runners/vcsf_final_followup_execution_contract.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_common_anchor_execution_contract.py",
+      "src/lgp/runners/vcsf_final_followup_method.py",
+      "src/lgp/runners/vcsf_final_followup_plan.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "tools/audit_vcsf_cpu_analysis.py"
+    ],
+    "src/lgp/runners/vcsf_final_followup_inputs.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_final_followup_plan.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/runners/vcsf_final_followup_method.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/vcsf_common_anchor_isolated.py",
+      "src/lgp/attacks/vcsf_research_isolated.py",
+      "src/lgp/attacks/vcsf_scale_isolated.py",
+      "src/lgp/io.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_final_followup_plan.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/runners/vcsf_final_followup_plan.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/runners/vcsf_final_followup_records.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/metrics.py",
+      "src/lgp/reporting/coco_summary.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/runners/vcsf_final_followup_successor_admission.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_ablation_execution_contract.py",
+      "src/lgp/runners/vcsf_common_anchor_execution_contract.py",
+      "src/lgp/runners/vcsf_final_followup_successor_contract.py",
+      "src/lgp/runners/vcsf_final_followup_successor_runtime.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "tools/audit_vcsf_cpu_analysis.py",
+      "tools/run_vcsf_core_points.py",
+      "tools/vcsf_final_followup_bound_dispatch.py",
+      "tools/vcsf_final_followup_completed_group.py",
+      "tools/vcsf_final_followup_group_inputs.py",
+      "tools/vcsf_final_followup_group_qualification.py",
+      "tools/vcsf_final_followup_result_inputs.py",
+      "tools/vcsf_followup_stop_evidence.py"
+    ],
+    "src/lgp/runners/vcsf_final_followup_successor_contract.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_final_followup_execution_contract.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "tools/vcsf_final_followup_successor_partition.py"
+    ],
+    "src/lgp/runners/vcsf_final_followup_successor_coordinator.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_ablation_execution_contract.py",
+      "src/lgp/runners/vcsf_efficacy_contract.py",
+      "src/lgp/runners/vcsf_efficacy_runner.py",
+      "src/lgp/runners/vcsf_final_followup_successor_contract.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_structure_workers.py",
+      "tools/audit_vcsf_cpu_analysis.py",
+      "tools/vcsf_final_followup_successor_bound_dispatch.py",
+      "tools/vcsf_successor_evidence.py"
+    ],
+    "src/lgp/runners/vcsf_final_followup_successor_runtime.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_ablation_execution_contract.py",
+      "src/lgp/runners/vcsf_common_anchor_execution_contract.py",
+      "src/lgp/runners/vcsf_final_followup_method.py",
+      "src/lgp/runners/vcsf_final_followup_successor_contract.py",
+      "src/lgp/runners/vcsf_final_followup_worker.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "tools/audit_vcsf_cpu_analysis.py",
+      "tools/run_prepare_vcsf_final_followup_inputs.py",
+      "tools/run_vcsf_core_points.py",
+      "tools/vcsf_final_followup_bound_dispatch.py"
+    ],
+    "src/lgp/runners/vcsf_final_followup_worker.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/vcsf_final_followup_execution_isolation.py",
+      "src/lgp/io.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/attack.py",
+      "src/lgp/runners/evaluate.py",
+      "src/lgp/runners/vcsf_efficacy_contract.py",
+      "src/lgp/runners/vcsf_efficacy_runner.py",
+      "src/lgp/runners/vcsf_final_followup_dispatch.py",
+      "src/lgp/runners/vcsf_final_followup_execution_contract.py",
+      "src/lgp/runners/vcsf_final_followup_records.py",
+      "src/lgp/runners/vcsf_gpu_context_owner.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_structure_workers.py",
+      "tools/audit_vcsf_cpu_analysis.py",
+      "tools/vcsf_final_followup_bound_dispatch.py",
+      "tools/vcsf_final_followup_record_binding.py"
+    ],
+    "src/lgp/runners/vcsf_final_oblivious.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/evaluate.py",
+      "src/lgp/runners/training_pair_processes.py",
+      "src/lgp/runners/vcsf_final_oblivious_contract.py",
+      "src/lgp/runners/vcsf_final_oblivious_views.py",
+      "src/lgp/runners/vcsf_final_training_state.py",
+      "src/lgp/runners/vcsf_gpu_context_owner.py",
+      "src/lgp/runners/vcsf_oblivious_admission.py",
+      "src/lgp/runners/vcsf_structure_workers.py"
+    ],
+    "src/lgp/runners/vcsf_final_oblivious_contract.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_final_training_state_contract.py"
+    ],
+    "src/lgp/runners/vcsf_final_oblivious_views.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/preprocessing_defense.py",
+      "src/lgp/runners/vcsf_final_oblivious_contract.py",
+      "src/lgp/runners/vcsf_final_training_state_contract.py"
+    ],
+    "src/lgp/runners/vcsf_final_training_state.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/metrics.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/coco_subset.py",
+      "src/lgp/reporting/coco_summary.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/evaluate.py",
+      "src/lgp/runners/training_pair_processes.py",
+      "src/lgp/runners/vcsf_final_training_state_contract.py",
+      "src/lgp/runners/vcsf_gpu_context_owner.py",
+      "src/lgp/runners/vcsf_structure_workers.py"
+    ],
+    "src/lgp/runners/vcsf_final_training_state_contract.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/runners/__init__.py"
+    ],
+    "src/lgp/runners/vcsf_gpu_context_owner.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_structure_workers.py"
+    ],
+    "src/lgp/runners/vcsf_layered_contrasts.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/__init__.py"
+    ],
+    "src/lgp/runners/vcsf_layered_preflight.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/vcsf_research_isolation.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/io.py",
+      "src/lgp/modeling.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/cost_calibration.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_structure_workers.py"
+    ],
+    "src/lgp/runners/vcsf_oblivious_admission.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/reporting/vcsf_oblivious_checkpoint_binding.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_final_oblivious_contract.py",
+      "src/lgp/runners/vcsf_final_training_state.py"
+    ],
+    "src/lgp/runners/vcsf_operator_execution_contract.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_ablation_execution_contract.py",
+      "src/lgp/runners/vcsf_efficacy_contract.py",
+      "src/lgp/runners/vcsf_efficacy_runner.py",
+      "src/lgp/runners/vcsf_operator_factorial_plan.py",
+      "src/lgp/runners/vcsf_operator_reuse_audit.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "tools/audit_vcsf_operator_readiness.py",
+      "tools/audit_vcsf_operator_runtime_readiness.py"
+    ],
+    "src/lgp/runners/vcsf_operator_factorial_plan.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/factory.py",
+      "src/lgp/attacks/vcsf_operator_factorial_isolated.py",
+      "src/lgp/io.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_layered_contrasts.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_scale_plan.py"
+    ],
+    "src/lgp/runners/vcsf_operator_input_consumer.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_ablation_execution_contract.py",
+      "src/lgp/runners/vcsf_ablation_runtime_inputs.py",
+      "src/lgp/runners/vcsf_operator_runtime_inputs.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/runners/vcsf_operator_numerical_mapping.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/vcsf_operator_factorial_isolated.py",
+      "src/lgp/attacks/vcsf_research_isolated.py",
+      "src/lgp/attacks/vcsf_scale_isolated.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_core_numerical_mapping.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/runners/vcsf_operator_reuse.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_ablation_execution_contract.py",
+      "src/lgp/runners/vcsf_core_numerical_mapping.py",
+      "src/lgp/runners/vcsf_core_result_origins.py",
+      "src/lgp/runners/vcsf_core_reuse_inputs.py",
+      "src/lgp/runners/vcsf_operator_factorial_plan.py",
+      "src/lgp/runners/vcsf_operator_input_consumer.py",
+      "src/lgp/runners/vcsf_operator_numerical_mapping.py",
+      "src/lgp/runners/vcsf_operator_reuse_audit.py",
+      "src/lgp/runners/vcsf_operator_reuse_contract.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_stage_evidence.py"
+    ],
+    "src/lgp/runners/vcsf_operator_reuse_audit.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_core_reuse_inputs.py",
+      "src/lgp/runners/vcsf_operator_numerical_mapping.py",
+      "src/lgp/runners/vcsf_operator_reuse.py",
+      "src/lgp/runners/vcsf_operator_reuse_contract.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_stage_evidence.py"
+    ],
+    "src/lgp/runners/vcsf_operator_reuse_contract.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/metrics.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_core_reuse_contract.py",
+      "src/lgp/runners/vcsf_operator_factorial_plan.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_scale_plan.py"
+    ],
+    "src/lgp/runners/vcsf_operator_runtime_inputs.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/modeling.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_ablation_execution_contract.py",
+      "src/lgp/runners/vcsf_ablation_preflight.py",
+      "src/lgp/runners/vcsf_ablation_runtime_inputs.py",
+      "src/lgp/runners/vcsf_efficacy_contract.py",
+      "src/lgp/runners/vcsf_operator_factorial_plan.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/runners/vcsf_producer_verification.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_efficacy_contract.py"
+    ],
+    "src/lgp/runners/vcsf_public_execution.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/current_vcsf_background.py",
+      "src/lgp/attacks/current_vcsf_radius.py",
+      "src/lgp/attacks/vcsf_common_anchor_isolated.py",
+      "src/lgp/io.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/public_observation.py",
+      "src/lgp/runners/vcsf_a10_main_context.py"
+    ],
+    "src/lgp/runners/vcsf_research_plan.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/factory.py",
+      "src/lgp/attacks/vcsf_research_isolated.py",
+      "src/lgp/io.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_layered_contrasts.py"
+    ],
+    "src/lgp/runners/vcsf_scale_execution_contract.py": [
+      "configs/datasets/coco.yaml",
+      "configs/models.yaml",
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/vcsf_research_isolated.py",
+      "src/lgp/attacks/vcsf_scale_isolated.py",
+      "src/lgp/io.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_efficacy_contract.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_scale_plan.py",
+      "src/lgp/runners/vcsf_scale_point_stage.py",
+      "src/lgp/runners/vcsf_scale_stage_transition.py",
+      "src/lgp/runners/vcsf_scale_width_transition.py",
+      "src/lgp/runtime_config.py"
+    ],
+    "src/lgp/runners/vcsf_scale_plan.py": [
+      "configs/datasets/coco.yaml",
+      "configs/experiments/ablations.yaml",
+      "configs/experiments/budgets.yaml",
+      "configs/experiments/protocols.yaml",
+      "configs/models.yaml",
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/factory.py",
+      "src/lgp/attacks/vcsf_scale_isolated.py",
+      "src/lgp/io.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_scale_execution_contract.py"
+    ],
+    "src/lgp/runners/vcsf_scale_point_stage.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/metrics.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_efficacy_contract.py",
+      "src/lgp/runners/vcsf_producer_verification.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_scale_execution_contract.py",
+      "src/lgp/runners/vcsf_scale_plan.py",
+      "src/lgp/runners/vcsf_scale_stage_transition.py"
+    ],
+    "src/lgp/runners/vcsf_scale_stage_transition.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/metrics.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_efficacy_contract.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_scale_execution_contract.py",
+      "src/lgp/runners/vcsf_scale_plan.py"
+    ],
+    "src/lgp/runners/vcsf_scale_width_transition.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/metrics.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_efficacy_contract.py",
+      "src/lgp/runners/vcsf_producer_verification.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_scale_execution_contract.py",
+      "src/lgp/runners/vcsf_scale_plan.py",
+      "src/lgp/runners/vcsf_scale_stage_transition.py"
+    ],
+    "src/lgp/runners/vcsf_selected_a23_owner.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/public_device_helpers.py",
+      "src/lgp/runners/vcsf_selected_a23_plan.py"
+    ],
+    "src/lgp/runners/vcsf_selected_a23_plan.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/isolated.py",
+      "src/lgp/io.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/formal_parallel.py"
+    ],
+    "src/lgp/runners/vcsf_stage_evidence.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/runners/vcsf_structure_workers.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/vcsf_research_isolation.py",
+      "src/lgp/io.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/attack.py",
+      "src/lgp/runners/vcsf_layered_preflight.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "src/lgp/runners/weights.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/modeling.py",
+      "src/lgp/paths.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py"
+    ],
+    "src/lgp/runtime_config.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/mmdet_compat.py",
+      "src/lgp/registry.py",
+      "src/lgp/training_hooks.py"
+    ],
+    "src/lgp/training_artifacts.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/modeling.py",
+      "src/lgp/registry.py",
+      "src/lgp/runtime_config.py"
+    ],
+    "src/lgp/training_diagnostic.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/registry.py"
+    ],
+    "src/lgp/training_hooks.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py"
+    ],
+    "src/lgp/training_state.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py"
+    ],
+    "src/lgp/visualization.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/reporting/formatting.py"
+    ],
+    "tools/audit_vcsf_budget_group.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/coco_subset.py",
+      "src/lgp/reporting/vcsf_oblivious_audit.py",
+      "src/lgp/reporting/vcsf_training_state_audit.py",
+      "src/lgp/runners/preprocessing_defense.py",
+      "src/lgp/runners/vcsf_budget_admission.py",
+      "src/lgp/runners/vcsf_budget_lifecycle.py",
+      "src/lgp/runners/vcsf_final_budget.py",
+      "src/lgp/runners/vcsf_final_training_state.py",
+      "src/lgp/runners/vcsf_final_training_state_contract.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "tools/bind_vcsf_radius_evaluators.py"
+    ],
+    "tools/audit_vcsf_core_points.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/metrics.py",
+      "src/lgp/reporting/vcsf_analysis_inputs.py"
+    ],
+    "tools/audit_vcsf_cpu_analysis.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/metrics.py"
+    ],
+    "tools/audit_vcsf_layered_reuse.py": [
+      "configs/datasets/coco.yaml",
+      "configs/models.yaml",
+      "src/lgp/__init__.py",
+      "src/lgp/attacks/vcsf_research_isolated.py"
+    ],
+    "tools/audit_vcsf_operator_readiness.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_operator_execution_contract.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "tools/audit_vcsf_operator_runtime_readiness.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/retention.py",
+      "src/lgp/runners/vcsf_efficacy_runner.py",
+      "src/lgp/runners/vcsf_operator_execution_contract.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "tools/bind_vcsf_radius_evaluators.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/vcsf_oblivious_admission.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runtime_config.py"
+    ],
+    "tools/preflight_vcsf_archived_bootstrap.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/metrics.py",
+      "src/lgp/reporting/vcsf_coco_replay.py",
+      "src/lgp/reporting/vcsf_image_bootstrap.py",
+      "src/lgp/reporting/vcsf_paired_statistics.py",
+      "src/lgp/reporting/vcsf_prediction_evidence.py",
+      "tools/audit_vcsf_layered_reuse.py"
+    ],
+    "tools/run_finetune_dual_queue.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/modeling.py",
+      "src/lgp/registry.py",
+      "src/lgp/training_artifacts.py",
+      "tools/run_finetune_queue.py"
+    ],
+    "tools/run_finetune_queue.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/data/manager.py",
+      "src/lgp/io.py",
+      "src/lgp/modeling.py",
+      "src/lgp/paths.py",
+      "src/lgp/registry.py",
+      "src/lgp/runtime_config.py",
+      "src/lgp/training_artifacts.py"
+    ],
+    "tools/run_prepare_vcsf_final_followup_inputs.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/runners/vcsf_final_followup_inputs.py",
+      "src/lgp/runners/vcsf_final_followup_plan.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "tools/audit_vcsf_cpu_analysis.py",
+      "tools/run_vcsf_core_points.py",
+      "tools/vcsf_final_followup_asset_inputs.py"
+    ],
+    "tools/run_vcsf_core_points.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/metrics.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/vcsf_core_points.py",
+      "tools/audit_vcsf_core_points.py",
+      "tools/audit_vcsf_cpu_analysis.py"
+    ],
+    "tools/vcsf_final_followup_asset_inputs.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/data/coco.py",
+      "src/lgp/io.py",
+      "src/lgp/modeling.py",
+      "src/lgp/paths.py",
+      "src/lgp/runners/vcsf_ablation_preflight.py",
+      "src/lgp/runners/vcsf_ablation_runtime_inputs.py",
+      "src/lgp/runners/vcsf_final_followup_plan.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "src/lgp/runners/vcsf_scale_execution_contract.py",
+      "src/lgp/runtime_config.py",
+      "tools/audit_vcsf_cpu_analysis.py"
+    ],
+    "tools/vcsf_final_followup_bound_dispatch.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/vcsf_final_followup_dispatch.py",
+      "src/lgp/runners/vcsf_final_followup_execution_contract.py",
+      "src/lgp/runners/vcsf_final_followup_inputs.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "tools/audit_vcsf_cpu_analysis.py",
+      "tools/run_prepare_vcsf_final_followup_inputs.py"
+    ],
+    "tools/vcsf_final_followup_completed_group.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/__init__.py",
+      "src/lgp/runners/vcsf_ablation_execution_contract.py",
+      "src/lgp/runners/vcsf_final_followup_successor_admission.py",
+      "tools/audit_vcsf_cpu_analysis.py",
+      "tools/audit_vcsf_operator_readiness.py",
+      "tools/run_vcsf_core_points.py",
+      "tools/vcsf_final_followup_group_inputs.py",
+      "tools/vcsf_final_followup_record_binding.py",
+      "tools/vcsf_final_followup_terminal_audit.py"
+    ],
+    "tools/vcsf_final_followup_group_inputs.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/registry.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "tools/audit_vcsf_cpu_analysis.py",
+      "tools/vcsf_final_followup_result_inputs.py",
+      "tools/vcsf_final_followup_terminal_audit.py"
+    ],
+    "tools/vcsf_final_followup_group_qualification.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/metrics.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "tools/audit_vcsf_cpu_analysis.py",
+      "tools/vcsf_final_followup_group_inputs.py",
+      "tools/vcsf_final_followup_result_inputs.py",
+      "tools/vcsf_final_followup_result_replay.py"
+    ],
+    "tools/vcsf_final_followup_record_binding.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/vcsf_final_followup_records.py",
+      "tools/audit_vcsf_cpu_analysis.py"
+    ],
+    "tools/vcsf_final_followup_result_inputs.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/metrics.py",
+      "src/lgp/registry.py",
+      "src/lgp/reporting/qualitative_inputs.py",
+      "src/lgp/runners/vcsf_final_followup_dispatch.py",
+      "src/lgp/runners/vcsf_final_followup_records.py",
+      "src/lgp/runners/vcsf_final_followup_successor_admission.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "tools/audit_vcsf_cpu_analysis.py",
+      "tools/run_prepare_vcsf_final_followup_inputs.py",
+      "tools/vcsf_final_followup_bound_dispatch.py",
+      "tools/vcsf_final_followup_record_binding.py",
+      "tools/vcsf_final_followup_terminal_audit.py"
+    ],
+    "tools/vcsf_final_followup_result_replay.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/io.py",
+      "src/lgp/metrics.py",
+      "src/lgp/reporting/vcsf_coco_replay.py",
+      "src/lgp/reporting/vcsf_prediction_evidence.py",
+      "src/lgp/result_runtime.py",
+      "src/lgp/runners/vcsf_final_followup_dispatch.py",
+      "src/lgp/runners/vcsf_final_followup_records.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "tools/audit_vcsf_cpu_analysis.py",
+      "tools/preflight_vcsf_archived_bootstrap.py"
+    ],
+    "tools/vcsf_final_followup_successor_bound_dispatch.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/vcsf_final_followup_successor_admission.py",
+      "src/lgp/runners/vcsf_final_followup_worker.py",
+      "src/lgp/runners/vcsf_research_plan.py",
+      "tools/audit_vcsf_cpu_analysis.py",
+      "tools/run_prepare_vcsf_final_followup_inputs.py",
+      "tools/vcsf_final_followup_bound_dispatch.py"
+    ],
+    "tools/vcsf_final_followup_successor_partition.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "tools/vcsf_final_followup_terminal_audit.py": [
+      "tools/audit_vcsf_cpu_analysis.py"
+    ],
+    "tools/vcsf_followup_stop_evidence.py": [
+      "src/lgp/__init__.py",
+      "src/lgp/runners/vcsf_research_plan.py"
+    ],
+    "tools/vcsf_successor_evidence.py": [
+      "tools/audit_vcsf_cpu_analysis.py"
+    ]
+  },
+  "schema": "lgp_public_source_distribution_v2",
+  "science": false,
+  "source_file_sha256": {
+    "LICENSE": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+    "README.md": "885638c042e9d86030c14834c8a0b62e60b1f34a006518732df7908fc2add949",
+    "README.zh-CN.md": "38ee47d5ce379b36f7dfb2444252adf47dc49228a5c9fa70f56bad9ff9d225be",
+    "THIRD_PARTY_NOTICES.md": "611db39d4a7b0e51f65d8c6a393860eaab0c0042a6c8549b4ef46274da9221ac",
+    "THIRD_PARTY_NOTICES.zh-CN.md": "aac2bcf446df2e0def09b63c8fedbe728e70c0db41863e228c2b9739cf39d662",
+    "checkpoints/README.md": "9703b6e1d37e6c698b8fadf5fc2d920727ac18beb87dbdff2601189d1d0adea5",
+    "checkpoints/README.zh-CN.md": "f9dc5502e6a70238232d0a1341facb47aaf603ad640662118ebbc8e8dc9a9c0b",
+    "configs/attacks/baselines.yaml": "392ae29cd66e0b3006ebf5ac61d99e894770a798ad9e668b384111950d4b7870",
+    "configs/attacks/reference.yaml": "29fe48d3f6ec5c2cb5cb96ebf5cdb6742738edf52ee6969cbe3ce4dd135d6bb1",
+    "configs/attacks/svfta.yaml": "b1004ef64f017ad9896f02a8e3bba2a2ee88624077641a06fa56fa04fc95eb33",
+    "configs/attacks/vcsf.yaml": "d3f0c8322c065a7da1c145b8614ab3c6369350f91fb365be2cad2e904c937ba3",
+    "configs/attacks/vcsf_final_candidate.yaml": "58730864bd840ce1cf3df117bcd085820333a917055938cbf05b7fad6df6f7eb",
+    "configs/attacks/vcsf_selected_a23.yaml": "06e7033d73bf9c261af8f19cb16fd05feb8a385b123603e916a1531821828ef1",
+    "configs/compatibility.yaml": "153c75a80644d160eeb299ddab1015bd405e9be7638e368d195f494bf4f8c920",
+    "configs/datasets/bdd100k.yaml": "029471f0852089369b6db9aba885a76978a5964bd89f4c6b7440a408e68848dd",
+    "configs/datasets/coco.yaml": "eb76d2a2cc778aa2ef17f387e149e079edad262e55f525bd8f0d449086f6aef9",
+    "configs/datasets/voc.yaml": "90c96b6d6b5de956274b02677e7b47fe515e0037bf6c4d45e63290ebd37ffe21",
+    "configs/experiments/ablations.yaml": "09e2f8d17395efaf4888b81825d70c370519ec8410a614ab2256af3e5efc77df",
+    "configs/experiments/budgets.yaml": "269ce01b0d137562ed096f5f8aa56c6e193517360bd4c15545d1cc1dfb493fe5",
+    "configs/experiments/multi_budget_linf.yaml": "c538a2d39d37187e02c049901ebd7c4b0bc2bc4be812f87b23e345271700f8cc",
+    "configs/experiments/paper_catalog.yaml": "599e43bd201d58d5f6aaea3939aafad3d3009718e658bd79b6b4316568e18ec4",
+    "configs/experiments/preprocessing_defenses.yaml": "0d1bdbd65b7a39d6c2cfa098e94cd37ab3be4c7cd72ffc67875392c9e02384a6",
+    "configs/experiments/protocols.yaml": "be7be95537cf717fa4faad91a24b49d7ba57c4c7e443aa4dd39b4da1790b222f",
+    "configs/experiments/training_state_fullval_confirmation.yaml": "e216cafb579f0439701572fe436bf3c9ff1edb5881d768449966dcd9c50aab67",
+    "configs/experiments/training_state_transfer.yaml": "4b61c7572873eb9e256cd965f06d7b8aab263df9e1c28785ff2c969e770d19fc",
+    "configs/experiments/vcsf_submission.yaml": "721deaba94d6dbe32f492e930fc67dc7a741fae6f5e4bb04c6994940b53a9b2b",
+    "configs/models.yaml": "f50d3fd2b4698bc07c760305b9e61c95a2b4bf8a7aed34fca20f506909c50588",
+    "current-evidence-status.json": "895984bbd5f20374ebab3040e982443734c7976e089795879ed54c275ee5c64a",
+    "data/README.md": "7d9abd275a1ab0d1129979e070e5002f21b22f4bd415dd18d0b075986503e133",
+    "data/README.zh-CN.md": "7a1deb752b459645be46a56d02118f65f33c6495761592aea821ed8e1a665460",
+    "docs/current-adaptive-preprocessing-reproduction.md": "0a84d1923993758e1c08c47eb8b376418aa425b77955120c823c20f5bdecb119",
+    "docs/current-adaptive-preprocessing-reproduction.zh-CN.md": "02106173d879a3011b4fa5f1865f23117aff5357aa62258ed15ddea7fba544d4",
+    "docs/current-dispatch-evidence.md": "e2d1a4fe52eed0d0616961f2b2b9f8c117a8838f58cfd11b414ea67d8db4dcf4",
+    "docs/current-dispatch-evidence.zh-CN.md": "cd0d1a8b7658af71226486ec0cf752ff66db0550b1dfa3d0e64c03679088b424",
+    "docs/current-paired-cost-reproduction.md": "9b0f3624823a914afc1db5347a6ef9563e201f56241cffd76fb7b20988ca903e",
+    "docs/current-paired-cost-reproduction.zh-CN.md": "53021f26d8406e4c2bf3b7e27f4b4ff380efd7e7fa1f4531fb0842f49ba666fc",
+    "docs/current-preprocessing-reproduction.md": "394ce409e2b4c9ac7ff0278640bdac745f86948c11533e9d1aca3bc3e28ac91f",
+    "docs/current-preprocessing-reproduction.zh-CN.md": "854f5a44c18dd131b07c0029a51315beeeb77a4d8d4b0a8a8f3cc6b8fbacfdcd",
+    "docs/current-public-reproduction.md": "cf21751fcde7c44ebc5e88a0b66d51971b9d9a8ab31ba54b0e50f9f4c0a78001",
+    "docs/current-public-reproduction.zh-CN.md": "9f5895cecdf90de5b6d4f21c5c18fe336eda739b645832f14ddc778b5d8c84df",
+    "docs/current-qualitative-reproduction.md": "fc8fcfc5f23d08c999c11bd77d031dd374d5660772f333a910d6fd1936a2d93c",
+    "docs/current-qualitative-reproduction.zh-CN.md": "6473b92f3ba4c116d2fdc4c4ee2ff8d7ea2229e5f259743cb1dcc7feb9c0f6f7",
+    "docs/current-training-pair-reproduction.md": "f20a4ede00909589f20b1952b5f5586cba77637ee99a3b66ef0b3879de39580b",
+    "docs/current-training-pair-reproduction.zh-CN.md": "4126ca5d5f6bb1dbc6c10187b015b69fa3c3d9dc39daeb0afe1661e839419fbc",
+    "docs/current-training-state-reproduction.md": "7b2617dec37821603ec604b1a2819efbb73c348a0406f99d2af437f6d32ea246",
+    "docs/current-training-state-reproduction.zh-CN.md": "8136737565d77457bcb41ebc3c9adae2fb1430299d2310a3b37902c1fa890547",
+    "docs/current-vcsf-background-reproduction.md": "52f2c74bab8ce8f3bc29ddeaa4846bff39dee09d852d85dc99602733079c4bd4",
+    "docs/current-vcsf-background-reproduction.zh-CN.md": "c9730f205745a6689dacbef1e05168059aafca9913f917f9403f69c5fafb5267",
+    "docs/current-vcsf-radius-reproduction.md": "310ce216e68aaa7cf5369d282e6f68b7d81a09090106c5019fc5f9e6f22b6be7",
+    "docs/current-vcsf-radius-reproduction.zh-CN.md": "ed8d011f20d0499a3489ee530b78b0926f02d81dbd602883d7ff842120cbad5d",
+    "docs/current-whitebox-reproduction.md": "1afdafe367a074471fa1b7f3d5360dc56922405053b208867acd3a060bf3e8ad",
+    "docs/current-whitebox-reproduction.zh-CN.md": "a3a74601ed0fb5bd60cbe81df7e17afa685ae3a85387ec429b0dd268140ffd13",
+    "docs/en/vcsf-method.md": "74588b086f6c30f502d1eae653951dabbfae7c381eb51b73140077b0a110c5df",
+    "docs/history/previous-a23-selection-status.json": "aa6569c1ec69d5673822a50203256ed60971ffeb8f5b2ef69316836651e3fd0a",
+    "docs/licensing/license-scope.md": "20f8767359fc0274ef16acdf4c11fdeba8ce462ff74c240a9aa0d65a31e037d4",
+    "docs/licensing/license-scope.zh-CN.md": "9d661b46562a9d9a8cc62e665fcbf1f4da3851b54100ddf69f4a9f6d7c439e00",
+    "docs/licensing/source-distribution-decision.json": "e78dd7cf0867ea2b325544b90d9fbe0964e81ee21e16218ebbff9fc18af2bbe5",
+    "docs/prediction-visualization-device-interface.md": "9cbba0654914619feb0e8283d09c795a2aa68ff157eb3698c19e9b8f7adb4d1a",
+    "docs/prediction-visualization-device-interface.zh-CN.md": "456e4750f5478e2c78f899e60c79256c0d584256a8ed237d89684d8fc3ddea8d",
+    "docs/public-package-identity.md": "9f742a43f2137b49209a00577e9df6879bdc471fead7f5a14c2ee7ad84ab76d4",
+    "docs/public-package-identity.zh-CN.md": "33f4d85d05d9c4aeb2d191ad9b6f0bb70ee4600bbbd2557c8ce6aa6eb9837463",
+    "docs/research/vcsf-a10-configuration-recommendation-provenance.md": "159e0883d58e9c802b33269897dd4e4e92eec7a913183cc6ddfafbd32025b955",
+    "docs/research/vcsf-a10-main-audit-contract.json": "4f9198056319925330209ed6f4cd8098bbfd7eecb578ab139c457795e7e46db9",
+    "docs/research/vcsf-a10-main-producer-schema.json": "55da0a8865a3a0a09232626c954547ec886008e887c3277b8500b89ea8048036",
+    "docs/research/vcsf-a10-public-source-freeze.json": "835ecf45606670c9f92e34caf7a8c42e1e5b89119c0adc273ec1afff445fbb2f",
+    "docs/research/vcsf-a10-recorded-configuration-choice.json": "28f279d405fe6cda61efb7bc109267fed49dcf5ec294717b9da97a7ec58491b6",
+    "docs/research/vcsf-a10-selection-protocol.json": "b9c8ddf613a70dd6623cdb71c5070a83352a39c0bfe755ddaee24600cffc0084",
+    "docs/research/vcsf-exploration-statistics-amendment-20260909.md": "cd3ac9a00dacf8b46bc8d918248874967d98287070f36e79dbd024fcdd61a335",
+    "docs/research/vcsf-final-attribution-request-20260915.json": "ebc961c382c54b64530cc94abc5f5598dc557370d6209657935feda4a5b1f59e",
+    "docs/research/vcsf-final-background-request-20260929.json": "b9c8ddf613a70dd6623cdb71c5070a83352a39c0bfe755ddaee24600cffc0084",
+    "docs/research/vcsf-final-candidate-freeze.json": "bc1f25f4e49fa33e419b0961e53bb05e58442d3248d3a16c90b8043ec838d591",
+    "docs/research/vcsf-final-candidate-spec.md": "d70817b01ab8ff8c6a0a24530e2dcd13b12db9288f4d311bec5461bc140a3075",
+    "docs/research/vcsf-final-candidate-spec.zh-CN.md": "34fbad585a0191d582a543aa2b11104c4fcff8501901c5397ca8472eeec77692",
+    "docs/research/vcsf-final-followup-registration-20260917.md": "cf2d56926ee94ffc3d63024ec3954b0389c39c67c09251a728dfc6168aa6240c",
+    "docs/research/vcsf-final-method-freeze-20260917.json": "a697b1331cf54808633bcfc57d6f07adb630ef41beb7fea709402b749e1418d0",
+    "docs/research/vcsf-finalization-scope-amendment-20260908.md": "3a25c2165213e014c8d3ed0ccb532d62610c15e6efef642ffdb8bbbbb28f873d",
+    "docs/research/vcsf-maintenance-disposition-authorization-20260920.md": "02a310f2eb1e6923ae421de0fef06d82899d31754f13a6cfd3512589a5715dd7",
+    "docs/research/vcsf-selected-a23-freeze.json": "4da291b775904f6eb3ffb450bae80f648a6ce511dfb7d5331066676a93a31fcd",
+    "docs/research/vcsf-single-source-amendment-20260909.md": "a657c3a9fb77e82204257ad53e83b56ee9d898431a2ac3cb387c6ee1ffb07abc",
+    "docs/research/vcsf-whole-ablation-amendment-20260909.md": "e459d062124c9af4b67a1f5ef677f4757971e6adb7f76c6aa55699cc5621031d",
+    "docs/research/vcsf-whole-ablation-closure-20260909.md": "f9ad1066aecc70da8253588ebb3f8a02e043bd83b7275caef91f1b8c5497bd79",
+    "docs/research/vcsf-whole-ablation-revision-20260911.md": "9a368f40312e84995bc162cb8cca9dcf785d8af36ea209065baeba849c32297d",
+    "docs/saved-report-export.md": "7988c8a2d24ce458714fc2d34a32fa2929f6a54dff510ad7e41b1477270364a7",
+    "docs/saved-report-export.zh-CN.md": "2946467807eda26421c9529ed85b557ea4a2ece13375cddc26616254ee4d2597",
+    "docs/third_party/licenses/GPL-3.0-upstream.txt": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+    "docs/third_party/licenses/LGP-mmdet-Apache-2.0.txt": "874b8b2e6f12306a1ff7812c068a0dbf880418b8ac1f7190382bd6c6da9f23a1",
+    "docs/third_party/licenses/NumbOD-MIT.txt": "bc14dbcc12b4c43ad1e382e8e315450784332208ddf75069834bdc18484a4277",
+    "docs/third_party/origin-scope.json": "20afea5ca6af134b734406685fc27dc9b857fdc8a55fae3bac4ad26035f86d05",
+    "docs/zh_CN/vcsf-method.md": "2e56994c703b1f21e442a96bdd4428c5a690bcacb032ca3d1d4f6e93ac3a83a3",
+    "environment.yml": "33077e63e56b48dbbbaacf2fadbcd0c3d4641d151fc54aadc88a7dac6e51a137",
+    "experiments/_common.py": "8df9fb8bac8ebfccb214f127cf76d23584f7d2f1a925a69028dcf5cce4a88c1d",
+    "experiments/adaptive_preprocessing_transfer.py": "ff071c700233ad52e43f9955f527bd7e271b51c12bc8f464fa5b158facc06871",
+    "experiments/afog_experiments.py": "b0f1172284467974057ad76e449d36ac4071b67dc9528c794790d8c9489592f4",
+    "experiments/all_method_ablations.py": "725baff1be8859cadc77de4f43ef4b3a545f4c2943255d52a066bb336ecf3083",
+    "experiments/augtrans_experiments.py": "b98a28534119a9eebe6568923dff6b93ab7a422b6ae37e3b35f38ad9420629c1",
+    "experiments/clean_map.py": "5189c34efb02f481fdc134bb4a19b52c9ce47f65cec9ab3648425d731cf819a4",
+    "experiments/coco_adaptive_preprocessing_defense.py": "c28c4f958b3a4fe13091125774c2aa1c81dbe576395a60dbe279892314616529",
+    "experiments/coco_all_methods.py": "79b8e35d1c5deaa9bfc368d26a2c6714a3d462f4be1760f6489ae2199397c84c",
+    "experiments/coco_preprocessing_defense.py": "c59c23eede1109c6912901413b42a0570e88709c048910fe3e0ef5e47cd92be9",
+    "experiments/coco_training_state_pair.py": "a6feefeadc556d11f75260f19cf5ce479153d3ca724463ecf2cc6dd05ab687a5",
+    "experiments/current_paired_cost.py": "59d835fcd475d9dc4483f7b63cfe15500d05e4f08d5884e9743566e619ea98fc",
+    "experiments/current_saved_qualitative.py": "042b931cf14e5c3f14b67820cf7bcde840f1c393200c31bbe36a579c6a2c831a",
+    "experiments/current_vcsf_final_background.py": "a5af444b859a4d65017effe69cd9b632c0aaf355a0df3a40d4404b97cc20f9b3",
+    "experiments/current_vcsf_radius.py": "711dd3e41eeb90d931d6fe859da654e0e6e300dcac0884aee595e99eff18b43e",
+    "experiments/extended_transfer.py": "0dd2f463432d45a99d4bde9f5e02b71cc46aee4d21bbabe30c5460aa394670b3",
+    "experiments/finetune_voc.py": "d984d15f5819f654d6194d31e2a35ce0b9a8cdc815ac4d20cd10e6bf602e01f9",
+    "experiments/generate_reports.py": "18f8fae8d3291a7aea23771d852a82ecb142f902500fecb6f0cf59874d8ed6be",
+    "experiments/hifa_experiments.py": "2dbcd163f7e5a6c1e452bcee25398377ec37661801ddbbfa7da1d03955da05bd",
+    "experiments/lgp_experiments.py": "4dd223f726c33282e089742addad880e3188ecad404016e1b40139d12d191997",
+    "experiments/main_transfer.py": "ea6eef97f2291aaf3b754a7afd8ec76bc19d66476fa955a7fdd84dd72b55605d",
+    "experiments/mlfadv_experiments.py": "86a2eeab0befafe6c757bbf47c134cd9ea67ec635f2a02f5dbb6d0d03ec827c7",
+    "experiments/naa_experiments.py": "2eb9430e56fb2a08b92c2d84fb0c520d79769ba10a30a3620e4a20170d833aed",
+    "experiments/numbod_experiments.py": "aa917a6e6504d25e5dd9564cdeb9f23089a15b8da0e2a7664e0a70127b5bbdaf",
+    "experiments/osfd_experiments.py": "69f753a217ec92b58fe6f75c58b78408c588b12a09a38da12c287a2d8f418dac",
+    "experiments/paper_experiment_catalog.py": "08d03f191ad3d8d36cd1433f80e0c861836685c68515ac846253297d69fd635a",
+    "experiments/preprocessing_transfer.py": "462d23dc373831d06a79f21ea9b797a27b0dfd9a328b2e8c84b436e5b58d4514",
+    "experiments/qualify_vcsf_a10_public.py": "04cf24e084565399b271eedebdc4f229ad6553191ded37d4b60abcaa0c1480b5",
+    "experiments/reexport_saved_reports.py": "6dba8727b64a4643b7232e9297e982731da56d6bc32c847612e36b7214f1dd43",
+    "experiments/render_qualitative_panel.py": "ac779717a635f589a50c86f66c046c078b7ed9f41b038830aaa3de97e55d53f4",
+    "experiments/sfim_experiments.py": "5d021309691ccff7a95f14574fda818fe0f5d656dd427d4e8072e266c5d90182",
+    "experiments/tog_experiments.py": "76b5675754819db626dd765e36da9fd4d3132ddfa254902bd1ff94fb7a7751b8",
+    "experiments/training_state_transfer.py": "72c8c82fdc7bd0acd572ac81f666be2e7a527f3c358ff90bea378869c27761b3",
+    "experiments/vcsf_common2_cost_calibration.py": "68d8b2169070aa79348500464aa2aa22d270db1052531973c7a97d33bd73ebf2",
+    "experiments/verify_public_package.py": "23f00ca38e72eba569393b7f16c26bed30e3b7ee2a161c294c53cc71bfd9928e",
+    "experiments/visualization_settings.py": "9a81101be03e6ad8fd81e7d229f4b5b501cfeb1b3f237e8daaa4416ddb939cdd",
+    "experiments/visualize_predictions.py": "5d305a1c869030a55972176eec490cf082e83f19acaed73515c96d88111916c7",
+    "experiments/voc_transfer.py": "6e168ade969e6b94b3e53fc163a51a91c695fcbc2d261237bf3d4ed1f06bcff1",
+    "experiments/whitebox.py": "3d1d344cd1afa61439ff31b39579691e4130646c31791d86be6fd124da463ca7",
+    "historical-implementation-inventory.json": "df4ea2ff43f62d126edaca04ba53168dd7ab4f8fe0e1c6ecabf297d46ffd7c3e",
+    "outputs/README.md": "02416736eef1ed9f5cc4ddc3ce11ea0f4397578966b634d9dffb4d5c9bfb93b9",
+    "outputs/README.zh-CN.md": "b1f05f91207277fac177e196bb139b551c6a5779cb73892118cd4ebc3be5635b",
+    "publication-manifest.json": "c999203039ab74d7b38cc0a14519cd2fb51802a3e71e748e0010226e0e2acd72",
+    "pyproject.toml": "65f439fca96f3aec10503003425e19359080b15c17b9187f07b74ddaa77998d8",
+    "requirements/locked-cu118.txt": "a8d35a3d692129e7900df30bb99e4b40d0a2f783fffe87170c9e47282504e2cf",
+    "src/lgp/__init__.py": "d50d3d28f93fdfa50db2a59113af4758a0bdbd361c41163a3f28626df06d8bad",
+    "src/lgp/__main__.py": "3d2438ae92f4746e9ffaa1f837b1fe803f6281091d1f31f8c95643716f257d9a",
+    "src/lgp/adapters/__init__.py": "65cdb50bbe047095113bec3f1b1ca69beb11c604f5735c375f3dd45b8bb4e77a",
+    "src/lgp/adapters/openmmlab.py": "553ab418de02fa4c9e2c5920e066b4be248225af4b68b660e17e2866998c4348",
+    "src/lgp/attacks/__init__.py": "1bb2020e9c38a7badf228801019e982bff829eb53698a3d430965ec069ab6233",
+    "src/lgp/attacks/afog.py": "738c59ed38a0608e8c488f265e0eea902dc46297c3c8a643f2fd3b8a84b388a0",
+    "src/lgp/attacks/augtrans.py": "8d4676006f7d24ba9ff5ab9e64c7bffe39bf05937e91a8c806a545e6ce2f4e2f",
+    "src/lgp/attacks/base.py": "9288b61e8168b1738d84d3e4c6860c713a340b5cfaf45b0a984694dc4fd3259e",
+    "src/lgp/attacks/common.py": "850fbdfcb8908064c0380e5a30f66cec1c62814a287c26f7f388a980811709d3",
+    "src/lgp/attacks/corrupting_attention.py": "35fc8ef0bd552bd4bcfc76daa3e6a540121744c445990883d0f40412bde9192d",
+    "src/lgp/attacks/current_vcsf_background.py": "c1d61ea53a13660bb9f5ddd22cfb03ab405381d37830eb8aea0f06e2e8833d68",
+    "src/lgp/attacks/current_vcsf_radius.py": "d72fd7c208087f2dc883c8366fc07656617d99c290720b7b02d69121623bdb00",
+    "src/lgp/attacks/factory.py": "6c53bb36ad301a649af365c9adf3c523f0f79feff4526061ab1e232462da5999",
+    "src/lgp/attacks/hifa.py": "ffdd6eb9bf98e0e9d5de2ec449f5d802bee21085f446fd8c0254bd4d33843767",
+    "src/lgp/attacks/isolated.py": "ef8c55b2c98ebee5c13b3c8c4453446307fac3c4e52677d0c6268107b7950ae8",
+    "src/lgp/attacks/lgp.py": "ce8aeddc8221eb36191474c9c44fd5ecb26f39d767a3683d050d36720c931d60",
+    "src/lgp/attacks/lgp_assignment.py": "cb26a8afaa3bb65af53cfa8902211be36699fdcabf40c61bf4e560233de9ccd4",
+    "src/lgp/attacks/lgp_fidelity.py": "a052d6f96584bfe22294ef63e946bb59e8dcf1c63f64b458da79697ccf78e1aa",
+    "src/lgp/attacks/lgp_heatmap.py": "c5127bbab898e337b6bd05af41e71d4ab789053b7a55dbfd6c543dbc41e7ab5a",
+    "src/lgp/attacks/lgp_query.py": "849e2b35e3745a2f0474e88120b25cd723b443031e8c82c173960080d270de42",
+    "src/lgp/attacks/lgp_roi.py": "f848f8d2044861e037a66516b841d561a774856fd3f5a957a6938802392d1944",
+    "src/lgp/attacks/lgp_semantic.py": "7072373a13992d5005c8b0fd7d25310b5491ba7d919aeaeed3b9dfbd49a27cea",
+    "src/lgp/attacks/lgp_source.py": "9d38249eb44aeb086ac037014ef52100d1a64d0be1ec0654d1dc5645f1419615",
+    "src/lgp/attacks/lgp_vfnet.py": "3786ada1c98c4f7f3cfb2c818e8beea68c1e13d6efc5a290e88305ab5187edeb",
+    "src/lgp/attacks/lgp_yolo.py": "d1b309a570dbd94456a0f27d1dc6238b578fcb5d094047bfd816bac848cf4923",
+    "src/lgp/attacks/mlfadv.py": "5a415a99a810203625bea1e521450f967947bf4f7e36c0f4d1b606d6b8049045",
+    "src/lgp/attacks/naa.py": "f921ad24dc2127ac071f7762e408010d57229e15bdd0b6b7b20512e7e870dff6",
+    "src/lgp/attacks/numbod.py": "1ce62b628de65e41f4737db5e71cae416b6efeb2b75ea010cfccac2219e3b348",
+    "src/lgp/attacks/osfd.py": "9fdc388f19142aa5c4d5259f7198d190d1fc56da44ed0dac88d42699bf55f173",
+    "src/lgp/attacks/sfim.py": "4e001ecb85835ec113428500d9f962f565c97064769fa6effad29ddac5548dea",
+    "src/lgp/attacks/svfta.py": "4585fdf57d2a13d800af8966d946fa7056a5bd0e9255bb0b20a03d7096b8e739",
+    "src/lgp/attacks/svfta_cross_stage_claim_confirmation.py": "96c2e73a8ec874e7d7a3a2dd1e078313aa279efbd802ff273e8061cf487b4bc6",
+    "src/lgp/attacks/svfta_evidence_bottleneck.py": "cd0654a0caf5eeccd3e45f6dfc1f41a374a6201ac551a69ead372f8b973f7d29",
+    "src/lgp/attacks/svfta_feature_support_deletion.py": "4597ce4473bfa9c13bbe0f05c6d48cd4a840c015c37660525fc09a3dc9b6c2e2",
+    "src/lgp/attacks/svfta_minimal_anchor.py": "e7d8dbb1a50896f16055e9d3c85fcc77bbfa6e27ea27a400eb5e8ec421367e2b",
+    "src/lgp/attacks/tog.py": "cb825d60d4568496f9bca8060a19f2acd4da6a5646fecbca51714d9254dc7280",
+    "src/lgp/attacks/vcsf_a10_f03_swin_fullval_isolation.py": "e008b9cbcd4ef77852f3a1bd73f41ee362e1e0fbd291c2b6f51bc67de04040ac",
+    "src/lgp/attacks/vcsf_a23_isolated.py": "a1d9d74ea8e4669d6ff9818906a5e4b8858d6a9526c40a711c495c9e5ce72bad",
+    "src/lgp/attacks/vcsf_ablation_executor_isolation.py": "ea1e74fed3f5a8e990a5a639a63df085815f4ddca297f47ee5a00d4334d7b48a",
+    "src/lgp/attacks/vcsf_ablation_isolated.py": "3200ee8d6f3257f076597c65525fbb3b6d1ec506f02236378f290248f1b1d1de",
+    "src/lgp/attacks/vcsf_ablation_preflight_isolation.py": "871990cd3b5e6b9576494c7e911fb0643ef537f90a0eb53c2a3f3a94226b0377",
+    "src/lgp/attacks/vcsf_common_anchor_execution_isolation.py": "44b8ea7f9cc3df7fce511f79bc9dae671fb6ea0dd709178a095b5717c7464b63",
+    "src/lgp/attacks/vcsf_common_anchor_isolated.py": "b55c7ebe5a307249a8776c0370a8e149044ef2fbc923954e9f1dddccaa1843da",
+    "src/lgp/attacks/vcsf_efficacy_isolation.py": "9773bac05472a004e2e184e84a654b0f337126d8322116c0bdf66e53fef4205d",
+    "src/lgp/attacks/vcsf_final_adaptive_isolation.py": "314cf10701508e7cbe7ad861066aa1e0791b8f1416077def1260a2ba72779d18",
+    "src/lgp/attacks/vcsf_final_budget_isolation.py": "a04af4b0db76fbc5e0c17fa0f2687180b155d35f2ad1eed038f92279880c4400",
+    "src/lgp/attacks/vcsf_final_candidate.py": "99423c6892db7afc172dff0eb375970a603b44ed9885b0c04f71faa845da2c4a",
+    "src/lgp/attacks/vcsf_final_followup_execution_isolation.py": "eb272b612c56e213f51fc388e33e7b64a2bf01478f8a9dbf0bb618a1e534b97f",
+    "src/lgp/attacks/vcsf_final_followup_successor_isolation.py": "e7af4f95516bef426b0b40ee8c67b34a8a3c7c436515116264c584a00012b65c",
+    "src/lgp/attacks/vcsf_final_radius_isolated.py": "cff9193ec3df0d27a529f1cdc977b356cd686698134ed196e76620eedcab4d8b",
+    "src/lgp/attacks/vcsf_operator_execution_isolation.py": "5d08a909aebd6b32f7a27086af85bafc5373f1a078aaf870844fa33cfec45af6",
+    "src/lgp/attacks/vcsf_operator_factorial_isolated.py": "c9010f7a00cbacaccffc5dbc91a6485f5b1c278ee6ced5c61dff43067ff7e3db",
+    "src/lgp/attacks/vcsf_public.py": "11dcef05feea1eff7ceafba6102f39339c7b2e497b8f1ef5e49a58327fdccdf7",
+    "src/lgp/attacks/vcsf_research_isolated.py": "b78fbbddc1638f4f74ddb44771c131a6f5301272bc5d75110c700828f40099b0",
+    "src/lgp/attacks/vcsf_research_isolation.py": "c70792a6a21675b2e98c550de202ac13fec563940610a08257e345b2640823f8",
+    "src/lgp/attacks/vcsf_scale_execution_isolation.py": "636c6ee533d6f5ac8cca872393c146a46b245a8e9dc10471dd5c38f83888c17b",
+    "src/lgp/attacks/vcsf_scale_isolated.py": "65827ce3ed4eb1d16700a828648ed9d6595f5ff6d92103408343ab56df5047ef",
+    "src/lgp/attacks/vcsf_scale_isolation.py": "c26069f585194d785573247f9c2fefc3527c85f2c36b5732518287dc1cc07fb2",
+    "src/lgp/cli.py": "6776102548ce5daca7a542cae227a05ff882de0c647288ccdfa58c6382f739cd",
+    "src/lgp/data/__init__.py": "6734f5d9ec78f24e7e1fd26a6e6c56408344106cad8f76cbda006dd360b24907",
+    "src/lgp/data/bdd.py": "3bc3e4296be0da31540be838b59e9ec5f180e52ff4a3db0d36812e73d7c6990d",
+    "src/lgp/data/coco.py": "d6e0d0139a7907674bf3b24a05139fe0d9185c5588988969b3dae27754385ac0",
+    "src/lgp/data/manager.py": "b14047e79d741f357bbd6bf06c781b00bddf8a40502127b44a539a4c46d2874b",
+    "src/lgp/data/voc.py": "7ca5d8cb13c6efa5480c000c3d77526f6f49c30bf9671a57f32a935be3236713",
+    "src/lgp/defenses/__init__.py": "dd153cfd02e9c6c8299a5a441dc93bea15dc8b5d282cbd4b1e93224262923880",
+    "src/lgp/defenses/preprocessing.py": "16e38c0e68e6597993b498e1b89ed5359a350ca832909c93d2ca032db91e6ead",
+    "src/lgp/doctor.py": "3ea0abff0d466590128536c9a9727643c4d1cebbf23cfe75d0ea0843d296e199",
+    "src/lgp/io.py": "46cc7ceb351839462ad0564c03be6d405d783142333f7524d361f520f60cdf13",
+    "src/lgp/metrics.py": "e94008bd79dccc2e5774da97056e0fb1212b1e2c6428e5caeb5b7199540cd112",
+    "src/lgp/mmdet_compat.py": "4830338e4bd65dc95704c5fd6c1db66ef11e1702ceb62a44e6edf58e8af2ea59",
+    "src/lgp/modeling.py": "db4301db6f420a490d3ad09340fa6610924268320abebf3576401cb1191fd6c5",
+    "src/lgp/paths.py": "b3b1ba12e8ab91570f19da6cb0a03835f4d3e3bb68749264817a97f1eae20c6d",
+    "src/lgp/public_package.py": "ebdd6066225613cae4d3438e581713583aa569ccf2bbc43b3e1f8bbf123c5704",
+    "src/lgp/registry.py": "5e96c98bb47b0bebcc7189b7ba8f72b72ac5f05d854f57186844b64049d3d46a",
+    "src/lgp/reporting/__init__.py": "a8308cc42bf367802b9635fdc839c4189add3fee1a87964297daf4217fd31055",
+    "src/lgp/reporting/all_methods.py": "f1ad82d047844fd6f34de88842700dbd938c3411f41173d8d518396052b9bab5",
+    "src/lgp/reporting/catalog.py": "f669bd4279e8e25ceb936763bb086fd209ff42251d459b2c687e074a9ef9ae16",
+    "src/lgp/reporting/clean_map.py": "651bd64d9d8417732e6e152f7c41dcd70c0016ff51ac9a2b1adc09bd4f8445b6",
+    "src/lgp/reporting/coco_subset.py": "db65e6dc4276e432db13db1c779b4443f29eb040a0f8cb6311f38dbda269de41",
+    "src/lgp/reporting/coco_summary.py": "3a490595e570b1b9339512eb2823fb3e74923e6e78a1ae5332ac06a1e955f334",
+    "src/lgp/reporting/cost_units.py": "342e7cc0f18c7758972c1146c0a9746b454a83fdebd31ace9db7097143de52f1",
+    "src/lgp/reporting/current_qualitative.py": "243e57d73e2dcb18301aa5cdff1a5b5574daa1e80d32ee8a10515f99834e4221",
+    "src/lgp/reporting/formatting.py": "68bf8f8d9268b3eb22560d1e9dd37f4d1db7cc60afdd65bb417515e030a23373",
+    "src/lgp/reporting/latex.py": "353cf07fe3e4801a94bee640877d3f421f15ce5e0f2335b91e5666fef2ad429c",
+    "src/lgp/reporting/plots.py": "5715471b6baf0659d9385ea0ff266b37cc03906b9359a2e4a627e39155c979bd",
+    "src/lgp/reporting/preprocessing_cost.py": "c7012ff14256753254de242bb20b4b4e7a1201f24cc4e13bdd5aeb367d4bdedb",
+    "src/lgp/reporting/qualitative_inputs.py": "96a33f6a25c2eff9ea535f456760c5650208b348567aad4dd05b384d0a130d77",
+    "src/lgp/reporting/qualitative_panel.py": "0495d99dd2b4ce1f95dc6a14ca1ce308ce599e1c1ead4dc62b66a71f15435801",
+    "src/lgp/reporting/reexport.py": "fa206ae521a358c8f20b821469e7e87540e0b9fb09e2fca4c75f576eab390b94",
+    "src/lgp/reporting/scope.py": "c8be22391d67a90281e9b12a9f96ef5734f70dc636ff98deddf1cb4754c45450",
+    "src/lgp/reporting/vcsf_ablation_cost.py": "317159c2f7760dfd3a66813e630ce1ce3039ba1466eb900122e768c676751140",
+    "src/lgp/reporting/vcsf_analysis_inputs.py": "eafb3314d3443ea9ebb74c5dfe7d5cd2be3a580f178108979420317434971f6a",
+    "src/lgp/reporting/vcsf_coco_replay.py": "99cb2ab252b507bbc6a1405a7a116d7331f93c3e3be4d882d083119bb51756a4",
+    "src/lgp/reporting/vcsf_core_points.py": "bef3a46a5639bfaf21224dc8f2b2d54725be683d2a8c7b63abecefd540ec5376",
+    "src/lgp/reporting/vcsf_image_bootstrap.py": "0cb06e204d98a2b1d07514f124c7f8c87819f3db15b4d914ac63ee3060de945a",
+    "src/lgp/reporting/vcsf_oblivious_audit.py": "adf4c5f3fa10d12f04b9d8edef408af60bb0290bca088aa88769b63448d0e583",
+    "src/lgp/reporting/vcsf_oblivious_checkpoint_binding.py": "f7ed953e181424283d61b1f1b7eb89c6133b334075e5be068dccf2ffeb2c7475",
+    "src/lgp/reporting/vcsf_paired_statistics.py": "a16c0a9b921eeeaf58c97895854ae659019394c7e29d1437a1f59684ea9ecede",
+    "src/lgp/reporting/vcsf_prediction_evidence.py": "afab13bc487d81802b492bb01fd17131d022482bc3127b0ba75fd6bf12e08608",
+    "src/lgp/reporting/vcsf_training_state_audit.py": "91942675f49063f7c13a478d61c52421c402ccd0073578a35221eca7a0755cd9",
+    "src/lgp/result_runtime.py": "8b122741ac2ae6aa5de7bd86d14704b40a5bd19b742b6a2cb384bf3e5090ec5f",
+    "src/lgp/runners/__init__.py": "525329d07ae3a108c31ae71600fb56cf7bcbf373a19663b5d80e63c71feb58d6",
+    "src/lgp/runners/adaptive_preprocessing_defense.py": "6b0a91bec852bf9bc0ce883852b5348ea197aad73632353ee34d60c822fb9a97",
+    "src/lgp/runners/artifacts.py": "b60101d25e69e9318f8d21b71fcad874f4885bdb9d996e760598a92f4acb49fd",
+    "src/lgp/runners/attack.py": "cf4a06310d1f9b498ef1d77305e84167d5a966f765e37b05472166a9aa00f456",
+    "src/lgp/runners/clean.py": "cc5678dbbf9a631ed77a32f8937194161cbff0fcb8fa560b129b9dbb61acf3a6",
+    "src/lgp/runners/cost_calibration.py": "69a4481d64bb467f04bbfe854b7c066bc7fa359e1a4540f28607e752b7df1b3f",
+    "src/lgp/runners/current_adaptive_payload.py": "b28750cc64287c6954f399fc88c1f885692fb2667dedf9cfcba8156da6fde308",
+    "src/lgp/runners/current_background.py": "7c700d4d1eb3a57459b560388c77fd3d6921c3fc8e795015fd5450d46d75a748",
+    "src/lgp/runners/current_cost.py": "fde7392b135c2cb9c8b91cb99f73a2d2febb21cd5703ffd050f728491c397653",
+    "src/lgp/runners/current_preprocessing.py": "49acc4601c07cc6b2103353e092f005f3a63634338abdbeac7b82a694c77598e",
+    "src/lgp/runners/current_radius.py": "1cb71bc3304b6498bbfe8f183721ddf969e433c4f9a43a15198c698381a14d0a",
+    "src/lgp/runners/current_reproduction_inputs.py": "93eeae16739feebc48423123be60f3a0e1fa6a97f666cda334f2a67531e86353",
+    "src/lgp/runners/current_training_state.py": "f2b0890d643dc4a93f88c257dccfada5a30f4f6fa0a12b23eb49cfd0f364d95e",
+    "src/lgp/runners/dispatch_journal.py": "e1eacb431b9c810758edb019d6be470c0e4df402204b710f95531bee53523b11",
+    "src/lgp/runners/evaluate.py": "3078da96d3d8bf766ee704e9e8111d1213c89668d01ae22bc19abed614798cd1",
+    "src/lgp/runners/experiment.py": "a53a3fb79658c3d20bcdafd05baa1181cbd92ee8fcc9848628782adfd7e547fd",
+    "src/lgp/runners/finetune.py": "39257235d426a5124730ed2b298a077596f064ae3cca8427e560517dae719a1d",
+    "src/lgp/runners/formal_parallel.py": "9c550996b6ba13f56ea1cf151a7b9cc2fe5ead4ec81bb570b8deb2d105d742c7",
+    "src/lgp/runners/lgp_corrected_main.py": "9ba6ab44f2858d87d347854e50d7d4f19f93bbc719fa2bd256806a10e58eee34",
+    "src/lgp/runners/prediction_visualization.py": "bbc639e5e6f76161306c4712472ee1ed6332c4f7bbe51fc70f6e17750751415f",
+    "src/lgp/runners/preprocessing_defense.py": "387ad9a1aeca697edf2176a04df7f7157ab91c4cab6a2b0f794b656630bc8fed",
+    "src/lgp/runners/public_config_helpers.py": "f5ba5e31158ec8ae1de548492f13f4d5162547172dfcb8e0f88f2cf5c5f83842",
+    "src/lgp/runners/public_device_helpers.py": "601c22b13a9db96cc5c11a1d78726ac292768d43768893ad7516f1d83d9728e8",
+    "src/lgp/runners/public_observation.py": "0eebe845e01f4b5c895e105f186a2ac5b551a45bab1a3524adec3be71061756f",
+    "src/lgp/runners/retention.py": "737ddb6b7ac5ca726b690534715665d14c419cb5dffe1f113ffb34ba2e63b650",
+    "src/lgp/runners/train.py": "695aa4f6e33a7b9f832d1f3a69a742109700dbdb2643e2ee9af64cd8fc2ad59a",
+    "src/lgp/runners/training_pair_processes.py": "49f86e291afd5334c03e688b7a838ba79bc9e812bde90df414a9fb7c0ae3ef21",
+    "src/lgp/runners/training_state_pair.py": "970556d8d9631318b2d580a09f0e46832f80190a5f4170fa6601a84890b40f55",
+    "src/lgp/runners/training_state_transfer.py": "2a177a85eb5b2e1d586aeb508a0344be39ae05d0e461deecd8027a5fc2164613",
+    "src/lgp/runners/vcsf_a10_main_context.py": "b638d345fb4565dcc3e375abf8ad319b2783fe55e259f8655602f5938724a3c5",
+    "src/lgp/runners/vcsf_a10_main_contract.py": "555e93600460b25fc511224d3028e4be77541bc7c9ed7d3bc806022873c72661",
+    "src/lgp/runners/vcsf_ablation_execution_contract.py": "b6ed49d1a5af3f55c651795ecc55e7f06dc5923f3199f70f181305c7a8aa7522",
+    "src/lgp/runners/vcsf_ablation_executor_smoke.py": "35e29c680abae55b9f438e24d115ee5ce36bc78bcd696747a8685fe21978c4d0",
+    "src/lgp/runners/vcsf_ablation_preflight.py": "e44407e31299e9e49fa29d0a503098e97d39008be16244ee2a4f01732d5ee782",
+    "src/lgp/runners/vcsf_ablation_runtime_inputs.py": "2a6979d722e318c2cf73bc6d67cff4c52a977ab92f4467a290be749dceb8d1d7",
+    "src/lgp/runners/vcsf_ablation_stage_plan.py": "2e70cf52f4f7564ce24588ff71f177da1769aa15fed85aeabe1856b652ae8183",
+    "src/lgp/runners/vcsf_adaptive_admission.py": "fca9194398e154ac44359bd63ca5e3d7c67f926374bc901116c3538437909a05",
+    "src/lgp/runners/vcsf_budget_admission.py": "9ffadf348cd60223380d3cf19cf5c70ba1d35c76717cbfd9531bd54036a277fd",
+    "src/lgp/runners/vcsf_budget_lifecycle.py": "d0d28b12a94007e8f9a7ed70ee981fba1985f7689376a73f4504840e33d3a960",
+    "src/lgp/runners/vcsf_common_anchor_catalogue.py": "8b1274de2c5c0ab66e65dc02dd52d5ee5e9b3de60be8368af9ea4d83c20e6e8c",
+    "src/lgp/runners/vcsf_common_anchor_execution_contract.py": "a65123896e12bf8a4d52ce95426ba49c3ef489f9be27c146b8ac3ab30bdb1c4b",
+    "src/lgp/runners/vcsf_common_anchor_execution_design.py": "c53e4208d5c715e348ce01d37ba53db65b09694b95b29fdbc83f55097335796c",
+    "src/lgp/runners/vcsf_common_anchor_numerical_mapping.py": "18408a4e6014fc6c1f1c6d8d7581a4f2e8f20d4b75aced49c37d83737a0349ab",
+    "src/lgp/runners/vcsf_core_numerical_mapping.py": "0737e434d32389b3b035c81e8bd17bfb1c2e97bf8d6f1a04f666994f614569fa",
+    "src/lgp/runners/vcsf_core_result_origins.py": "670c8f3bfa7f765b99529dd0c159beb797cfe9fb32491469c38d427d68aadd7d",
+    "src/lgp/runners/vcsf_core_reuse_contract.py": "e10e8c125433cc09330a6f86103ff7ff7329ac479d17242a58915ffb8bf87bac",
+    "src/lgp/runners/vcsf_core_reuse_inputs.py": "9413fbb4918352dafbe711b3da107b35ac5409a3dbb173650cb7d8ef01b2dcc2",
+    "src/lgp/runners/vcsf_efficacy_contract.py": "a7396db39a48aef04b610037f77b4b935ebda2f5035cd7c47722fc0f3b413622",
+    "src/lgp/runners/vcsf_efficacy_runner.py": "7e16384ff3de9dd368d2f9063d02626512d82fa0451f7129f6a5bab4432bb5f4",
+    "src/lgp/runners/vcsf_final_adaptive_contract.py": "2f525d008f44d3c52d55a798ddf41c3a530ec86572cb87d832dd799145032c11",
+    "src/lgp/runners/vcsf_final_attribution_execution_contract.py": "3a2a55d5fe7dfb4004200bfd6b1cb1269c74bea15ec7c0a699770f29063df8f5",
+    "src/lgp/runners/vcsf_final_background.py": "24f708a7ebe30423cb2e53f04365e7f1b3fc9ca849e500d3102d7b4fbabe2a64",
+    "src/lgp/runners/vcsf_final_background_execution_contract.py": "560401ca5cdcaf372f18a4b6ef3f53d39ec1cfd801abcf9acb4b3df3b66d156f",
+    "src/lgp/runners/vcsf_final_budget.py": "22edcb547048a079f46acc7f01841e98592390faf3cd25b74f70326219b80c8d",
+    "src/lgp/runners/vcsf_final_budget_contract.py": "4c8efb392af41ec3d8278021f37bea213403d88d8c2a596e7d092f639984a8cc",
+    "src/lgp/runners/vcsf_final_budget_group.py": "ea126e744c5d03feb026cf845a0a08ef3dcd782bedfb6048ecefbe0bb9d9ecd3",
+    "src/lgp/runners/vcsf_final_followup_dispatch.py": "3ef57e4a58965b4a775ac867d2ad1659613ee8f87306c1e35db88dd3c8e257c8",
+    "src/lgp/runners/vcsf_final_followup_execution_contract.py": "6f26599ed71f32e2e8968b682227fdf51f5e8c4503eaca4956420c87a23337da",
+    "src/lgp/runners/vcsf_final_followup_inputs.py": "7328a8f7fcecf20d3ca10fc46c57e3682af9a2caf6552a656739a09adee83626",
+    "src/lgp/runners/vcsf_final_followup_method.py": "e5107f96a807e72c7f304e0fc31359f670c96ff9f2da2674cf08ec08e1d4c7a0",
+    "src/lgp/runners/vcsf_final_followup_plan.py": "86fcd194bd4f53e159e88154d5f2fa17ef40208a6f60fddf81df23e3ee315304",
+    "src/lgp/runners/vcsf_final_followup_records.py": "e57bad2caeda141f259cfe1a557fb9e8e6f2690fcba577884112579e43e16f14",
+    "src/lgp/runners/vcsf_final_followup_successor_admission.py": "e99ae2c71a3312070fb1839646c66f933c5e7aaf04bf0d358064fd26ee58a1f7",
+    "src/lgp/runners/vcsf_final_followup_successor_contract.py": "dd7a0e1fc29c8a44b0d95069ea4bc39225e2520e730d570a701d9ae201e38073",
+    "src/lgp/runners/vcsf_final_followup_successor_coordinator.py": "c58b6e573b452f8b71afafe6449507124f2354f2ce0fd84515dbf60f27bae7f1",
+    "src/lgp/runners/vcsf_final_followup_successor_runtime.py": "cd27aebe1d895502b30a693336762a069029f8d14574f8c8c809d95ca3decab8",
+    "src/lgp/runners/vcsf_final_followup_worker.py": "1b7f0bf9cc5872366caa3ee1e39271520b1177f6cc6ac1df42f262da4ee6373d",
+    "src/lgp/runners/vcsf_final_oblivious.py": "a9a26041999f1f43adbc1b2de249eceaafdb0ea44e036bde2951924cd72c480a",
+    "src/lgp/runners/vcsf_final_oblivious_contract.py": "a579bab4d5465bbe3ecadda5fabbd86582aa0a1e36abb4ddca9e3e3737e0275e",
+    "src/lgp/runners/vcsf_final_oblivious_views.py": "0969fae5ee3287a1618f080c7f925ff858f1dd1f4dc2520d39cc7a868e3c2778",
+    "src/lgp/runners/vcsf_final_training_state.py": "385ad2a87c984a3613884308560e540860eb889866733dfa340209eb6b4bfa1b",
+    "src/lgp/runners/vcsf_final_training_state_contract.py": "247e3518cdfe2e9f75031cfffb55ed43f2ae6652ed8c43b2abbd924b68aac593",
+    "src/lgp/runners/vcsf_gpu_context_owner.py": "551b43dccf27993818d9eff7dfc0524adf9e7ffcbd3dc5e9284c3134de420083",
+    "src/lgp/runners/vcsf_layered_contrasts.py": "8007dbab30715d58c4dc38ad592b7b31f7e3560f15f543642826c042b33aad53",
+    "src/lgp/runners/vcsf_layered_preflight.py": "30b273ae90519e2d471bbcdd84fa0ffd3d7ac9799c05973203ecc2cff557fd45",
+    "src/lgp/runners/vcsf_oblivious_admission.py": "4ba70c0e5d58bd4b92c16ea17df0c1d0afd9d43e8417657761f0d989732caec8",
+    "src/lgp/runners/vcsf_operator_execution_contract.py": "0b4f8d4c739377633bae605359797f18de372866449331e600255d4f06cbfdda",
+    "src/lgp/runners/vcsf_operator_factorial_plan.py": "9e95b1a76a70c03b843770546be40608c75264151ed2a4de793b0cb415fe6121",
+    "src/lgp/runners/vcsf_operator_input_consumer.py": "eb49ea162a5e05e0d569f1eee2937d837db70aaff67b02bc535ab6f969e4bfbc",
+    "src/lgp/runners/vcsf_operator_numerical_mapping.py": "793b5072223319e21796c02a4953f4c20eab9c5c212ad6e1c44339d4973c45c5",
+    "src/lgp/runners/vcsf_operator_reuse.py": "de1f8528a281d3c769996c15859df6d389780a93e83b2f31abef4c878430535e",
+    "src/lgp/runners/vcsf_operator_reuse_audit.py": "c409bef97892bd4b9f61e1bced62efd63076dc298bb9810c3a4f93a257838762",
+    "src/lgp/runners/vcsf_operator_reuse_contract.py": "86711fd98883ed7881fd85c03f8c23c59d282adfb52d36f0bbee72a7ec7f25e3",
+    "src/lgp/runners/vcsf_operator_runtime_inputs.py": "45f8e2a46334400c6fc027bf503e882680a115de28c85068afa9dfb23ad45737",
+    "src/lgp/runners/vcsf_producer_verification.py": "d7a21b0021c22334cffc27d724fee16eaf69739b8e1cbb776ba8c58aeedad860",
+    "src/lgp/runners/vcsf_public_execution.py": "05f76d761142e3faac0280cc25e57f25378acfab50a6695355ec5fb5c31f037c",
+    "src/lgp/runners/vcsf_research_plan.py": "5a42b85eabbf9579e50adec1ec306a30654f05a2ea127ab959ab7f97d677a413",
+    "src/lgp/runners/vcsf_scale_execution_contract.py": "97e865382b13319fbc057192d9c98bbb48bfc953d72a8bd43be2be411a1d437d",
+    "src/lgp/runners/vcsf_scale_plan.py": "32b4a669144f8446df246df5a718368693cb7e8f8dceb7949dd912a3aa32f996",
+    "src/lgp/runners/vcsf_scale_point_stage.py": "cf5e8906307f773fbf9c5739e3dfc2dfd0f536bb69ef718c40ee40d74fb49e1e",
+    "src/lgp/runners/vcsf_scale_stage_transition.py": "639a503264aa8b37c116eeb37960c123ad1d92369a23e6aeced80dd49a293018",
+    "src/lgp/runners/vcsf_scale_width_transition.py": "85b6605886548c9a614a28b508929647739e8723932d3de1c6a54c80a24a47ea",
+    "src/lgp/runners/vcsf_selected_a23_owner.py": "5d498bfd0bf7bebaac9941b73ab86d1fabeb259dc5c329083b52d2ae1ad3f08a",
+    "src/lgp/runners/vcsf_selected_a23_plan.py": "86655c202035eb623c4a83539b1456c0035e30cf8f8cdb960335cb5379c56e77",
+    "src/lgp/runners/vcsf_stage_evidence.py": "c3ac50e1a80a2e6bf6293e8824d746136f534133a0d193615a5bf07279888856",
+    "src/lgp/runners/vcsf_structure_workers.py": "bca21809cb83a71e98be234ec0bd87d7cb47268280a7b7198e9cc032756b4faa",
+    "src/lgp/runners/weights.py": "ebe5a15668b63148869657b12ce87c47ef6fb76175a145de2dd54c11115dcc49",
+    "src/lgp/runtime_config.py": "4ad2812588ac7b7eb79909a0efae3143e84275a68562def5d48fa7df5e6f989b",
+    "src/lgp/training_artifacts.py": "fd2554e723742a5678cfebe640d0d3bb5bac2968728f3bff07203704547e6a41",
+    "src/lgp/training_diagnostic.py": "78312dc65fa75ee262a264eaed9978652fe27cf5f475e2af31503a881c9a1364",
+    "src/lgp/training_hooks.py": "b5788804fe9e4954faee78aabb7cd44850694cca0545c9f7d9e51d64c3322590",
+    "src/lgp/training_state.py": "266c1d3a3e5b38e64ed9ecb453f53e2afcdcb819551207ad0648eeb063d1ae68",
+    "src/lgp/visualization.py": "0d0f2cbc440f589a4f91777b2ac71ae1021186f4a163418f493dd1e8a99adfe9",
+    "tests/test_prediction_caption_layout.py": "1c8c492ab3cbc2f73d08c8be8c972432ee2ac95027bd6d60b601e477d7ad09e5",
+    "tests/test_public_package_closure.py": "7fa47844c923904af5b5416cfa894219f806aa1ea877f77bd132720e8765b9eb",
+    "tools/audit_vcsf_budget_group.py": "7633ec23c88e7c791cc37e3baa1b4ac280dc0a51e96bd978d59642a12a6cf317",
+    "tools/audit_vcsf_core_points.py": "636d687cbb62f98cd95ee096bacec60141bbacea8154c22d603398042d5413d8",
+    "tools/audit_vcsf_cpu_analysis.py": "561f8e4755181a01ecc268279f7f5e8176bfc2b85498d21df9d104c2f43a305e",
+    "tools/audit_vcsf_layered_reuse.py": "dfaea981e6e3276dd1b583522489a0f7381cbd8ba70b8f90147db39c0107e412",
+    "tools/audit_vcsf_operator_readiness.py": "b69bd3c0a0d3a58ad647d9b3d956f14c71252222bfaf6d3500a1ad5e56273d3b",
+    "tools/audit_vcsf_operator_runtime_readiness.py": "6b9cb6f4714890c259d060b8271139f4568b0c275e4ef578f113e9b260b296ab",
+    "tools/bind_vcsf_radius_evaluators.py": "a029d7f025f3ccd1e83e63a03264a40e1787f0041d7fd2d4fe21831a0b27c35b",
+    "tools/preflight_vcsf_archived_bootstrap.py": "4fd1a0e71846615f28abde5a87c39b4be96541bcab3c2c6cff33e832c964bf93",
+    "tools/run_finetune_dual_queue.py": "6e1baaac30bf1704491f4cf2e28dda480f40f9ffe2f0bd36d584a0d8622220e6",
+    "tools/run_finetune_queue.py": "e95dab9531b2ea943d6c105c52bf2fdd7d4ce4b9ffdbb62746b06890a405a10e",
+    "tools/run_prepare_vcsf_final_followup_inputs.py": "036479b06512865eccef0850baf4bd7ee45fe54af486007522fd595d5d474169",
+    "tools/run_vcsf_core_points.py": "d58831b78d2d6e2a24d901d0c5c9da26b3e1d10eea4eecc2861d58d11ccbd721",
+    "tools/vcsf_final_followup_asset_inputs.py": "4ea53c05feef33b08ed1cc3f4907874804ee6f6a71da246d54a65e8a67301586",
+    "tools/vcsf_final_followup_bound_dispatch.py": "b793e95c1e9ff6e4dfe33dc7accd99fb7ee6e5ebc3b6e956844480124b9db00a",
+    "tools/vcsf_final_followup_completed_group.py": "d085964753731fe92c63ca1b6fb016685792f1cd2b6444f4d52738165adc7598",
+    "tools/vcsf_final_followup_group_inputs.py": "8d891d9439c56ece9c35148ee59db9412696b0efa84942b6b1c2d47527ce5867",
+    "tools/vcsf_final_followup_group_qualification.py": "290e4b14126c816644e72b42753e311b574113663f75fc01571551452b17ff49",
+    "tools/vcsf_final_followup_record_binding.py": "8fbf04fc4c6e3efc5080f50d79a530ce58fc64cef9c588915e38ae753a30acf6",
+    "tools/vcsf_final_followup_result_inputs.py": "16d4917867684ec9dab2669228780a1ee7d5eb8bac46aa7f9dd56aa94703f2e8",
+    "tools/vcsf_final_followup_result_replay.py": "23e1a4255222c8fd8f36e7ed90bb62e450adf8ee5f2d6503a692a21623d72cd2",
+    "tools/vcsf_final_followup_successor_bound_dispatch.py": "844928d3d1780bec191662fdbb106c419abe6f1a9416a38ffd549a7044376520",
+    "tools/vcsf_final_followup_successor_partition.py": "e918985f83e3db490c65fbb207b6fbdc018140035ef3a753034671e0a11bca04",
+    "tools/vcsf_final_followup_terminal_audit.py": "04708e7122e674d1535eaa9ae3f49c4fdc6c17477ce0ebf65e958120e1f4ea97",
+    "tools/vcsf_followup_stop_evidence.py": "9db51be4f52e677f49500a7ca2afff764502e5e10f5119636b2a80c6440af38a",
+    "tools/vcsf_successor_evidence.py": "df7adf6a4d75acaafd9ee878f5ee6197a9c239aaec59a7082ac5bba74f7bc813",
+    "vcsf-current-scientific-identity.json": "41e52bc3b4cf40f6f9e7309901da73cb245cfbaef0f637c2d962420737778191",
+    "vcsf-scientific-identity.json": "d4009991c41888fe6e4ce7317e48a4ff2db1488af433446c41c62911c3991c3e",
+    "vcsf-selection-status.json": "5e7f29526b4f827f0db035245f8173bc87ce9a21ecf715fe1b8688785ead1a25"
+  },
+  "whole_old_freeze_equivalence_claimed": false
+}

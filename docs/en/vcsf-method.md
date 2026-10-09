@@ -69,9 +69,10 @@ DINO is excluded from attack generation, not from offline COCO configuration
 selection. It is not an untouched independent selection holdout. Historical
 A01 ablations and seed results remain tied to their original background.
 
-The internal A10 result families and public source candidate have separate
-scoped acceptance records. This metadata package neither replaces those
-records nor contains their executable reproduction or raw result tables.
-It grants no project-wide software license and makes no full public-release
-or all-entry native GPU validation claim. Current datasets are COCO and VOC;
-BDD100K is not a remaining experimental or release dependency.
+The internal A10 result families and the public source distribution have separate
+scoped acceptance records. This method description does not replace numerical
+records or raw result tables. Executable reproduction is provided through the
+[current source guide](../../README.md); the current licence grant is specified
+in [the licence scope](../licensing/license-scope.md). Source publication does
+not create new numerical or all-entry native GPU validation acceptance. Current
+datasets are COCO and VOC; BDD100K is not a remaining experiment dependency.
