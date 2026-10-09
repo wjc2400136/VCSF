@@ -19,8 +19,8 @@
   "hash_encoding": "SHA256 of UTF-8 json.dumps(sort_keys=True,separators=(',',':'),allow_nan=False)",
   "scientific_selection_closed": true,
   "source_configuration_freeze_sha256": "835ecf45606670c9f92e34caf7a8c42e1e5b89119c0adc273ec1afff445fbb2f",
-  "qualified_public_source_candidate_manifest_sha256": "6cab0ea18b778f19cf38d0353c78d9bf71f41c66e8b8e062f5198399a0cc0774",
-  "current_source_candidate_acceptance_sha256": "ae8fb8b94fbfb0f6ab0449a4538a6c955f05f0db7d8cdcecc4bb27edadf1d193",
+  "qualified_public_source_candidate_manifest_sha256": "0a00da25039f88fbac336bcd8f85c5edeb830947a24027ff14594bdff1d432f0",
+  "current_source_candidate_acceptance_sha256": "4d2ebd77cea4536e35643e1c228387ab177f481600a7fab48168edd418fab3fd",
   "scope": {
     "scientific_and_source_identity_metadata_only": true,
     "contains_executable_source": false,
@@ -30,5 +30,9 @@
     "confers_execution_admission": false,
     "establishes_third_party_rights_clearance": false
   },
-  "provenance_boundary": "Numerical source hashes and parameters identify the current A10 candidate. Full inputs, runtime, checkpoints and scoped result acceptances are bound by their original records, not by this projection alone."
+  "provenance_boundary": "Numerical source hashes and parameters identify the current A10 candidate. Full inputs, runtime, checkpoints and scoped result acceptances are bound by their original records, not by this projection alone.",
+  "current_source_candidate_acceptance_scope": "Documentation-only successor with unchanged executable,configuration,numerical and provenance source members; earlier source qualification is reused,not reissued.",
+  "parent_source_candidate_acceptance_sha256": "ae8fb8b94fbfb0f6ab0449a4538a6c955f05f0db7d8cdcecc4bb27edadf1d193",
+  "parent_qualified_public_source_candidate_manifest_sha256": "6cab0ea18b778f19cf38d0353c78d9bf71f41c66e8b8e062f5198399a0cc0774",
+  "current_public_source_package_freeze_sha256": "346075575209116cac08735c5b4286b2cf6aba4c113d6f2946b6444ee9e6e7fc"
 }

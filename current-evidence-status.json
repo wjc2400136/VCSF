@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "record_type": "accepted_evidence_and_delivery_status_metadata_only",
+  "method_name": "VCSF",
+  "current_configuration": "A10",
+  "datasets": [
+    "COCO",
+    "Pascal VOC"
+  ],
+  "corrected_LGP_radius": {
+    "protocol": "lgp_corrected_coco_multi_budget_linf",
+    "dataset_split": "COCO val2017",
+    "images_per_source_radius": 5000,
+    "sources": [
+      "faster_rcnn_r50",
+      "mask_rcnn_swin_t"
+    ],
+    "targets_per_source_radius": 16,
+    "epsilon_order": [
+      "2/255",
+      "4/255",
+      "8/255",
+      "16/255",
+      "32/255"
+    ],
+    "logical_result_cells": 160,
+    "nonreference_logical_cells": 128,
+    "exact_reused_reference_cells": 32,
+    "standard_metrics_per_cell": 12,
+    "full_numeric_input_accepted": true,
+    "manuscript_comparison_and_affected_claims_accepted": true,
+    "historical_LGP_relabelled": false,
+    "stress_radius": "32/255",
+    "records_sha256": "63af9085f125008be20bdc09d293b9495f77a883846c76216d59b0d73eee818a",
+    "numeric_summary_sha256": "64ba97f47234cb56a293bd034b2eea9600a876743cb648ebbfed9ea4fad683a7",
+    "comparison_scope": "Two separate single-source attacks; means exclude the source-matched target before equal-source aggregation. Not six-source radius generalization or strict physical-compute matching."
+  },
+  "declared_device_dispatch": {
+    "accepted_at_declared_roles": true,
+    "declared_paths": 37,
+    "independent_GPU_paths": 10,
+    "shared_scheduler_thin_wrappers": 16,
+    "CPU_only_paths": 6,
+    "support_paths": 5,
+    "minimum_actual_path_gaps": [],
+    "acceptance_sha256": "5e9fdc57ba7662e4f2f0ed241e68855b609c1e7e2de2a1c6f607dab571cabb94",
+    "all_default_native_studies_or_CLI_options_qualified": false,
+    "bounded_VOC_diagnostic": {
+      "single_and_dual_modes_accepted": true,
+      "models": 2,
+      "training_image_IDs": 2,
+      "jobs": 4,
+      "registered_epochs_per_job": 12,
+      "optimizer_steps_total": 72,
+      "formal_validation_attached": false,
+      "full_training_and_sixteen_checkpoint_panel_qualified_by_this_diagnostic": false,
+      "acceptance_sha256": "058f24ce00e3c1f6b67c36fae402d5cf236203d41949cb7d132742298f777eb9"
+    }
+  },
+  "working_manuscript": {
+    "revision": "corrected-radius-integrated-working-manuscript",
+    "pages_including_references": 30,
+    "references": 44,
+    "previously_verified_Pattern_Recognition_references": 5,
+    "all_pages_rendered": true,
+    "actual_source_archive_rebuilt": true,
+    "retained_claim_scope_review_accepted": true,
+    "ready_for_author_final_confirmation": true,
+    "final_submission_or_whole_goal_accepted": false,
+    "manuscript_source_sha256": "0248ef30235746e0b9bd032a34ecf5f1c4fb005cba2f4634c9f63cdba574a86a",
+    "acceptance_sha256": "e0902f942c3d97fac8a1a2be1824d0bd595b7d3806949bacafcf6e80a8c3e25c",
+    "public_manuscript_or_figure_copy_included": false
+  },
+  "documentation": {
+    "bilingual_guide_status_corrections": 16,
+    "other_source_members_unchanged": 333,
+    "commands_configuration_results_and_method_unchanged": true,
+    "acceptance_sha256": "4d2ebd77cea4536e35643e1c228387ab177f481600a7fab48168edd418fab3fd"
+  },
+  "distribution_boundary": {
+    "documentation_and_metadata_only": true,
+    "contains_executable_source": false,
+    "contains_raw_results_or_private_receipts": false,
+    "complete_software_release": false,
+    "project_source_license_granted": false,
+    "third_party_redistribution_cleared": false,
+    "confers_new_execution_admission": false,
+    "author_boundary_sha256": "f5e25d3da582d42ed807289202e254fa79c2b1b10811e873324237c5b33993af"
+  },
+  "original_evidence_and_failed_roots_preserved": true,
+  "hashes_are_references_not_standalone_acceptance_certificates": true
+}

@@ -1,9 +1,9 @@
 {
-  "schema_version": 2,
-  "publication_scope": "project_documentation_and_current_A10_scientific_identity_metadata",
+  "schema_version": 3,
+  "publication_scope": "accepted_documentation_and_current_identity_evidence_status_metadata_only",
   "software_release": false,
   "project_license_granted": false,
-  "previous_public_commit": "94ea994f847ef56f4ec2b2319c5e72f9065f3333",
+  "previous_public_commit": "8678b40cc779577c26f2e428d3d627f234da0799",
   "preserved_historical_files": [
     "vcsf-scientific-identity.json",
     "historical-implementation-inventory.json",
@@ -12,28 +12,18 @@
   "files": [
     {
       "path": "README.md",
-      "sha256": "03b08c9c7e53c65aea3d73e745b2e15becd1d426149ba340ddfd3ca7adb3fd41",
-      "bytes": 4831
+      "sha256": "c9be89fbdb328fa4b8961c5a2d7292a4fcbe0f3ea6972850142886b43dd3a0e8",
+      "bytes": 5282
     },
     {
       "path": "README.zh-CN.md",
-      "sha256": "635c1fb5c2e85771387ac0dc3cffb3006ee9d4724302b2fad9e0dd9bd8ebc6a0",
-      "bytes": 3957
+      "sha256": "af37a40f6644cc6ac97ee33823571892ae4c455e1047647b9e57bc63ad388bb9",
+      "bytes": 4327
     },
     {
-      "path": "vcsf-selection-status.json",
-      "sha256": "5e7f29526b4f827f0db035245f8173bc87ce9a21ecf715fe1b8688785ead1a25",
-      "bytes": 4615
-    },
-    {
-      "path": "vcsf-scientific-identity.json",
-      "sha256": "d4009991c41888fe6e4ce7317e48a4ff2db1488af433446c41c62911c3991c3e",
-      "bytes": 3532
-    },
-    {
-      "path": "historical-implementation-inventory.json",
-      "sha256": "df4ea2ff43f62d126edaca04ba53168dd7ab4f8fe0e1c6ecabf297d46ffd7c3e",
-      "bytes": 36244
+      "path": "current-evidence-status.json",
+      "sha256": "25976e6ea336796c9d2d5d2fdc132b8ffe094dca71c661f2f7d43cae332cdd02",
+      "bytes": 3728
     },
     {
       "path": "docs/en/vcsf-method.md",
@@ -41,19 +31,34 @@
       "bytes": 4432
     },
     {
+      "path": "docs/history/previous-a23-selection-status.json",
+      "sha256": "aa6569c1ec69d5673822a50203256ed60971ffeb8f5b2ef69316836651e3fd0a",
+      "bytes": 2181
+    },
+    {
       "path": "docs/zh_CN/vcsf-method.md",
       "sha256": "d3202eb6ddec522476d892457162c0860e75ae44976c1b2779e8f906b70a8e3f",
       "bytes": 3713
     },
     {
-      "path": "vcsf-current-scientific-identity.json",
-      "sha256": "2e8f7dff200104e4195ca1c7a6157af5724461ce475949b52fb6c221281649c1",
-      "bytes": 2449
+      "path": "historical-implementation-inventory.json",
+      "sha256": "df4ea2ff43f62d126edaca04ba53168dd7ab4f8fe0e1c6ecabf297d46ffd7c3e",
+      "bytes": 36244
     },
     {
-      "path": "docs/history/previous-a23-selection-status.json",
-      "sha256": "aa6569c1ec69d5673822a50203256ed60971ffeb8f5b2ef69316836651e3fd0a",
-      "bytes": 2181
+      "path": "vcsf-current-scientific-identity.json",
+      "sha256": "41e52bc3b4cf40f6f9e7309901da73cb245cfbaef0f637c2d962420737778191",
+      "bytes": 3024
+    },
+    {
+      "path": "vcsf-scientific-identity.json",
+      "sha256": "d4009991c41888fe6e4ce7317e48a4ff2db1488af433446c41c62911c3991c3e",
+      "bytes": 3532
+    },
+    {
+      "path": "vcsf-selection-status.json",
+      "sha256": "5e7f29526b4f827f0db035245f8173bc87ce9a21ecf715fe1b8688785ead1a25",
+      "bytes": 4615
     }
   ],
   "manifest_self_hash_excluded": true
