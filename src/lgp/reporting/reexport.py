@@ -199,7 +199,8 @@ def _radius_export(registry, output, radius_plan, bindings, snapshots):
     return output
 
 
-def reexport_saved_reports(registry, run, output, *, plots=False, native_counts=False):
+def reexport_saved_reports(registry, run, output, *, plots=False, native_counts=False,
+                          allowed_protocols=None):
     run, output = Path(run).resolve(), Path(output).resolve()
     if output.exists():
         raise FileExistsError("Report export needs a fresh output directory")
@@ -211,6 +212,8 @@ def reexport_saved_reports(registry, run, output, *, plots=False, native_counts=
             raise ValueError("Report output overlaps a protected project tree")
     bindings, snapshots = [], {}
     plan = _read(run / "plan.json", bindings, snapshots) if (run / "plan.json").is_file() else {}
+    if allowed_protocols is not None and plan.get("protocol") not in allowed_protocols:
+        raise ValueError("This public report entry accepts only saved COCO/VOC main runs")
     if plan.get("protocol") == "current_paired_cost":
         if plots or native_counts:
             raise ValueError("Paired-cost input uses saved plan/summary, not scalar AP plots or native image archives")
@@ -341,10 +344,10 @@ def reexport_saved_reports(registry, run, output, *, plots=False, native_counts=
     return output
 
 
-def main(argv=None):
+def main(argv=None, *, allowed_protocols=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run", type=Path, required=True,
-                        help="Immutable saved records run, or current_paired_cost plan/summary run")
+                        help="Immutable saved records run with its original plan.json")
     parser.add_argument("--output", type=Path, required=True, help="New, non-overlapping report directory")
     parser.add_argument("--registry-root", type=Path, help="Read-only frozen registry/source root; defaults to this project")
     parser.add_argument("--plots", action="store_true", help="Render CPU PNG/PDF from saved scalar records only")
@@ -352,6 +355,7 @@ def main(argv=None):
     args = parser.parse_args(argv)
     from ..registry import Registry
     result = reexport_saved_reports(Registry(args.registry_root), args.run, args.output,
-                                   plots=args.plots, native_counts=args.native_counts)
+                                   plots=args.plots, native_counts=args.native_counts,
+                                   allowed_protocols=allowed_protocols)
     print("[OUTPUT] " + str(result), flush=True)
     return 0

@@ -46,11 +46,11 @@ EXTERNAL_ROOTS = frozenset((
     "mmcv", "mmengine", "mmdet", "mmyolo", "setuptools", "urllib3", "pycocotools",
 ))
 MANDATORY_ENTRIES = (
-    "experiments/all_method_ablations.py", "experiments/coco_all_methods.py",
-    "experiments/extended_transfer.py", "experiments/naa_experiments.py",
-    "experiments/visualize_predictions.py", "experiments/voc_transfer.py",
-    "experiments/main_transfer.py", "experiments/coco_training_state_pair.py",
+    "experiments/clean_map.py", "experiments/finetune_voc.py",
+    "experiments/main_transfer.py", "experiments/qualify_vcsf_a10_public.py",
+    "experiments/reexport_saved_reports.py", "experiments/verify_public_package.py",
 )
+ENTRY_SUPPORT_FILES = ("experiments/_common.py", "experiments/visualization_settings.py")
 DYNAMIC_FILES = {
     "src/lgp/runners/finetune.py": ("tools/run_finetune_dual_queue.py", "tools/run_finetune_queue.py"),
     "tools/run_finetune_dual_queue.py": ("tools/run_finetune_queue.py",),
@@ -322,9 +322,11 @@ def verify_package(root):
             and {p: h for p, h in files.items() if p.startswith("configs/")} == configuration,
             "Original configuration meanings or bytes changed")
     entries = manifest["active_entrypoints"]
-    require(type(entries) is list and len(entries) == len(set(entries))
-            and set(MANDATORY_ENTRIES) <= set(entries) and all(e in files for e in entries),
-            "Maintained entry set was reduced")
+    require(type(entries) is list and entries == list(MANDATORY_ENTRIES)
+            and all(e in files for e in entries), "Public main-only entry scope drifted")
+    require({p for p in files if p.startswith("experiments/")}
+            == set(entries) | set(ENTRY_SUPPORT_FILES),
+            "Public experiment tree contains an out-of-scope entry")
     verify_imports(root, files, manifest["runtime_file_dependencies"])
     freeze = read_json(root, FREEZE)
     expected = dict(schema=manifest["schema"], source_manifest_sha256=canonical(files),

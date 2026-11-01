@@ -1,91 +1,91 @@
-# VCSF COCO 与 Pascal VOC 复现源码
+# VCSF：COCO 与 Pascal VOC 主实验复现
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-这个轻量源码分发维护 COCO 与 Pascal VOC，保留最终 A10 的九个数值源码、
-完整参数与实际 MRO、corrected-LGP source201、规范十六目标及六个独立源。
-BDD100K 执行已经取消；其声明和退休 SVFTA 的必要依赖仅供内部兼容性读取，
-不是维护实验项目。
+本公开源码包**只提供 COCO/VOC 主比较及必要准备**，包含选定 A10 VCSF、
+corrected-LGP source201、已注册比较方法、六个独立源、十六目标、数据/检查点
+准备和记录生成的报告。
 
-项目自有源码及配套自有源码指南采用 **GPL-3.0-only**，见
-[LICENSE](LICENSE)、[许可证范围](docs/licensing/license-scope.zh-CN.md)和
-[第三方声明](THIRD_PARTY_NOTICES.zh-CN.md)。保留的上游条款仍然适用。
-源码分发不产生新的数值接受，也不表示整个研究目标完成；原六份选型/provenance 文档保持原样。
-[包身份指南](docs/public-package-identity.zh-CN.md)说明新的源码闭包身份，
-不宣称与旧作者全树 freeze 等价。
+作者本地 **ODA 学院工程**范围更广。预处理、训练状态、半径/敏感性/消融、
+独立成本、单独定性图或白盒研究、私有结果及稿件版本，不再作为本仓库公开
+实验入口。收窄公开面不删除本地保留研究。
 
-## 前提与源码检查
+项目自有公开源码/指南采用 **GPL-3.0-only**，保留第三方条款，见
+[LICENSE](LICENSE)、[授权范围](docs/licensing/license-scope.zh-CN.md)、
+[第三方声明](THIRD_PARTY_NOTICES.zh-CN.md)。它不授权数据、权重、论文素材或
+私有记录，也不产生科学验收。
 
-从项目给出的 GitHub 页面选择 **Code > Download ZIP** 并解压，或使用已有 checkout。
-在含有 `environment.yml`、`pyproject.toml`、`experiments/` 和 `src/` 的仓库根目录
-打开终端。新机器需要 Conda、下载依赖/数据/权重的网络连接、足够磁盘空间和
-兼容 CUDA 11.8 栈的 NVIDIA 驱动。
+## 从零开始
 
-执行使用 Linux 与固定 Conda 环境 `oda`：Python 3.8.20、PyTorch 2.0.0+cu118、
-torchvision 0.15.1+cu118、MMCV 2.0.1、MMEngine 0.7.4、MMDetection 3.0.0、
-MMYOLO 0.6.0。其余依赖见[锁定清单](requirements/locked-cu118.txt)。
-仅在 `oda` 尚不存在时创建环境：
+[环境指南](docs/environment.zh-CN.md)包含 Git/ZIP 获取、Conda、Linux/PowerShell、
+固定依赖与恢复。GPU 以兼容 NVIDIA 驱动的 Linux 为维护目标。在源码根目录，
+仅当 `oda` 不存在时执行：
 
 ```bash
 conda env create -f environment.yml
 ```
 
-已有固定 `oda` 时只需激活，不重建或独立升级组件。本直接入口流程使用
-`PYTHONPATH`，不要求 editable 安装。禁止安装 `mmcv-full==1.7.2`、`mmcv-lite`
-或 MMDetection 2.x，也不能独立升级 OpenMMLab 组件、添加会遮蔽已安装包的
-顶层源码副本。安装失败时保留错误日志，核对固定 wheel 和驱动要求。
-以下命令在仓库根目录运行，源码检查无需数据或权重：
+然后激活，不重建或升级已有合格环境：
 
 ```bash
 conda activate oda
 export PYTHONPATH="$PWD/src"
-python -m lgp --help
 CUDA_VISIBLE_DEVICES="" python experiments/verify_public_package.py --plan-only
 CUDA_VISIBLE_DEVICES="" python experiments/qualify_vcsf_a10_public.py --plan-only
+python -m lgp models list
+python -m lgp compatibility
 python experiments/main_transfer.py --help
-python experiments/main_transfer.py --plan-only --datasets coco,voc --devices cuda:0,cuda:1
+python experiments/main_transfer.py --plan-only --datasets coco,voc --devices cuda:0
 ```
 
-成功条件是源码检查退出码为零、完整 manifest 匹配、计划列出预期全工作集。
-CPU 检查和计划不等于 GPU 执行或正式 mAP 接受。
-`--devices cuda:0` 串行同一工作集；双卡调度独立完整任务，不使用 DDP 或显存池化。
-所选设备须真实可用，每张卡分别容纳其任务。已有一/双卡接受仅覆盖指南说明的范围，
-不构成全项目发布。
+核心固定为 Python 3.8.20、PyTorch 2.0.0+cu118、torchvision 0.15.1+cu118、
+MMCV 2.0.1、MMEngine 0.7.4、MMDetection 3.0.0、MMYOLO 0.6.0，按
+[完整锁定依赖](requirements/locked-cu118.txt)安装，不单独升级组件。
+不需要可编辑安装或破坏性重建环境。
 
-## 复现指南
+源码检查和计划不使用数据/模型/AP，不证明 GPU 运行合格；计划可能写新输出
+叶目录，执行前要看完整任务集。双卡可用时选 `--devices cuda:0,cuda:1`，
+单卡串行同一工作集，不引入 DDP、源集成、显存合并，不承诺固定两倍加速。
 
-- [数据准备与校验](data/README.zh-CN.md)、[检查点](checkpoints/README.zh-CN.md)、[输出](outputs/README.zh-CN.md)。
-- [COCO/VOC 主实验](docs/current-public-reproduction.zh-CN.md)：默认十方法，NAA 和 Corrupting Attention 仍可选择。
-- [固定预处理](docs/current-preprocessing-reproduction.zh-CN.md)、[自适应/BPDA](docs/current-adaptive-preprocessing-reproduction.zh-CN.md)。
-- [训练状态评估](docs/current-training-state-reproduction.zh-CN.md)、另行[受控训练对训练](docs/current-training-pair-reproduction.zh-CN.md)。
-- [最终背景控制](docs/current-vcsf-background-reproduction.zh-CN.md)、[A10 半径](docs/current-vcsf-radius-reproduction.zh-CN.md)、[配对成本](docs/current-paired-cost-reproduction.zh-CN.md)。
-- [离线定性图](docs/current-qualitative-reproduction.zh-CN.md)、[在线预测可视化](docs/prediction-visualization-device-interface.zh-CN.md)。
-- [可选白盒诊断](docs/current-whitebox-reproduction.zh-CN.md)、[已保存报告导出](docs/saved-report-export.zh-CN.md)、[调度证据](docs/current-dispatch-evidence.zh-CN.md)。
+## 准备、执行与恢复
 
-保留基线包装入口，以及 `all_method_ablations.py`、`coco_all_methods.py`、
-`extended_transfer.py`、`naa_experiments.py`、`visualize_predictions.py`、
-`voc_transfer.py`。有意执行前逐项检查 `--help` 与 `--plan-only`。
-随包提供不恢复退休 SVFTA 协议，也不要求重跑已接受矩阵。
-完整研究声明没有缩小；作者历史辅助模块不是新增 GPU 任务。
-正式运行不使用 `--max-images`，限图结果只作诊断。
+1. 按[COCO/VOC 数据指南](data/README.zh-CN.md)准备指定数据并深度验证。
+2. 准备[COCO 权重及合格 VOC 检测器](checkpoints/README.zh-CN.md)。
+3. 按[主实验指南](docs/current-public-reproduction.zh-CN.md)检查计划，按需要做
+   极小诊断，再有意启动不带 `--max-images` 的完整人群。
+4. 核对[不可变输出](outputs/README.zh-CN.md)及自动 CSV/TeX/图。
+   [保存主实验报告导出](docs/saved-report-export.zh-CN.md)不重跑模型或 AP。
 
-## 核验与恢复
+COCO 主实验使用全部 5,000 张 val2017；VOC 使用全部 4,952 张 VOC2007 test
+及其二十类专用权重。默认按论文顺序比较十方法，已注册的可选主比较行仍可
+选择。目标保持规范架构分组顺序，DINO 为留出目标，`BB Mean` 排除源匹配白盒目标。
 
-执行前准备数据 manifest 及严格的检测器检查点来源证据。
-VOC 必须使用本数据集检查点，不能借用 COCO 分类头。
-每次运行写入新的不可变输出叶目录；按对应指南检查计划、状态、记录及自动
-CSV/TeX/绘图输出。保留原始 JSON 精度和十二项指标。
-保留失败及部分原件，不覆盖、不合并不可变运行，也不因失去连接重复启动。
+## 公开入口
 
-源码守卫失败时停止依赖执行，将遗漏、篡改或多出的路径与 `public-package.json`
-逐项比较。恢复干净解压包，或另建经审查的新身份，不可静默刷新哈希。
-数据、权重、作者已接受结果和私有启动/审计历史不随包分发，也没有删除。
-本候选不自动继承结果、不发布检查点、不向外部上传。
+| `experiments/` 文件 | 职责 |
+| --- | --- |
+| `main_transfer.py` | COCO/VOC 主生成、干净/迁移评估和报告 |
+| `clean_map.py` | 独立干净基线准备/检查 |
+| `finetune_voc.py` | 注册的固定最终轮 VOC 检测器准备 |
+| `verify_public_package.py` | 无模型完整源闭包检查 |
+| `qualify_vcsf_a10_public.py` | CPU 上 A10 参数/工厂身份检查 |
+| `reexport_saved_reports.py` | 从已保存记录导出新标量报告 |
 
-## 证据与发布状态
+`_common.py`、`visualization_settings.py` 是入口支撑文件，不是额外实验。
+主实验可选的 NMS 后预测叠框保留。准备 CLI 限于 COCO/VOC，实验 CLI 仅接受
+`main_transfer`；不再提供公开 `data minimize` 或旧数据集 `all` 选择器。
 
-[当前证据状态](current-evidence-status.json)说明已接受的论文、corrected-LGP
-半径整合及设备验证范围。论文仍为修订工作稿，私有 Overleaf 同步已接受；
-本源码包不含论文照片副本或原始结果载荷。既有科学身份及历史清单 JSON 保留
-原始快照边界，其中旧的仅文档分发字段不是当前许可证决定；当前分发应查阅
-[许可证范围](docs/licensing/license-scope.zh-CN.md)与当前源码 manifest。
+## 身份与证据
+
+[完整源码清单](public-package.json)绑定当前文件集合。[身份指南](docs/public-package-identity.zh-CN.md)
+解释冻结配置/来源和必要祖先辅助代码为何仍作为内部依赖保留，而不是额外
+公开实验计划。九个数值核心文件、完整 A10 参数、规范模型/兼容注册表及六份
+来源文档不变。原始字节哈希要求 LF；不能静默刷新清单来绕过失败。
+
+[当前证据状态](current-evidence-status.json)将历史验收范围与本次收窄的软件
+界面分开。未变化的有界主实验/设备证据不证明全部默认完整任务或论文数值
+独立复现；发布源码不等于整个科学研究完成。
+
+失败/中断后保留原产物并核对进程归属，明确缺失子集后写新叶目录，不覆盖、
+不合并、不自动续跑。`NR` 是未运行，`ERR` 是失败，`--` 是审计后的结构
+不适用，均不是零。不为验证源码/文档改动而重跑合格基线。

@@ -8,7 +8,8 @@ and parameter SHA-256
 `2551944131096c1d74011f2eb8d789b858e6dce79748f5b5aada54ea18254328`.
 The recorded configuration selection is closed. The current numerical source
 identity is projected separately in [the A10 identity record](../../vcsf-current-scientific-identity.json).
-This documentation update does not publish the executable source or accept new results. The
+The current [source distribution](../../README.md) has its own complete manifest
+and licence scope; configuration selection alone does not accept new results. The
 earlier A01/common-group-26 identity is retained as historical evidence, not a
 second public method or a source of A10 results. The prior A23 record is retained
 unchanged in [the historical projection](../history/previous-a23-selection-status.json).

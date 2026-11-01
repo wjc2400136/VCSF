@@ -3,7 +3,7 @@
 [English](README.md) | [简体中文](README.zh-CN.md) | [项目首页](../README.zh-CN.md)
 
 在固定 ODA 环境、仓库根目录执行。本源码包没有作者结果载荷。
-按[主指南](../docs/current-public-reproduction.zh-CN.md)及对应主题指南检查
+按[主指南](../docs/current-public-reproduction.zh-CN.md)及检查点指南检查
 真实输出命名空间与成功条件。
 
 直接实验入口默认执行；`--plan-only` 不调用模型，但部分入口仍写入不可变计划叶目录。

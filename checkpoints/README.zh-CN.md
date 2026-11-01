@@ -2,7 +2,7 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md) | [项目首页](../README.zh-CN.md)
 
-先按[环境](../README.zh-CN.md)与[数据](../data/README.zh-CN.md)指南准备，
+先按[环境](../docs/environment.zh-CN.md)与[数据](../data/README.zh-CN.md)指南准备，
 所有命令从仓库根目录执行。[models.yaml](../configs/models.yaml)是唯一的
 十六检测器注册表、规范顺序及训练配方来源。COCO 使用官方 80 类权重；
 VOC 必须使用十六个各自微调的 20 类检测器，不能替换为 COCO head。
@@ -41,10 +41,8 @@ reference batch 不变。计划写入 `outputs/training/voc_finetuning/` 下的�
 两个独立模型（Faster R-CNN 与 Mask R-CNN Swin-T）、两个训练 ID、
 合计四个 job、每个 job 完成十二个注册 epoch，共 72 个 optimizer step，
 未附加正式验证集。这不构成完整 VOC 训练或十六检查点面板的资格。
-设备调度核对另行按角色接受全部 37 条声明路径，最小实际路径缺口已为空：
-10 条独立 GPU 路径、16 条共享调度器薄封装、六条 CPU-only 与五条支持路径。
-这不证明全部默认研究或每种 CLI 选项的原生 GPU 执行，也不构成科学接受、
-分发权利清除或全项目发布。
+较早的较宽调度核对是历史证据，不是当前仅主实验包的入口清单，不能证明
+所有默认任务、每种 CLI 选项均实际执行，也不构成科学接受。
 
 仅在实际设备／输入检查完成且确实决定新增训练后，选择下面**一种**模式。
 已有核验检查点应保留，不默认重训；`--frozen-existing` 接收要保留的

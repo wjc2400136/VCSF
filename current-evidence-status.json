@@ -28,6 +28,53 @@
     "targets_per_source_radius": 16
   },
   "current_configuration": "A10",
+  "current_public_distribution": {
+    "active_entrypoints": [
+      "experiments/clean_map.py",
+      "experiments/finetune_voc.py",
+      "experiments/main_transfer.py",
+      "experiments/qualify_vcsf_a10_public.py",
+      "experiments/reexport_saved_reports.py",
+      "experiments/verify_public_package.py"
+    ],
+    "authority": "explicit_owner_scope_selection",
+    "datasets": [
+      "coco",
+      "voc"
+    ],
+    "excluded_programmes": [
+      "preprocessing",
+      "training_state_studies",
+      "radius_and_sensitivity",
+      "control_ablations",
+      "separate_cost_benchmarks",
+      "standalone_qualitative",
+      "standalone_whitebox",
+      "retired_protocols"
+    ],
+    "historical_evidence_scope_reinterpreted": false,
+    "historical_inactive_entry_snapshot_references": [
+      [
+        "src/lgp/runners/adaptive_preprocessing_defense.py",
+        "experiments/coco_adaptive_preprocessing_defense.py"
+      ],
+      [
+        "src/lgp/runners/cost_calibration.py",
+        "experiments/vcsf_common2_cost_calibration.py"
+      ],
+      [
+        "src/lgp/runners/preprocessing_defense.py",
+        "experiments/coco_preprocessing_defense.py"
+      ]
+    ],
+    "immutable_configuration_and_ancestry_role": "internal_dependency_and_provenance_not_execution_admission",
+    "local_research_deleted": false,
+    "main_method_numerical_identity_changed": false,
+    "main_protocol": "main_transfer",
+    "new_GPU_execution_or_AP_result_claimed": false,
+    "parent_public_commit": "15cdaf6fb5cff6009e76553536529394309d08a9",
+    "scope": "coco_voc_main_comparison_and_necessary_preparation_only"
+  },
   "datasets": [
     "COCO",
     "Pascal VOC"

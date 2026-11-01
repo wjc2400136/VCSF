@@ -1,42 +1,11 @@
 {
   "active_entrypoints": [
-    "experiments/_common.py",
-    "experiments/adaptive_preprocessing_transfer.py",
-    "experiments/afog_experiments.py",
-    "experiments/all_method_ablations.py",
-    "experiments/augtrans_experiments.py",
     "experiments/clean_map.py",
-    "experiments/coco_all_methods.py",
-    "experiments/coco_training_state_pair.py",
-    "experiments/current_paired_cost.py",
-    "experiments/current_saved_qualitative.py",
-    "experiments/current_vcsf_final_background.py",
-    "experiments/current_vcsf_radius.py",
-    "experiments/extended_transfer.py",
     "experiments/finetune_voc.py",
-    "experiments/generate_reports.py",
-    "experiments/hifa_experiments.py",
-    "experiments/lgp_experiments.py",
     "experiments/main_transfer.py",
-    "experiments/mlfadv_experiments.py",
-    "experiments/naa_experiments.py",
-    "experiments/numbod_experiments.py",
-    "experiments/osfd_experiments.py",
-    "experiments/paper_experiment_catalog.py",
-    "experiments/preprocessing_transfer.py",
     "experiments/qualify_vcsf_a10_public.py",
     "experiments/reexport_saved_reports.py",
-    "experiments/render_qualitative_panel.py",
-    "experiments/sfim_experiments.py",
-    "experiments/tog_experiments.py",
-    "experiments/training_state_transfer.py",
-    "experiments/verify_public_package.py",
-    "experiments/visualization_settings.py",
-    "experiments/visualize_predictions.py",
-    "experiments/voc_transfer.py",
-    "experiments/whitebox.py",
-    "src/lgp/__main__.py",
-    "src/lgp/cli.py"
+    "experiments/verify_public_package.py"
   ],
   "base_freeze_sha256": "835ecf45606670c9f92e34caf7a8c42e1e5b89119c0adc273ec1afff445fbb2f",
   "candidate_only": false,
@@ -188,105 +157,19 @@
       "src/lgp/registry.py",
       "src/lgp/runners/experiment.py"
     ],
-    "experiments/adaptive_preprocessing_transfer.py": [
-      "experiments/visualization_settings.py",
-      "src/lgp/__init__.py",
-      "src/lgp/registry.py",
-      "src/lgp/runners/current_preprocessing.py"
-    ],
-    "experiments/afog_experiments.py": [
-      "experiments/_common.py"
-    ],
-    "experiments/all_method_ablations.py": [
-      "experiments/_common.py"
-    ],
-    "experiments/augtrans_experiments.py": [
-      "experiments/_common.py"
-    ],
     "experiments/clean_map.py": [
       "experiments/visualization_settings.py",
       "src/lgp/__init__.py",
       "src/lgp/registry.py",
       "src/lgp/runners/clean.py"
     ],
-    "experiments/coco_adaptive_preprocessing_defense.py": [
-      "src/lgp/__init__.py",
-      "src/lgp/registry.py",
-      "src/lgp/runners/adaptive_preprocessing_defense.py"
-    ],
-    "experiments/coco_all_methods.py": [
-      "experiments/_common.py"
-    ],
-    "experiments/coco_preprocessing_defense.py": [
-      "src/lgp/__init__.py",
-      "src/lgp/registry.py",
-      "src/lgp/runners/preprocessing_defense.py"
-    ],
-    "experiments/coco_training_state_pair.py": [
-      "src/lgp/__init__.py",
-      "src/lgp/registry.py",
-      "src/lgp/runners/training_state_pair.py"
-    ],
-    "experiments/current_paired_cost.py": [
-      "src/lgp/__init__.py",
-      "src/lgp/runners/current_cost.py"
-    ],
-    "experiments/current_saved_qualitative.py": [
-      "src/lgp/__init__.py",
-      "src/lgp/registry.py",
-      "src/lgp/reporting/current_qualitative.py"
-    ],
-    "experiments/current_vcsf_final_background.py": [
-      "src/lgp/__init__.py",
-      "src/lgp/runners/current_background.py"
-    ],
-    "experiments/current_vcsf_radius.py": [
-      "src/lgp/__init__.py",
-      "src/lgp/runners/current_radius.py"
-    ],
-    "experiments/extended_transfer.py": [
-      "experiments/_common.py"
-    ],
     "experiments/finetune_voc.py": [
       "src/lgp/__init__.py",
       "src/lgp/registry.py",
       "src/lgp/runners/finetune.py"
     ],
-    "experiments/generate_reports.py": [
-      "src/lgp/__init__.py",
-      "src/lgp/cli.py"
-    ],
-    "experiments/hifa_experiments.py": [
-      "experiments/_common.py"
-    ],
-    "experiments/lgp_experiments.py": [
-      "experiments/_common.py"
-    ],
     "experiments/main_transfer.py": [
       "experiments/_common.py"
-    ],
-    "experiments/mlfadv_experiments.py": [
-      "experiments/_common.py"
-    ],
-    "experiments/naa_experiments.py": [
-      "experiments/_common.py"
-    ],
-    "experiments/numbod_experiments.py": [
-      "experiments/_common.py"
-    ],
-    "experiments/osfd_experiments.py": [
-      "experiments/_common.py"
-    ],
-    "experiments/paper_experiment_catalog.py": [
-      "src/lgp/__init__.py",
-      "src/lgp/registry.py",
-      "src/lgp/reporting/__init__.py"
-    ],
-    "experiments/preprocessing_transfer.py": [
-      "experiments/visualization_settings.py",
-      "src/lgp/__init__.py",
-      "src/lgp/registry.py",
-      "src/lgp/runners/current_preprocessing.py"
     ],
     "experiments/qualify_vcsf_a10_public.py": [
       "src/lgp/__init__.py",
@@ -298,43 +181,11 @@
       "src/lgp/__init__.py",
       "src/lgp/reporting/reexport.py"
     ],
-    "experiments/render_qualitative_panel.py": [
-      "src/lgp/__init__.py",
-      "src/lgp/reporting/qualitative_inputs.py",
-      "src/lgp/reporting/qualitative_panel.py"
-    ],
-    "experiments/sfim_experiments.py": [
-      "experiments/_common.py"
-    ],
-    "experiments/tog_experiments.py": [
-      "experiments/_common.py"
-    ],
-    "experiments/training_state_transfer.py": [
-      "experiments/visualization_settings.py",
-      "src/lgp/__init__.py",
-      "src/lgp/registry.py",
-      "src/lgp/runners/current_training_state.py"
-    ],
-    "experiments/vcsf_common2_cost_calibration.py": [
-      "src/lgp/__init__.py",
-      "src/lgp/runners/cost_calibration.py"
-    ],
     "experiments/verify_public_package.py": [
       "src/lgp/__init__.py",
       "src/lgp/public_package.py"
     ],
     "experiments/visualization_settings.py": [],
-    "experiments/visualize_predictions.py": [
-      "experiments/visualization_settings.py",
-      "src/lgp/__init__.py",
-      "src/lgp/runners/prediction_visualization.py"
-    ],
-    "experiments/voc_transfer.py": [
-      "experiments/_common.py"
-    ],
-    "experiments/whitebox.py": [
-      "experiments/_common.py"
-    ],
     "src/lgp/__init__.py": [],
     "src/lgp/__main__.py": [
       "src/lgp/__init__.py",
@@ -1095,7 +946,6 @@
       "src/lgp/__init__.py"
     ],
     "src/lgp/runners/adaptive_preprocessing_defense.py": [
-      "experiments/coco_adaptive_preprocessing_defense.py",
       "src/lgp/__init__.py",
       "src/lgp/defenses/__init__.py",
       "src/lgp/io.py",
@@ -1160,7 +1010,6 @@
       "src/lgp/runners/formal_parallel.py"
     ],
     "src/lgp/runners/cost_calibration.py": [
-      "experiments/vcsf_common2_cost_calibration.py",
       "src/lgp/__init__.py",
       "src/lgp/adapters/__init__.py",
       "src/lgp/attacks/factory.py",
@@ -1367,7 +1216,6 @@
       "src/lgp/runners/training_pair_processes.py"
     ],
     "src/lgp/runners/preprocessing_defense.py": [
-      "experiments/coco_preprocessing_defense.py",
       "src/lgp/__init__.py",
       "src/lgp/attacks/common.py",
       "src/lgp/data/coco.py",
@@ -2385,13 +2233,15 @@
   "schema": "lgp_public_source_distribution_v2",
   "science": false,
   "source_file_sha256": {
+    ".gitattributes": "3c9633af9306c04c56267471358a1b1f9f7dab54fdce171b738dcf7f5f4cd9b9",
+    ".gitignore": "fc7a91075d7162652e3339e19dcebf91a06eaeaf8442ca6cf784d89e03b99e8d",
     "LICENSE": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
-    "README.md": "885638c042e9d86030c14834c8a0b62e60b1f34a006518732df7908fc2add949",
-    "README.zh-CN.md": "38ee47d5ce379b36f7dfb2444252adf47dc49228a5c9fa70f56bad9ff9d225be",
+    "README.md": "cfa5ee2fdd79d76c1c4b4564aa1f636801b10f3efd011145bbc2abec2552525f",
+    "README.zh-CN.md": "259393a9685b20854a00c8c4aea63154824afedc04504ee257ea57213e94bbea",
     "THIRD_PARTY_NOTICES.md": "611db39d4a7b0e51f65d8c6a393860eaab0c0042a6c8549b4ef46274da9221ac",
     "THIRD_PARTY_NOTICES.zh-CN.md": "aac2bcf446df2e0def09b63c8fedbe728e70c0db41863e228c2b9739cf39d662",
-    "checkpoints/README.md": "9703b6e1d37e6c698b8fadf5fc2d920727ac18beb87dbdff2601189d1d0adea5",
-    "checkpoints/README.zh-CN.md": "f9dc5502e6a70238232d0a1341facb47aaf603ad640662118ebbc8e8dc9a9c0b",
+    "checkpoints/README.md": "509573f6d42eac02477cdd6a03519d78efdc97f8855e27d03636ebde1ae15146",
+    "checkpoints/README.zh-CN.md": "9abd2d1a6fbf7b4a80498ba12afc1721f21b0c596aaa5024ddbca283d90d9e45",
     "configs/attacks/baselines.yaml": "392ae29cd66e0b3006ebf5ac61d99e894770a798ad9e668b384111950d4b7870",
     "configs/attacks/reference.yaml": "29fe48d3f6ec5c2cb5cb96ebf5cdb6742738edf52ee6969cbe3ce4dd135d6bb1",
     "configs/attacks/svfta.yaml": "b1004ef64f017ad9896f02a8e3bba2a2ee88624077641a06fa56fa04fc95eb33",
@@ -2412,40 +2262,22 @@
     "configs/experiments/training_state_transfer.yaml": "4b61c7572873eb9e256cd965f06d7b8aab263df9e1c28785ff2c969e770d19fc",
     "configs/experiments/vcsf_submission.yaml": "721deaba94d6dbe32f492e930fc67dc7a741fae6f5e4bb04c6994940b53a9b2b",
     "configs/models.yaml": "f50d3fd2b4698bc07c760305b9e61c95a2b4bf8a7aed34fca20f506909c50588",
-    "current-evidence-status.json": "895984bbd5f20374ebab3040e982443734c7976e089795879ed54c275ee5c64a",
-    "data/README.md": "7d9abd275a1ab0d1129979e070e5002f21b22f4bd415dd18d0b075986503e133",
-    "data/README.zh-CN.md": "7a1deb752b459645be46a56d02118f65f33c6495761592aea821ed8e1a665460",
-    "docs/current-adaptive-preprocessing-reproduction.md": "0a84d1923993758e1c08c47eb8b376418aa425b77955120c823c20f5bdecb119",
-    "docs/current-adaptive-preprocessing-reproduction.zh-CN.md": "02106173d879a3011b4fa5f1865f23117aff5357aa62258ed15ddea7fba544d4",
-    "docs/current-dispatch-evidence.md": "e2d1a4fe52eed0d0616961f2b2b9f8c117a8838f58cfd11b414ea67d8db4dcf4",
-    "docs/current-dispatch-evidence.zh-CN.md": "cd0d1a8b7658af71226486ec0cf752ff66db0550b1dfa3d0e64c03679088b424",
-    "docs/current-paired-cost-reproduction.md": "9b0f3624823a914afc1db5347a6ef9563e201f56241cffd76fb7b20988ca903e",
-    "docs/current-paired-cost-reproduction.zh-CN.md": "53021f26d8406e4c2bf3b7e27f4b4ff380efd7e7fa1f4531fb0842f49ba666fc",
-    "docs/current-preprocessing-reproduction.md": "394ce409e2b4c9ac7ff0278640bdac745f86948c11533e9d1aca3bc3e28ac91f",
-    "docs/current-preprocessing-reproduction.zh-CN.md": "854f5a44c18dd131b07c0029a51315beeeb77a4d8d4b0a8a8f3cc6b8fbacfdcd",
-    "docs/current-public-reproduction.md": "cf21751fcde7c44ebc5e88a0b66d51971b9d9a8ab31ba54b0e50f9f4c0a78001",
-    "docs/current-public-reproduction.zh-CN.md": "9f5895cecdf90de5b6d4f21c5c18fe336eda739b645832f14ddc778b5d8c84df",
-    "docs/current-qualitative-reproduction.md": "fc8fcfc5f23d08c999c11bd77d031dd374d5660772f333a910d6fd1936a2d93c",
-    "docs/current-qualitative-reproduction.zh-CN.md": "6473b92f3ba4c116d2fdc4c4ee2ff8d7ea2229e5f259743cb1dcc7feb9c0f6f7",
-    "docs/current-training-pair-reproduction.md": "f20a4ede00909589f20b1952b5f5586cba77637ee99a3b66ef0b3879de39580b",
-    "docs/current-training-pair-reproduction.zh-CN.md": "4126ca5d5f6bb1dbc6c10187b015b69fa3c3d9dc39daeb0afe1661e839419fbc",
-    "docs/current-training-state-reproduction.md": "7b2617dec37821603ec604b1a2819efbb73c348a0406f99d2af437f6d32ea246",
-    "docs/current-training-state-reproduction.zh-CN.md": "8136737565d77457bcb41ebc3c9adae2fb1430299d2310a3b37902c1fa890547",
-    "docs/current-vcsf-background-reproduction.md": "52f2c74bab8ce8f3bc29ddeaa4846bff39dee09d852d85dc99602733079c4bd4",
-    "docs/current-vcsf-background-reproduction.zh-CN.md": "c9730f205745a6689dacbef1e05168059aafca9913f917f9403f69c5fafb5267",
-    "docs/current-vcsf-radius-reproduction.md": "310ce216e68aaa7cf5369d282e6f68b7d81a09090106c5019fc5f9e6f22b6be7",
-    "docs/current-vcsf-radius-reproduction.zh-CN.md": "ed8d011f20d0499a3489ee530b78b0926f02d81dbd602883d7ff842120cbad5d",
-    "docs/current-whitebox-reproduction.md": "1afdafe367a074471fa1b7f3d5360dc56922405053b208867acd3a060bf3e8ad",
-    "docs/current-whitebox-reproduction.zh-CN.md": "a3a74601ed0fb5bd60cbe81df7e17afa685ae3a85387ec429b0dd268140ffd13",
-    "docs/en/vcsf-method.md": "74588b086f6c30f502d1eae653951dabbfae7c381eb51b73140077b0a110c5df",
+    "current-evidence-status.json": "e3f78a0201b976297b2bd429f3bde8320909500453c166108bce0480ea871da9",
+    "data/README.md": "3c3a4226d35b221a017310af0df1dc97f158995d1410bdec593f017e5a413e37",
+    "data/README.zh-CN.md": "5fb231e1dfda104e3a4925bbd1e5d24622412b4ac5ac74848b355f46d13359a7",
+    "docs/current-dispatch-evidence.md": "f39f1cc29969b7070204b3adbd91f19fd019b9ff639a8634d86d919817391634",
+    "docs/current-dispatch-evidence.zh-CN.md": "b766644f8dae694f69927363ed68aa760c6491ac4470bf6ade37bd0669166b4d",
+    "docs/current-public-reproduction.md": "5170bfdd691d7034ace50d5c79d468a8fa0b2aa8ec37ca9032c1685c5f7d1994",
+    "docs/current-public-reproduction.zh-CN.md": "b59166841ab3a758681bdacea6db5d7260f87bce0deb330eac026cd79b037436",
+    "docs/en/vcsf-method.md": "ad4db2ca31c180279f4ec4be395b7a61c14056c748b666cddb57fbb4cdda09d1",
+    "docs/environment.md": "41e3bb69417fcf03bcc76e1ab3b36b64a8e22614c1b6cba8f273865a074d6a99",
+    "docs/environment.zh-CN.md": "ed553611200cdfaae12bc205b8f7b4999b8d471620e2261d60d465b867b88126",
     "docs/history/previous-a23-selection-status.json": "aa6569c1ec69d5673822a50203256ed60971ffeb8f5b2ef69316836651e3fd0a",
     "docs/licensing/license-scope.md": "20f8767359fc0274ef16acdf4c11fdeba8ce462ff74c240a9aa0d65a31e037d4",
     "docs/licensing/license-scope.zh-CN.md": "9d661b46562a9d9a8cc62e665fcbf1f4da3851b54100ddf69f4a9f6d7c439e00",
     "docs/licensing/source-distribution-decision.json": "e78dd7cf0867ea2b325544b90d9fbe0964e81ee21e16218ebbff9fc18af2bbe5",
-    "docs/prediction-visualization-device-interface.md": "9cbba0654914619feb0e8283d09c795a2aa68ff157eb3698c19e9b8f7adb4d1a",
-    "docs/prediction-visualization-device-interface.zh-CN.md": "456e4750f5478e2c78f899e60c79256c0d584256a8ed237d89684d8fc3ddea8d",
-    "docs/public-package-identity.md": "9f742a43f2137b49209a00577e9df6879bdc471fead7f5a14c2ee7ad84ab76d4",
-    "docs/public-package-identity.zh-CN.md": "33f4d85d05d9c4aeb2d191ad9b6f0bb70ee4600bbbd2557c8ce6aa6eb9837463",
+    "docs/public-package-identity.md": "ceb4f0314ef0d9ec4f27adcdff59129af152e0bcbe0a394478b55a6c0232c41d",
+    "docs/public-package-identity.zh-CN.md": "218e789b7d1e96a1be262570c1fe8e7307a19fc7ca0324933845724a5c4f49ab",
     "docs/research/vcsf-a10-configuration-recommendation-provenance.md": "159e0883d58e9c802b33269897dd4e4e92eec7a913183cc6ddfafbd32025b955",
     "docs/research/vcsf-a10-main-audit-contract.json": "4f9198056319925330209ed6f4cd8098bbfd7eecb578ab139c457795e7e46db9",
     "docs/research/vcsf-a10-main-producer-schema.json": "55da0a8865a3a0a09232626c954547ec886008e887c3277b8500b89ea8048036",
@@ -2467,56 +2299,26 @@
     "docs/research/vcsf-whole-ablation-amendment-20260909.md": "e459d062124c9af4b67a1f5ef677f4757971e6adb7f76c6aa55699cc5621031d",
     "docs/research/vcsf-whole-ablation-closure-20260909.md": "f9ad1066aecc70da8253588ebb3f8a02e043bd83b7275caef91f1b8c5497bd79",
     "docs/research/vcsf-whole-ablation-revision-20260911.md": "9a368f40312e84995bc162cb8cca9dcf785d8af36ea209065baeba849c32297d",
-    "docs/saved-report-export.md": "7988c8a2d24ce458714fc2d34a32fa2929f6a54dff510ad7e41b1477270364a7",
-    "docs/saved-report-export.zh-CN.md": "2946467807eda26421c9529ed85b557ea4a2ece13375cddc26616254ee4d2597",
+    "docs/saved-report-export.md": "e48b159ba598128630026e3e92136f445f5d7bfe1bbba10cbd4a1b51d1e26468",
+    "docs/saved-report-export.zh-CN.md": "8e6e576ff17d97239db6cfc3acb82aa627c2f64419a128e3195b65a40577251e",
     "docs/third_party/licenses/GPL-3.0-upstream.txt": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
     "docs/third_party/licenses/LGP-mmdet-Apache-2.0.txt": "874b8b2e6f12306a1ff7812c068a0dbf880418b8ac1f7190382bd6c6da9f23a1",
     "docs/third_party/licenses/NumbOD-MIT.txt": "bc14dbcc12b4c43ad1e382e8e315450784332208ddf75069834bdc18484a4277",
     "docs/third_party/origin-scope.json": "20afea5ca6af134b734406685fc27dc9b857fdc8a55fae3bac4ad26035f86d05",
-    "docs/zh_CN/vcsf-method.md": "2e56994c703b1f21e442a96bdd4428c5a690bcacb032ca3d1d4f6e93ac3a83a3",
+    "docs/zh_CN/vcsf-method.md": "e45ecc00a2e6238e67d6f1671f1cf6140401efd224d9db85291733d1d7d02304",
     "environment.yml": "33077e63e56b48dbbbaacf2fadbcd0c3d4641d151fc54aadc88a7dac6e51a137",
-    "experiments/_common.py": "8df9fb8bac8ebfccb214f127cf76d23584f7d2f1a925a69028dcf5cce4a88c1d",
-    "experiments/adaptive_preprocessing_transfer.py": "ff071c700233ad52e43f9955f527bd7e271b51c12bc8f464fa5b158facc06871",
-    "experiments/afog_experiments.py": "b0f1172284467974057ad76e449d36ac4071b67dc9528c794790d8c9489592f4",
-    "experiments/all_method_ablations.py": "725baff1be8859cadc77de4f43ef4b3a545f4c2943255d52a066bb336ecf3083",
-    "experiments/augtrans_experiments.py": "b98a28534119a9eebe6568923dff6b93ab7a422b6ae37e3b35f38ad9420629c1",
-    "experiments/clean_map.py": "5189c34efb02f481fdc134bb4a19b52c9ce47f65cec9ab3648425d731cf819a4",
-    "experiments/coco_adaptive_preprocessing_defense.py": "c28c4f958b3a4fe13091125774c2aa1c81dbe576395a60dbe279892314616529",
-    "experiments/coco_all_methods.py": "79b8e35d1c5deaa9bfc368d26a2c6714a3d462f4be1760f6489ae2199397c84c",
-    "experiments/coco_preprocessing_defense.py": "c59c23eede1109c6912901413b42a0570e88709c048910fe3e0ef5e47cd92be9",
-    "experiments/coco_training_state_pair.py": "a6feefeadc556d11f75260f19cf5ce479153d3ca724463ecf2cc6dd05ab687a5",
-    "experiments/current_paired_cost.py": "59d835fcd475d9dc4483f7b63cfe15500d05e4f08d5884e9743566e619ea98fc",
-    "experiments/current_saved_qualitative.py": "042b931cf14e5c3f14b67820cf7bcde840f1c393200c31bbe36a579c6a2c831a",
-    "experiments/current_vcsf_final_background.py": "a5af444b859a4d65017effe69cd9b632c0aaf355a0df3a40d4404b97cc20f9b3",
-    "experiments/current_vcsf_radius.py": "711dd3e41eeb90d931d6fe859da654e0e6e300dcac0884aee595e99eff18b43e",
-    "experiments/extended_transfer.py": "0dd2f463432d45a99d4bde9f5e02b71cc46aee4d21bbabe30c5460aa394670b3",
+    "experiments/_common.py": "976bcb5fafb76761123b9752d4ffa8053922e5b94b880b79399565f94e580f93",
+    "experiments/clean_map.py": "e05ddc5b64e6d57769ca213b53a5faa823dc4d9f6e763843335767c873248e8e",
     "experiments/finetune_voc.py": "d984d15f5819f654d6194d31e2a35ce0b9a8cdc815ac4d20cd10e6bf602e01f9",
-    "experiments/generate_reports.py": "18f8fae8d3291a7aea23771d852a82ecb142f902500fecb6f0cf59874d8ed6be",
-    "experiments/hifa_experiments.py": "2dbcd163f7e5a6c1e452bcee25398377ec37661801ddbbfa7da1d03955da05bd",
-    "experiments/lgp_experiments.py": "4dd223f726c33282e089742addad880e3188ecad404016e1b40139d12d191997",
     "experiments/main_transfer.py": "ea6eef97f2291aaf3b754a7afd8ec76bc19d66476fa955a7fdd84dd72b55605d",
-    "experiments/mlfadv_experiments.py": "86a2eeab0befafe6c757bbf47c134cd9ea67ec635f2a02f5dbb6d0d03ec827c7",
-    "experiments/naa_experiments.py": "2eb9430e56fb2a08b92c2d84fb0c520d79769ba10a30a3620e4a20170d833aed",
-    "experiments/numbod_experiments.py": "aa917a6e6504d25e5dd9564cdeb9f23089a15b8da0e2a7664e0a70127b5bbdaf",
-    "experiments/osfd_experiments.py": "69f753a217ec92b58fe6f75c58b78408c588b12a09a38da12c287a2d8f418dac",
-    "experiments/paper_experiment_catalog.py": "08d03f191ad3d8d36cd1433f80e0c861836685c68515ac846253297d69fd635a",
-    "experiments/preprocessing_transfer.py": "462d23dc373831d06a79f21ea9b797a27b0dfd9a328b2e8c84b436e5b58d4514",
     "experiments/qualify_vcsf_a10_public.py": "04cf24e084565399b271eedebdc4f229ad6553191ded37d4b60abcaa0c1480b5",
-    "experiments/reexport_saved_reports.py": "6dba8727b64a4643b7232e9297e982731da56d6bc32c847612e36b7214f1dd43",
-    "experiments/render_qualitative_panel.py": "ac779717a635f589a50c86f66c046c078b7ed9f41b038830aaa3de97e55d53f4",
-    "experiments/sfim_experiments.py": "5d021309691ccff7a95f14574fda818fe0f5d656dd427d4e8072e266c5d90182",
-    "experiments/tog_experiments.py": "76b5675754819db626dd765e36da9fd4d3132ddfa254902bd1ff94fb7a7751b8",
-    "experiments/training_state_transfer.py": "72c8c82fdc7bd0acd572ac81f666be2e7a527f3c358ff90bea378869c27761b3",
-    "experiments/vcsf_common2_cost_calibration.py": "68d8b2169070aa79348500464aa2aa22d270db1052531973c7a97d33bd73ebf2",
+    "experiments/reexport_saved_reports.py": "1498f6cb7286124d3d246994cefb1fa16786aaf29d38d172d2c959c61656eea2",
     "experiments/verify_public_package.py": "23f00ca38e72eba569393b7f16c26bed30e3b7ee2a161c294c53cc71bfd9928e",
     "experiments/visualization_settings.py": "9a81101be03e6ad8fd81e7d229f4b5b501cfeb1b3f237e8daaa4416ddb939cdd",
-    "experiments/visualize_predictions.py": "5d305a1c869030a55972176eec490cf082e83f19acaed73515c96d88111916c7",
-    "experiments/voc_transfer.py": "6e168ade969e6b94b3e53fc163a51a91c695fcbc2d261237bf3d4ed1f06bcff1",
-    "experiments/whitebox.py": "3d1d344cd1afa61439ff31b39579691e4130646c31791d86be6fd124da463ca7",
     "historical-implementation-inventory.json": "df4ea2ff43f62d126edaca04ba53168dd7ab4f8fe0e1c6ecabf297d46ffd7c3e",
-    "outputs/README.md": "02416736eef1ed9f5cc4ddc3ce11ea0f4397578966b634d9dffb4d5c9bfb93b9",
-    "outputs/README.zh-CN.md": "b1f05f91207277fac177e196bb139b551c6a5779cb73892118cd4ebc3be5635b",
-    "publication-manifest.json": "c999203039ab74d7b38cc0a14519cd2fb51802a3e71e748e0010226e0e2acd72",
+    "outputs/README.md": "193d41a2a7a2f23ac8fc63f73a5ea305ed3ad403e9e4c7a4e54de492647aa9a7",
+    "outputs/README.zh-CN.md": "82c7e0510c5c4503132afc1046e0a2b4d56c1a3b70d04daaa9c2a2c814d556e5",
+    "publication-manifest.json": "a6a44d6270f92a6fc093b3a6b6ebcd6c1da6c8901b233404a2196efac1e953c2",
     "pyproject.toml": "65f439fca96f3aec10503003425e19359080b15c17b9187f07b74ddaa77998d8",
     "requirements/locked-cu118.txt": "a8d35a3d692129e7900df30bb99e4b40d0a2f783fffe87170c9e47282504e2cf",
     "src/lgp/__init__.py": "d50d3d28f93fdfa50db2a59113af4758a0bdbd361c41163a3f28626df06d8bad",
@@ -2577,7 +2379,7 @@
     "src/lgp/attacks/vcsf_scale_execution_isolation.py": "636c6ee533d6f5ac8cca872393c146a46b245a8e9dc10471dd5c38f83888c17b",
     "src/lgp/attacks/vcsf_scale_isolated.py": "65827ce3ed4eb1d16700a828648ed9d6595f5ff6d92103408343ab56df5047ef",
     "src/lgp/attacks/vcsf_scale_isolation.py": "c26069f585194d785573247f9c2fefc3527c85f2c36b5732518287dc1cc07fb2",
-    "src/lgp/cli.py": "6776102548ce5daca7a542cae227a05ff882de0c647288ccdfa58c6382f739cd",
+    "src/lgp/cli.py": "eb40ae47e1b96af86ccfe2944f1f33df4e2feb96e4844cc38aadc49f847615bc",
     "src/lgp/data/__init__.py": "6734f5d9ec78f24e7e1fd26a6e6c56408344106cad8f76cbda006dd360b24907",
     "src/lgp/data/bdd.py": "3bc3e4296be0da31540be838b59e9ec5f180e52ff4a3db0d36812e73d7c6990d",
     "src/lgp/data/coco.py": "d6e0d0139a7907674bf3b24a05139fe0d9185c5588988969b3dae27754385ac0",
@@ -2591,7 +2393,7 @@
     "src/lgp/mmdet_compat.py": "4830338e4bd65dc95704c5fd6c1db66ef11e1702ceb62a44e6edf58e8af2ea59",
     "src/lgp/modeling.py": "db4301db6f420a490d3ad09340fa6610924268320abebf3576401cb1191fd6c5",
     "src/lgp/paths.py": "b3b1ba12e8ab91570f19da6cb0a03835f4d3e3bb68749264817a97f1eae20c6d",
-    "src/lgp/public_package.py": "ebdd6066225613cae4d3438e581713583aa569ccf2bbc43b3e1f8bbf123c5704",
+    "src/lgp/public_package.py": "f2a4e30cb2fb8bbc5a5420ba4170cae9429835a4b328592b0ecc00fcf76e8fd6",
     "src/lgp/registry.py": "5e96c98bb47b0bebcc7189b7ba8f72b72ac5f05d854f57186844b64049d3d46a",
     "src/lgp/reporting/__init__.py": "a8308cc42bf367802b9635fdc839c4189add3fee1a87964297daf4217fd31055",
     "src/lgp/reporting/all_methods.py": "f1ad82d047844fd6f34de88842700dbd938c3411f41173d8d518396052b9bab5",
@@ -2607,7 +2409,7 @@
     "src/lgp/reporting/preprocessing_cost.py": "c7012ff14256753254de242bb20b4b4e7a1201f24cc4e13bdd5aeb367d4bdedb",
     "src/lgp/reporting/qualitative_inputs.py": "96a33f6a25c2eff9ea535f456760c5650208b348567aad4dd05b384d0a130d77",
     "src/lgp/reporting/qualitative_panel.py": "0495d99dd2b4ce1f95dc6a14ca1ce308ce599e1c1ead4dc62b66a71f15435801",
-    "src/lgp/reporting/reexport.py": "fa206ae521a358c8f20b821469e7e87540e0b9fb09e2fca4c75f576eab390b94",
+    "src/lgp/reporting/reexport.py": "5a3de4ef82f0cc85bc2930b44426482b7138e6120167ce765b6677f63bd9803b",
     "src/lgp/reporting/scope.py": "c8be22391d67a90281e9b12a9f96ef5734f70dc636ff98deddf1cb4754c45450",
     "src/lgp/reporting/vcsf_ablation_cost.py": "317159c2f7760dfd3a66813e630ce1ce3039ba1466eb900122e768c676751140",
     "src/lgp/reporting/vcsf_analysis_inputs.py": "eafb3314d3443ea9ebb74c5dfe7d5cd2be3a580f178108979420317434971f6a",
@@ -2723,8 +2525,9 @@
     "src/lgp/training_hooks.py": "b5788804fe9e4954faee78aabb7cd44850694cca0545c9f7d9e51d64c3322590",
     "src/lgp/training_state.py": "266c1d3a3e5b38e64ed9ecb453f53e2afcdcb819551207ad0648eeb063d1ae68",
     "src/lgp/visualization.py": "0d0f2cbc440f589a4f91777b2ac71ae1021186f4a163418f493dd1e8a99adfe9",
-    "tests/test_prediction_caption_layout.py": "1c8c492ab3cbc2f73d08c8be8c972432ee2ac95027bd6d60b601e477d7ad09e5",
-    "tests/test_public_package_closure.py": "7fa47844c923904af5b5416cfa894219f806aa1ea877f77bd132720e8765b9eb",
+    "tests/test_prediction_caption_layout.py": "07b98bebc88b38d6b371e21ea09f53e21f7a0cf2bb8d98fc08b408a117d31c11",
+    "tests/test_public_main_scope.py": "8f480a2806f5d66bc8208d5188b7f1513dc382229555d1c1c917e4f2a5128031",
+    "tests/test_public_package_closure.py": "1344c6ed48313f3a18f1ffae17804b0edde97db312f1dde6621451aebfedbcde",
     "tools/audit_vcsf_budget_group.py": "7633ec23c88e7c791cc37e3baa1b4ac280dc0a51e96bd978d59642a12a6cf317",
     "tools/audit_vcsf_core_points.py": "636d687cbb62f98cd95ee096bacec60141bbacea8154c22d603398042d5413d8",
     "tools/audit_vcsf_cpu_analysis.py": "561f8e4755181a01ecc268279f7f5e8176bfc2b85498d21df9d104c2f43a305e",

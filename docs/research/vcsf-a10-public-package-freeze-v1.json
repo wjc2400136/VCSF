@@ -3,12 +3,12 @@
   "candidate_only": false,
   "formal": false,
   "licensing_sha256": "b676efa5e671239040ba10b668608e678b718279ebd18b6d97fe0cf3c7437993",
-  "manifest_file_sha256": "94aedcb45206262d1f23dfdb37394d8c6bd876510b91f7f0c37c6256ea40f204",
+  "manifest_file_sha256": "dbed03e33fd27ec85b602e34b16b25c1fba28d18129a64a428f94e2b8ba31d78",
   "numerical_source_map_sha256": "5f7174ae7ac4f0f49c385955d3cfa64bc8c1d1893f1a43d8e08d9895c3792acd",
   "release": true,
   "rights_status": "recorded_source_distribution_conditions_addressed",
   "schema": "lgp_public_source_distribution_v2",
   "science": false,
-  "source_manifest_sha256": "88d267ea7c68c38f775b24a86c2c8638358118ccf8c03a08f1d877216d3abfeb",
+  "source_manifest_sha256": "0a3c446abb7dab0f1fd72e2d2e26ef2aa4637b78d5b70a32c25d72b2998d43af",
   "whole_old_freeze_equivalence_claimed": false
 }

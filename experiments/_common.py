@@ -51,6 +51,8 @@ def run_protocol(
     default_retained_image_count: Optional[int] = None,
     default_prediction_archive: Optional[str] = None,
 ) -> int:
+    if protocol != "main_transfer":
+        raise ValueError("This public package exposes only the COCO/VOC main protocol")
     parser = argparse.ArgumentParser(description=description)
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument(
@@ -73,7 +75,7 @@ def run_protocol(
         parser.add_argument("--methods", help="Comma-separated attack IDs")
     parser.add_argument(
         "--studies",
-        help="Comma-separated study IDs; default: every study covered by this script.",
+        help=argparse.SUPPRESS,
     )
     parser.add_argument(
         "--max-images",
@@ -163,6 +165,8 @@ def run_protocol(
     )
     parser.add_argument("--output", type=Path, help="Custom output directory")
     args = parser.parse_args()
+    if args.studies:
+        parser.error("Ablation studies belong to the local institutional project")
 
     registry = Registry(PROJECT_ROOT)
     studies = _csv(args.studies)

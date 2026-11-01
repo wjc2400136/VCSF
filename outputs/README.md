@@ -4,7 +4,7 @@
 
 Run commands from the repository root in pinned ODA. This source package has no
 author output payloads. Follow the [main guide](../docs/current-public-reproduction.md)
-and each topic guide for its actual output namespace and success checks.
+and the checkpoint guide for actual output namespaces and success checks.
 
 Direct experiment entries execute by default; `--plan-only` does no model work
 but some entries write an immutable plan leaf. Inspect each entry's help.

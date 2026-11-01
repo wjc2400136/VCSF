@@ -67,7 +67,7 @@ def test_missing_bound_file(package, relative):
         verify_package(package)
 
 @pytest.mark.parametrize("relative", [
-    "src/lgp/runners/public_config_helpers.py", "experiments/visualize_predictions.py",
+    "src/lgp/runners/public_config_helpers.py", "experiments/clean_map.py",
 ])
 def test_tampered_bound_file(package, relative):
     path = package / relative

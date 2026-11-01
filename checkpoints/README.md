@@ -3,7 +3,7 @@
 [English](README.md) | [简体中文](README.zh-CN.md) | [Project](../README.md)
 
 Run commands from the repository root after following the
-[environment](../README.md) and [data](../data/README.md) guides.
+[environment](../docs/environment.md) and [data](../data/README.md) guides.
 [models.yaml](../configs/models.yaml) is the only sixteen-detector registry,
 canonical order and training-recipe source. COCO uses released 80-class weights;
 VOC needs sixteen separately fine-tuned 20-class detectors, never a substituted COCO head.
@@ -44,12 +44,9 @@ The bounded VOC single/dual-GPU diagnostic has been accepted: two independent
 models (Faster R-CNN and Mask R-CNN Swin-T), two training IDs, four jobs,
 twelve registered epochs per job and 72 optimizer steps in total, with no
 formal validation attached. This does not qualify full VOC training or the
-sixteen-checkpoint panel. The device-dispatch reconciliation separately
-accepts all 37 declared paths at their roles, with no minimum actual paths
-remaining: 10 independent GPU paths, 16 shared-scheduler thin wrappers,
-six CPU-only paths and five support paths. It does not establish native GPU
-execution of all default studies or every CLI option, scientific acceptance,
-redistribution rights or full project release.
+sixteen-checkpoint panel. Earlier broader dispatch reconciliation is historical
+evidence, not the entry inventory of this main-only package. It does not establish
+native execution of all default workloads, every CLI option or scientific acceptance.
 
 Only after the actual device/input checks and an intended new training decision,
 choose **one** mode below. Existing qualified checkpoints should be preserved,

@@ -39,7 +39,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--dataset",
         default=DEFAULT_DATASET,
-        choices=["coco", "voc", "bdd100k"],
+        choices=["coco", "voc"],
     )
     parser.add_argument("--split", default=DEFAULT_SPLIT)
     parser.add_argument(

@@ -8,6 +8,16 @@ helper, public guide and lightweight provenance file. The separate versioned
 source map. These two control documents are explicit, not recursive self-hashes.
 Neither control document is a license or scientific acceptance.
 
+The current public surface contains only COCO/VOC main comparison, clean/VOC
+checkpoint preparation, source checks and saved main-report export. The manifest
+and guard require exactly these six entries plus two entry support files.
+Supplementary entries/guides are preserved in the local institutional project,
+not shipped as public programmes. Generic CLI selection is narrowed accordingly.
+Immutable configurations still contain historical declarations because their
+exact bytes are part of method/provenance closure; these are not public execution
+admission. Required ancestry/helper modules are retained for those dependencies,
+not promoted into additional studies.
+
 The guard checks plain project files, relative POSIX paths, hashes, the shipped
 file census, local Python imports, configured runtime/AST helper dependencies,
 the nine original numerical hashes, every original configuration byte and all

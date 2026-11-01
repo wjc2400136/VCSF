@@ -1,139 +1,93 @@
-# COCO and VOC Main Reproduction
-
-For current defense-aware source-pipeline BPDA with the same retained population, see the [adaptive preprocessing guide](current-adaptive-preprocessing-reproduction.md).
-
-For offline fixed-three panels from your own complete current-main prediction
-archives, see the [qualitative guide](current-qualitative-reproduction.md).
-
-For fresh A10 and its nine unchanged final-background controls, including a fresh
-anchor rather than author-only history, see the
-[final-background guide](current-vcsf-background-reproduction.md).
+# COCO and VOC Main Comparison
 
 [English](current-public-reproduction.md) | [简体中文](current-public-reproduction.zh-CN.md)
 
-Run all commands from the repository root after activating the pinned `oda`
-environment. Prepare and validate the dataset manifests and detector checkpoints
-first. COCO uses 5,000 val2017 images and released COCO checkpoints. VOC uses
-4,952 VOC2007 test images and the dataset-specific fine-tuned checkpoints; a COCO
-head is not a substitute. BDD100K is outside the final maintained programme.
+Run from this public source root after [environment setup](environment.md),
+[data validation](../data/README.md) and
+[checkpoint preparation](../checkpoints/README.md). This package exposes the main
+comparison only, not the local author's supplementary programmes.
 
-The current main interface has accepted bounded one/dual-GPU diagnostics:
-four COCO/VOC cases (COCO image cap 6; VOC image cap 1), two sources,
-LGP and VCSF, and three targets. The final-background interface has two accepted
-COCO cases (image cap 1, ten controls, three targets), also in both modes.
-This accepts only those diagnostic scopes, not project-wide release or formal
-efficacy results. Plan-only and CPU checks do not establish GPU execution.
-
-For the current COCO controlled training-state evaluation, reuse the preserved
-Swin-T source payloads with the [training-state guide](current-training-state-reproduction.md).
-That entry evaluates the registered victim pair without retraining or generating
-new attack images.
-
-For fixed oblivious COCO preprocessing, use the
-[preprocessing guide](current-preprocessing-reproduction.md) with preserved
-current-main Common-2 payloads. It evaluates the canonical retained-500 images
-without regenerating attacks or inheriting historical numerical results.
-
-For current A10 COCO radius sensitivity, use the
-[five-radius guide](current-vcsf-radius-reproduction.md). The default fresh-user
-workload covers both Common-2 sources and all five registered radii; the author
-continues exact-identity reuse rather than rerunning accepted panels.
-
-Main already includes the source-matched white-box rows. Reuse accepted rows
-with matching current identities; no additional white-box run is required.
-The [optional white-box diagnostic guide](current-whitebox-reproduction.md)
-describes the separate fresh-user, diagonal-only entry, not extra scientific
-evidence or an instruction to repeat accepted matrices.
+COCO uses all 5,000 val2017 images and released COCO weights. VOC uses all
+4,952 VOC2007 test images and sixteen dataset-specific fine-tuned twenty-class
+detectors. Never substitute a COCO head. Targets/sources and report order come
+from the canonical registries.
 
 ## Inspect Before Execution
 
-For current-input paired attack time and memory, use the
-[cost guide](current-paired-cost-reproduction.md). That entry measures the current
-A10 and corrected-LGP implementations on the fixed Common-2 retained population.
-It computes no AP and does not repeat or inherit accepted author cost results.
-Source jobs remain serial even with two devices to avoid concurrent timing contamination.
-
-```powershell
-conda activate oda
+```bash
 python experiments/main_transfer.py --help
+python experiments/main_transfer.py --plan-only --datasets coco,voc --devices cuda:0
 python experiments/main_transfer.py --plan-only --datasets coco,voc --devices cuda:0,cuda:1
 ```
 
-The default dataset is COCO. The default main comparison uses the ten methods
-in the current manuscript order, six independent source detectors and all sixteen
-targets. NAA and Corrupting Attention are explicitly selectable using `--methods`;
-their audited structural skips remain `--`. The retired SVFTA method cannot be
-selected through this current main entry.
+The default dataset is COCO, with ten default manuscript methods, six independent
+sources and sixteen targets. Optional NAA and Corrupting Attention remain main-row
+selectors; their structural skips remain `--`. Retired SVFTA cannot be selected.
+Ablations are not exposed. Read the job set, population, seed and assignments.
 
-The output plan contains the complete job set and worker assignments. Baselines
-retain their original `compute_matched` schedules. VCSF uses its unchanged
-selected A10 implementation, complete parameters and logical-update observed-cost
-profile. Clean-reference rows and partial feature backwards are not free work or
-calibrated whole-detector backward equivalents.
+Baseline schedules keep their frozen compute-matched settings. A10 keeps one
+detector update plus nineteen feature updates, its complete parameters and actual
+reference/partial-backward cost accounting. Neither reference work nor partial
+feature gradients are free/calibrated whole-detector backward equivalents.
 
-## Bounded Interface Checks
+## Bounded Diagnostic
 
-Run one mode at a time, only when the requested devices are available. These
-commands execute; they are diagnostics, not full-dataset efficacy results.
+On the authorized GPU host, choose one mode, not both simultaneously:
 
-```powershell
+```bash
 python experiments/main_transfer.py --datasets coco --methods vcsf --sources faster_rcnn_r50,mask_rcnn_swin_t --targets faster_rcnn_r50,mask_rcnn_swin_t --max-images 1 --devices cuda:0
-python experiments/main_transfer.py --datasets coco --methods vcsf --sources faster_rcnn_r50,mask_rcnn_swin_t --targets faster_rcnn_r50,mask_rcnn_swin_t --max-images 1 --devices cuda:0,cuda:1
 ```
 
-Both modes run the same complete source jobs, image population, seeds, parameters
-and target evaluations. Dual-GPU mode assigns independent complete jobs; it does
-not combine source gradients, use DDP or pool the devices' memory. Each GPU must
-individually fit its assigned detector and attack. Explicitly unavailable devices
-fail before output execution begins. Bitwise CUDA equality and a twofold speedup
-are not promised.
+Use `--devices cuda:0,cuda:1` instead for a deliberate paired device check.
+Each mode preserves complete jobs, IDs, seeds, configuration and evaluation.
+Two devices schedule independent jobs, not DDP/ensembling/pooled memory.
+Explicitly unavailable devices fail; each GPU must fit its own workload.
+No bitwise CUDA equality or fixed speedup is promised. Diagnostic mAP is not formal.
+
+Historical accepted bounded main evidence covers four COCO/VOC cases, two sources,
+LGP/VCSF and three targets (COCO cap six; VOC cap one). It is not full-population
+qualification. This source-scope reduction is checked without rerunning that matrix.
 
 ## Full Reproduction
 
-Do not omit `--max-images` until dataset and checkpoint validation succeeds and
-the complete planned workload is intended.
+Before intentionally running the full workloads:
 
-```powershell
+```bash
 python -m lgp data validate --dataset coco --deep
 python -m lgp data validate --dataset voc --deep
 python -m lgp doctor --datasets coco,voc --deep-data
-python experiments/main_transfer.py --datasets coco --devices cuda:0,cuda:1
-python experiments/main_transfer.py --datasets voc --devices cuda:0,cuda:1
 ```
 
-Doctor selects only the named data and checkpoint panels. For COCO-only work,
-use `--datasets coco`; deep VOC checkpoint validation still verifies its original
-COCO source weights and manifest as part of the training provenance chain, not a
-COCO dataset evaluation. BDD100K is not selected by the command above.
+Review the reports, not only exit codes. For COCO-only work use `--datasets coco`.
+VOC provenance verification also checks its original COCO source weights; this is
+not a separate COCO efficacy run. With qualified inputs and intended compute,
+select one device mode and execute each desired dataset:
 
-Use `--devices cuda:0` to serialize the same work on one GPU. Do not launch two
-copies of a command to implement dual-GPU mode. New user runs bind their current
-inputs and checkpoints and do not inherit the author's historical results.
+```bash
+python experiments/main_transfer.py --datasets coco --devices cuda:0
+python experiments/main_transfer.py --datasets voc --devices cuda:0
+```
+
+For two GPUs replace the device argument with `--devices cuda:0,cuda:1`.
+Do not launch duplicate commands to implement dual mode. Formal commands omit
+`--max-images`. Reuse accepted author results only under their exact original
+identities; a new user's inputs do not inherit those results.
 
 ## Outputs and Recovery
 
-Each run is written to a new UTC leaf below `outputs/experiments/main_transfer/`.
-Inspect `plan.json`, `execution_assignments.json`, `execution_state.json`,
-`records.json` and `summary.json`. Generated PNGs are kept, predictions are
-losslessly archived, and records generate the CSV, TeX and figures in `reports/`.
-The [dispatch evidence guide](current-dispatch-evidence.md) explains durable
-worker ownership, device context registration and terminal cleanup records.
-VCSF attack directories additionally contain per-image `native_cost.jsonl`
-observations; these are not a paired performance experiment or FLOP calibration.
+A new UTC leaf under `outputs/experiments/main_transfer/` contains
+`plan.json`, `execution_assignments.json`, `execution_state.json`,
+`records.json`, `summary.json`, attack PNGs and lossless prediction archives.
+Records generate CSV/TeX/plots in `reports/`. Optional main-run overlays draw
+post-NMS boxes/classes/scores without changing evaluator predictions.
+VCSF `native_cost.jsonl` is a production observation, not a separate paired profiler.
 
-For CPU-only reexport of saved scalar reports to a new output directory, use
-the [saved-report export guide](saved-report-export.md) and its
-[direct entry](../experiments/reexport_saved_reports.py). Immutable originals
-are preserved; no models are loaded, predictions read or AP recomputed, and
-the export does not constitute scientific acceptance.
+Require intended coverage, complete target results, no failed/missing records and
+saved-output checks. Preserve all twelve AP/AR values and unrounded JSON;
+`BB Mean` excludes the source. A zero exit is not independent scientific acceptance.
+Use [saved scalar export](saved-report-export.md) for reports without models/AP.
 
-Success requires the intended image coverage, complete target results, zero
-failed records and the resulting saved-output checks. A successful process exit
-alone is not independent scientific acceptance. A `--max-images` result must not
-be inserted into a formal mAP table. Preserve all twelve AP/AR values in raw JSON.
-
-When a command fails, preserve its directory and logs. Check the actual process
-identity before deciding it stopped; a lost SSH connection does not imply failure.
-Fix the identified cause, then use a new output leaf for an explicitly selected
-missing subset. There is no automatic resume, overwrite or merge of immutable
-run directories. Never replace missing or failed values with zero.
+Keep partial leaves and logs. A disconnected terminal does not prove a worker
+stopped. Verify ownership, repair the exact cause, then select an explicit missing
+subset into a new leaf. Do not overwrite, merge, auto-resume or encode failure as zero.
+See [outputs](../outputs/README.md) and [dispatch records](current-dispatch-evidence.md).

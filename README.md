@@ -1,105 +1,108 @@
-# VCSF COCO and Pascal VOC Reproduction
+# VCSF: COCO and Pascal VOC Main Reproduction
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-This lightweight source distribution maintains COCO and Pascal VOC. It preserves
-the selected A10 numerical implementation and complete registered parameters,
-corrected-LGP source201, sixteen canonical targets and six independent sources.
-BDD100K execution is cancelled; its declaration and retired SVFTA dependencies
-remain internal compatibility inputs, not maintained experiment programmes.
+This public source package reproduces the **COCO/VOC main comparison and its
+necessary preparation only**. It provides the selected A10 VCSF implementation,
+corrected-LGP source201, the registered comparison methods, six independent
+sources, sixteen targets, data/checkpoint preparation and record-derived reports.
 
-Project-owned source and its accompanying project-owned source guides use **GPL-3.0-only**;
-see [LICENSE](LICENSE), [licence scope](docs/licensing/license-scope.md), and
-[Third-Party Notices](THIRD_PARTY_NOTICES.md). Retained upstream terms remain in force.
-This source distribution does not create numerical acceptance or complete the research goal.
-The original six selection/provenance documents are unchanged.
-The [package identity guide](docs/public-package-identity.md) explains the new
-closure identity; it does not claim equivalence to the old whole-author-tree freeze.
+The author's local **ODA institutional project** is broader. Preprocessing,
+training-state studies, radius/sensitivity/ablation programmes, separate cost
+benchmarks, standalone qualitative/white-box studies, private results and
+manuscript versions are not public experiment entries here. Their removal from
+this public surface does not delete the retained local research.
 
-## Prerequisites and Source Check
+Project-owned public source/guides use **GPL-3.0-only**, with retained third-party
+terms: [LICENSE](LICENSE), [licence scope](docs/licensing/license-scope.md),
+[Third-Party Notices](THIRD_PARTY_NOTICES.md). This does not license datasets,
+weights, paper assets or private records, or grant scientific acceptance.
 
-Get the project repository from its supplied GitHub page using **Code > Download ZIP**,
-then extract it, or use an existing checkout. Open a terminal in the repository root,
-containing `environment.yml`, `pyproject.toml`, `experiments/` and `src/`.
-A fresh machine needs Conda, network access for dependencies/data/weights, sufficient
-disk space and a compatible NVIDIA driver for the CUDA 11.8 stack.
+## Start From Zero
 
-Use Linux and the pinned Conda environment named `oda`: Python 3.8.20,
-PyTorch 2.0.0+cu118, torchvision 0.15.1+cu118, MMCV 2.0.1, MMEngine 0.7.4,
-MMDetection 3.0.0 and MMYOLO 0.6.0. The exact additional dependencies are in
-[the lock file](requirements/locked-cu118.txt). Create the environment only if `oda`
-does not already exist:
+Follow [environment setup](docs/environment.md) for Git/ZIP acquisition, Conda,
+Linux/PowerShell syntax, pinned dependencies and failure recovery. Linux with a
+compatible NVIDIA driver is the maintained GPU target. From this source root,
+only if `oda` is absent:
 
 ```bash
 conda env create -f environment.yml
 ```
 
-For an existing pinned `oda`, activate it without recreating or independently
-upgrading packages. This direct-entry setup uses `PYTHONPATH` and does not require
-an editable package installation. Do not install `mmcv-full==1.7.2`, `mmcv-lite`
-or MMDetection 2.x, or independently upgrade OpenMMLab components. Do not add
-top-level source copies that shadow the installed packages. On setup failure,
-retain the error log and resolve the pinned wheel/driver requirement.
-Run the following from the repository root. The source check needs no datasets or weights:
+Then activate without recreating/upgrading an existing qualified environment:
 
 ```bash
 conda activate oda
 export PYTHONPATH="$PWD/src"
-python -m lgp --help
 CUDA_VISIBLE_DEVICES="" python experiments/verify_public_package.py --plan-only
 CUDA_VISIBLE_DEVICES="" python experiments/qualify_vcsf_a10_public.py --plan-only
+python -m lgp models list
+python -m lgp compatibility
 python experiments/main_transfer.py --help
-python experiments/main_transfer.py --plan-only --datasets coco,voc --devices cuda:0,cuda:1
+python experiments/main_transfer.py --plan-only --datasets coco,voc --devices cuda:0
 ```
 
-Success means the source checks exit zero, the complete source manifest matches
-and the plan lists the intended full jobs. CPU checks and plans are not GPU or
-formal-mAP acceptance. Use `--devices cuda:0` for the same work on one GPU;
-dual mode schedules independent complete jobs without DDP or pooled memory.
-Every selected device must be available and individually fit its workload.
-Accepted one/dual evidence covers only the documented scopes, not global release.
+The pinned core is Python 3.8.20, PyTorch 2.0.0+cu118, torchvision 0.15.1+cu118,
+MMCV 2.0.1, MMEngine 0.7.4, MMDetection 3.0.0 and MMYOLO 0.6.0. Use the complete
+[lock file](requirements/locked-cu118.txt); do not independently upgrade the stack.
+No editable installation or destructive environment recreation is required.
 
-## Reproduction Guides
+Source checks and plans use no datasets/models/AP and do not qualify a GPU run.
+A plan can write a new output leaf. Inspect the complete job set before execution.
+For two available GPUs use `--devices cuda:0,cuda:1`; one GPU serializes the same
+jobs. There is no DDP, source ensembling, pooled memory or promised twofold speedup.
 
-- [Data preparation and validation](data/README.md), [checkpoints](checkpoints/README.md), [outputs](outputs/README.md).
-- [COCO/VOC main](docs/current-public-reproduction.md): ten default methods; NAA and Corrupting Attention remain selectable.
-- [Fixed preprocessing](docs/current-preprocessing-reproduction.md) and [adaptive/BPDA preprocessing](docs/current-adaptive-preprocessing-reproduction.md).
-- [Training-state evaluation](docs/current-training-state-reproduction.md) and distinct [controlled-pair training](docs/current-training-pair-reproduction.md).
-- [Final-background controls](docs/current-vcsf-background-reproduction.md), [A10 radii](docs/current-vcsf-radius-reproduction.md), [paired cost](docs/current-paired-cost-reproduction.md).
-- [Offline qualitative panels](docs/current-qualitative-reproduction.md), [online prediction visualization](docs/prediction-visualization-device-interface.md).
-- [Optional white-box diagnostic](docs/current-whitebox-reproduction.md), [saved report export](docs/saved-report-export.md), [dispatch evidence](docs/current-dispatch-evidence.md).
+## Prepare, Run and Recover
 
-Retained baseline wrappers, `all_method_ablations.py`, `coco_all_methods.py`,
-`extended_transfer.py`, `naa_experiments.py`, `visualize_predictions.py`
-and `voc_transfer.py` are shipped. Inspect each entry with `--help` and
-`--plan-only` before intentionally executing it. Shipping an entry does not
-reactivate retired SVFTA protocols or require rerunning accepted matrices.
-The full study declarations remain unchanged; author-history support modules
-are not new GPU tasks. Formal runs omit `--max-images`; bounded results are diagnostics.
+1. Prepare the named [COCO/VOC data](data/README.md) and deep-validate it.
+2. Obtain [COCO checkpoints and qualified VOC detectors](checkpoints/README.md).
+3. Follow the [main reproduction guide](docs/current-public-reproduction.md):
+   inspect a plan, perform a tiny diagnostic when needed, then deliberately run
+   the full population without `--max-images`.
+4. Check [immutable outputs](outputs/README.md) and generated CSV/TeX/figures.
+   [Saved main-report export](docs/saved-report-export.md) does not rerun models/AP.
 
-## Verification and Recovery
+COCO main uses all 5,000 val2017 images; VOC uses all 4,952 VOC2007 test images
+and its own twenty-class detector checkpoints. The default comparison contains
+ten methods in manuscript order; optional registered main rows remain selectable.
+Targets retain canonical architecture-group order; DINO is held out and
+`BB Mean` excludes the matched white-box target.
 
-Prepare data manifests and strict detector checkpoint provenance before execution.
-VOC needs its dataset-specific checkpoints, not a COCO classification head.
-A new run writes an immutable output leaf; follow the corresponding guide for
-its plan, state, records and automatic CSV/TeX/plot outputs. Keep raw JSON precision
-and all twelve metrics. Preserve failures and partial originals; do not overwrite,
-merge immutable runs or treat loss of visibility as permission to relaunch.
+## Public Entry Points
 
-If the source check fails, stop dependent execution and compare the exact missing,
-tampered or extra path with `public-package.json`. Restore a clean extracted
-source distribution or create an explicitly reviewed new identity; do not silently refresh
-hashes. Data, weights, accepted author results and private launch/audit history
-are not distributed here and have not been deleted. No automatic result inheritance,
-checkpoint publication or external upload is performed.
+| Entry in `experiments/` | Role |
+| --- | --- |
+| `main_transfer.py` | COCO/VOC main generation, clean/transfer evaluation and reports |
+| `clean_map.py` | Separate clean baseline preparation/check |
+| `finetune_voc.py` | Registered fixed-final VOC detector preparation |
+| `verify_public_package.py` | Complete source-closure check, no models |
+| `qualify_vcsf_a10_public.py` | CPU-only A10 parameter/factory identity inspection |
+| `reexport_saved_reports.py` | New scalar report export from saved records |
 
-## Evidence and Publication Status
+`_common.py` and `visualization_settings.py` are entry support files, not extra
+studies. Optional main-run post-NMS overlays remain part of the main interface.
+Generic preparation CLI commands are restricted to COCO/VOC; the experiment CLI
+admits only `main_transfer`. No public `data minimize` or legacy `all` dataset
+selector is provided.
 
-[Current evidence status](current-evidence-status.json) describes the accepted
-manuscript, corrected-LGP radius integration and device scopes. The manuscript
-remains a revised working draft, and its private Overleaf synchronization is
-accepted; no paper/photo copy or raw result payload is shipped here. Earlier
-scientific identity and historical inventory JSON files retain their original
-snapshot boundaries. Their old documentation-only distribution fields are not
-the current licence decision; use [the licence scope](docs/licensing/license-scope.md)
-and the current source manifest for this distribution.
+## Identity and Evidence
+
+The [complete source manifest](public-package.json) binds the public file set.
+The [identity guide](docs/public-package-identity.md) explains why frozen
+configuration/provenance and required ancestry helpers remain internal dependencies,
+not additional public experiment programmes. The nine numerical core files, full
+A10 parameters, canonical detector/compatibility registries and six provenance
+documents are unchanged. Raw hashes require LF text; do not bypass source failures
+by silently refreshing the manifest.
+
+[Current evidence status](current-evidence-status.json) preserves historical
+acceptance scopes separately from this narrower software surface. Unchanged
+bounded main/device evidence is not proof of every full default workload or of
+independent reproduction of manuscript values. Source publication does not
+complete the scientific project.
+
+Preserve failures/partial outputs and verify process ownership after a disconnect.
+Use a fresh immutable leaf for an explicit missing subset; never overwrite, merge
+or assume automatic resume. `NR` is not run, `ERR` is failure and `--` is an
+audited structural skip; none is zero. Do not rerun qualified baselines merely
+to validate a source/documentation change.

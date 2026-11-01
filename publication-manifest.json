@@ -1,24 +1,32 @@
 {
+  "active_entrypoints": [
+    "experiments/clean_map.py",
+    "experiments/finetune_voc.py",
+    "experiments/main_transfer.py",
+    "experiments/qualify_vcsf_a10_public.py",
+    "experiments/reexport_saved_reports.py",
+    "experiments/verify_public_package.py"
+  ],
   "files": [
     {
-      "bytes": 6589,
+      "bytes": 5623,
       "path": "README.md",
-      "sha256": "885638c042e9d86030c14834c8a0b62e60b1f34a006518732df7908fc2add949"
+      "sha256": "cfa5ee2fdd79d76c1c4b4564aa1f636801b10f3efd011145bbc2abec2552525f"
     },
     {
-      "bytes": 5853,
+      "bytes": 4835,
       "path": "README.zh-CN.md",
-      "sha256": "38ee47d5ce379b36f7dfb2444252adf47dc49228a5c9fa70f56bad9ff9d225be"
+      "sha256": "259393a9685b20854a00c8c4aea63154824afedc04504ee257ea57213e94bbea"
     },
     {
-      "bytes": 5854,
+      "bytes": 7480,
       "path": "current-evidence-status.json",
-      "sha256": "895984bbd5f20374ebab3040e982443734c7976e089795879ed54c275ee5c64a"
+      "sha256": "e3f78a0201b976297b2bd429f3bde8320909500453c166108bce0480ea871da9"
     },
     {
-      "bytes": 4550,
+      "bytes": 4621,
       "path": "docs/en/vcsf-method.md",
-      "sha256": "74588b086f6c30f502d1eae653951dabbfae7c381eb51b73140077b0a110c5df"
+      "sha256": "ad4db2ca31c180279f4ec4be395b7a61c14056c748b666cddb57fbb4cdda09d1"
     },
     {
       "bytes": 2181,
@@ -26,9 +34,9 @@
       "sha256": "aa6569c1ec69d5673822a50203256ed60971ffeb8f5b2ef69316836651e3fd0a"
     },
     {
-      "bytes": 3789,
+      "bytes": 3842,
       "path": "docs/zh_CN/vcsf-method.md",
-      "sha256": "2e56994c703b1f21e442a96bdd4428c5a690bcacb032ca3d1d4f6e93ac3a83a3"
+      "sha256": "e45ecc00a2e6238e67d6f1671f1cf6140401efd224d9db85291733d1d7d02304"
     },
     {
       "bytes": 36244,
@@ -51,17 +59,19 @@
       "sha256": "5e7f29526b4f827f0db035245f8173bc87ce9a21ecf715fe1b8688785ead1a25"
     }
   ],
+  "manifest_role": "selected_release_metadata_index_full_closure_is_public_package_json",
   "manifest_self_hash_excluded": true,
   "preserved_historical_files": [
     "vcsf-scientific-identity.json",
     "historical-implementation-inventory.json",
     "docs/history/previous-a23-selection-status.json"
   ],
-  "previous_public_commit": "c863b288affd926c8b1cb15e36fa51d3316522df",
+  "previous_metadata_manifest_sha256": "c999203039ab74d7b38cc0a14519cd2fb51802a3e71e748e0010226e0e2acd72",
+  "previous_public_commit": "15cdaf6fb5cff6009e76553536529394309d08a9",
   "project_license": "GPL-3.0-only",
   "project_license_granted": true,
-  "publication_scope": "complete_lightweight_executable_source_with_retained_scientific_metadata",
-  "schema_version": 5,
+  "publication_scope": "coco_voc_main_comparison_and_necessary_preparation_only",
+  "schema_version": 6,
   "software_release": true,
   "whole_research_goal_accepted": false
 }

@@ -11,11 +11,9 @@ from rich.console import Console
 from rich.table import Table
 from rich import box
 
-from .attacks.common import parse_fraction
 from .data.manager import (
     download_dataset,
     extract_dataset,
-    minimize_dataset_storage,
     prepare_dataset,
     validate_dataset,
 )
@@ -30,7 +28,6 @@ from .reporting import (
     write_transfer_reports,
 )
 from .runtime_config import build_runtime_config
-from .runners.artifacts import import_external_artifact
 from .runners.attack import run_attack
 from .runners.evaluate import run_evaluation
 from .runners.experiment import run_experiment
@@ -49,15 +46,6 @@ def _csv(value: Optional[str]) -> Optional[List[str]]:
 
 def _path(value: Optional[str]) -> Optional[Path]:
     return Path(value).expanduser().resolve() if value else None
-
-
-def _fraction_float(value: str) -> float:
-    parsed = parse_fraction(value)
-    if not isinstance(parsed, (int, float)):
-        raise argparse.ArgumentTypeError(
-            "expected a number or fraction such as 4/255"
-        )
-    return float(parsed)
 
 
 def _add_common_runtime(parser: argparse.ArgumentParser) -> None:
@@ -104,7 +92,8 @@ def build_parser() -> argparse.ArgumentParser:
     doctor = subparsers.add_parser("doctor", help="Verify environment, configs, data and weights")
     doctor.add_argument(
         "--datasets",
-        help="Comma-separated registered dataset IDs (default: all registered datasets)",
+        default="coco,voc",
+        help="Comma-separated COCO/VOC IDs (default: coco,voc)",
     )
     doctor.add_argument("--deep-data", action="store_true", help="Verify every referenced image")
     doctor.add_argument("--json", dest="json_path", help="Also write the report to JSON")
@@ -121,7 +110,7 @@ def build_parser() -> argparse.ArgumentParser:
     data_sub = data.add_subparsers(dest="data_action", required=True)
     for action in ("download", "extract", "prepare", "validate"):
         child = data_sub.add_parser(action)
-        child.add_argument("--dataset", default="all", choices=["all", "coco", "voc", "bdd100k"])
+        child.add_argument("--dataset", default="coco", choices=["coco", "voc"])
         if action == "download":
             child.add_argument(
                 "--full",
@@ -136,17 +125,6 @@ def build_parser() -> argparse.ArgumentParser:
                 help="Also require and validate optional dataset splits",
             )
             child.add_argument("--json", dest="json_path")
-    minimize = data_sub.add_parser(
-        "minimize",
-        help="Remove extracted/downloaded payloads that no registered experiment reads",
-    )
-    minimize.add_argument(
-        "--apply",
-        action="store_true",
-        help="Perform the deletion; without this flag only print the verified plan",
-    )
-    minimize.add_argument("--json", dest="json_path")
-
     weights = subparsers.add_parser("weights", help="Manage official detector checkpoints")
     weights_sub = weights.add_subparsers(dest="weights_action", required=True)
     weights_download = weights_sub.add_parser("download")
@@ -157,13 +135,13 @@ def build_parser() -> argparse.ArgumentParser:
     render = subparsers.add_parser("config", help="Render a resolved upstream runtime config")
     render.add_argument("action", choices=["render"])
     render.add_argument("--model", required=True)
-    render.add_argument("--dataset", required=True, choices=["coco", "voc", "bdd100k"])
+    render.add_argument("--dataset", required=True, choices=["coco", "voc"])
     render.add_argument("--mode", default="test", choices=["test", "train"])
     render.add_argument("--split", default="val", choices=["train", "dev", "val"])
     render.add_argument("--output", required=True)
 
-    train = subparsers.add_parser("train", help="Fine-tune one detector (VOC maintained; BDD100K legacy)")
-    train.add_argument("--dataset", required=True, choices=["voc", "bdd100k"])
+    train = subparsers.add_parser("train", help="Prepare a dataset-specific VOC detector")
+    train.add_argument("--dataset", required=True, choices=["voc"])
     train.add_argument("--model", required=True, help="Comma-separated model IDs or all")
     train.add_argument("--work-dir")
     train.add_argument("--overwrite-checkpoint", action="store_true")
@@ -176,7 +154,7 @@ def build_parser() -> argparse.ArgumentParser:
     _add_common_runtime(train)
 
     attack = subparsers.add_parser("attack", help="Generate adversarial images and optionally evaluate")
-    attack.add_argument("--dataset", required=True, choices=["coco", "voc", "bdd100k"])
+    attack.add_argument("--dataset", required=True, choices=["coco", "voc"])
     attack.add_argument("--source", required=True)
     attack.add_argument("--method", required=True)
     attack.add_argument("--split", default="val", choices=["train", "dev", "val"])
@@ -194,7 +172,7 @@ def build_parser() -> argparse.ArgumentParser:
     _add_prediction_visualization(attack)
 
     evaluate = subparsers.add_parser("evaluate", help="Evaluate clean or adversarial images")
-    evaluate.add_argument("--dataset", required=True, choices=["coco", "voc", "bdd100k"])
+    evaluate.add_argument("--dataset", required=True, choices=["coco", "voc"])
     evaluate.add_argument("--target", required=True)
     evaluate.add_argument("--split", default="val", choices=["train", "dev", "val"])
     evaluate.add_argument("--adversarial-run")
@@ -209,44 +187,8 @@ def build_parser() -> argparse.ArgumentParser:
     _add_common_runtime(evaluate)
     _add_prediction_visualization(evaluate)
 
-    artifact = subparsers.add_parser("artifact", help="Register verified external baseline images")
-    artifact_sub = artifact.add_subparsers(dest="artifact_action", required=True)
-    artifact_import = artifact_sub.add_parser("import")
-    artifact_import.add_argument("--dataset", required=True, choices=["coco", "voc", "bdd100k"])
-    artifact_import.add_argument("--source", required=True)
-    artifact_import.add_argument("--method", required=True)
-    artifact_import.add_argument("--annotation", required=True)
-    artifact_import.add_argument("--image-root", required=True)
-    artifact_import.add_argument(
-        "--clean-root",
-        help="Matching clean-image root used for pixel-level budget verification",
-    )
-    artifact_import.add_argument(
-        "--expected-eps",
-        type=_fraction_float,
-        help="Normalized perturbation budget, for example 4/255",
-    )
-    artifact_import.add_argument(
-        "--budget-profile",
-        choices=["compute_matched", "paper_default"],
-        help="Declared comparison regime from configs/experiments/budgets.yaml",
-    )
-    artifact_import.add_argument(
-        "--gradient-evals-per-image",
-        type=int,
-        help=(
-            "Source-detector backward-pass image equivalents; a batch of k "
-            "transformed views counts as k"
-        ),
-    )
-    artifact_import.add_argument("--attack-seconds-per-image", type=float)
-    artifact_import.add_argument("--peak-memory-mb", type=float)
-    artifact_import.add_argument("--parameters-json")
-    artifact_import.add_argument("--code-commit")
-    artifact_import.add_argument("--output")
-
     experiment = subparsers.add_parser("experiment", help="Plan or execute a complete protocol")
-    experiment.add_argument("--protocol", required=True)
+    experiment.add_argument("--protocol", required=True, choices=["main_transfer"])
     experiment.add_argument("--execute", action="store_true", help="Execute native jobs; default is safe plan-only")
     experiment.add_argument("--datasets", help="Comma-separated override")
     experiment.add_argument("--sources", help="Comma-separated override")
@@ -254,7 +196,7 @@ def build_parser() -> argparse.ArgumentParser:
     experiment.add_argument("--methods", help="Comma-separated override")
     experiment.add_argument(
         "--studies",
-        help="Comma-separated ablation-study override (svfta_ablation protocol)",
+        help=argparse.SUPPRESS,
     )
     experiment.add_argument("--max-images", type=int)
     experiment.add_argument("--seed", type=int, default=42)
@@ -272,7 +214,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     report = subparsers.add_parser("report", help="Regenerate CSV and TeX from result JSON files")
     report.add_argument("--input", required=True, help="records.json or a directory containing metrics.json")
-    report.add_argument("--dataset", required=True, choices=["coco", "voc", "bdd100k"])
+    report.add_argument("--dataset", required=True, choices=["coco", "voc"])
     report.add_argument(
         "--metric",
         default="all",
@@ -396,6 +338,14 @@ def _load_records(path: Path) -> List[Dict[str, Any]]:
 
 
 def dispatch(args: argparse.Namespace, registry: Registry) -> int:
+    if args.command == "doctor" and (
+        not _csv(args.datasets) or not set(_csv(args.datasets)) <= {"coco", "voc"}
+    ):
+        raise ValueError("The public doctor supports only COCO and VOC")
+    if args.command == "attack" and args.method not in registry.protocols["main_transfer"]["allowed_methods"]:
+        raise ValueError("This method is outside the public main comparison")
+    if args.command == "experiment" and args.studies:
+        raise ValueError("Ablation studies belong to the local institutional project")
     if args.command == "doctor":
         report = run_doctor(registry, deep_data=args.deep_data, datasets=args.datasets)
         table = Table(title="LGP environment doctor", box=box.ASCII, safe_box=True)
@@ -419,13 +369,7 @@ def dispatch(args: argparse.Namespace, registry: Registry) -> int:
         return 0
 
     if args.command == "data":
-        if args.data_action == "minimize":
-            report = minimize_dataset_storage(registry, apply=args.apply)
-            console.print_json(data=report)
-            if args.json_path:
-                atomic_json(_path(args.json_path), report)
-            return 0
-        ids = list(registry.datasets) if args.dataset == "all" else [args.dataset]
+        ids = [args.dataset]
         if args.data_action == "validate":
             reports = {
                 dataset_id: validate_dataset(
@@ -588,27 +532,6 @@ def dispatch(args: argparse.Namespace, registry: Registry) -> int:
                 if args.prediction_archive == "none"
                 else args.prediction_archive
             ),
-        )
-        console.print(str(result))
-        return 0
-
-    if args.command == "artifact":
-        result = import_external_artifact(
-            registry,
-            args.dataset,
-            args.source,
-            args.method,
-            annotation=_path(args.annotation),
-            image_root=_path(args.image_root),
-            clean_root=_path(args.clean_root),
-            output_dir=_path(args.output),
-            expected_eps=args.expected_eps,
-            budget_profile=args.budget_profile,
-            gradient_evaluations_per_image=args.gradient_evals_per_image,
-            attack_seconds_per_image=args.attack_seconds_per_image,
-            peak_memory_mb=args.peak_memory_mb,
-            parameters_json=_path(args.parameters_json),
-            code_commit=args.code_commit,
         )
         console.print(str(result))
         return 0

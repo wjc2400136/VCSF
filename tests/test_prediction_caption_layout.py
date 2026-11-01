@@ -98,9 +98,14 @@ def test_every_outline_and_leader_is_drawn_before_any_text(tmp_path, monkeypatch
     assert events[-1] == "text:Reserved title"
 
 
-def test_existing_readable_font_fit_floor_is_retained(tmp_path):
+def test_existing_readable_font_fit_floor_is_retained(tmp_path, monkeypatch):
+    from matplotlib import get_data_path
+
     message = "long category 0.9000"
-    font = ImageFont.truetype("DejaVuSans.ttf", size=8)
+    font_path = Path(get_data_path()) / "fonts" / "ttf" / "DejaVuSans.ttf"
+    font = ImageFont.truetype(str(font_path), size=8)
+    monkeypatch.setattr(vis, "_font", lambda image, font_size=None:
+                        ImageFont.truetype(str(font_path), size=font_size or 12))
     sample = ImageDraw.Draw(Image.new("RGB", (300, 100)))
     left, top, right, bottom = sample.textbbox((0, 0), message, font=font)
     size = (right - left + 5, bottom - top + 5)
