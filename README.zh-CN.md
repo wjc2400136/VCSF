@@ -2,13 +2,11 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-本公开源码包**只提供 COCO/VOC 主比较及必要准备**，包含选定 A10 VCSF、
-corrected-LGP source201、已注册比较方法、六个独立源、十六目标、数据/检查点
-准备和记录生成的报告。
+本项目包含 VCSF 实现及 COCO/Pascal VOC 目标检测对抗迁移基准，采用六个独立
+源检测器、十六个目标检测器，以及包含 LGP 在内的注册比较方法。复现流程覆盖
+环境与输入准备、主实验、评估和记录生成的报告。
 
-作者本地 **ODA 学院工程**范围更广。预处理、训练状态、半径/敏感性/消融、
-独立成本、单独定性图或白盒研究、私有结果及稿件版本，不再作为本仓库公开
-实验入口。收窄公开面不删除本地保留研究。
+公开实验范围为 COCO/VOC 主比较；补充研究代码和论文材料保留在 ODA 学院存档工程中。
 
 项目自有公开源码/指南采用 **GPL-3.0-only**，保留第三方条款，见
 [LICENSE](LICENSE)、[授权范围](docs/licensing/license-scope.zh-CN.md)、
@@ -68,7 +66,7 @@ COCO 主实验使用全部 5,000 张 val2017；VOC 使用全部 4,952 张 VOC200
 | `clean_map.py` | 独立干净基线准备/检查 |
 | `finetune_voc.py` | 注册的固定最终轮 VOC 检测器准备 |
 | `verify_public_package.py` | 无模型完整源闭包检查 |
-| `qualify_vcsf_a10_public.py` | CPU 上 A10 参数/工厂身份检查 |
+| `qualify_vcsf_a10_public.py` | CPU 上方法参数与工厂身份检查 |
 | `reexport_saved_reports.py` | 从已保存记录导出新标量报告 |
 
 `_common.py`、`visualization_settings.py` 是入口支撑文件，不是额外实验。
@@ -79,7 +77,7 @@ COCO 主实验使用全部 5,000 张 val2017；VOC 使用全部 4,952 张 VOC200
 
 [完整源码清单](public-package.json)绑定当前文件集合。[身份指南](docs/public-package-identity.zh-CN.md)
 解释冻结配置/来源和必要祖先辅助代码为何仍作为内部依赖保留，而不是额外
-公开实验计划。九个数值核心文件、完整 A10 参数、规范模型/兼容注册表及六份
+公开实验计划。九个数值核心文件、完整 VCSF 参数、规范模型/兼容注册表及六份
 来源文档不变。原始字节哈希要求 LF；不能静默刷新清单来绕过失败。
 
 [当前证据状态](current-evidence-status.json)将历史验收范围与本次收窄的软件

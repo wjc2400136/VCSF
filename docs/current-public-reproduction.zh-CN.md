@@ -4,7 +4,7 @@
 
 先完成[环境](environment.zh-CN.md)、[数据验证](../data/README.zh-CN.md)及
 [检查点准备](../checkpoints/README.zh-CN.md)，所有命令在本公开源码根执行。
-本包只提供主比较，不提供作者本地补充研究计划。
+本页说明 COCO/VOC 主比较；补充研究归入学院存档工程。
 
 COCO 使用全部 5,000 张 val2017 和官方 COCO 权重；VOC 使用全部 4,952 张
 VOC2007 test 及十六个数据集专用二十类检测器，不能用 COCO head 代替。
@@ -22,7 +22,7 @@ python experiments/main_transfer.py --plan-only --datasets coco,voc --devices cu
 Corrupting Attention 仍是可选主比较行，结构不适用记 `--`。不能选退役 SVFTA，
 不开放消融。核对任务、人群、种子和设备分配。
 
-基线保留冻结 compute-matched 设置。A10 保留一次 detector 加十九次 feature
+基线保留冻结 compute-matched 设置。VCSF 使用一次 detector 加十九次 feature
 更新、完整参数及实际参考/部分反向成本口径；参考工作不免费，部分特征梯度
 不自动换算成完整检测器反向等价量。
 

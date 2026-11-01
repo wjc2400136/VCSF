@@ -34,7 +34,7 @@ implementation results certify the entire new orchestration.
 Nonnumeric loaded-config validation, read-only observation and physical-device
 resolution helpers are relocated with exact original AST bodies. Linux ODA
 interpreter checks resolve the current environment rather than embed a private
-server path. Registry, factory, attack mathematics, nine numerical files, A10
+server path. Registry, factory, attack mathematics, nine numerical files, VCSF
 parameters, MRO and original selection evidence are unchanged.
 
 Bounded CPU imports, CLI help and no-GPU plans establish only those interfaces.
@@ -51,5 +51,5 @@ scientific status. The inherited freeze filename stays stable, while its schema,
 source map and licence boundary are rebound in this new copy. The v2 `release`
 flag concerns this software-source distribution only; `science` and `formal`
 remain false. Licence scope, original upstream licence bytes and both notice
-guides are bound explicitly. The original A10 scientific identity keeps its
+guides are bound explicitly. The VCSF scientific identity keeps its
 existing status and numerical hashes.

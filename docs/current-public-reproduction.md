@@ -5,7 +5,7 @@
 Run from this public source root after [environment setup](environment.md),
 [data validation](../data/README.md) and
 [checkpoint preparation](../checkpoints/README.md). This package exposes the main
-comparison only, not the local author's supplementary programmes.
+comparison. Supplementary research belongs to the institutional archive.
 
 COCO uses all 5,000 val2017 images and released COCO weights. VOC uses all
 4,952 VOC2007 test images and sixteen dataset-specific fine-tuned twenty-class
@@ -25,7 +25,7 @@ sources and sixteen targets. Optional NAA and Corrupting Attention remain main-r
 selectors; their structural skips remain `--`. Retired SVFTA cannot be selected.
 Ablations are not exposed. Read the job set, population, seed and assignments.
 
-Baseline schedules keep their frozen compute-matched settings. A10 keeps one
+Baseline schedules keep their frozen compute-matched settings. VCSF uses one
 detector update plus nineteen feature updates, its complete parameters and actual
 reference/partial-backward cost accounting. Neither reference work nor partial
 feature gradients are free/calibrated whole-detector backward equivalents.

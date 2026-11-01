@@ -2,16 +2,14 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-This public source package reproduces the **COCO/VOC main comparison and its
-necessary preparation only**. It provides the selected A10 VCSF implementation,
-corrected-LGP source201, the registered comparison methods, six independent
-sources, sixteen targets, data/checkpoint preparation and record-derived reports.
+This repository contains the VCSF implementation and the COCO/Pascal VOC
+object-detection transfer benchmark. The experiment panel uses six independent
+source detectors, sixteen target detectors and the registered comparison methods,
+including LGP. The workflow covers environment and input preparation, main
+experiments, evaluation and record-derived reports.
 
-The author's local **ODA institutional project** is broader. Preprocessing,
-training-state studies, radius/sensitivity/ablation programmes, separate cost
-benchmarks, standalone qualitative/white-box studies, private results and
-manuscript versions are not public experiment entries here. Their removal from
-this public surface does not delete the retained local research.
+The public experiment scope is the COCO/VOC main comparison. Supplementary
+research code and manuscript materials are retained in the ODA institutional archive.
 
 Project-owned public source/guides use **GPL-3.0-only**, with retained third-party
 terms: [LICENSE](LICENSE), [licence scope](docs/licensing/license-scope.md),
@@ -76,7 +74,7 @@ Targets retain canonical architecture-group order; DINO is held out and
 | `clean_map.py` | Separate clean baseline preparation/check |
 | `finetune_voc.py` | Registered fixed-final VOC detector preparation |
 | `verify_public_package.py` | Complete source-closure check, no models |
-| `qualify_vcsf_a10_public.py` | CPU-only A10 parameter/factory identity inspection |
+| `qualify_vcsf_a10_public.py` | CPU-only method parameter and factory identity inspection |
 | `reexport_saved_reports.py` | New scalar report export from saved records |
 
 `_common.py` and `visualization_settings.py` are entry support files, not extra
@@ -91,7 +89,7 @@ The [complete source manifest](public-package.json) binds the public file set.
 The [identity guide](docs/public-package-identity.md) explains why frozen
 configuration/provenance and required ancestry helpers remain internal dependencies,
 not additional public experiment programmes. The nine numerical core files, full
-A10 parameters, canonical detector/compatibility registries and six provenance
+VCSF parameters, canonical detector/compatibility registries and six provenance
 documents are unchanged. Raw hashes require LF text; do not bypass source failures
 by silently refreshing the manifest.
 

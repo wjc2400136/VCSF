@@ -9,14 +9,14 @@
   ],
   "files": [
     {
-      "bytes": 5623,
+      "bytes": 5466,
       "path": "README.md",
-      "sha256": "cfa5ee2fdd79d76c1c4b4564aa1f636801b10f3efd011145bbc2abec2552525f"
+      "sha256": "60ca6ddfe439a53af24c6fbda4e91ed5d226859e950359ee72e1002cb3387c1f"
     },
     {
-      "bytes": 4835,
+      "bytes": 4735,
       "path": "README.zh-CN.md",
-      "sha256": "259393a9685b20854a00c8c4aea63154824afedc04504ee257ea57213e94bbea"
+      "sha256": "9083324442eb2f6db3f784440a066c987c6576ca78adf1047b54f0ebe7ee0ad0"
     },
     {
       "bytes": 7480,
@@ -24,9 +24,9 @@
       "sha256": "e3f78a0201b976297b2bd429f3bde8320909500453c166108bce0480ea871da9"
     },
     {
-      "bytes": 4621,
+      "bytes": 2800,
       "path": "docs/en/vcsf-method.md",
-      "sha256": "ad4db2ca31c180279f4ec4be395b7a61c14056c748b666cddb57fbb4cdda09d1"
+      "sha256": "905cd4456ca0aacd050cd436a789ce52d7cb067555254c65481c895a85b4376a"
     },
     {
       "bytes": 2181,
@@ -34,9 +34,9 @@
       "sha256": "aa6569c1ec69d5673822a50203256ed60971ffeb8f5b2ef69316836651e3fd0a"
     },
     {
-      "bytes": 3842,
+      "bytes": 2292,
       "path": "docs/zh_CN/vcsf-method.md",
-      "sha256": "e45ecc00a2e6238e67d6f1671f1cf6140401efd224d9db85291733d1d7d02304"
+      "sha256": "c1c96528f8c1cdae333b05ff892cebfeddc9d4c4967e518b1c795e7b1156e373"
     },
     {
       "bytes": 36244,
@@ -66,8 +66,8 @@
     "historical-implementation-inventory.json",
     "docs/history/previous-a23-selection-status.json"
   ],
-  "previous_metadata_manifest_sha256": "c999203039ab74d7b38cc0a14519cd2fb51802a3e71e748e0010226e0e2acd72",
-  "previous_public_commit": "15cdaf6fb5cff6009e76553536529394309d08a9",
+  "previous_metadata_manifest_sha256": "a6a44d6270f92a6fc093b3a6b6ebcd6c1da6c8901b233404a2196efac1e953c2",
+  "previous_public_commit": "b400a8ef8aa21a4e4be2c252ce825aaf4d0be92b",
   "project_license": "GPL-3.0-only",
   "project_license_granted": true,
   "publication_scope": "coco_voc_main_comparison_and_necessary_preparation_only",
