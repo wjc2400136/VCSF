@@ -82,8 +82,9 @@ The empty device visibility is intentional for inspection. Open a fresh correctl
 configured GPU shell before actual execution; never change an active job's mapping.
 Success means zero exit, matching source bytes/versions and the intended plan,
 not dataset/checkpoint readiness or numerical acceptance. `.gitattributes` keeps
-LF text in new checkouts; unexplained line-ending/hash failures must not be fixed
-by silently repinning the manifest.
+LF text in new checkouts, with an explicit byte-preserving exception for the
+original mixed-EOL historical helper. Unexplained line-ending/hash failures must
+not be fixed by silently repinning the manifest or normalising a frozen file.
 
 ## Inputs, GPU Checks and Recovery
 

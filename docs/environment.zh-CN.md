@@ -74,8 +74,9 @@ python experiments/main_transfer.py --plan-only --datasets coco,voc --devices cu
 
 检查时故意将设备可见性设空。实际执行前另开正确配置 GPU 的终端，不修改
 活动任务的映射。成功表示退出为零、源字节/版本和计划正确，不代表数据、
-权重或数值验收。`.gitattributes` 使新工作副本文本保持 LF；不明换行/哈希
-错误不能靠静默刷新清单消除。
+权重或数值验收。`.gitattributes` 使普通文本保持 LF，并为原本混合换行的
+历史助手显式保留原字节；不明换行/哈希错误不能靠静默刷新清单或规范化冻结
+文件消除。
 
 ## 输入、GPU 检查与恢复
 
