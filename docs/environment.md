@@ -78,19 +78,14 @@ python experiments/qualify_vcsf_a10_public.py --plan-only
 python experiments/main_transfer.py --plan-only --datasets coco,voc --devices cuda:0
 ```
 
-The empty device visibility is intentional for inspection. Open a fresh correctly
-configured GPU shell before actual execution; never change an active job's mapping.
-Success means zero exit, matching source bytes/versions and the intended plan,
-not dataset/checkpoint readiness or numerical acceptance. `.gitattributes` keeps
-LF text in new checkouts, with an explicit byte-preserving exception for the
-original mixed-EOL historical helper. Unexplained line-ending/hash failures must
-not be fixed by silently repinning the manifest or normalising a frozen file.
+These are CPU-only checks. Open a fresh terminal with the intended GPU visibility
+before running experiments; do not change an active job's device mapping.
 
 ## Inputs, GPU Checks and Recovery
 
 Follow [data](../data/README.md), [checkpoints](../checkpoints/README.md), then
 [main reproduction](current-public-reproduction.md). Select `coco`/`voc` explicitly;
-the public CLI rejects legacy `all` and BDD100K selections. On the authorized GPU host:
+the public CLI rejects legacy `all` and BDD100K selections. On the GPU host:
 
 ```bash
 nvidia-smi
@@ -98,14 +93,13 @@ python -c "import torch; from mmcv.ops import nms; print(torch.__version__, torc
 python -m lgp doctor --datasets coco,voc --deep-data
 ```
 
-Read the doctor report, resolve critical errors and review warnings. Reuse
-qualified weights/results rather than routinely retraining or rerunning them.
+Read the doctor report, resolve critical errors and review warnings.
 Plan-only and bounded diagnostics are not formal mAP; formal runs omit `--max-images`.
 
-Keep failed commands/logs and source identity. Resolve the exact Python, wheel
+Keep failed commands and logs. Resolve the exact Python, wheel
 or driver mismatch without upgrading the scientific stack. Inspect a partially
 created environment; never automatically delete a pre-existing `oda`. If activation
 is unavailable, use `conda init bash` or `conda init powershell` for the actual
-shell and reopen it. For source identity failures, use a clean checkout/extraction
-or a reviewed new identity, not a bypass. Data/weight repairs have separate
-write/provenance boundaries. Delivering this guide does not claim installation.
+shell and reopen it. If source-file checks fail, obtain a clean checkout or ZIP
+instead of skipping the check. After repairing data or weights, rerun their
+validation commands before starting an experiment.

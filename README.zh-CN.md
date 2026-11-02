@@ -6,12 +6,12 @@
 源检测器、十六个目标检测器，以及包含 LGP 在内的注册比较方法。复现流程覆盖
 环境与输入准备、主实验、评估和记录生成的报告。
 
-公开实验范围为 COCO/VOC 主比较；补充研究代码和论文材料保留在 ODA 学院存档工程中。
+公开实验范围为 COCO/VOC 主比较。
 
 项目自有公开源码/指南采用 **GPL-3.0-only**，保留第三方条款，见
 [LICENSE](LICENSE)、[授权范围](docs/licensing/license-scope.zh-CN.md)、
 [第三方声明](THIRD_PARTY_NOTICES.zh-CN.md)。它不授权数据、权重、论文素材或
-私有记录，也不产生科学验收。
+私有记录。
 
 ## 从零开始
 
@@ -41,8 +41,7 @@ MMCV 2.0.1、MMEngine 0.7.4、MMDetection 3.0.0、MMYOLO 0.6.0，按
 [完整锁定依赖](requirements/locked-cu118.txt)安装，不单独升级组件。
 不需要可编辑安装或破坏性重建环境。
 
-源码检查和计划不使用数据/模型/AP，不证明 GPU 运行合格；计划可能写新输出
-叶目录，执行前要看完整任务集。双卡可用时选 `--devices cuda:0,cuda:1`，
+源码检查和计划不加载模型，执行前先查看完整任务集。双卡可用时选 `--devices cuda:0,cuda:1`，
 单卡串行同一工作集，不引入 DDP、源集成、显存合并，不承诺固定两倍加速。
 
 ## 准备、执行与恢复
@@ -65,25 +64,16 @@ COCO 主实验使用全部 5,000 张 val2017；VOC 使用全部 4,952 张 VOC200
 | `main_transfer.py` | COCO/VOC 主生成、干净/迁移评估和报告 |
 | `clean_map.py` | 独立干净基线准备/检查 |
 | `finetune_voc.py` | 注册的固定最终轮 VOC 检测器准备 |
-| `verify_public_package.py` | 无模型完整源闭包检查 |
-| `qualify_vcsf_a10_public.py` | CPU 上方法参数与工厂身份检查 |
+| `verify_public_package.py` | 源文件完整性检查，不加载模型 |
+| `qualify_vcsf_a10_public.py` | CPU 上的方法配置检查 |
 | `reexport_saved_reports.py` | 从已保存记录导出新标量报告 |
 
 `_common.py`、`visualization_settings.py` 是入口支撑文件，不是额外实验。
 主实验可选的 NMS 后预测叠框保留。准备 CLI 限于 COCO/VOC，实验 CLI 仅接受
 `main_transfer`；不再提供公开 `data minimize` 或旧数据集 `all` 选择器。
 
-## 身份与证据
-
-[完整源码清单](public-package.json)绑定当前文件集合。[身份指南](docs/public-package-identity.zh-CN.md)
-解释冻结配置/来源和必要祖先辅助代码为何仍作为内部依赖保留，而不是额外
-公开实验计划。九个数值核心文件、完整 VCSF 参数、规范模型/兼容注册表及六份
-来源文档不变。原始字节哈希要求 LF；不能静默刷新清单来绕过失败。
-
-[当前证据状态](current-evidence-status.json)将历史验收范围与本次收窄的软件
-界面分开。未变化的有界主实验/设备证据不证明全部默认完整任务或论文数值
-独立复现；发布源码不等于整个科学研究完成。
+## 输出与恢复
 
 失败/中断后保留原产物并核对进程归属，明确缺失子集后写新叶目录，不覆盖、
 不合并、不自动续跑。`NR` 是未运行，`ERR` 是失败，`--` 是审计后的结构
-不适用，均不是零。不为验证源码/文档改动而重跑合格基线。
+不适用，均不是零。

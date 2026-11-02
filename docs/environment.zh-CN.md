@@ -72,17 +72,14 @@ python experiments/qualify_vcsf_a10_public.py --plan-only
 python experiments/main_transfer.py --plan-only --datasets coco,voc --devices cuda:0
 ```
 
-检查时故意将设备可见性设空。实际执行前另开正确配置 GPU 的终端，不修改
-活动任务的映射。成功表示退出为零、源字节/版本和计划正确，不代表数据、
-权重或数值验收。`.gitattributes` 使普通文本保持 LF，并为原本混合换行的
-历史助手显式保留原字节；不明换行/哈希错误不能靠静默刷新清单或规范化冻结
-文件消除。
+以上仅进行 CPU 检查。运行实验前另开终端并配置正确的 GPU 可见性，不要修改
+活动任务的设备映射。
 
 ## 输入、GPU 检查与恢复
 
 依次阅读[数据](../data/README.zh-CN.md)、[检查点](../checkpoints/README.zh-CN.md)
 和[主实验](current-public-reproduction.zh-CN.md)。显式选择 `coco`/`voc`，
-公开 CLI 拒绝旧 `all` 和 BDD100K 选择。在已授权 GPU 主机执行：
+公开 CLI 拒绝旧 `all` 和 BDD100K 选择。在 GPU 主机执行：
 
 ```bash
 nvidia-smi
@@ -90,11 +87,11 @@ python -c "import torch; from mmcv.ops import nms; print(torch.__version__, torc
 python -m lgp doctor --datasets coco,voc --deep-data
 ```
 
-阅读 doctor 具体报告，处理严重错误并审阅警告。合格权重/结果按原范围复用，
-不例行重训重跑。计划和有界诊断不是正式 mAP，正式运行不得带 `--max-images`。
+阅读 doctor 具体报告，处理严重错误并审阅警告。计划和限图诊断不是正式 mAP，
+正式运行不得带 `--max-images`。
 
-保留失败命令、日志和源码身份，修复具体 Python、wheel 或驱动不匹配，不升级
+保留失败命令和日志，修复具体 Python、wheel 或驱动不匹配，不升级
 科学依赖栈。创建中断后先检查环境，不自动删除已有 `oda`。激活不可用时按
 实际 shell 使用 `conda init bash` 或 `conda init powershell`，再重开终端。
-源码身份失败应使用干净工作副本/解压件或经审核的新身份，不绕过检查器。
-数据/权重修复另有写入和溯源边界；交付指南不代表已安装环境。
+源文件检查失败时，重新获取干净工作副本或 ZIP，不要跳过检查。
+修复数据或权重后，重新执行相应验证命令，再启动实验。

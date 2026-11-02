@@ -8,13 +8,12 @@ source detectors, sixteen target detectors and the registered comparison methods
 including LGP. The workflow covers environment and input preparation, main
 experiments, evaluation and record-derived reports.
 
-The public experiment scope is the COCO/VOC main comparison. Supplementary
-research code and manuscript materials are retained in the ODA institutional archive.
+The public experiment scope is the COCO/VOC main comparison.
 
 Project-owned public source/guides use **GPL-3.0-only**, with retained third-party
 terms: [LICENSE](LICENSE), [licence scope](docs/licensing/license-scope.md),
 [Third-Party Notices](THIRD_PARTY_NOTICES.md). This does not license datasets,
-weights, paper assets or private records, or grant scientific acceptance.
+weights, paper assets or private records.
 
 ## Start From Zero
 
@@ -45,8 +44,7 @@ MMCV 2.0.1, MMEngine 0.7.4, MMDetection 3.0.0 and MMYOLO 0.6.0. Use the complete
 [lock file](requirements/locked-cu118.txt); do not independently upgrade the stack.
 No editable installation or destructive environment recreation is required.
 
-Source checks and plans use no datasets/models/AP and do not qualify a GPU run.
-A plan can write a new output leaf. Inspect the complete job set before execution.
+Source checks and plans do not load models. Inspect the planned job set before execution.
 For two available GPUs use `--devices cuda:0,cuda:1`; one GPU serializes the same
 jobs. There is no DDP, source ensembling, pooled memory or promised twofold speedup.
 
@@ -73,8 +71,8 @@ Targets retain canonical architecture-group order; DINO is held out and
 | `main_transfer.py` | COCO/VOC main generation, clean/transfer evaluation and reports |
 | `clean_map.py` | Separate clean baseline preparation/check |
 | `finetune_voc.py` | Registered fixed-final VOC detector preparation |
-| `verify_public_package.py` | Complete source-closure check, no models |
-| `qualify_vcsf_a10_public.py` | CPU-only method parameter and factory identity inspection |
+| `verify_public_package.py` | Source-file integrity check, no models |
+| `qualify_vcsf_a10_public.py` | CPU-only method configuration check |
 | `reexport_saved_reports.py` | New scalar report export from saved records |
 
 `_common.py` and `visualization_settings.py` are entry support files, not extra
@@ -83,24 +81,9 @@ Generic preparation CLI commands are restricted to COCO/VOC; the experiment CLI
 admits only `main_transfer`. No public `data minimize` or legacy `all` dataset
 selector is provided.
 
-## Identity and Evidence
-
-The [complete source manifest](public-package.json) binds the public file set.
-The [identity guide](docs/public-package-identity.md) explains why frozen
-configuration/provenance and required ancestry helpers remain internal dependencies,
-not additional public experiment programmes. The nine numerical core files, full
-VCSF parameters, canonical detector/compatibility registries and six provenance
-documents are unchanged. Raw hashes require LF text; do not bypass source failures
-by silently refreshing the manifest.
-
-[Current evidence status](current-evidence-status.json) preserves historical
-acceptance scopes separately from this narrower software surface. Unchanged
-bounded main/device evidence is not proof of every full default workload or of
-independent reproduction of manuscript values. Source publication does not
-complete the scientific project.
+## Outputs and Recovery
 
 Preserve failures/partial outputs and verify process ownership after a disconnect.
 Use a fresh immutable leaf for an explicit missing subset; never overwrite, merge
 or assume automatic resume. `NR` is not run, `ERR` is failure and `--` is an
-audited structural skip; none is zero. Do not rerun qualified baselines merely
-to validate a source/documentation change.
+audited structural skip; none is zero.

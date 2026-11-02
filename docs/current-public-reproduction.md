@@ -4,8 +4,7 @@
 
 Run from this public source root after [environment setup](environment.md),
 [data validation](../data/README.md) and
-[checkpoint preparation](../checkpoints/README.md). This package exposes the main
-comparison. Supplementary research belongs to the institutional archive.
+[checkpoint preparation](../checkpoints/README.md). This package covers the COCO/VOC main comparison.
 
 COCO uses all 5,000 val2017 images and released COCO weights. VOC uses all
 4,952 VOC2007 test images and sixteen dataset-specific fine-tuned twenty-class
@@ -32,7 +31,7 @@ feature gradients are free/calibrated whole-detector backward equivalents.
 
 ## Bounded Diagnostic
 
-On the authorized GPU host, choose one mode, not both simultaneously:
+On the GPU host, choose one mode, not both simultaneously:
 
 ```bash
 python experiments/main_transfer.py --datasets coco --methods vcsf --sources faster_rcnn_r50,mask_rcnn_swin_t --targets faster_rcnn_r50,mask_rcnn_swin_t --max-images 1 --devices cuda:0
@@ -43,10 +42,6 @@ Each mode preserves complete jobs, IDs, seeds, configuration and evaluation.
 Two devices schedule independent jobs, not DDP/ensembling/pooled memory.
 Explicitly unavailable devices fail; each GPU must fit its own workload.
 No bitwise CUDA equality or fixed speedup is promised. Diagnostic mAP is not formal.
-
-Historical accepted bounded main evidence covers four COCO/VOC cases, two sources,
-LGP/VCSF and three targets (COCO cap six; VOC cap one). It is not full-population
-qualification. This source-scope reduction is checked without rerunning that matrix.
 
 ## Full Reproduction
 
@@ -70,8 +65,7 @@ python experiments/main_transfer.py --datasets voc --devices cuda:0
 
 For two GPUs replace the device argument with `--devices cuda:0,cuda:1`.
 Do not launch duplicate commands to implement dual mode. Formal commands omit
-`--max-images`. Reuse accepted author results only under their exact original
-identities; a new user's inputs do not inherit those results.
+`--max-images`.
 
 ## Outputs and Recovery
 
@@ -84,10 +78,10 @@ VCSF `native_cost.jsonl` is a production observation, not a separate paired prof
 
 Require intended coverage, complete target results, no failed/missing records and
 saved-output checks. Preserve all twelve AP/AR values and unrounded JSON;
-`BB Mean` excludes the source. A zero exit is not independent scientific acceptance.
+`BB Mean` excludes the source.
 Use [saved scalar export](saved-report-export.md) for reports without models/AP.
 
 Keep partial leaves and logs. A disconnected terminal does not prove a worker
 stopped. Verify ownership, repair the exact cause, then select an explicit missing
 subset into a new leaf. Do not overwrite, merge, auto-resume or encode failure as zero.
-See [outputs](../outputs/README.md) and [dispatch records](current-dispatch-evidence.md).
+See [outputs](../outputs/README.md) for the directory layout and record formats.
